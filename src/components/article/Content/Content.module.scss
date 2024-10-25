@@ -1,0 +1,74 @@
+.content {
+  @include selector-hover-default;
+
+  display: flex;
+  flex-direction: column;
+  padding: $size-16 $size-24;
+  margin-bottom: $size-16;
+  background-color: var(--color-bg-default);
+  border: 1px solid var(--color-border-default);
+  border-radius: $size-border-radius;
+
+  > div {
+    margin-bottom: 14px;
+  }
+
+  .react-icons {
+    padding-right: 4px;
+  }
+
+  .title {
+    display: -webkit-box; // ellipsis(...)
+    overflow: hidden; // ellipsis(...)
+    font-size: 28px;
+    font-weight: $text-weight-semibold;
+    -webkit-line-clamp: 1; // ellipsis(...)
+    line-clamp: 1; // ellipsis(...)
+    letter-spacing: -1px;
+    -webkit-box-orient: vertical; // ellipsis(...)
+  }
+
+  .description {
+    display: -webkit-box; // ellipsis(...)
+    overflow: hidden; // ellipsis(...)
+    color: var(--color-fg-muted);
+    -webkit-line-clamp: 2; // ellipsis(...)
+    line-clamp: 2; // ellipsis(...)
+    letter-spacing: -0.5px;
+    -webkit-box-orient: vertical; // ellipsis(...)
+  }
+
+  .date {
+    padding: 4px 10px;
+    margin-right: 8px;
+    font-size: 14px;
+    letter-spacing: -0.5px;
+    border: 1px solid var(--color-border-default);
+    border-radius: $size-border-radius;
+  }
+
+  .tags {
+    margin-top: 8px;
+  }
+
+  .tag {
+    padding: 4px 10px;
+    margin-right: 8px;
+    font-size: 14px;
+    letter-spacing: -0.5px;
+    border: 1px solid var(--color-border-default);
+    border-radius: $size-border-radius;
+  }
+
+  &:hover {
+    .title {
+      -webkit-line-clamp: 10; // ellipsis(...), 10 is just a large number representation.
+      line-clamp: 10; // ellipsis(...)
+    }
+
+    .description {
+      -webkit-line-clamp: 10; // ellipsis(...), 10 is just a large number representation.
+      line-clamp: 10; // ellipsis(...)
+    }
+  }
+}
