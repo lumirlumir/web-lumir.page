@@ -416,7 +416,7 @@ HTML에서 이용하는 `<!-- -->` 기호를 사용한다.
 
 `<blockquote>` 태그로 변환되는 '인용문<sup>Blockquotes</sup>'을 표현한다.
 
-`>` 기호를 사용하며, 중첩된 인용문<sup>Nested blockquotes</sup>을 만들 수 있다.
+`>` 기호를 사용하며, 중첩된 인용문<sup>Nested Blockquotes</sup>을 만들 수 있다.
 
 인용문 내부에 다른 마크다운 요소를 포함할 수 있다. (제목, 리스트, 코드 블록 등등)
 
