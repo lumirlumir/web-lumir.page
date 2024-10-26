@@ -1,5 +1,25 @@
 /* stylelint-disable */
 
+// custom
+.markdown-body {
+  ruby {
+    rp,
+    rt {
+      opacity: 0.25;
+      transition: all 0.2s ease-in-out;
+    }
+
+    &:hover {
+      rp,
+      rt {
+        opacity: 1;
+        color: var(--color-fg-default);
+      }
+    }
+  }
+}
+
+// default
 .markdown-body {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -75,8 +95,11 @@
   border-bottom: 1px solid var(--color-border-muted);
 }
 
+// custom
 .markdown-body mark {
-  background-color: var(--color-bg-attention-muted);
+  background-color: var(--color-main); // default: var(--color-bg-attention-muted);
+  border-radius: $size-border-radius; // default: nothing
+  padding: 0 $size-4; // default: nothing
   color: var(--color-fg-default);
 }
 
