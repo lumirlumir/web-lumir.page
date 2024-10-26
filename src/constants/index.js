@@ -1,8 +1,12 @@
 import { join } from 'path';
 
+// Website
+export const WEBSITE_NAME = 'blog.lumir.page';
+export const WEBSITE_URL = `https://${WEBSITE_NAME}`;
+
 // GitHub Repository, Ref: https://docs.github.com/en/rest/repos/repos
 export const GITHUB_REPO_OWNER = 'lumirlumir';
-export const GITHUB_REPO_NAME = 'web-blog.lumir.page';
+export const GITHUB_REPO_NAME = `web-${WEBSITE_NAME}`;
 export const GITHUB_REPO_FULL_NAME = `${GITHUB_REPO_OWNER}/${GITHUB_REPO_NAME}`;
 
 // Path

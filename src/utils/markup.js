@@ -16,6 +16,8 @@ export function markdownToText(markdownContent) {
       .replace(/`(.+?)`/g, '$1')
       // Italic(*), Bold(**), Italic & Bold(***)
       .replace(/(\*{1,3})(\S)(.*?\S)??\1/g, '$2$3')
+      // <sup>...</sup>
+      .replace(/<sup>\s*(.*?)\s*<\/sup>/g, '($1)')
   );
 }
 
