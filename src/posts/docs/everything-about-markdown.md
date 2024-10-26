@@ -1,50 +1,49 @@
 ---
-title: '마크다운(***Markdown***)의 모든 것'
-description: '마크다운(Markdown) 및 GFM(GitHub Flavored Markdown)에 대한 개념, 문법, 사용법, 활용법 총 정리.'
+title: '마크다운<sup>Markdown</sup>의 모든 것'
+description: '마크다운<sup>Markdown</sup> 및 GFM<sup>GitHub Flavored Markdown</sup>에 대한 개념, 문법, 사용법, 활용법 총 정리.'
 created: '2024-05-25'
-updated: '2024-07-27'
+updated: '2024-10-26'
 tags:
   - 'markdown'
 ---
 
 <!-- markdownlint-disable MD003 MD004 MD024 MD029 MD033 MD035 MD046 MD049 MD050 MD055-->
-***Markdown*** 파일의 확장자는 `.md`로 끝난다. 개발을 하다 보면 `README.md`라는 이름의 파일을 한 번쯤 만나게 되는데, 이것이 가장 대표적인 ***Markdown*** 파일이라 할 수 있다.
+마크다운<sup>Markdown</sup> 파일의 확장자는 `.md`로 끝난다. 개발을 하다 보면 `README.md`라는 이름의 파일을 한 번쯤 만나게 되는데, 이것이 가장 대표적인 마크다운 파일이라 할 수 있다.
 
-***Markdown***과 비슷하지만 문법이 좀 더 복잡한 `.adoc` 확장자의 ***AsciiDoc*** 문법도 있으며, 좀 더 다양한 형태의 문서를 만들 수 있다.
-다만, 문법이 훨씬 복잡하고 지원 플랫폼이 적어 사용에 제약이 많다.
+마크다운과 비슷하지만 문법이 좀 더 복잡한 `.adoc` 확장자의 AsciiDoc 문법도 있으며, 좀 더 다양한 형태의 문서를 만들 수 있다. 다만, 문법이 훨씬 복잡하고 지원 플랫폼이 적어 사용에 제약이 많다.
 
-## 1. ***Markdown***에 대하여
+## 1. 마크다운<sup>Markdown</sup>에 대하여
 
-### 1-1. ***Markdown***이란?
+### 1-1. 마크다운이란?
 
-[***Markdown***](https://www.markdownguide.org/getting-started/)은 텍스트 기반의 마크업 언어로 2004년 존 그루버에 의해 만들어졌다. 쉽게 읽고 쓸 수 있으며, ***HTML***로 변환이 용이하다. 특수문자와 기호를 이용한 간단한 구조의 문법을 사용하여, 웹에서 보다 빠르게 콘텐츠를 작성하고 직관적으로 인식할 수 있다.
+[마크다운](https://www.markdownguide.org/getting-started/)은 텍스트 기반의 마크업 언어로 2004년 존 그루버에 의해 만들어졌다. 쉽게 읽고 쓸 수 있으며, HTML로 변환이 용이하다. 특수문자와 기호를 이용한 간단한 구조의 문법을 사용하여, 웹에서 보다 빠르게 콘텐츠를 작성하고 직관적으로 인식할 수 있다.
 
-***Markdown***이 각광받기 시작한 이유는 ***Github*** 덕분이다. ***Repository***에 대한 정보를 기록하는 `README.md`는 ***Github***를 사용하는 사람이라면 가장 먼저 접하게 되는 문서이다. ***Markdown***을 통해 설치방법, 소스코드 설명, 이슈 등을 간단하게 기록하고 가독성을 높일 수 있다는 강점이 부각되면서 점점 여러 곳으로 퍼지게 된다.
+마크다운이 각광받기 시작한 이유는 [깃허브<sup>GitHub</sup>](https://github.com/) 덕분이다. 리포지토리<sup>Repository</sup>에 대한 정보를 기록하는 `README.md`는 깃허브를 사용하는 사람이라면 가장 먼저 접하게 되는 문서이다. 마크다운을 통해 설치방법, 소스코드 설명, 이슈 등을 간단하게 기록하고 가독성을 높일 수 있다는 강점이 부각되면서 점점 여러 곳으로 퍼지게 된다.
 
-***Markdown***에는 ***HTML Tag***를 삽입하여 활용할 수 있다. (단, 모든 ***Tag***가 지원되는 것은 아니다.) 문서상에 더욱 풍부한 표현을 원할 때 활용하면 좋다.
+마크다운에는 HTML 태그<sup>Tag</sup>를 삽입하여 활용할 수 있다. 비록 모든 태그를 지원하는 것은 아니지만, 문서상에 더욱 풍부한 표현을 원할 때 활용하면 좋다.
 
-이때, ***Markdown*** 문서의 표현 방식은 ***CSS***설정에 따라 달라진다. 따라서, 어떤 플랫폼(***Github***, ***VScode***, ***Velog***, ***Discord*** 등등)을 사용하느냐에 따라 표현 방식에 차이가 있을 수 있다.
+이때, 마크다운 문서의 표현 방식은 CSS설정에 따라 달라진다. 따라서, 어떤 플랫폼(GitHub, VScode, Velog, Discord 등)을 사용하느냐에 따라 표현 방식에 차이가 있을 수 있다.
 
 ### 1-2. 마크다운의 장ㆍ단점
 
 #### 1-2-1. 장점
 
 - 문법이 쉽고 간결하다.
-- 모든 것에 사용할 수 있다. (웹 사이트, 문서, 메모 등)
+- 다양한 곳에 사용할 수 있다. (웹 사이트, 문서, 메모 등)
+- 지원하는 프로그램과 플랫폼이 다양하다.
 - 별도의 도구 없이 대부분의 환경에서 작성 가능하다. (메모장에서도 가능)
 - 다양한 형태로 변환이 가능하다.
 - 텍스트로 저장되기 때문에 용량이 적어 보관이 용이하다.
 - 텍스트이기 때문에 버전관리시스템을 이용하여 변경이력을 관리할 수 있다.
-- 지원하는 프로그램과 플랫폼이 다양하다.
 
 #### 1-2-2. 단점
 
 - 표준이 없기 때문에 도구에 따라서 변환방식이나 생성물이 다르다.
-- 모든 ***HTML*** 문법을 대체하지 못한다.
+- 모든 HTML 문법을 대체하지 못한다.
 
-## 2. ***Markdown*** 사용법(문법) - 표준 마크다운 문법
+## 2. 마크다운 사용법(문법) - 표준 마크다운 문법
 
-각 ***Markdown*** 문법은 ***HTML*** 태그로 변환되어 브라우저에 출력된다. 모든 ***HTML*** 태그를 지원하는 것은 아니며, 일부 중요한 문법만을 제공한다.
+각 마크다운 문법은 HTML 태그<sup>Tag</sup>로 변환되어 브라우저에 출력된다. 모든 HTML 태그를 지원하는 것은 아니며, 일부 중요한 문법만을 제공한다.
 
 ### 2-1. 제목(Headings)
 
@@ -179,7 +178,7 @@ tags:
 
 ### 2-2. 줄 바꿈(Line Breaks)
 
-줄 바꿈(Line Breaks)을 위해서는 문장 마지막에 2칸 이상 띄어쓰기(<code>  </code>)를 입력하거나, 문장 마지막에 ***HTML*** `<br>` 태그를 직접 입력한다.
+줄 바꿈(Line Breaks)을 위해서는 문장 마지막에 2칸 이상 띄어쓰기(<code>  </code>)를 입력하거나, 문장 마지막에 HTML `<br>` 태그를 직접 입력한다.
 
 #### 2-2-1. Markdown style
 
@@ -205,7 +204,7 @@ tags:
 
 #### 2-2-2. HTML style
 
-***HTML*** `<br>` 태그를 직접 입력한다.
+HTML `<br>` 태그를 직접 입력한다.
 
 - 입력
 
@@ -227,11 +226,11 @@ tags:
 
 ### 2-3. 수평선(Horizontal Rules)
 
-`-`, `_`, `*` 각 기호를 <u>3개 이상</u> 입력해, `<hr>` 태그로 변환되는 '수평선(Horizontal Rules)'을 표현한다.
+`-`, `_`, `*` 각 기호를 <u>3개 이상</u> 입력해, `<hr>` 태그로 변환되는 수평선<sup>Horizontal Rules</sup>을 표현한다.
 
-단, `-`를 사용할 경우, 제목(Headings)으로 인식할 수 있으니, 이전 라인은 비워두어야 한다.
+단, `-`를 사용할 경우, 제목<sup>Headings</sup>으로 인식할 수 있으니, 이전 라인은 비워두어야 한다.
 
-***Markdown*** 문서를 미리보기로 출력할 때, *페이지 나누기* 용도로 많이 사용한다.
+마크다운 문서를 미리보기로 출력할 때, *페이지 나누기* 용도로 많이 사용한다.
 
 #### 2-3-1. `-` style
 
@@ -295,7 +294,7 @@ tags:
 
 ### 2-4. 주석(Comments)
 
-`[//]: #`, `<!-- -->` 기호를 사용해, 주석(Comment)을 표현한다.
+`[//]: #`, `<!-- -->` 기호를 사용해, 주석<sup>Comment</sup>을 표현한다.
 
 #### 2-4-1. Markdown style
 
@@ -325,7 +324,7 @@ tags:
 
 #### 2-4-2. HTML style
 
-***HTML***에서 이용하는 `<!-- -->` 기호를 사용한다.
+HTML에서 이용하는 `<!-- -->` 기호를 사용한다.
 
 - 입력
 
@@ -351,9 +350,9 @@ tags:
 
 ### 2-5. 강조(Emphasis)
 
-각각 `<em>`(기울임), `<strong>`(두꺼움), `<del>`(취소선) 태그로 변환되는 '강조(Emphasis)'를 표현한다.
+각각 `<em>`(기울임), `<strong>`(두꺼움), `<del>`(취소선) 태그로 변환되는 '강조<sup>Emphasis</sup>'를 표현한다.
 
-***Markdown***에서 지원하지 않는 밑줄을 추가하려면, ***HTML*** `<u></u>`(밑줄) 태그를 직접 사용할 수 있다.
+마크다운에서 지원하지 않는 밑줄을 추가하려면, HTML `<u></u>`(밑줄) 태그를 직접 사용할 수 있다.
 
 #### 2-5-1. 기울임(이태릭체)
 
@@ -415,11 +414,11 @@ tags:
 
 ### 2-6. 인용문(Blockquotes)
 
-`<blockquote>` 태그로 변환되는 '인용문(Blockquotes)'을 표현한다.
+`<blockquote>` 태그로 변환되는 '인용문<sup>Blockquotes</sup>'을 표현한다.
 
-`>` 기호를 사용하며, 중첩된 인용문(Nested blockquotes)을 만들 수 있다.
+`>` 기호를 사용하며, 중첩된 인용문<sup>Nested blockquotes</sup>을 만들 수 있다.
 
-인용문 내부에 다른 ***Markdown*** 요소를 포함할 수 있다. (제목, 리스트, 코드 블록 등등)
+인용문 내부에 다른 마크다운 요소를 포함할 수 있다. (제목, 리스트, 코드 블록 등등)
 
 - 입력
 
@@ -460,7 +459,7 @@ tags:
 
 ### 2-7. 목록(Lists)
 
-`<ol>`, `<ul>`, `<li>` 태그로 변환되는 '목록(List)'을 표현한다.
+`<ol>`, `<ul>`, `<li>` 태그로 변환되는 '목록<sup>Lists</sup>'을 표현한다.
 
 `1.` 로 시작하는 항목을 작성하면 `<ol>`로 변환되며, `-`로 시작하는 항목을 작성하면 `<ul>`로 변환된다. 이때, 순서 있는 목록과 순서 없는 목록을 혼합하여 사용해도 된다.
 
@@ -470,7 +469,7 @@ tags:
 
 숫자(`0, 1, 2, 3, ...`)와 점(`.`)을 사용한다. 이때, `0.`부터 시작해도 되고 `1.`부터 시작해도 된다.
 
-들여쓰기를 하면 모양이 바뀐다. (***Github*** 기준 숫자, 로마자, 알파벳 순서)
+들여쓰기를 하면 모양이 바뀐다. (깃허브<sup>GitHub</sup> 기준 숫자, 로마자, 알파벳 순서)
 
 어떤 번호를 입력해도 순서가 오름차순으로 정의된다.
 
@@ -484,7 +483,7 @@ tags:
   3. 세번째
   ```
 
-- 출력(출력을 들여쓰기 한 채로 작성하여, 숫자가 아닌 로마자로 시작하는 것.)
+- 출력(현재 마크다운 문서에서 출력을 들여쓰기 한 채로 작성하여, 숫자가 아닌 로마자로 시작하는 것.)
 
   1. 첫번째
       1. 첫번째의 첫번째
@@ -565,19 +564,13 @@ tags:
 
 ### 2-8. 링크(Links, Anchor)
 
-`<a>`로 변환되는 '링크(Links, Anchor)'를 표현한다.
+`<a>`로 변환되는 '링크<sup>Links, Anchor</sup>'를 표현한다.
 
 이때, '링크'는 현재 탭에서 열리는 것이 기본이지만, 새 탭에서 열리게 할 수도 있다.
 
 #### 2-8-1. 외부 링크
 
-2가지 형식이 존재한다.
-
-`"설명 Optional Title"`의 내용은 해당 링크 위로 마우스를 ***Hovering*** 하였을 때 나타난다.
-
-```markdown
-[제목 Title](링크 Link)
-```
+`"설명 Optional Title"`의 내용은 생략이 가능하며, 해당 링크 위로 마우스를 올렸을 때<sup>Hovering</sup> 나타난다.
 
 ```markdown
 [제목 Title](링크 Link "설명 Optional Title")
@@ -603,13 +596,7 @@ tags:
 
 #### 2-8-2. 참조 링크
 
-2가지 형식이 존재한다.
-
-```markdown
-[제목 Title][참조 Reference]
-
-[참조 Reference]: 링크 Link
-```
+`"설명 Optional Title"`의 내용은 생략이 가능하며, 해당 링크 위로 마우스를 올렸을 때<sup>Hovering</sup> 나타난다.
 
 ```markdown
 [제목 Title][참조 Reference]
@@ -663,9 +650,9 @@ tags:
 
 #### 2-8-3. 자동 연결
 
-문서 내 `URL`이나 `E-mail Address`는 꺽쇠 괄호(`<>`) 없이도 자동으로 링크를 형성한다.
+문서 내 URL이나 이메일 주소<sup>E-mail Address</sup>는 꺽쇠 괄호(`<>`) 없이도 자동으로 링크를 형성한다.
 
-꺾쇠 괄호(`<>`, Angle Brackets)안에 `URL`이나 `E-mail Address`를 집어넣어도 된다.
+꺾쇠 괄호(`<>`, Angle Brackets)안에 URL이나 이메일 주소를 집어넣어도 된다.
 
 - 입력
 
@@ -697,20 +684,20 @@ tags:
 - 입력
 
   ```text
-  - [1. ***Markdown***에 대하여](#1-markdown에-대하여)
+  - [1. 마크다운에 대하여](#1-markdown에-대하여)
 
-  - [2. ***Markdown*** 사용법(문법) - 표준 마크다운 문법](#2-markdown-사용법문법---표준-마크다운-문법)
+  - [2. 마크다운 사용법(문법) - 표준 마크다운 문법](#2-markdown-사용법문법---표준-마크다운-문법)
 
-  - [3. ***Markdown*** 사용법(문법) - GFM(Github Flavored Markdown)](#3-markdown-사용법문법---gfmgithub-flavored-markdown)
+  - [3. 마크다운 사용법(문법) - GFM(GitHub Flavored Markdown)](#3-markdown-사용법문법---gfmgithub-flavored-markdown)
   ```
 
 - 출력
 
-  - [1. ***Markdown***에 대하여](#1-markdown에-대하여)
+  - [1. 마크다운에 대하여](#1-마크다운markdown에-대하여)
 
-  - [2. ***Markdown*** 사용법(문법) - 표준 마크다운 문법](#2-markdown-사용법문법---표준-마크다운-문법)
+  - [2. 마크다운 사용법(문법) - 표준 마크다운 문법](#2-마크다운-사용법문법---표준-마크다운-문법)
 
-  - [3. ***Markdown*** 사용법(문법) - GFM(Github Flavored Markdown)](#3-markdown-사용법문법---gfmgithub-flavored-markdown)
+  - [3. 마크다운 사용법(문법) - GFM(GitHub Flavored Markdown)](#3-마크다운-사용법문법---gfmgithub-flavored-markdown)
 
 ##### 2-8-4-2. HTML style
 
@@ -730,9 +717,9 @@ tags:
 
 ### 2-9. 이미지(Images)
 
-`<img>`로 변환되는 '이미지(Images)'를 표현한다.
+`<img>`로 변환되는 '이미지<sup>Images</sup>'를 표현한다.
 
-링크와 문법이 비슷하지만, 앞에 `!`를 추가해야 한다.
+링크<sup>Link</sup>와 문법이 비슷하지만, 앞에 `!`를 추가해야 한다.
 
 #### 2-9-1. Markdown style
 
@@ -791,7 +778,7 @@ tags:
 
 ##### 2-9-1-3. 이미지에 링크 추가
 
-***Markdown style*** 이미지 문법 코드를 링크 문법 코드로 감싸준다.
+Markdown style 이미지 문법 코드를 링크 문법 코드로 감싸준다.
 
 - 입력
 
@@ -804,7 +791,7 @@ tags:
 
 #### 2-9-2. HTML style
 
-***Markdown style***은 사이즈 조절 기능이 없기 때문에, ***HTML*** `<img src="" width="" height="" title="" alt=""></img>` 태그를 이용한다.
+Markdown style은 사이즈 조절 기능이 없기 때문에, HTML `<img src="" width="" height="" title="" alt=""></img>` 태그를 이용한다.
 
 - 입력
 
@@ -818,15 +805,15 @@ tags:
   <img src="/public/images/posts/everything-about-markdown/1.png?raw=true" width="450px" height="300px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img><br>
   <img src="/public/images/posts/everything-about-markdown/1.png?raw=true" width="40%" height="30%" title="%(비율) 크기 설정" alt="RubberDuck"></img>
 
-### 2-10. 코드(Codes)
+### 2-10. 코드(Code)
 
-`<pre>`, `<code>` 태그로 변환되는 '코드(Codes)'를 표현한다.
+`<pre>`, `<code>` 태그로 변환되는 '코드<sup>Code</sup>'를 표현한다.
 
 주로 <code>\`</code>(백틱) 기호를 사용한다.
 
 #### 2-10-1. 인라인(Inline)
 
-강조할 코드를 <code>\`</code>(백틱) 기호로 감싸 '인라인(Inline)' 코드를 표현한다.
+강조할 코드를 <code>\`</code>(백틱) 기호로 감싸 '인라인<sup>Inline</sup>' 코드를 표현한다.
 
 - 입력
 
@@ -844,9 +831,9 @@ tags:
 
 ###### 2-10-2-1-1. <code>\`</code>(백틱) 또는 `~` 기호 사용
 
-<code>\`</code> 또는 `~`을 3번 이상 입력하고 언어(코드) 이름을 명시해, 코드 '블록(Block)'를 표현한다. 코드 블록의 시작 <code>\`</code>(`~`) 개수와 종료 <code>\`</code>(`~`) 개수는 같아야 한다.
+<code>\`</code> 또는 `~`을 3번 이상 입력하고 언어(코드) 이름을 명시해, 코드 '블록<sup>Block</sup>'를 표현한다. 코드 블록의 시작 <code>\`</code>(`~`) 개수와 종료 <code>\`</code>(`~`) 개수는 같아야 한다.
 
-***Github***에서는 언어(코드) 이름을 명시하면, [문법강조(Syntax highlighting)](https://docs.github.com/en/github/writing-on-github/creating-and-highlighting-code-blocks#syntax-highlighting)가 가능하다.
+깃허브<sup>GitHub</sup>에서는 언어(코드) 이름을 명시하면, [문법강조(Syntax highlighting)](https://docs.github.com/en/github/writing-on-github/creating-and-highlighting-code-blocks#syntax-highlighting)가 가능하다.
 
 - 입력
 
@@ -938,7 +925,7 @@ tags:
 
 특수문자를 표현할 때, 표시될 문자 앞에 `\`를 넣고 특수문자를 쓰면 된다.
 
-예를 들어, 백틱(<code>\`</code>) 기호는 코드를 표현할 때 사용하는 문법 기능을 가지므로, 백틱 기호 자체를 출력하려면 기호에 이스케이프(Escape) 처리가 필요하다.
+예를 들어, 백틱(<code>\`</code>) 기호는 코드를 표현할 때 사용하는 문법 기능을 가지므로, 백틱 기호 자체를 출력하려면 기호에 이스케이프<sup>Escape</sup> 처리가 필요하다.
 
 아래와 같이 `\` 기호와 함께 작성하면, 백틱 기호를 출력할 수 있다. 또한 <code>\`</code>에서 인라인 코드 강조를 위해, `<code>` 태그를 활용할 수도 있다.
 
@@ -998,7 +985,7 @@ tags:
 
 ### 2-12. 표(Table)
 
-`<table>` 태그로 변환되는 '표(Table)'를 표현한다.
+`<table>` 태그로 변환되는 '표<sup>Table</sup>'를 표현한다.
 
 헤더와 셀을 구분하기 위해, 3개 이상의 `-`(Hyphen/Dash) 기호를 사용한다.
 
@@ -1068,14 +1055,14 @@ tags:
   셀4|셀5|셀6
   셀7|셀8|셀9
 
-### 2-13. 원시 HTML
+### 2-13. 원시(Raw) HTML
 
-마크다운 문법 대신, ***HTML***을 직접 사용(Raw HTML)할 수 있다.
+마크다운 문법 대신, HTML을 직접 사용할 수 있다.
 앞서 살펴본 밑줄 `<u></u>` 추가와 같이, 마크다운 문법에서 지원하지 않는 기능을 사용할 때 유용하다. 단, 모든 HTML 태그가 지원되는 것은 아니니 유의해야 한다.
 
-## 3. ***Markdown*** 사용법(문법) - GFM(Github Flavored Markdown)
+## 3. 마크다운 사용법(문법) - GFM(GitHub Flavored Markdown)
 
-위에서 언급한 문법은 모든 마크다운에 공통적으로 적용되는 표준 마크다운 문법이다. Github에서는 추가적으로 체크 리스트, 알림 상자 등의 고급 마크다운 문법을 지원하는데, 이를 GFM(Github Flavored Markdown)이라고 한다. 단, 해당 문법은 Github가 아닌 다른 플랫폼에서 동일한 동작을 보장하지 않으니 주의해야 한다.
+위에서 언급한 문법은 모든 마크다운에 공통적으로 적용되는 표준 마크다운 문법이다. 깃허브<sup>GitHub</sup>에서는 추가적으로 체크 리스트, 알림 상자 등의 고급 마크다운 문법을 지원하는데, 이를 GFM<sup>GitHub Flavored Markdown</sup>이라고 한다. 단, 해당 문법은 깃허브가 아닌 다른 플랫폼에서 동일한 동작을 보장하지 않으니 주의해야 한다.
 
 ### 3-1. 체크 리스트(Check Lists)
 
@@ -1085,7 +1072,7 @@ tags:
 
 체크 리스트 안에서 강조 외에 여러 기능을 사용할 수 있다.
 
-일반적으로, ***Github***를 비롯한 몇몇 플랫폼에서만 지원하는 기능이다. (모든 플랫폼에서 지원하는 기능은 아니다.)
+일반적으로, 깃허브를 비롯한 몇몇 플랫폼에서만 지원하는 기능이다. (모든 플랫폼에서 지원하는 기능은 아니다.)
 
 - 입력
 
@@ -1111,13 +1098,13 @@ tags:
 
 ### 3-2. 수학 식(수식, 표현식)
 
-***Github***를 비롯한 소수의 플랫폼에서만 지원하는 기능이다. (2022년 5월 19일 부터 ***Github***에서 수학 식 렌더링을 공식 제공한다.)
+깃허브를 비롯한 소수의 플랫폼에서만 지원하는 기능이다. (2022년 5월 19일 부터 깃허브에서 수학 식 렌더링을 공식 제공한다.)
 
-***Github***의 수학 식 렌더링 기능은 ***JavaScript***기반 디스플레이 엔진 오픈소스인 ***MathJax***를 사용한다. ***MathJax***는 광범위한 ***LaTeX*** 매크로와 유용한 접근성 확장을 지원한다.
+깃허브의 수학 식 렌더링 기능은 자바스크립트<sup>JavaScript</sup>기반 디스플레이 엔진 오픈소스인 ***MathJax***를 사용한다. ***MathJax***는 광범위한 ***LaTeX*** 매크로와 유용한 접근성 확장을 지원한다.
 
-렌더링 된 결과는 ***CHTML*** 또는 ***SVG*** 형식을 지원한다. 즉, 수학 식을 ***LaTex*** 문법으로 작성했을 경우 ***HTML*** 또는 ***SVG*** 형태로 변경된다.
+렌더링 된 결과는 ***CHTML*** 또는 ***SVG*** 형식을 지원한다. 즉, 수학 식을 ***LaTex*** 문법으로 작성했을 경우 HTML 또는 ***SVG*** 형태로 변경된다.
 
-또한, 다이어그램 렌더링은 ***Github Issues***, ***Github Discussions***, ***Pull Request***, ***Wiki*** 및 ***Markdown*** 파일에서 사용할 수 있다.
+또한, 다이어그램 렌더링은 ***GitHub Issues***, ***GitHub Discussions***, ***Pull Request***, ***Wiki*** 및 마크다운 파일에서 사용할 수 있다.
 
 `inline` 혹은 `block` 형태로 작성할 수 있다.
 
@@ -1157,7 +1144,7 @@ tags:
 
 ### 3-3. 알림 상자(경고)
 
-알림 상자(경고)는 중요한 정보를 강조하는 데 사용할 수 있는 blockquote 구문을 기반으로 한 Markdown 확장이다. Github에서는 콘텐츠의 중요도를 나타내기 위해, 고유한 색과 아이콘으로 알림 상자를 표시한다.
+알림 상자(경고)는 중요한 정보를 강조하는 데 사용할 수 있는 blockquote 구문을 기반으로 한 마크다운 확장이다. 깃허브에서는 콘텐츠의 중요도를 나타내기 위해, 고유한 색과 아이콘으로 알림 상자를 표시한다.
 
 알림 상자는 중요한 경우에만 사용하고, 판독기 오버로드를 방지하기 위해 문서당 하나 또는 두 개로 제한하는 것을 권장한다. 또한, 알림 상자를 연속적으로 배치하지 않아야 하며, 다른 요소 내에 중첩할 수 없다.
 
@@ -1184,7 +1171,20 @@ tags:
 
 - 출력
 
-  ![참고, 팁, 중요, 경고, 주의가 서로 다른 색의 텍스트와 아이콘으로 렌더링되는 방식을 보여 주는 렌더링된 Markdown 경고의 스크린샷.](/public/images/posts/everything-about-markdown/2.png?raw=true)
+> [!NOTE]
+> Useful information that users should know, even when skimming content.
+<!-- -->
+> [!TIP]
+> Helpful advice for doing things better or more easily.
+<!-- -->
+> [!IMPORTANT]
+> Key information users need to know to achieve their goal.
+<!-- -->
+> [!WARNING]
+> Urgent info that needs immediate user attention to avoid problems.
+<!-- -->
+> [!CAUTION]
+> Advises about risks or negative outcomes of certain actions.
 
 ### 3-4. 요약 및 접기 기능
 
@@ -1222,7 +1222,7 @@ tags:
 
 - 출력
 
-  ![+1 및 shipit에 대한 이모지 코드가 이모지로 시각적으로 렌더링되는 방법을 보여 주는 렌더링된 GitHub Markdown의 스크린샷.](/public/images/posts/everything-about-markdown/3.png?raw=true)
+  @octocat :+1: This PR looks great - it's ready to merge! :shipit:
 
 ### 3-6. 지원되는 색 모델
 
@@ -1232,9 +1232,9 @@ tags:
 
 Color|구문|예시|출력
 :---:|:---:|:---:|:---:
-HEX|`#RRGGBB`|`#0969DA`|![HEX 값 #0969DA 파란색 원으로 표시되는 방법을 보여 주는 렌더링된 Github Markdown의 스크린샷.](/public/images/posts/everything-about-markdown/4.png?raw=true)
-RGB|`rgb(R,G,B)`|`rgb(9, 105, 218)`|![RGB 값 9, 105, 218이 파란색 원으로 표시되는 방법을 보여 주는 렌더링된 Github Markdown의 스크린샷.](/public/images/posts/everything-about-markdown/5.png?raw=true)
-HSL|`hsl(H,S,L)`|`hsl(212, 92%, 45%)`|![HSL 값 212, 92%, 45%가 파란색 원으로 표시되는 방법을 보여 주는 렌더링된 Github Markdown의 스크린샷.](/public/images/posts/everything-about-markdown/6.png?raw=true)
+HEX|`#RRGGBB`|`#0969DA`|![HEX 값 #0969DA 파란색 원으로 표시되는 방법을 보여 주는 렌더링된 GitHub Markdown의 스크린샷.](/public/images/posts/everything-about-markdown/4.png?raw=true)
+RGB|`rgb(R,G,B)`|`rgb(9, 105, 218)`|![RGB 값 9, 105, 218이 파란색 원으로 표시되는 방법을 보여 주는 렌더링된 GitHub Markdown의 스크린샷.](/public/images/posts/everything-about-markdown/5.png?raw=true)
+HSL|`hsl(H,S,L)`|`hsl(212, 92%, 45%)`|![HSL 값 212, 92%, 45%가 파란색 원으로 표시되는 방법을 보여 주는 렌더링된 GitHub Markdown의 스크린샷.](/public/images/posts/everything-about-markdown/6.png?raw=true)
 
 - 입력
 
@@ -1253,7 +1253,7 @@ HSL|`hsl(H,S,L)`|`hsl(212, 92%, 45%)`|![HSL 값 212, 92%, 45%가 파란색 원�
 
 ### 3-7. 사람과 팀 멘션
 
-`@`와 함께 사용자 이름 또는 팀 이름을 입력하여 Github에서 사람 또는 팀을 멘션할 수 있다. 그러면 알림이 트리거되고 해당 사용자의 주의를 대화에 집중시킬 수 있다. 또한 사용자 이름 또는 팀 이름을 멘션하는 메모를 편집하는 경우에도 해당 사용자는 알림을 받게 된다.
+`@`와 함께 사용자 이름 또는 팀 이름을 입력하여 깃허브에서 사람 또는 팀을 멘션할 수 있다. 그러면 알림이 트리거되고 해당 사용자의 주의를 대화에 집중시킬 수 있다. 또한 사용자 이름 또는 팀 이름을 멘션하는 메모를 편집하는 경우에도 해당 사용자는 알림을 받게 된다.
 
 > [!NOTE]
 >
@@ -1268,12 +1268,12 @@ HSL|`hsl(H,S,L)`|`hsl(212, 92%, 45%)`|![HSL 값 212, 92%, 45%가 파란색 원�
 - 입력
 
   ```markdown
-  @Github/support What do you think about these updates?
+  @github/support What do you think about these updates?
   ```
 
 - 출력
 
-  ![팀 멘션 "@Github/support"을(를) 굵고 클릭 가능한 텍스트로 렌더링하는 방법을 보여 주는 렌더링된 Github Markdown의 스크린샷.](/public/images/posts/everything-about-markdown/8.png?raw=true)
+  ![팀 멘션 "@github/support"을(를) 굵고 클릭 가능한 텍스트로 렌더링하는 방법을 보여 주는 렌더링된 GitHub Markdown의 스크린샷.](/public/images/posts/everything-about-markdown/8.png?raw=true)
 
 ### 3-8. 이슈 및 끌어오기 요청 참조
 
@@ -1285,7 +1285,7 @@ HSL|`hsl(H,S,L)`|`hsl(212, 92%, 45%)`|![HSL 값 212, 92%, 45%가 파란색 원�
 `#` 및 이슈 또는 끌어오기 요청 번호 | `#26` | `#26`
 `GH-` 및 이슈 또는 끌어오기 요청 번호 | `GH-26` | `GH-26`
 `Username/Repository#` 및 이슈 또는 끌어오기 요청 번호 | `jlord/sheetsee.js#26` | `jlord/sheetsee.js#26`
-`Organization_name/Repository#` 및 이슈 또는 끌어오기 요청 번호 | `github-linguist/linguist#4039` | `Github-linguist/linguist#4039`
+`Organization_name/Repository#` 및 이슈 또는 끌어오기 요청 번호 | `github-linguist/linguist#4039` | `github-linguist/linguist#4039`
 
 ### 3-9. 각주
 
@@ -1305,11 +1305,17 @@ HSL|`hsl(H,S,L)`|`hsl(212, 92%, 45%)`|![HSL 값 212, 92%, 45%가 파란색 원�
 
 - 출력
 
-  ![각주를 나타내는 데 사용되는 위 첨자 번호와 메모 내의 선택적 줄 바꿈을 보여 주는 렌더링된 Markdown의 스크린샷.](/public/images/posts/everything-about-markdown/9.png?raw=true)
+  Here is a simple footnote[^1].
+
+  A footnote can also have multiple lines[^2].
+
+  [^1]: My reference.
+  [^2]: To add line breaks within a footnote, prefix new lines with 2 spaces.
+    This is a second line.
 
 > [!NOTE]
 >
-> - Markdown에서 각주의 위치는 각주가 렌더링될 위치에 영향을 주지 않는다. 각주에 대한 참조 바로 뒤에 각주를 작성할 수 있으며, 각주는 여전히 Markdown의 하단에 렌더링된다.
+> - 마크다운에서 각주의 위치는 각주가 렌더링될 위치에 영향을 주지 않는다. 각주에 대한 참조 바로 뒤에 각주를 작성할 수 있으며, 각주는 여전히 Markdown의 하단에 렌더링된다.
 >
 > - 각주는 wiki에서 지원되지 않는다.
 
@@ -1329,7 +1335,7 @@ HSL|`hsl(H,S,L)`|`hsl(212, 92%, 45%)`|![HSL 값 212, 92%, 45%가 파란색 원�
 [Contribution guidelines for this project](docs/CONTRIBUTING.md)
 ```
 
-Github는 현재 위치한 분기에 따라 상대 링크 또는 이미지 경로를 자동으로 변환하므로 링크 또는 경로는 항상 작동한다. 링크의 경로는 현재 파일을 기준으로 한다. `/` 시작 링크는 리포지토리 루트를 기준으로 한다. `./` 및 `../`와 같은 모든 상대 링크 피연산자를 사용할 수 있다.
+깃허브는 현재 위치한 분기에 따라 상대 링크 또는 이미지 경로를 자동으로 변환하므로 링크 또는 경로는 항상 작동한다. 링크의 경로는 현재 파일을 기준으로 한다. `/` 시작 링크는 리포지토리 루트를 기준으로 한다. `./` 및 `../`와 같은 모든 상대 링크 피연산자를 사용할 수 있다.
 
 링크 텍스트는 한 줄이어야 한다. 아래 예시는 작동하지 않는다.
 
@@ -1340,40 +1346,38 @@ guidelines for this project](docs/CONTRIBUTING.md)
 
 상대 링크는 리포지토리를 복제하는 사용자가 사용하기 더 쉽다. 절대 링크는 리포지토리의 복제본에서 작동하지 않을 수 있다. 상대 링크를 사용하여 리포지토리 내의 다른 파일을 참조하는 것이 좋다.
 
-## 4. ***Markdown*** 에디터
+## 4. 마크다운 에디터
 
 ### 4-1. 메모장
 
-***Markdown***은 문법이 쉬워, 에디터를 사용할 필요 없이 메모장에서 작업을 해도 무리가 없다. 다만, 작업 속도 향상을 위해 ***VScode***와 같은 에디터를 사용할 것을 추천한다.
-
-에디터는 ***Markdown***을 실시간 렌더링하여 화면상에 보여주며, 단축키 등을 활용하여 빠르게 사용할 수 있다.
+마크다운은 문법이 쉬워, 에디터를 사용할 필요 없이 메모장에서 작업을 해도 무리가 없다. 다만, 작업 속도 향상을 위해 ***VScode***와 같은 에디터를 사용할 것을 추천한다. 에디터는 마크다운을 실시간 렌더링하여 화면상에 보여주며, 단축키 등을 활용하여 빠르게 사용할 수 있다.
 
 ### 4-2. VScode
 
 #### 4-2-1. Original
 
-***VScode***에 아무런 확장을 설치하지 않더라도, 기본 적으로 제공되는 ***Markdown Preview***를 이용할 수 있다. 다만, ***Github***의 ***Markdown***에서 지원되는 일부 기능을 사용할 수 없고, 테마 스타일도 약간 다르다.
+***VScode***에 아무런 확장을 설치하지 않더라도, 기본 적으로 제공되는 마크다운 프리뷰<sup>Preview</sup>를 이용할 수 있다. 다만, 깃허브의 마크다운에서 지원되는 일부 기능을 사용할 수 없고, 테마 스타일도 약간 다르다.
 
-#### 4-2-2. Extension: Dark Github Markdown Pack
+#### 4-2-2. Extension: Dark GitHub Markdown Pack
 
-***VScode***에서 ***Github***의 ***Markdown*** 테마 스타일로 ***Markdown Preview***를 이용할 수 있게 해주는 확장 팩이다. 아래는 해당 확장 팩에 대한 설명이다.
+***VScode***에서 깃허브의 마크다운 테마 스타일로 마크다운 프리뷰<sup>Preview</sup>를 이용할 수 있게 해주는 확장 팩이다. 아래는 해당 확장 팩에 대한 설명이다.
 
-- Dark Github Markdown Preview — CSS that makes the Markdown preview match Github's dark themed style.
+- Dark GitHub Markdown Preview — CSS that makes the Markdown preview match GitHub's dark themed style.
 - Markdown Emoji — Adds :emoji: support to the Markdown preview.
 - Markdown Checkboxes — Adds - [ ] tasklist support to the Markdown preview
 - Markdown yaml Preamble — Adds support for rendering the yaml frontmatter as a table. Be sure to set "markdown.previewFrontMatter": "show"
 
 ### 4-3. Typora
 
-군더더기 없는 디자인이 매력적인 무료 에디터이다. 일일이 타이핑했던 문법을 자동으로 완성하여 작업시간 단축할 수 있다. ***Markdown***을 처음 사용하는 분들에게 추천한다.
+군더더기 없는 디자인이 매력적인 무료 에디터이다. 일일이 타이핑했던 문법을 자동으로 완성하여 작업시간 단축할 수 있다. 마크다운을 처음 사용하는 분들에게 추천한다.
 
-## 5. ***Markdown*** 활용
+## 5. 마크다운 활용
 
-***Markdown***은 지원되는 모든 곳에서 사용할 수 있다. 예를 들어, ***Github***, ***Velog*** 등의 블로그 서비스, ***WordPress***, ***Slack***(슬랙), ***Notion***(노션), ***Discord***  등이 있다.
+마크다운은 지원되는 모든 곳에서 사용할 수 있다. 예를 들어, ***GitHub***, ***Velog*** 등의 블로그 서비스, ***WordPress***, ***Slack***(슬랙), ***Notion***(노션), ***Discord***  등이 있다.
 
-또한, ***MS Word***에도 적용할 수 있다. View 영역의 항목을 그대로 붙여 넣거나, ***HTML*** 내보내기 등으로 생성한 파일을 불러오는 형태로 사용한다. 적용한 ***Heading***을 ***MS Word***가 읽어 들이면서 목차에 적용하기 때문에, 목차를 손쉽게 만들 수 있다.
+또한, ***MS Word***에도 적용할 수 있다. 뷰<sup>View</sup> 영역의 항목을 그대로 붙여 넣거나, HTML 내보내기 등으로 생성한 파일을 불러오는 형태로 사용한다. 적용한 제목<sup>Heading</sup>을 ***MS Word***가 읽어 들이면서 목차에 적용하기 때문에, 목차를 손쉽게 만들 수 있다.
 
-그리고, 마크다운의 각 문법은 ***HTML***로 변환되어 ***CSS***와 함께 출력되기 때문에, 화면에 표시되는 모양은 사용하는 곳의 스타일 구성에 따라 달라진다. 따라서, 눈에 보이는 스타일이 아닌 각 문법의 의미에 맞게 사용해야 한다.
+그리고, 마크다운의 각 문법은 HTML로 변환되어 CSS와 함께 출력되기 때문에, 화면에 표시되는 모양은 사용하는 곳의 스타일 구성에 따라 달라진다. 따라서, 눈에 보이는 스타일이 아닌 각 문법의 의미에 맞게 사용해야 한다.
 
 ## Reference
 
