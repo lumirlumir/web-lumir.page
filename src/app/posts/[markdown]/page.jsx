@@ -1,5 +1,6 @@
 import { join } from 'path';
 
+import Katex from '@/components/article/Katex';
 import { PATH_DOCS, EXT_MD, EXT_MD_REGEXP } from '@/constants';
 import { readMarkdownFile, readMarkdownFilesFromDir } from '@/utils/fs';
 import { markdownToText, markdownToJsxFromPath } from '@/utils/markup';
@@ -35,8 +36,8 @@ export async function generateMetadata({ params }) {
 
 export default async function Page({ params }) {
   return (
-    <div className="markdown-body">
+    <Katex className="markdown-body">
       {await markdownToJsxFromPath(getFilePath(params))}
-    </div>
+    </Katex>
   );
 }
