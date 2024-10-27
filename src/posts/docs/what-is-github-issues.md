@@ -79,9 +79,9 @@ tags:
 
 대신, ***Github Markdown***의 `- []` 체크리스트 기능만을 이용하여 세부 태스크를 관리하는 것은 가능하다. 제목 바로 아래쪽에서 몇개의 태스크를 진행했는지 상세 진행내역을 확인할 수 있다.
 
-![6 tasks done](/public/images/posts/what-is-github-issues/1.png?raw=true)
+![6 tasks done](/public/images/posts/what-is-github-issues/1.webp?raw=true)
 
-![tasklist](/public/images/posts/what-is-github-issues/2.png?raw=true)
+![tasklist](/public/images/posts/what-is-github-issues/2.webp?raw=true)
 
 ## 4. ***Projects Classic***
 

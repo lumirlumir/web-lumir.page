@@ -33,7 +33,7 @@ DOM에서 `react`를 사용하기 위한 라이브러리이다. 웹 인터페이
 
 ## 4. 정리
 
-![react react-dom](/public/images/posts/npm-package-react/1.png?raw=true)
+![react react-dom](/public/images/posts/npm-package-react/1.webp?raw=true)
 
 ## Reference
 

@@ -22,15 +22,15 @@ Favicon은 브라우저가 강하게 캐싱하는 대표적인 파일이기에, 
 
 - 개발자 도구를 켜지 않은 경우의 툴팁.
 
-    ![alt text](/public/images/posts/when-using-file-based-metadata-the-favicon-is-not-displayed-correctly/1.png)
+    ![alt text](/public/images/posts/when-using-file-based-metadata-the-favicon-is-not-displayed-correctly/1.webp)
 
 - 개발자 도구를 켠 경우의 툴팁.
 
-    ![alt text](/public/images/posts/when-using-file-based-metadata-the-favicon-is-not-displayed-correctly/2.png)
+    ![alt text](/public/images/posts/when-using-file-based-metadata-the-favicon-is-not-displayed-correctly/2.webp)
 
 - 개발자 도구를 켠 상태로, 마우스 좌측 버튼을 길게 누르고 있는 경우.
 
-    ![alt text](/public/images/posts/when-using-file-based-metadata-the-favicon-is-not-displayed-correctly/3.png)
+    ![alt text](/public/images/posts/when-using-file-based-metadata-the-favicon-is-not-displayed-correctly/3.webp)
 
 ## Reference
 
