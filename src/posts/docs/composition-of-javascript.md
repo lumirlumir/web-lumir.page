@@ -19,13 +19,13 @@ tags:
 
 아래 그림은 호스트 환경이 웹 브라우저(클라이언트)일 때 사용할 수 있는 기능을 개괄적으로 보여준다.
 
-![window, JavaScript, DOM, BOM](/public/images/posts/composition-of-javascript/1.png?raw=true)
+![window, JavaScript, DOM, BOM](/public/images/posts/composition-of-javascript/1.webp?raw=true)
 
 ## 1. `window` 객체
 
 ***JavaScript***의 <u>최상위(루트) 객체</u>이자, 모든 객체가 소속된 <u>전역(***Global***)</u> 객체이다. 어디서든 접근이 가능하다고 하여 전역 객체라 불리며, 객체화된 수많은 구성 요소들로 이루어져 있다.
 
-![window object](/public/images/posts/composition-of-javascript/2.png?raw=true)
+![window object](/public/images/posts/composition-of-javascript/2.webp?raw=true)
 
 ### 1-1. 역할
 
@@ -85,11 +85,11 @@ console.log(window.a.id); // 1
 
 ***DOM***은 전체페이지를 노드 계층(Node Tree) 구조의 객체들로 변환하며, ***HTML*** 페이지의 각 부분을 각기 다른 데이터를 포함하는 다양한 타입의 노드로 표현한다.
 
-![Document Object](/public/images/posts/composition-of-javascript/3.png?raw=true)
+![Document Object](/public/images/posts/composition-of-javascript/3.webp?raw=true)
 
 ### 3-1. ***DOM***의 구조 (The ***HTML*** ***DOM*** tree of objects)
 
-![The HTML DOM tree of objects](/public/images/posts/composition-of-javascript/4.png?raw=true)
+![The HTML DOM tree of objects](/public/images/posts/composition-of-javascript/4.webp?raw=true)
 
 노드 종류 | 역할
 :--- | :---
@@ -111,19 +111,19 @@ Comment Node | ***HTML*** 문서의 <u>***Comment***(주석)</u>
 
 `navigator` 객체는 브라우저와 운영체제에 대한 정보를 제공한다. 객체에는 다양한 ***Property***가 있는데, 가장 잘 알려진 ***Property***는 현재 사용 중인 브라우저 정보를 알려주는 `navigator.userAgent`와 브라우저가 실행 중인 운영체제(***Windows***, ***Linux***, ***Mac*** 등) 정보를 알려주는 `navigator.platform`이다. 이는 주로 호환성 문제를 해결하기 위해 사용된다.
 
-![navigator object](/public/images/posts/composition-of-javascript/5.png?raw=true)
+![navigator object](/public/images/posts/composition-of-javascript/5.webp?raw=true)
 
 ### 4-2. `screen`
 
 `screen` 객체는 화면에 대한 정보를 알려준다. 너비(`width`), 높이(`height`), 픽셀(`pixelDepth`), 컬러(`colorDepth`), 화면 방향(`orientation`), 작업표시줄을 제외한 너비와 높이(`availWidth`, `availHeight`) 등이 있다. 화면 크기에 따라 다른 동작을 하고 싶을 때 사용한다.
 
-![screen object](/public/images/posts/composition-of-javascript/6.png?raw=true)
+![screen object](/public/images/posts/composition-of-javascript/6.webp?raw=true)
 
 ### 4-3. `location`
 
 `location` 객체는 ***URL*** 주소에 대한 정보를 제공하여, 현재 ***URL***을 읽을 수 있게 해주고 새로운 ***URL***로 변경(redirect)할 수 있게 해준다.
 
-![location object](/public/images/posts/composition-of-javascript/7.png?raw=true)
+![location object](/public/images/posts/composition-of-javascript/7.webp?raw=true)
 
 ### 4-4. `frames`
 
@@ -135,7 +135,7 @@ Returns the `window` itself, which is an ***array-like object***, listing the di
 
 `history` 객체는 브라우저의 세션 기록, 즉 현재 페이지를 불러온 탭 또는 프레임의 방문 기록을 조작할 수 있는 방법을 제공한다.
 
-![history object](/public/images/posts/composition-of-javascript/8.png?raw=true)
+![history object](/public/images/posts/composition-of-javascript/8.webp?raw=true)
 
 ### 4-6. `XMLHttpRequest`
 

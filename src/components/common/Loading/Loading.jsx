@@ -12,6 +12,7 @@ export default function Loading({ content }) {
             width={48}
             height={48}
             alt="GitHub GIF loading image"
+            unoptimized
           />
         </div>
         <div className={styles.content}>{content} 불러오는 중...</div>

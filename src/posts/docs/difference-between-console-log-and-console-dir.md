@@ -68,28 +68,28 @@ tags:
 
 - `console.log()`: ***HTML*** 형태의 트리구조 출력.
 
-  ![console.log()](/public/images/posts/difference-between-console-log-and-console-dir/1.png?raw=true)
+  ![console.log()](/public/images/posts/difference-between-console-log-and-console-dir/1.webp?raw=true)
 
 - `console.dir()`: ***JSON*** 형태의 트리구조 출력.
 
-  ![console.dir()](/public/images/posts/difference-between-console-log-and-console-dir/2.png?raw=true)
+  ![console.dir()](/public/images/posts/difference-between-console-log-and-console-dir/2.webp?raw=true)
 
 ### 4-2. `document.body` 출력
 
 - `console.log()`: 해당 `<body>`의 요소 출력.
 
-  ![console.log()](/public/images/posts/difference-between-console-log-and-console-dir/3.png?raw=true)
+  ![console.log()](/public/images/posts/difference-between-console-log-and-console-dir/3.webp?raw=true)
 
 - `console.dir()`: 전체 요소 출력.
 
-  ![console.dir()](/public/images/posts/difference-between-console-log-and-console-dir/4.png?raw=true)
+  ![console.dir()](/public/images/posts/difference-between-console-log-and-console-dir/4.webp?raw=true)
 
 ### 4-3. 함수 `a()` 출력
 
 - 함수(객체)도 마찬가지로 출력된다.
 - 만약, `console.log(a());` 및 `console.dir(a());`를 사용할 경우, `()`로 인해 함수를 실행하는 것이 되므로, 둘 다 `true`가 출력된다.
 
-  ![console.log() vs console.dir()](/public/images/posts/difference-between-console-log-and-console-dir/5.png?raw=true)
+  ![console.log() vs console.dir()](/public/images/posts/difference-between-console-log-and-console-dir/5.webp?raw=true)
 
 ## Reference
 
