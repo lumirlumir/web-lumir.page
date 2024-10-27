@@ -18,7 +18,7 @@ $text-weight-medium: 500;
 $text-weight-semibold: 600;
 
 /* font */
-$font-stack-system: // For general usage
+$font-stack-system:
   -apple-system,
   blinkmacsystemfont,
   segoe ui,
@@ -28,7 +28,7 @@ $font-stack-system: // For general usage
   sans-serif,
   apple color emoji,
   segoe ui emoji;
-$font-stack-monospace: // For markdown content
+$font-stack-monospace:
   ui-monospace,
   sfmono-regular,
   sf mono,
@@ -36,3 +36,12 @@ $font-stack-monospace: // For markdown content
   consolas,
   liberation mono,
   monospace;
+
+/* breakpoints */
+$breakpoints: (
+  sm: 640px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1280px,
+  2xl: 1536px,
+);
