@@ -1,7 +1,7 @@
 .sort-item {
   $grid-template-rows-1: $size-24;
   $grid-template-rows-2: $size-16;
-  $grid-template-columns: $grid-template-rows-1 + $grid-template-rows-2 + $size-4;
+  $grid-template-columns: $grid-template-rows-1 + $grid-template-rows-2 + $size-2;
 
   @include selector-hover-default;
 
@@ -31,16 +31,16 @@
 
   > div.name-en {
     grid-area: 1 / 2 / 2 / 3;
-    font-size: 16px;
+    font-size: $size-16;
     font-weight: $text-weight-medium;
-    letter-spacing: -1.5px;
+    letter-spacing: $size-letter-spacing-large;
   }
 
   > div.name-ko {
     grid-area: 2 / 2 / 3 / 3;
-    font-size: 11px;
+    font-size: $size-11;
     color: var(--color-fg-muted);
-    letter-spacing: -1px;
+    letter-spacing: $size-letter-spacing-medium;
   }
 
   > div.order {
