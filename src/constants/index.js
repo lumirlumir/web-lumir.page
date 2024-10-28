@@ -15,3 +15,6 @@ export const PATH_DOCS = join(process.cwd(), 'src', 'posts', 'docs');
 // Extension
 export const EXT_MD = '.md';
 export const EXT_MD_REGEXP = new RegExp(`${EXT_MD}$`, 'i');
+
+// Google
+export const GOOGLE_GA_ID = 'G-2G4YHTE048';
