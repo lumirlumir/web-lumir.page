@@ -59,7 +59,7 @@
   }
 }
 
-@mixin selector-scrollbar($width: 4px) {
+@mixin selector-scrollbar($width: $size-4) {
   overflow: hidden auto;
 
   // Global usage: `*::webkit-scrollbar`.
@@ -74,5 +74,12 @@
         border-radius: $size-border-radius;
       }
     }
+  }
+}
+
+/* media */
+@mixin screen($breakpoint) {
+  @media (min-width: map-get($breakpoints, $breakpoint)) {
+    @content;
   }
 }
