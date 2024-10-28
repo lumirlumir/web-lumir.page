@@ -1,5 +1,6 @@
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 import ThemeProvider from '@/components/common/ThemeProvider';
 import ThemeScript from '@/components/common/ThemeScript';
@@ -16,6 +17,7 @@ import Profile from '@/components/aside/Profile/Profile';
 import DarkModeToggle from '@/components/header/DarkModeToggle';
 import Title from '@/components/header/Title';
 
+import { GOOGLE_GA_ID } from '@/constants';
 import { getGithubUsers } from '@/utils/fetch';
 
 import '@/styles/global.scss';
@@ -52,6 +54,7 @@ export default function RootLayout({ children }) {
 
           <Analytics />
           <SpeedInsights />
+          <GoogleAnalytics gaId={GOOGLE_GA_ID} />
         </Body>
       </ThemeProvider>
     </html>
