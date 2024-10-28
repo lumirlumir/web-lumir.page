@@ -1,13 +1,11 @@
 .header {
-  @include props-flex-center;
-
   position: sticky;
   top: 0;
   z-index: 1;
   display: grid;
   grid-template-columns: $size-sidebar-width 1fr 64px;
   background-color: inherit;
-  border-bottom: 1px solid var(--color-border-default);
+  border-bottom: $border-default;
 
   > div:first-child {
     grid-area: 1 / 1 / 2 / 2;

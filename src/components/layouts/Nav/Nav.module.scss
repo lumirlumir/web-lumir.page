@@ -1,14 +1,27 @@
 .nav {
+  @include selector-scrollbar($size-2);
+
   position: sticky;
   top: $size-header-height;
   box-sizing: border-box;
   height: calc(100vh - $size-header-height);
-  padding: 45px 24px 0 0;
+  padding: $size-article-padding-small;
+  background-color: var(--color-bg-inset);
+  border-left: $border-default;
 
   > div {
     padding: 4px 8px;
     background-color: var(--color-bg-default);
-    border: 1px solid var(--color-border-default);
+    border: $border-default;
     border-radius: $size-border-radius;
+  }
+
+  @include screen(md) {
+    background-color: inherit;
+    border-left: none;
+  }
+
+  @include screen(lg) {
+    padding: $size-article-padding-large 24px 0 0;
   }
 }

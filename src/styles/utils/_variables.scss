@@ -2,6 +2,7 @@
 $config-base-not-pseudo-class-selector: '.markdown-body *';
 
 /* size */
+$size-2: 0.125rem;
 $size-4: 0.25rem;
 $size-8: 0.5rem;
 $size-16: 1rem;
@@ -10,12 +11,17 @@ $size-40: 2.5rem;
 $size-border-radius: 6px;
 $size-header-height: 64px;
 $size-sidebar-width: 256px;
+$size-article-padding-large: 45px;
+$size-article-padding-small: 16px;
 $size-nav-width: $size-sidebar-width;
 
 /* text-weight */
 $text-weight-normal: 400;
 $text-weight-medium: 500;
 $text-weight-semibold: 600;
+
+/* list */
+$border-default: 1px solid var(--color-border-default);
 
 /* font */
 $font-stack-system:

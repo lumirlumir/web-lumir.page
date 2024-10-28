@@ -1,14 +1,14 @@
 .aside {
-  @include selector-scrollbar(2px);
+  @include selector-scrollbar($size-2);
 
   position: sticky;
   top: $size-header-height;
   height: calc(100vh - $size-header-height);
   background-color: var(--color-bg-default);
-  border-right: 1px solid var(--color-border-default);
+  border-right: $border-default;
 
   > ul:not(:last-child) {
     margin: 16px 0;
-    border-bottom: 1px solid var(--color-border-default);
+    border-bottom: $border-default;
   }
 }
