@@ -1,30 +1,31 @@
 .title {
   @include props-flex-center;
 
-  margin: 4px;
-
-  > * {
-    padding: 0 8px;
-  }
-
-  > img {
+  > a > img {
     border-radius: 50%;
   }
 
   > div {
-    display: grid;
-    grid-template-rows: 2fr 1fr;
+    display: none;
+  }
 
-    > .user-name {
-      padding: 8px 0;
-      font-size: 20px; // 2fr
-      font-weight: $text-weight-semibold;
-    }
+  @include screen(sm) {
+    > div {
+      display: grid;
+      grid-template-rows: 2fr 1fr;
+      padding-left: $size-16;
 
-    > .user-bio {
-      font-size: 10px; // 1fr
-      color: var(--color-fg-muted);
-      letter-spacing: -0.5px;
+      > .user-name {
+        padding: $size-8 0;
+        font-size: ($size-10 * 2); // 2fr
+        font-weight: $text-weight-semibold;
+      }
+
+      > .user-bio {
+        font-size: $size-10; // 1fr
+        color: var(--color-fg-muted);
+        letter-spacing: $size-letter-spacing-small;
+      }
     }
   }
 }

@@ -1,10 +1,9 @@
 'use client';
 
+import React, { useContext } from 'react';
 import GiscusOriginal from '@giscus/react';
 
-import React, { useContext } from 'react';
 import { ThemeContext } from '@/components/common/ThemeProvider';
-
 import { GITHUB_REPO_FULL_NAME } from '@/constants';
 
 export default function Giscus() {

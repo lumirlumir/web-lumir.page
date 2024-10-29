@@ -5,15 +5,20 @@ $config-base-not-pseudo-class-selector: '.markdown-body *';
 $size-2: 0.125rem;
 $size-4: 0.25rem;
 $size-8: 0.5rem;
+$size-10: 0.625rem;
+$size-11: 0.6875rem;
 $size-16: 1rem;
 $size-24: 1.5rem;
 $size-40: 2.5rem;
 $size-border-radius: 6px;
 $size-header-height: 64px;
 $size-sidebar-width: 256px;
-$size-article-padding-large: 45px;
-$size-article-padding-small: 16px;
 $size-nav-width: $size-sidebar-width;
+$size-article-padding-large: 45px;
+$size-article-padding-small: 12px;
+$size-letter-spacing-large: -1.5px;
+$size-letter-spacing-medium: -1px;
+$size-letter-spacing-small: -0.5px;
 
 /* text-weight */
 $text-weight-normal: 400;

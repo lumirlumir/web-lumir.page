@@ -10,12 +10,15 @@ export default async function Title() {
 
   return (
     <div className={styles.title}>
-      <Image
-        src={avatar_url}
-        width={36}
-        height={36}
-        alt={`${name}'s GitHub profile image`}
-      />
+      <Link href="/">
+        <Image
+          src={avatar_url}
+          width={40}
+          height={40}
+          alt={`${name}'s GitHub profile image`}
+        />
+      </Link>
+
       <div>
         <div className={styles['user-name']}>
           <Link href="/">{name}</Link>

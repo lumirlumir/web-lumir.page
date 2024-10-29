@@ -22,6 +22,6 @@
   }
 
   @include screen(lg) {
-    padding: $size-article-padding-large 24px 0 0;
+    padding: $size-article-padding-large ($size-article-padding-small * 2) 0 0;
   }
 }
