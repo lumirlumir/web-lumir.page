@@ -1,12 +1,14 @@
 .links {
   @include props-flex-center;
 
-  padding: 8px 0 16px;
-  margin: 8px 0;
+  padding: $size-8 0 $size-16;
 
   > li > a {
     @include props-flex-center;
     @include selector-hover-default;
+
+    flex-direction: column;
+    padding: $size-6;
 
     &:hover {
       > svg {
@@ -14,12 +16,8 @@
       }
     }
 
-    flex-direction: column;
-    padding: 6px;
-
     > * {
-      width: 40px;
-      margin: 2px;
+      margin: $size-2;
     }
 
     > svg {
@@ -30,8 +28,9 @@
     > span {
       @include props-flex-center;
 
+      width: $size-40;
       color: var(--color-fg-muted);
-      letter-spacing: -1px;
+      letter-spacing: $size-letter-spacing-medium;
     }
   }
 }

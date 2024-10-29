@@ -5,6 +5,19 @@
   justify-content: center;
 }
 
+@mixin props-line-clamp($line: 1) {
+  -webkit-line-clamp: $line;
+  line-clamp: $line;
+}
+
+@mixin props-ellipsis($line: 1) {
+  @include props-line-clamp($line);
+
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+}
+
 @mixin props-animation-fade-in {
   animation: fade-in 0.6s ease-in-out;
 
@@ -59,8 +72,12 @@
   }
 }
 
-@mixin selector-scrollbar($width: $size-4) {
-  overflow: hidden auto;
+@mixin selector-scrollbar($width: $size-4, $axis: y) {
+  @if $axis == y {
+    overflow: hidden scroll;
+  } @else {
+    overflow: scroll hidden;
+  }
 
   // Global usage: `*::webkit-scrollbar`.
   &::-webkit-scrollbar {

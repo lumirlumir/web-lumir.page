@@ -1,3 +1,27 @@
+.content-box-container {
+  @include selector-scrollbar(0, x);
+
+  display: flex;
+  white-space: nowrap;
+}
+
+.content-box-item {
+  padding: $size-6 $size-10;
+  margin-right: $size-8;
+  font-size: $size-12;
+  letter-spacing: $size-letter-spacing-small;
+  border: $border-default;
+  border-radius: $size-border-radius;
+
+  > .react-icons {
+    padding-right: $size-4;
+  }
+
+  @include screen(sm) {
+    font-size: $size-14;
+  }
+}
+
 .content {
   @include selector-hover-default;
 
@@ -6,69 +30,47 @@
   padding: $size-16 $size-24;
   margin-bottom: $size-16;
   background-color: var(--color-bg-default);
-  border: 1px solid var(--color-border-default);
+  border: $border-default;
   border-radius: $size-border-radius;
 
   > div {
-    margin-bottom: 14px;
-  }
-
-  .react-icons {
-    padding-right: 4px;
+    margin-bottom: $size-8;
   }
 
   .title {
-    display: -webkit-box; // ellipsis(...)
-    overflow: hidden; // ellipsis(...)
-    font-size: 28px;
+    @include props-ellipsis(3);
+
+    font-size: $size-24;
     font-weight: $text-weight-semibold;
-    -webkit-line-clamp: 1; // ellipsis(...)
-    line-clamp: 1; // ellipsis(...)
-    letter-spacing: -1px;
-    -webkit-box-orient: vertical; // ellipsis(...)
+    letter-spacing: $size-letter-spacing-medium;
   }
 
   .description {
-    display: -webkit-box; // ellipsis(...)
-    overflow: hidden; // ellipsis(...)
+    @include props-ellipsis(4);
+
+    font-size: $size-14;
     color: var(--color-fg-muted);
-    -webkit-line-clamp: 2; // ellipsis(...)
-    line-clamp: 2; // ellipsis(...)
-    letter-spacing: -0.5px;
-    -webkit-box-orient: vertical; // ellipsis(...)
-  }
-
-  .date {
-    padding: 4px 10px;
-    margin-right: 8px;
-    font-size: 14px;
-    letter-spacing: -0.5px;
-    border: 1px solid var(--color-border-default);
-    border-radius: $size-border-radius;
-  }
-
-  .tags {
-    margin-top: 8px;
-  }
-
-  .tag {
-    padding: 4px 10px;
-    margin-right: 8px;
-    font-size: 14px;
-    letter-spacing: -0.5px;
-    border: 1px solid var(--color-border-default);
-    border-radius: $size-border-radius;
+    letter-spacing: $size-letter-spacing-small;
   }
 
   &:hover {
+    .title,
+    .description {
+      @include props-line-clamp(10);
+    }
+  }
+
+  @include screen(sm) {
     .title {
-      -webkit-line-clamp: 10; // ellipsis(...), 10 is just a large number representation.
-      line-clamp: 10; // ellipsis(...)
+      @include props-line-clamp(1);
+
+      font-size: $size-28;
     }
 
     .description {
-      -webkit-line-clamp: 10; // ellipsis(...), 10 is just a large number representation.
-      line-clamp: 10; // ellipsis(...)
+      @include props-line-clamp(2);
+
+      font-size: $size-16;
     }
   }
 }

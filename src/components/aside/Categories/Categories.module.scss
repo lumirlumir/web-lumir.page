@@ -38,14 +38,14 @@
     > div.name-en {
       grid-area: 1 / 2 / 2 / 3;
       font-weight: $text-weight-medium;
-      letter-spacing: -1px;
+      letter-spacing: $size-letter-spacing-medium;
     }
 
     > div.name-ko {
       grid-area: 2 / 2 / 3 / 3;
-      font-size: 11px;
+      font-size: $size-11;
       color: var(--color-fg-muted);
-      letter-spacing: -1px;
+      letter-spacing: $size-letter-spacing-medium;
     }
 
     > div.count-docs {
@@ -56,18 +56,18 @@
       > span {
         @include props-flex-center;
 
-        width: 20px;
-        height: 20px;
-        font-size: 12px;
+        width: $size-20;
+        height: $size-20;
+        font-size: $size-12;
         font-weight: $text-weight-semibold;
-        letter-spacing: -1px;
-        border: 1px solid var(--color-border-default);
+        letter-spacing: $size-letter-spacing-medium;
+        border: $border-default;
         border-radius: 50%;
       }
 
       > svg {
-        width: 10px;
-        height: 10px;
+        width: $size-10;
+        height: $size-10;
         transform: translate(-3px, -10px);
       }
     }

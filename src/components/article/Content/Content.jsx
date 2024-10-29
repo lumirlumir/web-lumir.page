@@ -6,6 +6,19 @@ import { markdownToJsx } from '@/utils/markup';
 
 import styles from './Content.module.scss';
 
+function ContentBoxContainer({ children }) {
+  return <div className={styles['content-box-container']}>{children}</div>;
+}
+
+function ContentBoxItem({ icon, text }) {
+  return (
+    <span className={styles['content-box-item']}>
+      <span className={styles['react-icons']}>{icon}</span>
+      <span>{text}</span>
+    </span>
+  );
+}
+
 export default function Content({ markdownDocument }) {
   const {
     basename,
@@ -21,31 +34,26 @@ export default function Content({ markdownDocument }) {
           {markdownToJsx(description)}
         </div>
 
-        <div>
-          <span className={styles.date}>
-            <span className={styles['react-icons']}>
-              {MARKDOWN_DOCUMENT_DATA_META.created.reactIcons}
-            </span>
-            <span>{created}</span>
-          </span>
-          <span className={styles.date}>
-            <span className={styles['react-icons']}>
-              {MARKDOWN_DOCUMENT_DATA_META.updated.reactIcons}
-            </span>
-            <span>{updated}</span>
-          </span>
-        </div>
+        <ContentBoxContainer>
+          <ContentBoxItem
+            icon={MARKDOWN_DOCUMENT_DATA_META.created.reactIcons}
+            text={created}
+          />
+          <ContentBoxItem
+            icon={MARKDOWN_DOCUMENT_DATA_META.updated.reactIcons}
+            text={updated}
+          />
+        </ContentBoxContainer>
 
-        <div className={styles.tags}>
+        <ContentBoxContainer>
           {tags.map(tag => (
-            <span key={tag} className={styles.tag}>
-              <span className={styles['react-icons']}>
-                {MARKDOWN_DOCUMENT_DATA_META.tags.reactIcons}
-              </span>
-              <span>{MARKDOWN_DOCUMENT_DATA_TAG_META[tag].name.en}</span>
-            </span>
+            <ContentBoxItem
+              key={tag}
+              icon={MARKDOWN_DOCUMENT_DATA_META.tags.reactIcons}
+              text={MARKDOWN_DOCUMENT_DATA_TAG_META[tag].name.en}
+            />
           ))}
-        </div>
+        </ContentBoxContainer>
       </div>
     </Link>
   );
