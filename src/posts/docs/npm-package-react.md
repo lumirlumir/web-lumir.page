@@ -1,8 +1,8 @@
 ---
-title: 'NPM Package React: `react`, `react-dom`'
+title: 'React: `react`, `react-dom`'
 description: '`react`는 UI 컴포넌트를 생성하는 핵심 라이브러리이고, `react-dom`은 이를 웹 브라우저의 DOM에 렌더링하는 역할을 하며 두 라이브러리는 함께 사용된다.'
 created: '2024-04-05'
-updated: '2024-07-11'
+updated: '2024-10-30'
 tags:
   - 'npm'
 ---
