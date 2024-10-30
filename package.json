@@ -13,12 +13,12 @@
     "lint-editorconfig": "npx editorconfig-checker",
     "lint-markdownlint": "npx markdownlint **/*.md",
     "lint-textlint": "npx textlint -f pretty-error src/docs",
-    "lint-clangformat": "find . -name '*.c' -o -name '*.cpp' -print0 | xargs -0 npx clang-format -n -Werror",
+    "lint-clangformat": "find . -name '*.h' -o -name '*.c' -o -name '*.cpp' -print0 | xargs -0 npx clang-format -n -Werror",
     "fix": "concurrently \"npm:fix-*\"",
     "fix-eslint": "npx eslint . --fix --ext .js,.jsx",
     "fix-stylelint": "npx stylelint --fix **/*.{css,scss}",
     "fix-prettier": "npx prettier . --write",
-    "fix-clangformat": "find . -name '*.c' -o -name '*.cpp' -print0 | xargs -0 npx clang-format -i",
+    "fix-clangformat": "find . -name '*.h' -o -name '*.c' -o -name '*.cpp' -print0 | xargs -0 npx clang-format -i",
     "count-docs": "ls -R src/posts/docs | grep .md | wc -l"
   },
   "dependencies": {
@@ -63,6 +63,6 @@
     "*.{css,scss}": "npx stylelint",
     "*.md": "npx markdownlint",
     "src/docs/**/*.md": "npx textlint -f pretty-error",
-    "*.{c,cpp}": "npx clang-format -n -Werror"
+    "*.{h,c,cpp}": "npx clang-format -n -Werror"
   }
 }
