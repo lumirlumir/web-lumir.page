@@ -1,8 +1,8 @@
 ---
-title: 'NPM Package Babel: `@babel/core`, `@babel/cli`, `@babel/preset-env`, `@babel/preset-react`, `babel-loader`'
+title: 'Babel: `@babel/core`, `@babel/cli`, `@babel/preset-env`, `@babel/preset-react`, `babel-loader`'
 description: 'Babel은 최신 자바스크립트 문법을 구버전 문법으로 변환하여 다양한 실행 환경에서 호환성을 제공하는 트랜스파일러로, ES6+ 코드뿐만 아니라 TypeScript와 JSX도 지원하며, 개발의존성으로 설치하여 사용할 수 있다.'
 created: '2024-04-03'
-updated: '2024-08-04'
+updated: '2024-10-30'
 tags:
   - 'npm'
 ---
