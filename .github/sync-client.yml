@@ -63,6 +63,8 @@ lumirlumir/lumirlumir-configs:
     dest: ./configs/.prettierrc.js
   - source: ./.stylelintrc.js
     dest: ./configs/.stylelintrc.js
+  - source: ./CODE_OF_CONDUCT.md
+    dest: ./configs/CODE_OF_CONDUCT.md
   - source: ./jsconfig.json
     dest: ./configs/jsconfig.json
   - source: ./VScode.code-workspace
