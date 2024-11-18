@@ -54,7 +54,10 @@
 }
 
 .DocSearch-Cancel {
+  font-size: $size-14;
+  font-weight: $text-weight-semibold;
   color: var(--color-fg-default);
+  letter-spacing: $size-letter-spacing-small;
 }
 
 .DocSearch-Logo {
@@ -81,4 +84,8 @@
   border: solid 1px var(--color-border-neutral-muted);
   border-radius: $size-border-radius;
   box-shadow: inset 0 -1px 0 var(--color-border-neutral-muted);
+}
+
+.DocSearch-Title {
+  margin: 16px 0 32px;
 }
