@@ -14,8 +14,8 @@
 
   @include screen(xl) {
     display: grid;
-    grid-template-columns: $size-sidebar-width 1fr 64px;
-    padding: 0;
+    grid-template-columns: $size-sidebar-width 1fr min-content;
+    padding: 0 ($size-article-padding-small * 2) 0 0;
 
     > div:first-child {
       grid-area: 1 / 1 / 2 / 2;
