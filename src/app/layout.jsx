@@ -15,6 +15,8 @@ import Links from '@/components/aside/Links';
 import Profile from '@/components/aside/Profile/Profile';
 
 import DarkModeToggle from '@/components/header/DarkModeToggle';
+import DocSearch from '@/components/header/DocSearch';
+import FlexContainer from '@/components/header/FlexContainer';
 import Title from '@/components/header/Title';
 
 import { GOOGLE_GA_ID } from '@/constants';
@@ -43,7 +45,10 @@ export default function RootLayout({ children }) {
 
           <Header>
             <Title />
-            <DarkModeToggle />
+            <FlexContainer>
+              <DocSearch />
+              <DarkModeToggle />
+            </FlexContainer>
           </Header>
           <Aside>
             <Profile />
