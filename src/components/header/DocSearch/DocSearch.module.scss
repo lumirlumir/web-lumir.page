@@ -1,0 +1,11 @@
+.doc-search {
+  @include props-flex-center;
+
+  margin: $size-10 $size-8 $size-10 0;
+
+  @include screen(md) {
+    width: 256px;
+    border: $border-default;
+    border-radius: $size-border-radius;
+  }
+}
