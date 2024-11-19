@@ -3,7 +3,7 @@
   width: 100%;
   min-width: 200px;
   max-width: 980px;
-  padding: $size-article-padding-small;
+  padding: $size-article-padding-large $size-article-padding-small;
   margin: 0 auto;
 
   @include screen(lg) {
