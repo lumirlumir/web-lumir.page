@@ -5,7 +5,7 @@
   top: $size-header-height;
   box-sizing: border-box;
   height: calc(100vh - $size-header-height);
-  padding: $size-article-padding-small;
+  padding: $size-article-padding-large $size-article-padding-small;
   background-color: var(--color-bg-inset);
   border-left: $border-default;
 

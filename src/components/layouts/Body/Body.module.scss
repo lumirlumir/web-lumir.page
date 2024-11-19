@@ -15,7 +15,6 @@
   > aside {
     z-index: 1;
     grid-area: 2 / 1 / 3 / 2;
-    transform: translateX(-100%); // TODO: Move to `Aside` component.
   }
 
   > main {
@@ -23,10 +22,6 @@
   }
 
   @include screen(xl) {
-    > aside {
-      transform: translateX(0); // TODO: Move to `Aside` component.
-    }
-
     > main {
       grid-area: 2 / 2 / 3 / 3;
     }
