@@ -25,7 +25,7 @@
     "@docsearch/react": "^3.8.0",
     "@giscus/react": "^3.0.0",
     "@next/third-parties": "^14.2.18",
-    "@vercel/analytics": "^1.4.0",
+    "@vercel/analytics": "^1.4.1",
     "@vercel/speed-insights": "^1.1.0",
     "gray-matter": "^4.0.3",
     "html-react-parser": "^5.1.18",
