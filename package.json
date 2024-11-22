@@ -13,7 +13,7 @@
     "lint-eslint": "npx eslint . --ext .js,.jsx",
     "lint-stylelint": "npx stylelint **/*.{css,scss}",
     "lint-prettier": "npx prettier . --check",
-    "lint-editorconfig": "npx editorconfig-checker",
+    "lint-editorconfig": "npx editorconfig-checker -config .editorconfig-checker.json",
     "lint-markdownlint": "npx markdownlint **/*.md",
     "lint-textlint": "npx textlint -f pretty-error src/docs",
     "lint-clangformat": "find . -name '*.h' -o -name '*.c' -o -name '*.cpp' -print0 | xargs -0 npx clang-format -n -Werror",
@@ -57,16 +57,5 @@
     "stylelint-config-standard-scss": "^13.1.0",
     "textlint": "^14.3.0",
     "textlint-rule-allowed-uris": "^1.0.5"
-  },
-  "lint-staged": {
-    "*": [
-      "npx prettier --check",
-      "npx editorconfig-checker"
-    ],
-    "*.{js,jsx}": "npx eslint",
-    "*.{css,scss}": "npx stylelint",
-    "*.md": "npx markdownlint",
-    "src/docs/**/*.md": "npx textlint -f pretty-error",
-    "*.{h,c,cpp}": "npx clang-format -n -Werror"
   }
 }
