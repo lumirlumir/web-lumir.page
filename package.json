@@ -40,7 +40,7 @@
     "sharp": "^0.33.5"
   },
   "devDependencies": {
-    "@types/node": "^22.9.1",
+    "@types/node": "^22.9.3",
     "clang-format-git": "^1.2.1",
     "concurrently": "^9.1.0",
     "editorconfig-checker": "^6.0.0",
