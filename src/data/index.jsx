@@ -2,15 +2,10 @@ import { LuHeading1 } from 'react-icons/lu';
 import { RiJavascriptFill } from 'react-icons/ri';
 import { TbBrandNextjs } from 'react-icons/tb';
 import { MdDataObject } from 'react-icons/md';
+import { BiLogoVisualStudio } from 'react-icons/bi';
 import { GiHummingbird } from 'react-icons/gi';
 import { LuNetwork } from 'react-icons/lu';
-import {
-  SiCplusplus,
-  SiVisualstudiocode,
-  SiOpenai,
-  SiThealgorithms,
-  SiSynology,
-} from 'react-icons/si';
+import { SiCplusplus, SiOpenai, SiThealgorithms, SiSynology } from 'react-icons/si';
 import {
   FaBook,
   FaTag,
@@ -196,7 +191,7 @@ export const MARKDOWN_DOCUMENT_DATA_TAG_META = Object.freeze({
       en: 'VScode',
       ko: '비주얼 스튜디오 코드',
     },
-    reactIcons: <SiVisualstudiocode />,
+    reactIcons: <BiLogoVisualStudio />,
     order: 14,
   },
   openai: {
