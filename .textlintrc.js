@@ -4,6 +4,9 @@ module.exports = {
       allowed: {
         images: [/^\/public\/images\//],
       },
+      disallowed: {
+        links: [/^\.\//],
+      },
     },
   },
 };
