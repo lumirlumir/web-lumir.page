@@ -1,1 +1,7 @@
+# https://git-scm.com/docs/gitattributes
+
+# Ensure consistent EOL(LF) for all files that Git considers text files.
+* text=auto eol=lf
+
+# Ensure that all Markdown(.md) files are detectable by GitHub Linguist.
 *.md linguist-detectable
