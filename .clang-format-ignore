@@ -11,5 +11,4 @@ build
 .env.production
 
 # tests
-.nyc_output
 coverage
