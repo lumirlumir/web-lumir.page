@@ -28,7 +28,7 @@
   "dependencies": {
     "@docsearch/react": "^3.8.2",
     "@giscus/react": "^3.0.0",
-    "@next/third-parties": "^14.2.21",
+    "@next/third-parties": "^14.2.22",
     "@vercel/analytics": "^1.4.1",
     "@vercel/speed-insights": "^1.1.0",
     "gray-matter": "^4.0.3",
