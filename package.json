@@ -44,7 +44,7 @@
     "@types/node": "^22.10.2",
     "clang-format-git": "^1.2.5",
     "concurrently": "^9.1.2",
-    "editorconfig-checker": "^6.0.0",
+    "editorconfig-checker": "^6.0.1",
     "eslint": "^8.57.1",
     "eslint-config-next": "^14.2.22",
     "eslint-config-prettier": "^9.1.0",
