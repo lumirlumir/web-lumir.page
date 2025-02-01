@@ -13,8 +13,6 @@ lumirlumir/lumirlumir-configs:
     dest: ./configs/.github/workflows/bump.yml
   - source: ./.github/workflows/labeler.yml
     dest: ./configs/.github/workflows/labeler.yml
-  - source: ./.github/workflows/lint.yml
-    dest: ./configs/.github/workflows/lint.yml
   - source: ./.github/workflows/sync-client.yml
     dest: ./configs/.github/workflows/sync-client.yml
   # ./.github
