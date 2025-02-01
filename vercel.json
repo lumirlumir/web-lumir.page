@@ -1,0 +1,7 @@
+{
+  "buildCommand": "npm run count-docs && npm run build",
+  "framework": "nextjs",
+  "installCommand": "npm install",
+  "outputDirectory": ".next",
+  "regions": ["icn1"]
+}
