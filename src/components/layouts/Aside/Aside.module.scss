@@ -8,8 +8,8 @@ $transition: transform 0.75s ease-in-out;
   height: calc(100vh - $size-header-height);
   background-color: var(--color-bg-default);
   border-right: $border-default;
-  transition: $transition;
   transform: translateX(-100%);
+  transition: $transition;
 
   &.visible {
     transform: translateX(0);
@@ -37,8 +37,8 @@ $transition: transform 0.75s ease-in-out;
   border-right: $border-default;
   border-bottom: $border-default;
   border-bottom-right-radius: $size-border-radius;
-  transition: $transition;
   transform: translateX(0);
+  transition: $transition;
 
   &.visible {
     transform: translateX($size-sidebar-width);

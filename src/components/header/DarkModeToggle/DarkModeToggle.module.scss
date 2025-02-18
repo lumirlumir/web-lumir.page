@@ -29,8 +29,8 @@
     background: none;
     border: 0;
     border-radius: 50%;
-    transition: all $duration $timing;
     transform: rotate(0deg);
+    transition: all $duration $timing;
 
     /* selectors */
     &-main-body {
@@ -51,11 +51,11 @@
       height: 80%;
       background-color: $dark-color;
       border-radius: 50%;
+      transform: rotate(20deg);
+      transform-origin: 100% 100%;
       transition:
         all $duration $timing,
         background-color 0s;
-      transform: rotate(20deg);
-      transform-origin: 100% 100%;
     }
 
     &-sunray {
