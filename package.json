@@ -47,7 +47,7 @@
     "editorconfig-checker": "^6.0.1",
     "eslint": "^8.57.1",
     "eslint-config-next": "^14.2.23",
-    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-prettier": "^10.0.1",
     "husky": "^9.1.7",
     "lint-staged": "^15.4.3",
     "markdownlint-cli": "^0.44.0",
