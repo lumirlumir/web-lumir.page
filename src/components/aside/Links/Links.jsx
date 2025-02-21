@@ -6,7 +6,7 @@ import { getGithubUsers } from '@/utils/fetch';
 import styles from './Links.module.scss';
 
 export default async function Links() {
-  const { html_url } = await getGithubUsers();
+  const { html_url: htmlUrl } = await getGithubUsers();
 
   return (
     <ul className={styles.links}>
@@ -17,7 +17,7 @@ export default async function Links() {
         </Link>
       </li>
       <li>
-        <Link href={html_url}>
+        <Link href={htmlUrl}>
           <FaGithub />
           <span>GitHub</span>
         </Link>

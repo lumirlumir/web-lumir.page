@@ -1,5 +1,5 @@
-import { promises as fs } from 'fs';
-import { basename, join } from 'path';
+import { promises as fs } from 'node:fs';
+import { basename, join } from 'node:path';
 
 import matter from 'gray-matter';
 
@@ -42,7 +42,7 @@ export async function readMarkdownFilesFromDir(dirPath) {
   );
 
   for (const markdownFilePath of markdownFilePaths) {
-    const markdownDocument = await readMarkdownFile(join(dirPath, markdownFilePath));
+    const markdownDocument = await readMarkdownFile(join(dirPath, markdownFilePath)); // eslint-disable-line no-await-in-loop -- TODO: Delete it later.
     markdownDocuments.push(markdownDocument);
   }
 

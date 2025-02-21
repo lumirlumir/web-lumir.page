@@ -1,10 +1,9 @@
-import { LuHeading1 } from 'react-icons/lu';
 import { RiJavascriptFill } from 'react-icons/ri';
 import { TbBrandNextjs } from 'react-icons/tb';
 import { MdDataObject } from 'react-icons/md';
 import { BiLogoVisualStudio } from 'react-icons/bi';
 import { GiHummingbird } from 'react-icons/gi';
-import { LuNetwork } from 'react-icons/lu';
+import { LuHeading1, LuNetwork } from 'react-icons/lu';
 import { SiCplusplus, SiOpenai, SiThealgorithms, SiSynology } from 'react-icons/si';
 import {
   FaBook,

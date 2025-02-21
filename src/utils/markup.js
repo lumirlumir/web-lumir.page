@@ -91,10 +91,10 @@ export function htmlToJsx(html) {
     replace({ name, attribs }) {
       // <img>
       if (name === 'img') {
-        attribs.src = attribs.src.startsWith('/public')
+        attribs.src = attribs.src.startsWith('/public') // eslint-disable-line no-param-reassign -- TODO: Fix it later.
           ? attribs.src.replace(/^\/public/, '')
           : attribs.src;
-        attribs.loading = 'lazy';
+        attribs.loading = 'lazy'; // eslint-disable-line no-param-reassign -- TODO: Fix it later.
       }
     },
   });

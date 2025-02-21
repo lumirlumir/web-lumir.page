@@ -1,4 +1,5 @@
-const path = require('path');
+const path = require('node:path');
+
 const isProduction = process.env.NODE_ENV === 'production';
 
 module.exports = {
