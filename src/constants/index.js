@@ -1,4 +1,4 @@
-import { join } from 'node:path';
+import { join } from 'path'; // eslint-disable-line -- TODO
 
 // Website
 export const WEBSITE_NAME = 'blog.lumir.page';
