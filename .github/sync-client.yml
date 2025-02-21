@@ -41,8 +41,6 @@ lumirlumir/lumirlumir-configs:
     dest: ./configs/.clang-format-ignore
   - source: ./.editorconfig
     dest: ./configs/.editorconfig
-  - source: ./.eslintignore
-    dest: ./configs/.eslintignore
   - source: ./.gitignore
     dest: ./configs/.gitignore
   - source: ./.markdownlint.json
