@@ -1,4 +1,4 @@
-import { join } from 'path';
+import { join } from 'node:path';
 
 import Katex from '@/components/article/Katex';
 import { PATH_DOCS, EXT_MD, EXT_MD_REGEXP } from '@/constants';

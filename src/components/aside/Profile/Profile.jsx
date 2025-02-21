@@ -6,12 +6,12 @@ import { getGithubUsers } from '@/utils/fetch';
 import styles from './Profile.module.scss';
 
 export default async function Profile() {
-  const { avatar_url, bio, name } = await getGithubUsers();
+  const { avatar_url: avatarUrl, bio, name } = await getGithubUsers();
 
   return (
     <div className={styles.profile}>
       <Image
-        src={avatar_url}
+        src={avatarUrl}
         width={96}
         height={96}
         alt={`${name}'s GitHub profile image`}

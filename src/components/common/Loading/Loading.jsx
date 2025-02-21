@@ -8,7 +8,7 @@ export default function Loading({ content }) {
       <div>
         <div>
           <Image
-            src={'/images/loading.gif'}
+            src="/images/loading.gif"
             width={48}
             height={48}
             alt="GitHub GIF loading image"

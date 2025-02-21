@@ -29,9 +29,9 @@ function SortContainer({ children }) {
         </div>
         <div className={styles['name-en']}>Sort</div>
         <div className={styles['name-ko']}>정렬</div>
-        <div className={styles['order']}>{isOpen ? <FaAngleUp /> : <FaAngleDown />}</div>
+        <div className={styles.order}>{isOpen ? <FaAngleUp /> : <FaAngleDown />}</div>
       </div>
-      {isOpen && <ul>{children}</ul>}
+      {Boolean(isOpen) && <ul>{children}</ul>}
     </div>
   );
 }
@@ -61,7 +61,7 @@ function SortItem({ sort, order }) {
       <div
         className={styles['name-ko']}
       >{`${MARKDOWN_DOCUMENT_DATA_META[sort].name.ko} / ${order === 'desc' ? '내림차순' : '오름차순'}`}</div>
-      <div className={styles['order']}>
+      <div className={styles.order}>
         {order === 'desc' ? <FaArrowDownWideShort /> : <FaArrowUpShortWide />}
       </div>
     </li>

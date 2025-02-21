@@ -1,4 +1,4 @@
-import { join } from 'path';
+import { join } from 'node:path';
 
 // Website
 export const WEBSITE_NAME = 'blog.lumir.page';
