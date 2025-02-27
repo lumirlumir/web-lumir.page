@@ -31,7 +31,7 @@
     "@giscus/react": "^3.1.0",
     "@next/third-parties": "^14.2.24",
     "@vercel/analytics": "^1.5.0",
-    "@vercel/speed-insights": "^1.1.0",
+    "@vercel/speed-insights": "^1.2.0",
     "gray-matter": "^4.0.3",
     "html-react-parser": "^5.2.2",
     "katex": "^0.16.21",
