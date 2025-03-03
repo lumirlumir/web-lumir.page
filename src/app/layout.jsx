@@ -1,3 +1,11 @@
+/**
+ * @fileoverview Root layout.
+ */
+
+// --------------------------------------------------------------------------------
+// Import
+// --------------------------------------------------------------------------------
+
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { GoogleAnalytics } from '@next/third-parties/google';
@@ -24,6 +32,10 @@ import { getGithubUsers } from '@/utils/fetch';
 
 import '@/styles/global.scss';
 
+// --------------------------------------------------------------------------------
+// Named Export
+// --------------------------------------------------------------------------------
+
 export async function generateMetadata() {
   const { bio, name } = await getGithubUsers();
 
@@ -35,6 +47,10 @@ export async function generateMetadata() {
     description: bio,
   };
 }
+
+// --------------------------------------------------------------------------------
+// Default Export
+// --------------------------------------------------------------------------------
 
 export default function RootLayout({ children }) {
   return (

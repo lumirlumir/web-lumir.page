@@ -1,3 +1,11 @@
+/**
+ * @fileoverview Page.
+ */
+
+// --------------------------------------------------------------------------------
+// Import
+// --------------------------------------------------------------------------------
+
 import { join } from 'node:path';
 
 import Katex from '@/components/article/Katex';
@@ -5,12 +13,18 @@ import { PATH_DOCS, EXT_MD, EXT_MD_REGEXP } from '@/constants';
 import { readMarkdownFile, readMarkdownFilesFromDir } from '@/utils/fs';
 import { markdownToText, markdownToJsxFromPath } from '@/utils/markup';
 
-/* Custom Declaration */
+// --------------------------------------------------------------------------------
+// Helpers
+// --------------------------------------------------------------------------------
+
 function getFilePath(params) {
   return join(PATH_DOCS, `${params.markdown}${EXT_MD}`);
 }
 
-/* Next.js Declaration */
+// --------------------------------------------------------------------------------
+// Named Export
+// --------------------------------------------------------------------------------
+
 // Control what happens when a dynamic segment is visited that was not generated with `generateStaticParams`.
 export const dynamicParams = false;
 
@@ -33,6 +47,10 @@ export async function generateMetadata({ params }) {
     description: markdownToText(description),
   };
 }
+
+// --------------------------------------------------------------------------------
+// Default Export
+// --------------------------------------------------------------------------------
 
 export default async function Page({ params }) {
   return (

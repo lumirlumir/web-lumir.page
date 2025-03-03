@@ -1,3 +1,11 @@
+/**
+ * @fileoverview Page.
+ */
+
+// --------------------------------------------------------------------------------
+// Import
+// --------------------------------------------------------------------------------
+
 import { Suspense } from 'react';
 
 import Content from '@/components/article/Content';
@@ -6,7 +14,10 @@ import { PATH_DOCS } from '@/constants';
 import { compareMarkdownDocument } from '@/utils/compare';
 import { readMarkdownTagTree } from '@/utils/fs';
 
-/* Next.js Declaration */
+// --------------------------------------------------------------------------------
+// Named Export
+// --------------------------------------------------------------------------------
+
 // Control what happens when a dynamic segment is visited that was not generated with `generateStaticParams`.
 export const dynamicParams = false;
 
@@ -16,6 +27,10 @@ export async function generateStaticParams() {
 
   return tags.map(tag => ({ tag }));
 }
+
+// --------------------------------------------------------------------------------
+// Default Export
+// --------------------------------------------------------------------------------
 
 export default async function Page({ params, searchParams }) {
   const { sort = 'updated', order = 'desc' } = searchParams;
