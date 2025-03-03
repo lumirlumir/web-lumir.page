@@ -1,5 +1,17 @@
+/**
+ * @fileoverview `sitemap.xml` generator for path `/posts`.
+ */
+
+// --------------------------------------------------------------------------------
+// Import
+// --------------------------------------------------------------------------------
+
 import { WEBSITE_URL, PATH_DOCS, EXT_MD_REGEXP } from '@/constants';
 import { readMarkdownFilesFromDir } from '@/utils/fs';
+
+// --------------------------------------------------------------------------------
+// Default Export
+// --------------------------------------------------------------------------------
 
 export default async function sitemap() {
   const markdownDocuments = await readMarkdownFilesFromDir(PATH_DOCS);
