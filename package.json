@@ -57,7 +57,7 @@
     "stylelint": "^16.15.0",
     "stylelint-config-recess-order": "^6.0.0",
     "stylelint-config-standard-scss": "^14.0.0",
-    "textlint": "^14.4.2",
+    "textlint": "^14.5.0",
     "textlint-rule-allowed-uris": "^1.0.8"
   }
 }
