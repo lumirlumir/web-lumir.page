@@ -15,7 +15,7 @@ tags:
 
 아래와 같은 코드를 통해 `path` 모듈을 불러올 수 있다.
 
-```javascript
+```js
 const path = require("path");
 ```
 
@@ -27,7 +27,7 @@ const path = require("path");
 
 - 입력
 
-```javascript
+```js
 const path = require("path");
 
 const myPath = path.normalize("/this/is//a/my/.././path/normalize");
@@ -37,7 +37,7 @@ console.log(myPath);
 
 - 출력
 
-```text
+```txt
 /this/is/a/path/normalize
 ```
 
@@ -47,7 +47,7 @@ String 형식의 인자들을 현재 운영체제에 맞게 경로를 지정한�
 
 - 입력
 
-```javascript
+```js
 const path = require("path");
 
 const myPath = path.join("/this", "is", "a", "////path//", "join");
@@ -57,7 +57,7 @@ console.log(myPath);
 
 - 출력
 
-```text
+```txt
 /this/is/a/path/join
 ```
 
@@ -67,7 +67,7 @@ String형식의 인자들을 합쳐서, 운영체제에 맞게 경로를 지정�
 
 - 입력
 
-```javascript
+```js
 const path = require("path");
 
 const myPath = path.resolve("/this", "is/a", "../.", "path", "resolve");
@@ -77,13 +77,13 @@ console.log(myPath);
 
 - 출력
 
-```text
+```txt
 /this/is/path/resolve
 ```
 
 - 입력
 
-```javascript
+```js
 const path = require("path");
 
 const myPath = path.resolve("wwwroot", "static_files/png/", "../gif/image.gif");
@@ -93,7 +93,7 @@ console.log(myPath);
 
 - 출력
 
-```text
+```txt
 현재위치/wwwroot/static_files/gif/image.gif
 ```
 
@@ -103,7 +103,7 @@ console.log(myPath);
 
 - 입력
 
-```javascript
+```js
 const path = require("path");
 
 const myPath = path.dirname("/foo/bar/baz/asdf/image.png");
@@ -113,7 +113,7 @@ console.log(myPath);
 
 - 출력
 
-```text
+```txt
 /foo/bar/baz/asdf
 ```
 
@@ -123,7 +123,7 @@ console.log(myPath);
 
 - 입력
 
-```javascript
+```js
 const path = require("path");
 
 const myPath = path.basename("/foo/bar/baz/asdf/image.png");
@@ -133,7 +133,7 @@ console.log(myPath);
 
 - 출력
 
-```text
+```txt
 image.png
 ```
 
@@ -143,7 +143,7 @@ image.png
 
 - 입력
 
-```javascript
+```js
 const path = require("path");
 
 const myPath = path.extname("/home/user/dir/file.txt");
@@ -153,7 +153,7 @@ console.log(myPath);
 
 - 출력
 
-```text
+```txt
 .txt
 ```
 
@@ -163,7 +163,7 @@ console.log(myPath);
 
 - 입력
 
-```javascript
+```js
 const path = require("path");
 
 const myPath = path.parse("/home/user/dir/file.txt");
@@ -173,7 +173,7 @@ console.log(myPath);
 
 - 출력
 
-```text
+```txt
 {
   root: '/',
   dir: '/home/user/dir',

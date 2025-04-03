@@ -19,7 +19,7 @@ tags:
 
 npm 패키지 매니저를 이용하여 `dotenv` 라이브러리를 `dependencies`로 Node.js 프로젝트에 설치한다.
 
-```bash
+```sh
 $ npm i dotenv
 ```
 
@@ -29,7 +29,7 @@ $ npm i dotenv
 
 > `.env` 파일은 JSON이나 YAML 형식이 아닌, 단순히 키와 값의 쌍을 나열하는 형식으로 구성된다.
 
-```bash
+```sh
 # .env
 
 DB_HOST=localhost
@@ -47,7 +47,7 @@ DB_PASS=1234
 
 프로그램을 구동할 때 제일 먼저 실행되는 자바스크립트 파일(ex. `index.js`, `main.js`)의 최상위에 다음과 같이 `dotenv` 라이브러리를 임포트한 후 `config()` 함수를 호출해주기만 하면 된다.
 
-```javascript
+```js
 /* index.js */
 
 require("dotenv").config();
@@ -59,7 +59,7 @@ console.log("DB_PASS:", process.env.DB_PASS);
 
 예를 들어, 위 코드를 실행하면 `process.env`로 부터 읽혀진 환경 변수가 출력되는 것을 볼 수 있다.
 
-```bash
+```sh
 $ Node index.js
 DB_HOST: localhost
 DB_USER: root
@@ -68,7 +68,7 @@ DB_PASS: 1234
 
 하지만, 같은 파일 내에서 `dotenv` 라이브러리의 `config()` 함수를 호출하기 전에 `process.env`를 읽으면 안 되니 주의하자.
 
-```javascript
+```js
 /* index.js */
 
 console.log("DB_HOST:", process.env.DB_HOST);
@@ -78,7 +78,7 @@ console.log("DB_PASS:", process.env.DB_PASS);
 require("dotenv").config();
 ```
 
-```bash
+```sh
 $ Node index.js
 DB_HOST: undefined
 DB_USER: undefined
@@ -89,7 +89,7 @@ DB_PASS: undefined
 
 ES 모듈을 사용하고 있는 Node.js 환경에서는 `require` 대신에 `import` 키워드를 사용해서 `dotenv` 패키지를 불러오면 된다.
 
-```javascript
+```js
 /* index.mjs */
 
 import dotenv from "dotenv";
@@ -101,7 +101,7 @@ console.log("DB_USER:", process.env.DB_USER);
 console.log("DB_PASS:", process.env.DB_PASS);
 ```
 
-```bash
+```sh
 $ Node index.mjs
 DB_HOST: localhost
 DB_USER: root
@@ -116,7 +116,7 @@ CRA(create-react-app)로 구축한 React 프로젝트에는 이미 `dotenv` 패�
 
 이미 `dotenv` 패키지가 포함되어 있어, 별도의 패키지 추가나 Webpack에 대한 설정 없이, 프로젝트 Root에 `.env` 파일을 생성하고 변수를 선언하는 것만으로도 환경 변수를 사용할 수 있다.
 
-```bash
+```sh
 # .env
 
 REACT_APP_ENV=development
@@ -136,7 +136,7 @@ REACT_APP_API_KEY=1234asdf
 
 앞서 설명한 Common JS와 ES 모듈에서의 방식을 React에서도 동일하게 사용하면, 아래와 같은 `Error`를 만나기 십상이다.
 
-```text
+```txt
 Module not found: Error: Can't resolve 'fs' in '/node_modules/dotenv/lib'
 Module not found: Error: Can't resolve 'path' in '/node_modules/dotenv/lib'
 Module not found: Error: Can't resolve 'os' in '/node_modules/dotenv/lib'
@@ -157,7 +157,7 @@ If you don't want to include a polyfill, ...
 
 아래 코드를 통해, `process.env`에 `.env` 파일의 환경 변수들이 포함되었나 우선적으로 확인할 수 있다.
 
-```javascript
+```js
 /* webpack.config.js */
 
 const webpack = require('webpack');
@@ -171,7 +171,7 @@ module.exports = {
 console.log(process.env)
 ```
 
-```bash
+```sh
 $ node webpack.config.js
 ```
 
@@ -181,7 +181,7 @@ $ node webpack.config.js
 
 이 때, 반드시 `JSON.stringify()`를 통해 JSON 문자열로 변환해주어야 한다. 이를 누락하면 Syntex Error가 발생한다.
 
-```javascript
+```js
 /* webpack.config.js */
 
 module.exports = {
@@ -199,7 +199,7 @@ module.exports = {
 
 `webpack.EnvironmentPlugin()`은 `webpack.DefinePlugin()`에 `process.env` 변수를 정의하는 것과 동일하지만, 단축된 문법을 지원한다. 배열에 설정한 `Key`들은 똑같이 `process.env`로 접근할 수 있다.
 
-```javascript
+```js
 /* webpack.config.js */
 
 module.exports = {
@@ -217,7 +217,7 @@ module.exports = {
 
 위 코드는 아래처럼 `webpack.DefinePlugin()`으로 정의하는 것과 완전히 동일하다.
 
-```javascript
+```js
 /* webpack.config.js */
 
 module.exports = {
@@ -239,13 +239,13 @@ module.exports = {
 
 먼저, 패키지를 설치한다.
 
-```bash
+```sh
 $ npm install -D dotenv-webpack
 ```
 
 그 다음, 다음과 같이 `webpack.config.js`를 설정한다.
 
-```javascript
+```js
 /* webpack.config.js */
 
 const Dotenv = require("dotenv-webpack");
@@ -269,14 +269,14 @@ CRA로 구축한 React 프로젝트.
 Webpack으로 구축한 React 프로젝트.
 
 - `.env` 파일에 환경 변수를 선언할 때, `REACT_APP_`으로 시작하지 않아도 된다.
-- `dotenv` 패키지:  Webpack의 `plugins`에 `new webpack.DefinePlugin()`을 추가하여 수동으로 전역 변수를 정의한다.
+- `dotenv` 패키지: Webpack의 `plugins`에 `new webpack.DefinePlugin()`을 추가하여 수동으로 전역 변수를 정의한다.
 - `dotenv-webpack` 패키지: Webpack의 `plugins`에 `new Dotenv()`를 추가한다.
 
 ## 6. 다른 파일에 환경 변수 저장하기
 
 만약에 `.env`가 아닌 다른 경로에 있는 파일에 환경 변수를 저장해야 한다면 어떻게 해야할까?
 
-```bash
+```sh
 # .env.local
 
 DB_HOST=localhost
@@ -288,7 +288,7 @@ DB_PASS=5678
 
 그럴 때는 `config()` 함수를 호출 시 `path` 옵션에 해당 파일 경로를 넘기면 된다.
 
-```javascript
+```js
 /* index.mjs */
 
 import dotenv from 'dotenv';
@@ -300,7 +300,7 @@ console.log('DB_USER:', process.env.DB_USER);
 console.log('DB_PASS:', process.env.DB_PASS);
 ```
 
-```bash
+```sh
 $ Node index.mjs
 DB_HOST: localhost
 DB_USER: test
@@ -313,7 +313,7 @@ DB_PASS: 5678
 
 우선 `index.js`나 `index.mjs` 파일을 열고 `dotenv` 패키지를 불러와서 `dotenv.config()` 함수를 호출하는 부분을 삭제한다.
 
-```javascript
+```js
 /* index.mjs */
 
 console.log("DB_HOST:", process.env.DB_HOST);
@@ -323,7 +323,7 @@ console.log("DB_PASS:", process.env.DB_PASS);
 
 `-r` 옵션으로 `dotenv/config`를 넘겨서 실행을 해보면 정상적으로 환경 변수가 출력되는 것을 볼 수 있다.
 
-```bash
+```sh
 $ Node -r dotenv/config index.mjs
 DB_HOST: localhost
 DB_USER: root
@@ -332,7 +332,7 @@ DB_PASS: 1234
 
 만약에 `.env`가 아닌 다른 경로에 있는 파일에 환경 변수를 저장해놨다면 `DOTENV_CONFIG_PATH` 환경 변수를 사용하면 된다.
 
-```bash
+```sh
 $ DOTENV_CONFIG_PATH=.env.local Node -r dotenv/config index.mjs
 DB_HOST: localhost
 DB_USER: test
@@ -347,7 +347,7 @@ ES 모듈을 사용할 때는 CommonJS를 사용할 때 보다 좀 더 주의가
 
 아래 코드를 보면, `dotenv` 라이브러리를 제일 먼저 `import`하기 때문에 `db.js` 파일이 `process.env`에 접근할 때 환경 변수가 설정되어 있을 것만 같다.
 
-```javascript
+```js
 /* db.mjs */
 
 export const db_host = process.env.DB_HOST;
@@ -355,7 +355,7 @@ export const db_user = process.env.DB_USER;
 export const db_pass = process.env.DB_PASS;
 ```
 
-```javascript
+```js
 /* index2.mjs */
 
 import dotenv from "dotenv";
@@ -372,7 +372,7 @@ console.log({ db_host, db_user, db_pass });
 
 하지만 실제 실행을 해보면, `db.js` 파일이 `process.env`에 접근했을 시점에는 환경 변수가 설정이 되어 있지 않았던 것을 알 수 있다.
 
-```bash
+```sh
 $ Node index2.mjs
 DB_HOST: localhost
 DB_USER: root
@@ -382,7 +382,7 @@ DB_PASS: 1234
 
 이러한 현상이 발생하는 이유는 `dotenv.config()` 함수가 `db.js` 파일이 `import`된 이후에 호출되었기 때문이다. 이 문제는 `dotenv` 라이브러리를 `import`하는 코드를 별도의 파일로 빼고, 그 안에서 `dotenv.config()` 함수를 호출하면 피할 수 있다.
 
-```javascript
+```js
 /* env.mjs */
 
 import dotenv from "dotenv";
@@ -390,7 +390,7 @@ import dotenv from "dotenv";
 dotenv.config();
 ```
 
-```javascript
+```js
 /* index2.mjs */
 
 import "./env.js";
@@ -405,7 +405,7 @@ console.log({ db_host, db_user, db_pass });
 
 이제 다시 프로그램을 실행을 해보면 환경 변수가 모든 파일에서 정상적으로 읽히는 것을 볼 수 있다.
 
-```bash
+```sh
 $ Node index2.mjs
 DB_HOST: localhost
 DB_USER: root
@@ -419,14 +419,14 @@ DB_PASS: 1234
 
 운영체제 수준에서 이미 설정되어 있는 환경 변수는 `dotenv`를 통해 파일에서 읽어온 환경 변수 값들로 덮어써지지 않으니 주의가 필요하다. 예를 들어, 리눅스 계열 운영체제에서 다음과 같이 프로그램을 실행하기 전에 미리 `DB_PASS` 환경 변수를 설정해놓으면,
 
-```bash
+```sh
 $ export DB_PASS=0000
 $ Node index.mjs
 ```
 
 `.env` 파일에 설정해놓은 `1234`가 무시되고 `0000`이 적용되는 것을 볼 수 있다.
 
-```bash
+```sh
 $ Node index.mjs
 DB_HOST: localhost
 DB_USER: root
@@ -435,7 +435,7 @@ DB_PASS: 0000
 
 참고로, 어느 환경 변수가 이미 설정되어 있었는지는 `debug` 옵션을 `true`로 주면 쉽게 알아낼 수 있다.
 
-```javascript
+```js
 /* index.mjs */
 
 import dotenv from 'dotenv';
@@ -446,7 +446,7 @@ console.log('DB_USER:', process.env.DB_USER);
 console.log('DB_PASS:', process.env.DB_PASS);
 ```
 
-```bash
+```sh
 $ Node index.mjs
 [dotenv@16.0.3][DEBUG] "DB_PASS" is already defined in `process.env` and was NOT overwritten
 DB_HOST: localhost
@@ -456,7 +456,7 @@ DB_PASS: 0000
 
 `.env` 파일에 설정해놓은 환경 변수의 값이 기 설정된 환경 변수의 값을 덮어쓰기를 원한다면 (좋은 관행은 아니다.) `override`를 `true`로 설정하면 된다.
 
-```javascript
+```js
 /* index.mjs */
 
 import dotenv from 'dotenv';
@@ -467,7 +467,7 @@ console.log('DB_USER:', process.env.DB_USER);
 console.log('DB_PASS:', process.env.DB_PASS);
 ```
 
-```bash
+```sh
 $ Node index2.mjs
 [dotenv@16.0.3][DEBUG] "DB_PASS" is already defined in `process.env` and was overwritten
 DB_HOST: localhost
@@ -479,7 +479,7 @@ DB_PASS: 0000
 
 `.env` 파일에는 보통 데이터베이스의 비밀번호나 서드파티(3rd-party) 서비스의 API 키와 같이 민감한 인증 정보가 들어가기 때문에 Github와 같은 코드 저장소(repository)에 올리면 상당히 위험할 수 있다. 특히, 협업 프로젝트에서는 `.gitignore` 파일에 이용하여 개발자들이 실수로라도 코드 저장소에 올릴 수 없도록 설정해놓는 것이 바람직하다.
 
-```javascript
+```js
 /* .gitignore */
 
 .env

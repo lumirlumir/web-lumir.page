@@ -21,7 +21,7 @@ tags:
 
 ### 1-2. 예시
 
-```text
+```txt
 camelCase
 lowerCamelCase
 ```
@@ -45,7 +45,7 @@ lowerCamelCase
 
 ### 2-2. 예시
 
-```text
+```txt
 PascalCase
 UpperCamelCase
 ```
@@ -66,7 +66,7 @@ UpperCamelCase
 
 ### 3-2. 예시
 
-```text
+```txt
 snake_case
 ```
 
@@ -86,7 +86,7 @@ snake_case에서, 각 단어의 맨 앞글자를 대문자로 표기하는 것.
 
 - 예시
 
-  ```text
+  ```txt
   Train_Case
   ```
 
@@ -96,7 +96,7 @@ snake_case에서, 각 단어의 맨 앞글자를 소문자로 표기하는 것.
 
 - 예시
 
-  ```text
+  ```txt
   spinal_case
   ```
 
@@ -108,7 +108,7 @@ snake_case에서, 모든 문자를 전부 대문자로 표기하는 것.
 
 - 예시
 
-  ```text
+  ```txt
   SCREAMING_SNAKE_CASE
   MACRO_CASE
   ```
@@ -123,7 +123,7 @@ snake_case에서, 모든 문자를 전부 대문자로 표기하는 것.
 
 ### 4-2. 예시
 
-```text
+```txt
 kebab-case
 ```
 

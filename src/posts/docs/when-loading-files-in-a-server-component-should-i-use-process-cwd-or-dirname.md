@@ -9,7 +9,7 @@ tags:
 
 **Vercel**(**Next.js**)의 공식 가이드 [How to Load Data from a File in Next.js](https://vercel.com/guides/loading-static-file-nextjs-api-route)를 읽다 문득 궁금한 점이 생겼다.
 
-```javascript
+```js
 import { promises as fs } from 'fs';
 
 export default async function Page() {
@@ -42,7 +42,7 @@ export default async function Page() {
 
 현재 작업 디렉토리를 `/`(루트)라 하자. `/my-folder` 경로에 아래와 같은 JavaScript 파일을 만든다. (이때, 작업 디렉토리는 여전히 `/`여야 한다.)
 
-```javascript
+```js
 /* code.js */
 
 console.log(process.cwd());
@@ -51,13 +51,13 @@ console.log(__dirname);
 
 아래 명령어를 통해 `/my-folder/code.js`파일을 실행한다.
 
-```bash
+```sh
 node my-folder/code.js
 ```
 
 출력 결과는 아래와 같다.
 
-```bash
+```sh
 / # process.cwd()
 /my-folder # __dirname
 ```
@@ -74,7 +74,7 @@ Next.js에서는 `__dirname`을 사용하는 것이 일반적인 Node.js 환경�
 
 ### 2-2. 예시
 
-```javascript
+```js
 /* /src/app/page.js */
 
 export default function Page() {
@@ -91,7 +91,7 @@ export default function Page() {
 
 하지만, Next.js 빌드 후 `__dirname`이 번들링된 파일의 경로로 바뀌기에 원하는 파일을 찾지 못할 가능성이 매우 높아진다. 즉, 우리가 기대한 `__dirname`의 경로는 `/src/app`이었지만, 실제로는 `/.next/server/app`과 같은 번들링된 파일의 경로가 반환된다. 앞선 코드를 브라우저의 HTML에서 살펴보면, 아래와 같이 출력된다.
 
-```text
+```txt
 process.cwd(): /
 __dirname: /.next/server/app
 ```
