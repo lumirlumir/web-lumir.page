@@ -1,8 +1,8 @@
-const path = require('node:path');
+import { fileURLToPath } from 'node:url';
 
 const isProduction = process.env.NODE_ENV === 'production';
 
-module.exports = {
+export default {
   images: {
     remotePatterns: [
       {
@@ -11,7 +11,7 @@ module.exports = {
     ],
   },
   sassOptions: {
-    includePaths: [path.resolve(__dirname, 'src', 'styles')],
+    includePaths: [fileURLToPath(new URL('./src/styles', import.meta.url))],
     additionalData: `
       @import 'utils/mixins';
       @import 'utils/variables';

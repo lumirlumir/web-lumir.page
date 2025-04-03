@@ -7,6 +7,7 @@ import mark from 'eslint-plugin-mark';
 /** @type {import("eslint").Linter.Config[]} */
 export default [
   {
+    name: 'global/ignores',
     ignores: ['**/build/', '**/coverage/', '**/.next/', '**/archives/'],
   },
   bananass.configs.jsx.next,
