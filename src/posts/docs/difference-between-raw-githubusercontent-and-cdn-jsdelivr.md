@@ -29,7 +29,7 @@ GitHub에서 제공하는 `raw.githubusercontent.com`과 대표적인 GitHub CDN
 
 ### 1-4. URI 구조
 
-```text
+```txt
 https://raw.githubusercontent.com/{owner}/{repo}/{branch}/{file_path}
 ```
 
@@ -61,13 +61,13 @@ https://raw.githubusercontent.com/{owner}/{repo}/{branch}/{file_path}
 
 ### 2-4. URI 구조
 
-```text
+```txt
 https://cdn.jsdelivr.net/gh/{owner}/{repo}@{branch}/{file_path}
 ```
 
 > [!IMPORTANT]
 >
-> `cdn.jsdelivr.net`은 12시간마다 캐시 데이터를 갱신하므로, 파일에 변동사항이 있어도  실시간 반영이 되지 않는다.
+> `cdn.jsdelivr.net`은 12시간마다 캐시 데이터를 갱신하므로, 파일에 변동사항이 있어도 실시간 반영이 되지 않는다.
 
 ## 3. 주요 차이점 요약
 

@@ -34,7 +34,7 @@ tags:
 1. ***JavaScript***의 전역 객체이다.
 1. 브라우저 창을 의미하고, 이를 제어할 수 있는 ***Property***와 ***Method***를 제공한다.
 
-    ```javascript
+    ```js
     console.log(window.innerWidth); // 창의 너비
     console.log(window.innerHeight); // 창의 높이
     window.close(); // 창을 염
@@ -49,13 +49,13 @@ ex. `alert('My Message')`
 
 객체를 만든다는 것은 결국 `window` 객체의 ***Property***를 만드는 것과 같다. 전역 변수와 함수가 사실은 `window` 객체의 ***Property***와 ***Method***인 것이다. 따라서, `a`에 접근하는 방법은 아래와 같다.
 
-```JavaScript
+```js
 var a = 1;
 console.log(a); // 1
 console.log(window.a); // 1
 ```
 
-```javascript
+```js
 var a = {id: 1};
 console.log(a.id); // 1
 console.log(window.a.id); // 1
@@ -79,7 +79,7 @@ console.log(window.a.id); // 1
 
 ***HTML***과 ***JavaScript***를 연결해주는 역할로 ***JavaScript***를 이용해 각 요소에 접근하며, ***HTML*** 태그를 동적으로 제어한다.
 
-`document` 객체는 페이지의 기본 ‘진입점’ 역할을 한다.
+`document` 객체는 페이지의 기본 '진입점' 역할을 한다.
 
 브라우저가 ***HTML*** 페이지를 로드하는 과정에서, ***Tag***등의 웹 페이지 내 모든 콘텐츠들을 객체로 나타낸다.
 

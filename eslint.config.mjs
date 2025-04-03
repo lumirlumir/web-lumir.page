@@ -1,6 +1,8 @@
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
+
 import bananass from 'eslint-config-bananass';
+import mark from 'eslint-plugin-mark';
 
 /** @type {import("eslint").Linter.Config[]} */
 export default [
@@ -9,6 +11,7 @@ export default [
   },
   bananass.configs.jsx.next,
   bananass.configs.tsx.next,
+  mark.configs.recommendedGfm,
   {
     settings: {
       node: {

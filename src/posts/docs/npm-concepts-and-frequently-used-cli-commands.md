@@ -35,13 +35,13 @@ Package(Module)는 프로그램의 구성요소 중 특정 기능을 수행할 �
 
 - 입력
 
-  ```bash
+  ```sh
   npm --version
   ```
 
 - 출력
 
-  ```bash
+  ```sh
   10.8.1
   ```
 
@@ -53,13 +53,13 @@ Package(Module)는 프로그램의 구성요소 중 특정 기능을 수행할 �
 
 - 입력
 
-  ```bash
+  ```sh
   npm init
   ```
 
 - 출력
 
-  ```bash
+  ```sh
   package name: (name) # 패키지 및 디렉토리 이름이다. (name)은 기본 값이다.
   version: (1.0.0) # 패키지 버전이다. (1.0.0)은 기본 값이다.
   description: # 패키지에 대한 설명이다.
@@ -80,7 +80,7 @@ Package(Module)는 프로그램의 구성요소 중 특정 기능을 수행할 �
 
 주로, 터미널에서 직접 설정하기 보다는 `package.json`을 변경하는 것이 직관적이므로, `npm init --yes` 명령어를 통해 터미널 설정을 생략하고 `package.json`을 생성하기 위해 사용한다.
 
-```bash
+```sh
 npm init --yes
 ```
 
@@ -113,7 +113,7 @@ npm init --yes
 
 `package.json`의 `dependencies`(의존성)에 추가한다. `dependencies`는 `react` 패키지처럼, 실제 코드에 포함되는 앱 구동을 위해 필요한 의존성 파일들을 뜻한다.
 
-```bash
+```sh
 npm install [<@scope>/]<name>@<version>
 ```
 
@@ -125,7 +125,7 @@ npm install [<@scope>/]<name>@<version>
 >
 > 1. 여러 패키지를 나열하여, 동시에 여러 패키지를 설치할 수 있다.
 >
->     ```bash
+>     ```sh
 >     $ npm install react react-dom@latest
 >     ```
 
@@ -135,7 +135,7 @@ npm install [<@scope>/]<name>@<version>
 
 `package.json`의 `devDependencies`(개발의존성)에 추가한다. `devDependencies`는 `eslint` 패키지처럼 실제 코드에 포함되지 않으며, 개발 단계에만 필요한 의존성 파일들을 뜻한다.
 
-```bash
+```sh
 npm install --save-dev [<@scope>/]<name>@<version>
 ```
 
@@ -182,7 +182,7 @@ npm install --save-dev [<@scope>/]<name>@<version>
 명령 뒤에 삭제할 패키지명을 입력하면, 설치된 패키지 관련 모든 파일이 `node_modules`에서 삭제될 뿐만 아니라, `package.json`에서도 삭제된다.
 (단, 설치할 때 특정 옵션을 사용했다면, 삭제할 때도 같은 옵션을 넣어주자.)
 
-```bash
+```sh
 npm uninstall [<@scope>/]<pkg>...
 ```
 
@@ -192,7 +192,7 @@ npm uninstall [<@scope>/]<pkg>...
 
 설치된 패키지를 최신 버전으로 업데이트한다. (의존성이 엮여있는 패키지를 잘못 업데이트할 경우, 기존 프로젝트에 오류가 발생할 수 있으니 주의하자.)
 
-```bash
+```sh
 npm update [<pkg>...]
 ```
 

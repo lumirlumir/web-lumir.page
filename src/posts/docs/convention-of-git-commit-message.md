@@ -22,7 +22,7 @@ tags:
 
 ## 2. Commit Message 구조
 
-```bash
+```sh
 # Header, Body, Footer는 빈 행으로 구분한다.
 
 Type(Scope): Title # Header
@@ -64,7 +64,7 @@ Footer # Footer
 
 ### 2-3. `Footer`
 
-```text
+```txt
 Resolves(Closes, Fixes): #IssueNo, ... (해결한 이슈, 생략 가능)
 
 See also(Ref, Related to): #IssueNo, ... (참고한 이슈, 생략 가능)
@@ -80,7 +80,7 @@ See also(Ref, Related to): #IssueNo, ... (참고한 이슈, 생략 가능)
 
 ### 3-1. 한 줄
 
-```bash
+```sh
 $ git commit -m "Commit Message"
 ```
 
@@ -88,7 +88,7 @@ $ git commit -m "Commit Message"
 
 Commit Message의 첫 줄에 '닫는 따옴표'를 넣지 말고, 마지막 줄에 사용한다. 즉, 첫 줄에 '여는 따옴표'만을 넣고 엔터를 누르면 개행이 되며, 저장되는 것이 아니라 계속해서 입력 가능하다.
 
-```bash
+```sh
 $ git commit -m "Commit Message 1st Line
 > Commit Message 2nd Line
 > Commit Message 3rd Line
@@ -98,7 +98,7 @@ $ git commit -m "Commit Message 1st Line
 
 ## 4. Commit Message 예시
 
-```bash
+```sh
 $ git commit -m "fix: Safari에서 모달을 띄웠을 때 스크롤 이슈 수정
 >
 > 모바일 사파리에서 Carousel 모달을 띄웠을 때,

@@ -25,13 +25,13 @@ Branch 이름 패턴을 작성한다. 특정 이름 패턴을 가진 Branch에 �
 
     ex. `main` Branch에만 적용.
 
-    ```text
+    ```txt
     main
     ```
 
 1. 모든 Branch에 적용.
 
-    ```text
+    ```txt
     *
     ```
 
@@ -39,13 +39,13 @@ Branch 이름 패턴을 작성한다. 특정 이름 패턴을 가진 Branch에 �
 
     ex. `feature` 접두어를 가진 모든 Branch에 적용.
 
-    ```text
+    ```txt
     feature*
     ```
 
     ex. `feature/` 접두어를 가진 모든 Branch에 적용.
 
-    ```text
+    ```txt
     feature/*
     ```
 
@@ -53,7 +53,7 @@ Branch 이름 패턴을 작성한다. 특정 이름 패턴을 가진 Branch에 �
 
     ex. `feature` 접미어를 가진 모든 Branch에 적용.
 
-    ```text
+    ```txt
     *feature
     ```
 
@@ -61,7 +61,7 @@ Branch 이름 패턴을 작성한다. 특정 이름 패턴을 가진 Branch에 �
 
     ex. `feature`라는 단어가 들어간 모든 Branch에 적용.
 
-    ```text
+    ```txt
     *feature*
     ```
 

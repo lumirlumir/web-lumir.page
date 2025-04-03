@@ -15,7 +15,7 @@ Git은 기본적으로 대ㆍ소문자를 구분하지 않기에, 운영체제�
 
 ## 1. 방법 1
 
-```bash
+```sh
 # 대소문자 구분 O
 git config core.ignorecase false
 
@@ -37,7 +37,7 @@ git config core.ignorecase true
 
 ## 2. 방법 2
 
-```bash
+```sh
 git mv oldName newName
 ```
 
@@ -45,7 +45,7 @@ git mv oldName newName
 
 단, 이름 전체를 변경하지 않고 대ㆍ소문자만 변경하였을 경우에는, 아래와 같은 두 단계를 거쳐 이름을 바꿔야만 오류가 발생하지 않는다. 즉, `oldName`에서 `newName`으로 직접 이름 변경을 시도하지 말고, 임시 폴더 이름(`temp`)을 거쳐 변경해야 한다.
 
-```bash
+```sh
 git mv oldName temp
 git mv temp newName
 ```

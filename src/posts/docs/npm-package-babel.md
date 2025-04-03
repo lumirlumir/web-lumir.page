@@ -23,19 +23,19 @@ Babel을 이용하면 ES6 이상의 최신 문법으로 작성한 자바스크�
 
 예를 들어, 아래 코드는 ES6에서 도입된 arrow function 문법을 사용하여 작성되었다. 하지만 만약 이 코드가 돌아가는 브라우저에서 아직 arrow function 문법을 지원하지 않는다면,
 
-```javascript
+```js
 [1, 2, 3].map((n) => n + 1);
 ```
 
 다음과 같이 문법 오류가 발생하여 코드가 정상적으로 실행되지 않을 것이다.
 
-```text
+```txt
 SyntaxError: Unexpected token =>
 ```
 
 하지만, Babel을 이용하면 위 소스 코드는 아래와 같이 일반 function 문법을 사용하도록 변경된다.
 
-```javascript
+```js
 [1, 2, 3].map(function (n) {
   return n + 1;
 });
@@ -51,7 +51,7 @@ Babel은 ES6 이상의 최신 문법뿐만 아니라, TypeScript나 JSX로 작�
 
 간단한 실습을 위해 터미널에서 다음과 같이 npm 프로젝트를 생성한다.
 
-```text
+```txt
 $ mkdir learn-babel
 $ cd learn-babel
 $ npm init -y
@@ -59,7 +59,7 @@ $ npm init -y
 
 그리고 자바스크립트 파일을 하나 생성 후에 ES6의 arrow function 문법을 사용하여 코드를 작성한다.
 
-```javascript
+```js
 /* before.js */
 
 [1, 2, 3].map((n) => n + 1);
@@ -71,13 +71,13 @@ $ npm init -y
 
 먼저 프로젝트에 `@babel/core`와 `@babel/cli` 패키지를 개발의존성(devDependencies)으로 설치한다. (개발의존성으로 설치하는 이유는 Babel은 애플리케이션이 실행 시에 필요한 것이 아니라 빌드 시에만 필요하기 때문이다.) `@babel/core`는 어떤 방식으로 Babel을 사용하든 항상 필요한 패키지이고, `@babel/cli`는 터미널에서 커맨드를 입력해서 Babel을 사용할 때 필요한 패키지이다.
 
-```bash
+```sh
 $ npm i -D @babel/core @babel/cli
 ```
 
 자, 이제 터미널을 다음과 같이 `npx babel <파일명/디렉터리명>` 입력하면 터미널에 변환 결과가 출력된다.
 
-```bash
+```sh
 $ npx babel before.js
 [1, 2, 3].map(n => n + 1);
 ```
@@ -92,13 +92,13 @@ $ npx babel before.js
 
 위와 마찬가지로 개발의존성으로 `@babel/preset-env` 패키지를 프로젝트에 설치한다.
 
-```bash
+```sh
 $ npm i -D @babel/preset-env
 ```
 
 그 다음, 이번에는 기존 Babel 커맨드에 `--presets=@babel/env`라는 옵션을 추가해서 실행하면,
 
-```bash
+```sh
 $ npx babel before.js --presets=@babel/env
 "use strict";
 
@@ -115,7 +115,7 @@ Babel 커맨드를 실행할 때 마다 매번 옵션을 붙여서 설정을 해
 
 실습 프로젝트의 최상위 디렉터리에 `.babelrc` 파일을 생성 후에 다음과 같이 설정을 추가한다.
 
-```javascript
+```js
 /* .babelrc */
 
 {
@@ -125,7 +125,7 @@ Babel 커맨드를 실행할 때 마다 매번 옵션을 붙여서 설정을 해
 
 자, 이제 커맨드 뒤에 옵션을 붙이지 않고 실행해도 `env` preset이 적용되는 것을 알 수 있다.
 
-```bash
+```sh
 $ npx babel before.js
 "use strict";
 
@@ -138,11 +138,11 @@ $ npx babel before.js
 
 `-o` 옵션을 사용해서 터미널에 변환된 코드를 출력하는 대신에 다른 파일에 저장할 수 있다.
 
-```bash
+```sh
 $ npx babel before.js -o after.js
 ```
 
-```javascript
+```js
 /* after.js */
 
 "use strict";
@@ -153,7 +153,7 @@ $ npx babel before.js -o after.js
 
 `-d` 옵션을 사용하면 특정 디렉터리 안에 여러 개의 변환된 파일을 저장할 수 있다. 다음 커맨드는 `src` 디렉터리 내의 모든 자바스크립트 파일을 변환하여 `dist` 디렉터리에 저장해준다.
 
-```bash
+```sh
 $ npx babel src -d dist
 ```
 
@@ -161,7 +161,7 @@ $ npx babel src -d dist
 
 Babel 커맨드를 자주 사용하는 상황이라면, NPM 스크립트로 등록해두고 사용하는게 편할 것이다.
 
-```javascript
+```js
 /* package.json */
 
 {
@@ -175,7 +175,7 @@ Babel 커맨드를 자주 사용하는 상황이라면, NPM 스크립트로 등�
 
 위와 같이 `build` 스크립트로 Babel 명령어를 지정해두면, `npm run build`라고 입력했을 때 Babel 커맨드가 실행된다.
 
-```bash
+```sh
 $ npm run build
 
 > learn-babel@1.0.0 build /Users/dale/learn-babel

@@ -13,7 +13,7 @@ React 개발의 필수 요소인 `react`, `react-dom`에 대해 알아보자.
 
 `dependencies`로 `react`, `react-dom`을 설치한다.
 
-```bash
+```sh
 $ npm install react react-dom
 ```
 

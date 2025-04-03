@@ -58,24 +58,24 @@ tags:
 
 #### 2-1-1. MathJax 및 Katex
 
-```markdown
+```md
 **The Cauchy-Schwarz Inequality**
 $$\left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)$$
 ```
 
 아래 2가지 종류의 치환자를 통해 각각 인라인<sup>Inline</sup>과 블록<sup>Block</sup> 형식의 디스플레이<sup>Display</sup>를 결정한다.
 
-```text
+```txt
 $ ... $
 ```
 
-```text
+```txt
 $$ ... $$
 ```
 
 #### 2-1-2. [react.dev](https://github.com/reactjs/react.dev) 공식 문서
 
-```markdown
+```md
 ## Using React for a part of your existing page {/*using-react-for-a-part-of-your-existing-page*/}
 
 Let's say you have an existing page built with another technology (either a server one like Rails, or a client one like Backbone), and you want to render interactive React components somewhere on that page. That's a common way to integrate React--in fact, it's how most React usage looked at Meta for many years!
@@ -90,7 +90,7 @@ The exact approach depends on your existing page setup, so let's walk through so
 
 아래 치환자를 통해 URI Fragment를 설정한다. (URI Fragment란, `https://www.example.com#fragment`에서 `#frament` 부분을 뜻한다.)
 
-```text
+```txt
 {/* ... */}
 ```
 
@@ -102,13 +102,13 @@ The exact approach depends on your existing page setup, so let's walk through so
 
 아래 치환자를 통해 HTML 어트리뷰트<sup>Attribute</sup>를 설정한다.
 
-```text
+```txt
 [## ... ##]
 ```
 
 #### 2-1-4. 깃허브 액션<sup>GitHub Actions</sup>
 
-```yaml
+```yml
 - name: Set up cache
   uses: actions/cache@v4
   with:
@@ -118,7 +118,7 @@ The exact approach depends on your existing page setup, so let's walk through so
 
 아래 치환자를 통해 변수의 값<sup>Value</sup>을 전달한다.
 
-```text
+```txt
 ${{ ... }}
 ```
 
@@ -136,7 +136,7 @@ ${{ ... }}
 
 예를 들어, 리액트<sup>React</sup> 공식 문서에서 사용하는 `{/* ... */}` 형태의 치환자를 이용한다 가정하자. `{/* ... */}` 치환자 내부의 문자열만 추출하여 가공하려면 어떻게 해야할까?
 
-```javascript
+```js
 const example = '{/* Make This Sentence Lower Case */}';
 const exampleProcessed = example.replace(/\{\/\*\s*(.+?)\s*\*\/\}/, (_, p1) =>
   p1.toLowerCase(),

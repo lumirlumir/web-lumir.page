@@ -11,13 +11,13 @@ tags:
 
 > Node.js 버전 13.2부터는 CommonJS 뿐만 아니라 ES Modules에 대한 정식 지원이 시작됨에 따라 굳이 트랜스파일링을 하지 않더라도 Node.js에서 ES 모듈을 사용할 수 있게 되었다.
 
-```javascript
+```js
 const express = require("express");
 
 const app = express();
 ```
 
-```javascript
+```js
 import express from "express";
 
 const app = express();
@@ -50,7 +50,7 @@ CommonJS 방식으로 모듈을 내보낼 때는 ES6처럼 명시적으로 선�
 
 아래는 미국과 캐나다 달러를 상호 변환해주는 자바스크립트 예제 코드이다. 이 파일에는 3개의 함수가 있는데, 아래 2개의 함수만 다른 파일에서 접근할 수 있도록 내보내기를 하였다. `exports` 변수의 속성으로 내보낼 함수들을 세팅한다.
 
-```javascript
+```js
 /* currency-functions.js */
 
 const exchangeRate = 0.91;
@@ -77,7 +77,7 @@ exports.usToCanadian = usToCanadian; // 내보내기 2
 
 > 이때, `require` 키워드는 객체(object)를 반환한다.
 
-```javascript
+```js
 /* test-currency-functions.js */
 
 const currency = require("./currency-functions");
@@ -91,7 +91,7 @@ console.log(currency.usToCanadian(30));
 
 - 실행 결과
 
-```text
+```txt
 50 Canadian dollars equals this amount of US dollars:
 45.5
 30 US dollars equals this amount of Canadian dollars:
@@ -106,7 +106,7 @@ console.log(currency.usToCanadian(30));
 
 이번에는 예제 코드를 살짝 수정하여 아래 두 개 함수를 객체로 묶어서 내보내기를 하였다. 내보낼 객체를 `module.exports` 변수에 할당해주면 된다.
 
-```javascript
+```js
 /* currency-object.js */
 
 const exchangeRate = 0.91;
@@ -133,7 +133,7 @@ module.exports = obj;
 
 > 이때, `require` 키워드는 객체(object)를 반환한다.
 
-```javascript
+```js
 /* test-currency-object.js */
 
 const currency = require("./currency-object");
@@ -147,7 +147,7 @@ console.log(currency.usToCanadian(30));
 
 - 실행 결과
 
-```text
+```txt
 50 Canadian dollars equals this amount of US dollars:
 45.5
 30 US dollars equals this amount of Canadian dollars:
@@ -174,7 +174,7 @@ CommonJS에서는 내보낼 복수 객체들을 `exports` 변수의 속성으로
 
 > `export`를 통해, 함수(`function`)ㆍ변수(`let`, `const`)ㆍ클래스(`class`) 등 모든 것을 내보낼 수 있다.
 
-```javascript
+```js
 /* currency-functions.js */
 
 const exchangeRate = 0.91;
@@ -204,7 +204,7 @@ export { usToCanadian };
 >
 > 또한, `import`할 때 반드시 중괄호로 가져와야 한다.
 
-```javascript
+```js
 /* test-currency-functions.js */
 
 // Destructuring
@@ -222,7 +222,7 @@ console.log(currency.usToCanadian(30));
 
 - 실행 결과
 
-```text
+```txt
 50 Canadian dollars equals this amount of US dollars:
 45.5
 30 US dollars equals this amount of Canadian dollars:
@@ -239,7 +239,7 @@ CommonJS에서는 내보낼 단일 객체를 `module.exports` 변수에 할당�
 
 이번에는 예제 코드를 살짝 수정하여 아래 두 개 함수를 객체로 묶어서 내보내기를 하였다. (객체 내에서 첫 번째 함수는 ES6 문법을 사용하였다.) 이름이 필요없기 때문에 별도로 변수 할당 없이 바로 객체를 내보내기를 할 수 있다. 내보낼 때 어떤 이름도 지정하기 않기 때문에 불러올 때도 아무 이름이나 사용할 수 있다.
 
-```javascript
+```js
 /* currency-object.js */
 
 const exchangeRate = 0.91;
@@ -263,7 +263,7 @@ export default {
 
 굳이 꼭 변수에 할당하고 내보내기를 하고 싶다면 다음과 같이 작성할 수도 있다. 하지만 불러내는 쪽에서 반드시 이 `obj`라는 변수 이름을 사용하도록 강제되지는 않는다.
 
-```javascript
+```js
 /* currency-object.js */
 
 const obj = {
@@ -287,7 +287,7 @@ export default obj;
 >
 > 또한, `import`시에 중괄호 작성이 필요없다.
 
-```javascript
+```js
 /* test-currency-object.js */
 
 import currency from "./currency-object";
@@ -301,7 +301,7 @@ console.log(currency.usToCanadian(30));
 
 - 실행 결과
 
-```text
+```txt
 50 Canadian dollars equals this amount of US dollars:
 45.5
 30 US dollars equals this amount of Canadian dollars:

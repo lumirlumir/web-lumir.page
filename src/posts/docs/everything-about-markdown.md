@@ -59,7 +59,7 @@ tags:
 
 - 입력
 
-  ```text
+  ```txt
   # This is ATX style H1
   ## This is ATX style H2
   ### This is ATX style H3
@@ -94,7 +94,7 @@ tags:
 
 - 입력
 
-  ```text
+  ```txt
   # This is Closed ATX style H1 #
   ## This is Closed ATX style H2 ##
   ### This is Closed ATX style H3 ###
@@ -133,7 +133,7 @@ tags:
 
 - 입력
 
-  ```text
+  ```txt
   This is Setext style H1
   =============
 
@@ -158,7 +158,7 @@ tags:
 
 - 입력
 
-  ```text
+  ```txt
   This is Setext style H2
   -------------
 
@@ -186,7 +186,7 @@ tags:
 
 - 입력
 
-  ```text
+  ```txt
   - 줄 바꿈을 하기 위해서는 문장 마지막에 2칸 이상 띄어쓰기 해야한다.
     이렇게
 
@@ -236,7 +236,7 @@ HTML `<br>` 태그를 직접 입력한다.
 
 - 입력
 
-  ```text
+  ```txt
   ---
 
   - - -
@@ -256,7 +256,7 @@ HTML `<br>` 태그를 직접 입력한다.
 
 - 입력
 
-  ```text
+  ```txt
   ___
 
   _ _ _
@@ -276,7 +276,7 @@ HTML `<br>` 태그를 직접 입력한다.
 
 - 입력
 
-  ```text
+  ```txt
   ***
 
   * * *
@@ -302,7 +302,7 @@ HTML `<br>` 태그를 직접 입력한다.
 
 - 입력
 
-  ```markdown
+  ```md
   -- 시작 --
 
   [//]: # (안녕하세요.)
@@ -360,7 +360,7 @@ HTML에서 이용하는 `<!-- -->` 기호를 사용한다.
 
 - 입력
 
-  ```text
+  ```txt
   - *single asterisk*
   - _single underscore_
   ```
@@ -376,7 +376,7 @@ HTML에서 이용하는 `<!-- -->` 기호를 사용한다.
 
 - 입력
 
-  ```text
+  ```txt
   - **double asterisks**
   - __double underscores__
   ```
@@ -392,7 +392,7 @@ HTML에서 이용하는 `<!-- -->` 기호를 사용한다.
 
 - 입력
 
-  ```text
+  ```txt
   - ~~double tildes~~
   ```
 
@@ -405,7 +405,7 @@ HTML에서 이용하는 `<!-- -->` 기호를 사용한다.
 
 - 입력
 
-  ```text
+  ```txt
   - ~~***Mixed***~~
   ```
 
@@ -422,7 +422,7 @@ HTML에서 이용하는 `<!-- -->` 기호를 사용한다.
 
 - 입력
 
-  ```text
+  ```txt
   > This is a first blockquote.
   > > This is a second blockquote.
   > > > This is a third blockquote.
@@ -436,7 +436,7 @@ HTML에서 이용하는 `<!-- -->` 기호를 사용한다.
 
 - 입력
 
-  ```text
+  ```txt
   > ### This is H3
   >
   > - List
@@ -452,7 +452,7 @@ HTML에서 이용하는 `<!-- -->` 기호를 사용한다.
   >
   > - List
   >
-  >   ```JavaScript
+  >   ```js
   >   code
   >   ```
   >
@@ -475,7 +475,7 @@ HTML에서 이용하는 `<!-- -->` 기호를 사용한다.
 
 - 입력
 
-  ```markdown
+  ```md
   1. 첫번째
       1. 첫번째의 첫번째
       2. 첫번째의 두번째
@@ -493,7 +493,7 @@ HTML에서 이용하는 `<!-- -->` 기호를 사용한다.
 
 - 입력
 
-  ```markdown
+  ```md
   1. 첫번째
       1. 첫번째의 첫번째
       1. 첫번째의 두번째
@@ -519,7 +519,7 @@ HTML에서 이용하는 `<!-- -->` 기호를 사용한다.
 
 - 입력
 
-  ```markdown
+  ```md
   - 빨강
     - 녹색
       - 파랑
@@ -548,7 +548,7 @@ HTML에서 이용하는 `<!-- -->` 기호를 사용한다.
 
 - 입력
 
-  ```markdown
+  ```md
   * 1단계
     - 2단계
       + 3단계
@@ -572,13 +572,13 @@ HTML에서 이용하는 `<!-- -->` 기호를 사용한다.
 
 `"설명 Optional Title"`의 내용은 생략이 가능하며, 해당 링크 위로 마우스를 올렸을 때<sup>Hovering</sup> 나타난다.
 
-```markdown
+```md
 [제목 Title](링크 Link "설명 Optional Title")
 ```
 
 - 입력
 
-  ```markdown
+  ```md
   - [Google](https://www.google.com)
   - [Naver](https://www.naver.com)
 
@@ -598,7 +598,7 @@ HTML에서 이용하는 `<!-- -->` 기호를 사용한다.
 
 `"설명 Optional Title"`의 내용은 생략이 가능하며, 해당 링크 위로 마우스를 올렸을 때<sup>Hovering</sup> 나타난다.
 
-```markdown
+```md
 [제목 Title][참조 Reference]
 
 [참조 Reference]: 링크 Link "설명 Optional Title"
@@ -606,7 +606,7 @@ HTML에서 이용하는 `<!-- -->` 기호를 사용한다.
 
 - 입력
 
-  ```text
+  ```txt
   - [Google][GoogleRef1]
   - [Naver][NaverRef1]
 
@@ -636,7 +636,7 @@ HTML에서 이용하는 `<!-- -->` 기호를 사용한다.
 
 - 입력
 
-  ```text
+  ```txt
   - 문서 안에서 [참조 링크]를 그대로 사용할 수도 있다.
 
   [참조 링크]: https://www.naver.com "Hello Naver"
@@ -656,7 +656,7 @@ HTML에서 이용하는 `<!-- -->` 기호를 사용한다.
 
 - 입력
 
-  ```markdown
+  ```md
   - 외부링크: https://www.google.com
   - 외부링크: <https://www.google.com>
   - 이메일링크: address@example.com
@@ -675,7 +675,7 @@ HTML에서 이용하는 `<!-- -->` 기호를 사용한다.
 
 ##### 2-8-4-1. Markdown style
 
-```markdown
+```md
 [제목 Title](#이동할제목heading)
 ```
 
@@ -683,7 +683,7 @@ HTML에서 이용하는 `<!-- -->` 기호를 사용한다.
 
 - 입력
 
-  ```text
+  ```txt
   - [1. 마크다운에 대하여](#1-markdown에-대하여)
 
   - [2. 마크다운 사용법(문법) - 표준 마크다운 문법](#2-markdown-사용법문법---표준-마크다운-문법)
@@ -725,17 +725,17 @@ HTML에서 이용하는 `<!-- -->` 기호를 사용한다.
 
 ##### 2-9-1-1. 외부 이미지
 
-```markdown
+```md
 ![대체 텍스트 Alt text](링크 Link)
 ```
 
-```markdown
+```md
 ![대체 텍스트 Alt text](링크 Link "설명 Optional Title")
 ```
 
 - 입력
 
-  ```markdown
+  ```md
   ![석촌호수 러버덕](1.png)
   ![석촌호수 러버덕](1.png "RubberDuck")
   ```
@@ -747,13 +747,13 @@ HTML에서 이용하는 `<!-- -->` 기호를 사용한다.
 
 ##### 2-9-1-2. 참조 이미지
 
-```markdown
+```md
 ![대체 텍스트 Alt text][참조 Reference]
 
 [참조 Reference]: 링크 Link
 ```
 
-```markdown
+```md
 ![대체 텍스트 Alt text][참조 Reference]
 
 [참조 Reference]: 링크 Link "설명 Optional Title"
@@ -761,7 +761,7 @@ HTML에서 이용하는 `<!-- -->` 기호를 사용한다.
 
 - 입력
 
-  ```markdown
+  ```md
   ![석촌호수 러버덕][Ref1]
   ![석촌호수 러버덕][Ref2]
 
@@ -782,7 +782,7 @@ Markdown style 이미지 문법 코드를 링크 문법 코드로 감싸준다.
 
 - 입력
 
-  ```markdown
+  ```md
   [![석촌호수 러버덕](1.png "RubberDuck Wiki")](https://en.wikipedia.org/wiki/Rubber_duck)
   ```
 
@@ -817,7 +817,7 @@ Markdown style은 사이즈 조절 기능이 없기 때문에, HTML `<img src=""
 
 - 입력
 
-  ```markdown
+  ```md
   `background` 혹은 `background-image` 속성으로 요소에 배경 이미지를 삽입할 수 있다.
   ```
 
@@ -837,7 +837,7 @@ Markdown style은 사이즈 조절 기능이 없기 때문에, HTML `<img src=""
 
 - 입력
 
-  ````text
+  ````txt
   ```java
   public class BootSpringBootApplication {
     public static void main(String[] args) {
@@ -863,7 +863,7 @@ Markdown style은 사이즈 조절 기능이 없기 때문에, HTML `<img src=""
 
 - 입력
 
-  ```text
+  ```txt
   This is a normal paragraph:
 
       This is a code block.
@@ -883,7 +883,7 @@ Markdown style은 사이즈 조절 기능이 없기 때문에, HTML `<img src=""
 
 - 입력
 
-  ```text
+  ```txt
   This is a normal paragraph:
       This is a code block.
   end code block.
@@ -931,7 +931,7 @@ Markdown style은 사이즈 조절 기능이 없기 때문에, HTML `<img src=""
 
 - 입력
 
-  ```markdown
+  ```md
   - \`
   - <code>\`</code>
   ```
@@ -943,7 +943,7 @@ Markdown style은 사이즈 조절 기능이 없기 때문에, HTML `<img src=""
 
 - 입력
 
-  ```markdown
+  ```md
   * 특수문자 출력안됨
   - 특수문자 출력안됨
 
@@ -963,7 +963,7 @@ Markdown style은 사이즈 조절 기능이 없기 때문에, HTML `<img src=""
 
 - 입력
 
-  ```markdown
+  ```md
   \*literal asterisks\*
 
   \#hash mark\#
@@ -999,7 +999,7 @@ Markdown style은 사이즈 조절 기능이 없기 때문에, HTML `<img src=""
 
 - 입력
 
-  ```text
+  ```txt
   테이블 생성
 
   |헤더1|헤더2|헤더3|헤더4|
@@ -1033,7 +1033,7 @@ Markdown style은 사이즈 조절 기능이 없기 때문에, HTML `<img src=""
 
 - 입력
 
-  ```markdown
+  ```md
   테이블 정렬
 
   헤더1|헤더2|헤더3
@@ -1076,7 +1076,7 @@ Markdown style은 사이즈 조절 기능이 없기 때문에, HTML `<img src=""
 
 - 입력
 
-  ```markdown
+  ```md
   - [x] this is a completed item
   - [ ] this is an incompleted item
   ```
@@ -1088,7 +1088,7 @@ Markdown style은 사이즈 조절 기능이 없기 때문에, HTML `<img src=""
 
 - 입력
 
-  ```markdown
+  ```md
   - [x] @mentions, #refs, [links](link), **formatting**, and <del>tags</del> supported
   ```
 
@@ -1116,7 +1116,7 @@ Markdown style은 사이즈 조절 기능이 없기 때문에, HTML `<img src=""
 
 - 입력
 
-  ```text
+  ```txt
   This sentence uses `$` delimiters to show math inline: $\sqrt{3x-1}+(1+x)^2$
   ```
 
@@ -1132,7 +1132,7 @@ Markdown style은 사이즈 조절 기능이 없기 때문에, HTML `<img src=""
 
 - 입력
 
-  ```text
+  ```txt
   **The Cauchy-Schwarz Inequality**
   $$\left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)$$
   ```
@@ -1152,7 +1152,7 @@ Markdown style은 사이즈 조절 기능이 없기 때문에, HTML `<img src=""
 
 - 입력
 
-  ```text
+  ```txt
   > [!NOTE]
   > Useful information that users should know, even when skimming content.
 
@@ -1216,7 +1216,7 @@ Markdown style은 사이즈 조절 기능이 없기 때문에, HTML `<img src=""
 
 - 입력
 
-  ```markdown
+  ```md
   @octocat :+1: This PR looks great - it's ready to merge! :shipit:
   ```
 
@@ -1238,7 +1238,7 @@ HSL|`hsl(H,S,L)`|`hsl(212, 92%, 45%)`|![HSL 값 212, 92%, 45%가 파란색 원�
 
 - 입력
 
-  ```markdown
+  ```md
   The background color is `#ffffff` for light mode and `#000000` for dark mode.
   ```
 
@@ -1267,7 +1267,7 @@ HSL|`hsl(H,S,L)`|`hsl(212, 92%, 45%)`|![HSL 값 212, 92%, 45%가 파란색 원�
 
 - 입력
 
-  ```markdown
+  ```md
   @github/support What do you think about these updates?
   ```
 
@@ -1293,7 +1293,7 @@ HSL|`hsl(H,S,L)`|`hsl(212, 92%, 45%)`|![HSL 값 212, 92%, 45%가 파란색 원�
 
 - 입력
 
-  ```markdown
+  ```md
   Here is a simple footnote[^1].
 
   A footnote can also have multiple lines[^2].
@@ -1331,7 +1331,7 @@ HSL|`hsl(H,S,L)`|`hsl(212, 92%, 45%)`|![HSL 값 212, 92%, 45%가 파란색 원�
 
 상대 링크는 현재 파일을 기준으로 하는 링크이다. 예를 들어 리포지토리의 루트에 추가 정보 파일이 있고, `docs/CONTRIBUTING.md`에 다른 파일이 있는 경우, 추가 정보의 `CONTRIBUTING.md`에 대한 상대 링크는 다음과 같다.
 
-```markdown
+```md
 [Contribution guidelines for this project](docs/CONTRIBUTING.md)
 ```
 
@@ -1339,7 +1339,7 @@ HSL|`hsl(H,S,L)`|`hsl(212, 92%, 45%)`|![HSL 값 212, 92%, 45%가 파란색 원�
 
 링크 텍스트는 한 줄이어야 한다. 아래 예시는 작동하지 않는다.
 
-```markdown
+```md
 [Contribution
 guidelines for this project](docs/CONTRIBUTING.md)
 ```
