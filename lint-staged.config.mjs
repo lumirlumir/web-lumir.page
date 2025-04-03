@@ -1,9 +1,9 @@
-module.exports = {
+export default {
   '*': [
-    'npx prettier --check',
+    'npx prettier --check --ignore-unknown',
     'npx editorconfig-checker -config .editorconfig-checker.json',
   ],
-  '*.{js,jsx}': 'npx eslint',
+  '*.{js,mjs,cjs,jsx,ts,mts,cts,tsx,md}': 'npx eslint',
   '*.{css,scss}': 'npx stylelint',
   '*.md': 'npx markdownlint',
   'src/docs/**/*.md': 'npx textlint -f pretty-error',
