@@ -923,7 +923,7 @@ Markdown style은 사이즈 조절 기능이 없기 때문에, HTML `<img src=""
 
 ### 2-11. Backslash(`\`) Escapes
 
-특수문자를 표현할 때, 표시될 문자 앞에 `\`를 넣고 특수문자를 쓰면 된다.
+특수문자를 표현할 때, 표시될 문자 앞에 `\`를 넣고 특수문자를 쓰면 된다.
 
 예를 들어, 백틱(<code>\`</code>) 기호는 코드를 표현할 때 사용하는 문법 기능을 가지므로, 백틱 기호 자체를 출력하려면 기호에 이스케이프<sup>Escape</sup> 처리가 필요하다.
 
@@ -987,7 +987,7 @@ Markdown style은 사이즈 조절 기능이 없기 때문에, HTML `<img src=""
 
 `<table>` 태그로 변환되는 '표<sup>Table</sup>'를 표현한다.
 
-헤더와 셀을 구분하기 위해, 3개 이상의 `-`(Hyphen/Dash) 기호를 사용한다.
+헤더와 셀을 구분하기 위해, 3개 이상의 `-`(Hyphen/Dash) 기호를 사용한다.
 
 헤더와 셀을 구분하면서, `:`(Colons) 기호로 셀(열/칸) 안의 내용을 정렬할 수 있다.
 
@@ -1066,9 +1066,9 @@ Markdown style은 사이즈 조절 기능이 없기 때문에, HTML `<img src=""
 
 ### 3-1. 체크 리스트(Check Lists)
 
-줄 앞에 `- [x]`를 써서 완료된 리스트 표시.
+줄 앞에 `- [x]`를 써서 완료된 리스트 표시.
 
-줄 앞에 `- [ ]`를 써서 미완료된 리스트 표시.
+줄 앞에 `- [ ]`를 써서 미완료된 리스트 표시.
 
 체크 리스트 안에서 강조 외에 여러 기능을 사용할 수 있다.
 
@@ -1362,10 +1362,10 @@ guidelines for this project](docs/CONTRIBUTING.md)
 
 ***VScode***에서 깃허브의 마크다운 테마 스타일로 마크다운 프리뷰<sup>Preview</sup>를 이용할 수 있게 해주는 확장 팩이다. 아래는 해당 확장 팩에 대한 설명이다.
 
-- Dark GitHub Markdown Preview — CSS that makes the Markdown preview match GitHub's dark themed style.
-- Markdown Emoji — Adds :emoji: support to the Markdown preview.
-- Markdown Checkboxes — Adds - [ ] tasklist support to the Markdown preview
-- Markdown yaml Preamble — Adds support for rendering the yaml frontmatter as a table. Be sure to set "markdown.previewFrontMatter": "show"
+- Dark GitHub Markdown Preview - CSS that makes the Markdown preview match GitHub's dark themed style.
+- Markdown Emoji - Adds :emoji: support to the Markdown preview.
+- Markdown Checkboxes - Adds - [ ] tasklist support to the Markdown preview
+- Markdown yaml Preamble - Adds support for rendering the yaml frontmatter as a table. Be sure to set "markdown.previewFrontMatter": "show"
 
 ### 4-3. Typora
 
