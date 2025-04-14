@@ -10,8 +10,8 @@ export default [
     name: 'global/ignores',
     ignores: ['**/build/', '**/coverage/', '**/.next/', '**/archives/'],
   },
-  bananass.configs.jsx.next,
-  bananass.configs.tsx.next,
+  bananass.configs.jsxNext,
+  bananass.configs.tsxNext,
   mark.configs.recommendedGfm,
   {
     settings: {
