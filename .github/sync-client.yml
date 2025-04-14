@@ -51,13 +51,13 @@ lumirlumir/lumirlumir-configs:
     dest: ./configs/.nvmrc
   - source: ./.prettierignore
     dest: ./configs/.prettierignore
-  - source: ./.prettierrc.cjs
-    dest: ./configs/.prettierrc.cjs
   - source: ./CODE_OF_CONDUCT.md
     dest: ./configs/CODE_OF_CONDUCT.md
   - source: ./VScode.code-workspace
     dest: ./configs/VScode.code-workspace
   - source: ./jsconfig.json
     dest: ./configs/jsconfig.json
+  - source: ./prettier.config.mjs
+    dest: ./configs/prettier.config.mjs
   - source: ./stylelint.config.mjs
     dest: ./configs/stylelint.config.mjs
