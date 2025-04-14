@@ -14,6 +14,11 @@ export default [
   bananass.configs.tsxNext,
   mark.configs.recommendedGfm,
   {
+    rules: {
+      'mark/en-capitalization': 'off',
+    },
+  },
+  {
     settings: {
       node: {
         resolverConfig: {
