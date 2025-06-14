@@ -1,11 +1,12 @@
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 
+import { defineConfig } from 'eslint/config';
 import bananass from 'eslint-config-bananass';
 import mark from 'eslint-plugin-mark';
 
 /** @type {import("eslint").Linter.Config[]} */
-export default [
+export default defineConfig([
   {
     name: 'global/ignores',
     ignores: ['**/build/', '**/coverage/', '**/.next/', '**/archives/'],
@@ -30,4 +31,4 @@ export default [
       },
     },
   },
-];
+]);
