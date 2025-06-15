@@ -40,7 +40,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }) {
   const {
     data: { title, description },
-  } = await readMarkdownFile(getFilePath(params));
+  } = await readMarkdownFile(getFilePath(await params));
 
   return {
     title: markdownToText(title),
@@ -55,7 +55,7 @@ export async function generateMetadata({ params }) {
 export default async function Page({ params }) {
   return (
     <Katex className="markdown-body">
-      {await markdownToJsxFromPath(getFilePath(params))}
+      {await markdownToJsxFromPath(getFilePath(await params))}
     </Katex>
   );
 }

@@ -33,12 +33,12 @@ export async function generateStaticParams() {
 // --------------------------------------------------------------------------------
 
 export default async function Page({ params, searchParams }) {
-  const { sort = 'updated', order = 'desc' } = searchParams;
+  const { sort = 'updated', order = 'desc' } = await searchParams;
   const tagTree = await readMarkdownTagTree(PATH_DOCS);
 
   return (
     <Suspense key={sort + order} fallback={<Loading content="목록" />}>
-      {tagTree[params.tag]
+      {tagTree[await params.tag]
         .sort(compareMarkdownDocument(sort, order))
         .map(markdownDocument => (
           <Content key={markdownDocument.basename} markdownDocument={markdownDocument} />
