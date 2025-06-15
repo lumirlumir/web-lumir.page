@@ -24,9 +24,5 @@ export default function ThemeProvider({ children }) {
     else throw TypeError('Invalid theme. Use "dark" or "light".');
   };
 
-  return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      {children}
-    </ThemeContext.Provider>
-  );
+  return <ThemeContext value={{ theme, toggleTheme }}>{children}</ThemeContext>;
 }
