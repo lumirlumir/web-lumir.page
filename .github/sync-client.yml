@@ -1,6 +1,6 @@
 lumirlumir/lumirlumir-configs:
   - source: ./.github/sync-client.yml
-    dest: ./clients/web-blog.lumir.page.yml
+    dest: ./clients/web-lumir.page.yml
   # ./.github/ISSUE_TEMPLATE
   - source: ./.github/ISSUE_TEMPLATE/1-bug.md
     dest: ./configs/.github/ISSUE_TEMPLATE/1-bug.md

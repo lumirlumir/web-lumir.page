@@ -1,7 +1,7 @@
 import { join } from 'path'; // eslint-disable-line -- TODO
 
 // Website
-export const WEBSITE_NAME = 'blog.lumir.page';
+export const WEBSITE_NAME = 'lumir.page';
 export const WEBSITE_URL = `https://${WEBSITE_NAME}`;
 
 // GitHub Repository, Ref: https://docs.github.com/en/rest/repos/repos
