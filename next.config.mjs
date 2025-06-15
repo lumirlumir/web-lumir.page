@@ -1,7 +1,24 @@
+/**
+ * @fileoverview Next.js configuration file.
+ */
+
+// --------------------------------------------------------------------------------
+// Import
+// --------------------------------------------------------------------------------
+
 import { fileURLToPath } from 'node:url';
 
-const isProduction = process.env.NODE_ENV === 'production';
+// --------------------------------------------------------------------------------
+// Helpers
+// --------------------------------------------------------------------------------
 
+const isProd = process.env.NODE_ENV === 'production';
+
+// --------------------------------------------------------------------------------
+// Export
+// --------------------------------------------------------------------------------
+
+/** @type {import('next').NextConfig} */
 export default {
   images: {
     remotePatterns: [
@@ -17,8 +34,11 @@ export default {
       @import 'utils/variables';
     `,
   },
+  experimental: {
+    reactCompiler: true,
+  },
   // Remove `console.*` output except `console.warn` and `console.error` only in production.
-  ...(isProduction && {
+  ...(isProd && {
     compiler: {
       removeConsole: {
         exclude: ['warn', 'error'],
