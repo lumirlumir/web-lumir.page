@@ -34,6 +34,9 @@ export default {
       @import 'utils/variables';
     `,
   },
+  experimental: {
+    reactCompiler: true,
+  },
   // Remove `console.*` output except `console.warn` and `console.error` only in production.
   ...(isProd && {
     compiler: {
