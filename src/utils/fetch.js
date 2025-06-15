@@ -12,6 +12,7 @@ export async function getGithubUsers() {
     headers: {
       Authorization: `Bearer ${process.env.GH_PAT}`,
     },
+    cache: 'force-cache', // https://nextjs.org/docs/app/guides/upgrading/version-15#fetch-requests
   });
 
   return response.json();

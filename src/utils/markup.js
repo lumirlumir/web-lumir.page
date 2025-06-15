@@ -42,6 +42,7 @@ export async function markdownToHtml(markdownContent) {
       mode: 'gfm',
       context: GITHUB_REPO_FULL_NAME,
     }),
+    cache: 'force-cache', // https://nextjs.org/docs/app/guides/upgrading/version-15#fetch-requests
   });
 
   return response.text();
