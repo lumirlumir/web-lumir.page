@@ -1,34 +1,43 @@
-import { fileURLToPath } from 'node:url';
-import { dirname, resolve } from 'node:path';
+/**
+ * @fileoverview ESLint configuration file.
+ */
 
-import { defineConfig } from 'eslint/config';
+// --------------------------------------------------------------------------------
+// Import
+// --------------------------------------------------------------------------------
+
+import { fileURLToPath } from 'node:url';
+import { defineConfig, globalIgnores } from 'eslint/config';
 import bananass from 'eslint-config-bananass';
 import mark from 'eslint-plugin-mark';
 
+// --------------------------------------------------------------------------------
+// Export
+// --------------------------------------------------------------------------------
+
 /** @type {import("eslint").Linter.Config[]} */
 export default defineConfig([
-  {
-    name: 'global/ignores',
-    ignores: ['**/build/', '**/coverage/', '**/.next/', '**/archives/'],
-  },
+  globalIgnores(
+    ['**/build/', '**/coverage/', '**/.next/', '**/archives/'],
+    'global/ignores',
+  ),
   bananass.configs.jsxNext,
   bananass.configs.tsxNext,
   mark.configs.recommendedGfm,
   {
-    rules: {
-      'mark/en-capitalization': 'off',
-    },
-  },
-  {
+    name: 'global',
     settings: {
       node: {
         resolverConfig: {
           // `eslint-plugin-n` uses webpack's `enhanced-resolve` under the hood.
           alias: {
-            '@': resolve(dirname(fileURLToPath(import.meta.url)), 'src'),
+            '@': fileURLToPath(new URL('./src', import.meta.url)),
           },
         },
       },
+    },
+    rules: {
+      'mark/en-capitalization': 'off',
     },
   },
 ]);
