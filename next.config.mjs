@@ -7,6 +7,7 @@
 // --------------------------------------------------------------------------------
 
 import { fileURLToPath } from 'node:url';
+import createMDX from '@next/mdx';
 
 // --------------------------------------------------------------------------------
 // Helpers
@@ -14,12 +15,9 @@ import { fileURLToPath } from 'node:url';
 
 const isProd = process.env.NODE_ENV === 'production';
 
-// --------------------------------------------------------------------------------
-// Export
-// --------------------------------------------------------------------------------
-
 /** @type {import('next').NextConfig} */
-export default {
+const nextConfig = {
+  pageExtensions: ['js', 'mjs', 'jsx', 'ts', 'mts', 'tsx', 'md', 'mdx'],
   images: {
     remotePatterns: [
       {
@@ -29,10 +27,7 @@ export default {
   },
   sassOptions: {
     includePaths: [fileURLToPath(new URL('./src/styles', import.meta.url))],
-    additionalData: `
-      @import 'utils/mixins';
-      @import 'utils/variables';
-    `,
+    additionalData: "@import 'utils/mixins';\n@import 'utils/variables';",
   },
   experimental: {
     reactCompiler: true,
@@ -46,3 +41,27 @@ export default {
     },
   }),
 };
+
+/**
+ * @see https://nextjs.org/docs/app/guides/mdx
+ * @see https://github.com/vercel/next.js/tree/canary/examples/mdx
+ * @see https://github.com/vercel/next.js/tree/canary/packages/next-mdx
+ * @see https://mdxjs.com/packages/mdx/#fields
+ */
+const withMDX = createMDX({
+  extension: /\.(?:md|mdx)$/i,
+  options: {
+    // remarkPlugins: [],
+    // rehypePlugins: [],
+    // remarkRehypeOptions: {},
+    // format: 'md',
+    // mdExtensions: ['.md'],
+    // stylePropertyNameCase: 'dom' // or 'css'
+  },
+});
+
+// --------------------------------------------------------------------------------
+// Export
+// --------------------------------------------------------------------------------
+
+export default withMDX(nextConfig);
