@@ -1,0 +1,92 @@
+section
+  //- ads upper
+  | [##_revenue_list_upper_##]
+
+  //- list
+  s_list
+    .post-header
+      h1 <span>[##_list_conform_##]</span><em> [##_list_count_##]</em>
+
+    s_list_empty
+      .not-found
+        ul
+          li 입력하신 단어의 철자가 정확한지 확인해 보세요.
+          li 검색어의 단어 수를 줄이거나, 보다 일반적인 단어로 검색해 보세요.
+          li 두 단어 이상의 키워드로 검색 하신 경우, 정확하게 띄어쓰기를 한 후 검색해 보세요.
+        ul.tag
+          li 선택하신 태그에 해당하는 글이 없습니다.
+          li 다른 태그를 선택하시거나, 검색 기능을 활용해 보세요.
+        ul.category
+          li 선택하신 카테고리에 해당하는 글이 없습니다.
+          li 다른 카테고리를 선택하시거나, 검색 기능을 활용해 보세요.
+
+  //- article
+  article
+    s_article_protected
+      s_index_article_rep
+        .post-item
+          a(href="[##_article_rep_link_##]")
+            span.thum
+            span.title [##_article_rep_title_##]
+            span.excerpt 보호되어 있는 글 입니다.
+            span.meta
+              span.date [##_article_rep_simple_date_##]
+
+      s_permalink_article_rep
+        .entry-content
+          form(class="protected_form" onsubmit="{reloadEntry(14);return false;}")
+            h2 보호되어 있는 글입니다.
+            p 내용을 보시려면 비밀번호를 입력하세요.
+            input(type="password" id="entry14password" name="entry14password" value="" placeholder="비밀번호")
+            button(type="submit" class="btn") 확인
+
+    s_article_rep
+      s_index_article_rep
+        .post-item
+          a(href="[##_article_rep_link_##]")
+            span.thum
+              s_article_rep_thumbnail
+                img(src="//i1.daumcdn.net/thumb/C300x300/?fname=[##_article_rep_thumbnail_raw_url_##]" alt="")
+            span.title [##_article_rep_title_##]
+            span.excerpt [##_article_rep_summary_##]
+            span.meta
+              span.date [##_article_rep_simple_date_##]
+
+      s_permalink_article_rep
+        //- <div class="post-cover" <s_article_rep_thumbnail> style="background-image:url([##_article_rep_thumbnail_raw_url_##])" </s_article_rep_thumbnail>>
+        .post-cover(style="background-image:url([##_article_rep_thumbnail_raw_url_##])")
+          .inner
+            span.category [##_article_rep_category_##]
+            h1 [##_article_rep_title_##]
+            span.meta
+              span.author by [##_article_rep_author_##]
+              span.date [##_article_rep_simple_date_##]
+              s_ad_div
+                a(href="[##_s_ad_m_link_##]") 수정
+                a(href="#" onclick="[##_s_ad_d_onclick_##]") 삭제
+
+        .entry-content [##_article_rep_desc_##]
+
+        s_tag_label
+          .tags [##_tag_label_rep_##]
+
+        s_article_related
+          .related-articles
+            s_article_related_rep
+              .post-item
+                a(href="[##_article_related_rep_link_##]")
+                  span.thum
+                    s_article_related_rep_thumbnail
+                      img(src="//i1.daumcdn.net/thumb/C176x120/?fname=[##_article_related_rep_thumbnail_link_##]" alt="")
+                  span.title [##_article_related_rep_title_##]
+
+  //- paging
+  s_paging
+    .pagination
+      a([##_prev_page_##] class="prev [##_no_more_prev_##]") 이전
+      s_paging_rep
+        a([##_paging_rep_link_##]) [##_paging_rep_link_num_##]
+      a([##_next_page_##] class="next [##_no_more_next_##]") 다음
+
+  //- ads lower
+  | [##_revenue_list_lower_##]

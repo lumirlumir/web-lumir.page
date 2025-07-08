@@ -1,0 +1,215 @@
+@import './components/import';
+@import './components/variables';
+@import './components/mixin';
+@import './components/reset';
+@import './components/media';
+
+/* Layout */
+#wrap {
+  /* Property */
+  display: grid;
+  grid-template-columns: $wrap_px_sidebar_width minmax(0, auto);
+  grid-template-rows: $wrap_px_header_height minmax(calc(100vh - #{$wrap_px_header_height} - #{$wrap_px_footer_height}), auto) $wrap_px_footer_height;
+
+  /* Selector */
+  @import './body/header';
+  @import './body/section';
+  @import './body/aside';
+  @import './body/footer';
+}
+
+/* Body Type */
+#tt-body- {
+  /* Declaration */
+  @mixin wrap_section_article(
+    $_selector: null,
+    $_margin: (
+      0 $wrap_vw_header_margin,
+    )
+  ) {
+    #wrap > section article #{$_selector} {
+      /* Import */
+      @include glb_flex($_flow: wrap, $_justify-content: center);
+
+      /* Property */
+      margin: $_margin;
+
+      /* Selector */
+      .post-item {
+        flex: 0 0 auto;
+      }
+    }
+  }
+  @mixin not-found($_selector) {
+    .not-found {
+      ul {
+        display: none;
+      }
+      .#{$_selector} {
+        display: block;
+      }
+    }
+  }
+  @mixin post-header($_before, $_after) {
+    .post-header {
+      span {
+        &:before {
+          content: $_before;
+        }
+        &:after {
+          content: $_after;
+        }
+      }
+    }
+  }
+
+  /* Selector */
+  &index {
+    //Home
+    @include wrap_section_article;
+  }
+  &page {
+    //OK Writing
+    /* Import */
+    @include wrap_section_article('.related-articles', 0);
+
+    /* Selector */
+    #wrap > section article {
+      /* Property */
+      margin: 0 (2 * $wrap_vw_header_margin);
+
+      /* Selector */
+      .post-cover {
+        width: calc(100vw - #{$wrap_px_sidebar_width} - #{$glb_px_scrollbar});
+        top: calc((-1) * #{$wrap_px_header_height});
+        left: calc((-1) * 2 * #{$wrap_vw_header_margin});
+      }
+      .post-item {
+        /* Property */
+        margin: 10px 1%;
+        width: 23%;
+        height: 200px;
+
+        /* Selector */
+        .thum {
+          /* Property */
+          height: 120px;
+
+          /* Selector */
+          img {
+            height: inherit;
+          }
+        }
+      }
+    }
+  }
+  &category {
+    //OK Catergory Writing List
+    @include wrap_section_article;
+    @include not-found(category);
+  }
+  &tag {
+    //OK Tag List
+    @include wrap_section_article;
+    @include not-found(tag);
+    @include post-header('#', null);
+  }
+  &search {
+    //OK Search Results
+    @include wrap_section_article;
+    @include post-header("'", "'");
+  }
+}
+.sideMenu {
+  #wrap {
+    > header {
+      grid: {
+        row: 1/2;
+        column: 2/3;
+      }
+    }
+    > section {
+      grid: {
+        row: 2/3;
+        column: 2/3;
+      }
+    }
+    > aside {
+      display: flex;
+      grid: {
+        row: 1/4;
+        column: 1/2;
+      }
+    }
+    > footer {
+      grid: {
+        row: 3/4;
+        column: 2/3;
+      }
+    }
+  }
+}
+
+/* Component */
+.tags {
+  //OK
+  /* Import */
+  @include glb_flex($_flow: wrap, $_justify-content: flex-start);
+
+  /* Selector */
+  a {
+    /* Import */
+    @include glb_box-shadow;
+    @include glb_hover1;
+
+    /* Property */
+    display: inline-block;
+    margin: 3px 3px 3px 0;
+    padding: 0 5px;
+    border: 1px solid rgba($glb_color_lightgray, 0.15);
+    font-size: 0.75em;
+    line-height: 25px;
+    vertical-align: middle;
+    color: $glb_color_darkgray;
+  }
+}
+.revenue_unit_wrap.position_list {
+  //ADs
+  max-width: 740px;
+  margin: 30px auto;
+}
+
+/* Highlight.js */
+.hljs-ln-numbers {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-align: center;
+  color: #b5b5b5;
+  border-right: 1px solid #b5b5b5;
+  vertical-align: top;
+  width: 20px;
+  padding-left: 0px;
+}
+.hljs-ln td.hljs-ln-code {
+  padding-left: 15px;
+}
+.entry-content pre code.hljs {
+  padding: 10px;
+  margin: 15px 0;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  border-radius: 9px;
+  line-height: 140%;
+}
+pre > code {
+  font-family: $glb_font_NGC !important;
+  font-size: 12px !important;
+  td {
+    color: $glb_color_white !important;
+  }
+}

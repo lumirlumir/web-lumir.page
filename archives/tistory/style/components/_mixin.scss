@@ -1,0 +1,52 @@
+//layout
+@mixin glb_flex($_display: flex, $_flex: row, $_flow: nowrap, $_justify-content: space-between, $_align-items: center, $_align-content: space-between) {
+  display: $_display;
+  flex-flow: $_flex $_flow;
+  justify-content: $_justify-content;
+  align-items: $_align-items;
+  align-content: $_align-content;
+  @content;
+}
+
+//design
+@mixin glb_icon {
+  /* Import */
+  @include glb_flex($_justify-content: center);
+
+  /* Property */
+  width: 30px;
+  height: 30px;
+  border: 1px solid lighten($glb_color_lightgray, 10%);
+  border-radius: 50%;
+  overflow: hidden;
+  @content;
+}
+@mixin glb_box-shadow {
+  box-shadow: 0 0 25px -10px $glb_color_lightgray;
+  border-radius: $glb_px_border-radius;
+  @content;
+}
+
+//animation
+@mixin glb_hover1 {
+  /* Property */
+  transition: all 0.3s ease-in-out;
+
+  /* Selector */
+  &:hover {
+    box-shadow: 0 0 25px -10px $glb_color_darkgray;
+    transform: scale(1.01);
+    @content;
+  }
+}
+@mixin glb_hover2 {
+  /* Property */
+  transition: all 0.3s ease-in-out;
+
+  /* Selector */
+  &:hover {
+    transform-origin: center;
+    transform: rotateZ(5deg);
+    @content;
+  }
+}

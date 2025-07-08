@@ -1,0 +1,72 @@
+:root {
+  /* Declaration */
+  @mixin font($_font-family: inherit, $_font-style: inherit, $_font-weight: inherit, $_font-size: 1em, $_color: inherit) {
+    font: {
+      family: $_font-family;
+      style: $_font-style;
+      weight: $_font-weight;
+      size: $_font-size;
+    }
+    color: $_color;
+    -webkit-text-size-adjust: 100%;
+    @content;
+  }
+
+  /* Selector */
+  * {
+    margin: 0;
+    padding: 0;
+    appearance: none;
+  }
+  body {
+    @include font($_font-family: $glb_font, $_font-style: normal, $_font-weight: normal, $_font-size: 1.05em, $_color: $glb_color_black);
+  }
+  h1 {
+    @include font($_font-weight: bold, $_font-size: 2em);
+    margin: 10px 0;
+  }
+  h2 {
+    @include font($_font-weight: bold, $_font-size: 1.8em);
+    margin: 8px 0;
+  }
+  h3 {
+    @include font($_font-weight: bold, $_font-size: 1.6em);
+    margin: 6px 0;
+  }
+  h4 {
+    @include font($_font-weight: normal, $_font-size: 1.4em);
+    margin: 4px 0;
+  }
+  h5 {
+    @include font($_font-weight: normal, $_font-size: 1.2em);
+    margin: 2px 0;
+  }
+  h6 {
+    @include font($_font-weight: normal, $_font-size: 1em);
+    margin: 0px 0;
+  }
+  a {
+    @include font;
+    text-decoration: none;
+  }
+  button {
+    @include font;
+    overflow: visible;
+    cursor: pointer;
+    border: none;
+  }
+  input {
+    @include font;
+  }
+  nav,
+  hgroup,
+  details,
+  menu,
+  figure,
+  figcaption {
+    display: block;
+  }
+  ul li {
+    list-style: none;
+  }
+}

@@ -1,0 +1,21 @@
+//font
+$glb_font_NGC: ('Nanum Gothic Coding', monospace);
+$glb_font_NBP: ('NanumBarunPen');
+$glb_font: $glb_font_NBP, $glb_font_NGC;
+
+//color
+$glb_color_black: black;
+$glb_color_white: white;
+$glb_color_darkgray: gray;
+$glb_color_lightgray: lightgray;
+
+//px
+$glb_px_border-radius: 15px;
+$glb_px_scrollbar: 10px;
+
+//#wrap
+$wrap_px_header_height: 70px;
+$wrap_vw_header_padding: 1vw;
+$wrap_vw_header_margin: 9vw;
+$wrap_px_sidebar_width: 250px;
+$wrap_px_footer_height: 40px;
