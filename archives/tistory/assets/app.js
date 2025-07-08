@@ -2,7 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { FaArrowUp } from 'react-icons/fa6';
-import { AiOutlineMenu, AiOutlineLink, AiOutlineGithub, AiOutlineInstagram, AiOutlineYoutube } from 'react-icons/ai';
+import {
+  AiOutlineMenu,
+  AiOutlineLink,
+  AiOutlineGithub,
+  AiOutlineInstagram,
+  AiOutlineYoutube,
+} from 'react-icons/ai';
 import { GrSoundcloud } from 'react-icons/gr';
 
 import ScrollBar from './components/ScrollBar';

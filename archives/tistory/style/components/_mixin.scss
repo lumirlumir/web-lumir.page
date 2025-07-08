@@ -1,5 +1,14 @@
+/* stylelint-disable */
+
 //layout
-@mixin glb_flex($_display: flex, $_flex: row, $_flow: nowrap, $_justify-content: space-between, $_align-items: center, $_align-content: space-between) {
+@mixin glb_flex(
+  $_display: flex,
+  $_flex: row,
+  $_flow: nowrap,
+  $_justify-content: space-between,
+  $_align-items: center,
+  $_align-content: space-between
+) {
   display: $_display;
   flex-flow: $_flex $_flow;
   justify-content: $_justify-content;

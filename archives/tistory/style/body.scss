@@ -1,3 +1,5 @@
+/* stylelint-disable */
+
 @import './components/import';
 @import './components/variables';
 @import './components/mixin';
@@ -9,7 +11,12 @@
   /* Property */
   display: grid;
   grid-template-columns: $wrap_px_sidebar_width minmax(0, auto);
-  grid-template-rows: $wrap_px_header_height minmax(calc(100vh - #{$wrap_px_header_height} - #{$wrap_px_footer_height}), auto) $wrap_px_footer_height;
+  grid-template-rows:
+    $wrap_px_header_height minmax(
+      calc(100vh - #{$wrap_px_header_height} - #{$wrap_px_footer_height}),
+      auto
+    )
+    $wrap_px_footer_height;
 
   /* Selector */
   @import './body/header';

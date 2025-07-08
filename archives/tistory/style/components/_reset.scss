@@ -1,6 +1,14 @@
+/* stylelint-disable */
+
 :root {
   /* Declaration */
-  @mixin font($_font-family: inherit, $_font-style: inherit, $_font-weight: inherit, $_font-size: 1em, $_color: inherit) {
+  @mixin font(
+    $_font-family: inherit,
+    $_font-style: inherit,
+    $_font-weight: inherit,
+    $_font-size: 1em,
+    $_color: inherit
+  ) {
     font: {
       family: $_font-family;
       style: $_font-style;
@@ -19,7 +27,13 @@
     appearance: none;
   }
   body {
-    @include font($_font-family: $glb_font, $_font-style: normal, $_font-weight: normal, $_font-size: 1.05em, $_color: $glb_color_black);
+    @include font(
+      $_font-family: $glb_font,
+      $_font-style: normal,
+      $_font-weight: normal,
+      $_font-size: 1.05em,
+      $_color: $glb_color_black
+    );
   }
   h1 {
     @include font($_font-weight: bold, $_font-size: 2em);

@@ -1,3 +1,5 @@
+/* stylelint-disable */
+
 section {
   /* Property */
   grid: {
@@ -95,7 +97,12 @@ section {
       margin: 20px 30%;
       padding: 10px 0;
       border-bottom: 3px double;
-      border-image: linear-gradient(to right, $glb_color_white, lighten($glb_color_lightgray, 10%), $glb_color_white);
+      border-image: linear-gradient(
+        to right,
+        $glb_color_white,
+        lighten($glb_color_lightgray, 10%),
+        $glb_color_white
+      );
       border-image-slice: 1;
 
       /* Selector */
