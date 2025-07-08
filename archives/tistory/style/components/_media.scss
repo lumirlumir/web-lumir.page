@@ -1,0 +1,30 @@
+/* stylelint-disable */
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5) {
+  header #search button,
+  .pagination .prev,
+  .pagination .next {
+    background-image: url(./images/ico_package_2x.png);
+    background-size: 200px auto;
+  }
+}
+@media screen and (max-width: (1366px + $glb_px_scrollbar)) {
+  //empty
+}
+@media screen and (max-width: (1024px + $glb_px_scrollbar)) {
+  #wrap {
+    > header {
+      margin: 0 ($wrap_vw_header_margin / 2);
+    }
+  }
+}
+@media screen and (max-width: (768px + $glb_px_scrollbar)) {
+  #wrap {
+    > header {
+      margin: 0 0;
+    }
+  }
+}
+@media screen and (max-width: (480px + $glb_px_scrollbar)) {
+  //Yet
+}

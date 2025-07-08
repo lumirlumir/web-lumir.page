@@ -1,0 +1,30 @@
+/* stylelint-disable */
+
+.ButtonSingle {
+  /* Property */
+  z-index: 500;
+
+  /* Selector */
+  button {
+    /* Declaration */
+    $color_main: lighten(lightgray, 10%);
+    $color_sub: white;
+
+    /* Property */
+    //flex
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    //design
+    width: 30px;
+    height: 30px;
+    border: 1px solid $color_main;
+    border-radius: 50%;
+    background-color: $color_sub;
+
+    /* Selector */
+    &:hover {
+      background-color: $color_main;
+    }
+  }
+}

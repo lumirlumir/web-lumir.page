@@ -1,0 +1,80 @@
+/* stylelint-disable */
+
+aside {
+  /* Import */
+  @include glb_flex($_flex: column, $_justify-content: flex-start, $_align-items: left);
+  @include glb_box-shadow;
+  @include glb_hover1;
+
+  /* Property */
+  //grid
+  display: none;
+  //scroll
+  height: 100vh;
+  width: $wrap_px_sidebar_width;
+  position: fixed;
+  overflow: hidden scroll;
+  //position
+  z-index: 30;
+  background-color: $glb_color_white;
+
+  /* Selector */
+  //scroll bar
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  //others
+  > * {
+    margin: 10px 10px 20px 10px;
+  }
+  .category ul li {
+    padding: 4px 0 5px;
+    line-height: 1.25rem;
+    color: #777;
+
+    a {
+      &:hover {
+        color: #333;
+      }
+    }
+    ul {
+      //#wrap > aside .category ul li ul li:nth-child(1):before
+      padding-top: 8px;
+
+      li {
+        padding: 6px 0 7px;
+        font-weight: 400;
+        font-size: 1em;
+
+        ul {
+          overflow: hidden;
+          margin-bottom: -4px;
+          padding-top: 6px;
+
+          li {
+            position: relative;
+            padding: 3px 0 3px 9px;
+            font-size: 0.8125rem;
+
+            &:before {
+              content: '';
+              position: absolute;
+              bottom: 7px;
+              left: 0;
+              width: 2px;
+              height: 100%;
+              background-color: #eee;
+            }
+            &:first-child:before {
+              top: 7px;
+              bottom: auto;
+            }
+            a {
+              color: #999;
+            }
+          }
+        }
+      }
+    }
+  }
+}
