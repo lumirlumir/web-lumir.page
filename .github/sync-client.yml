@@ -33,10 +33,6 @@ lumirlumir/lumirlumir-configs:
   - source: ./.vscode/settings.json
     dest: ./configs/.vscode/settings.json
   # ./
-  - source: ./.clang-format
-    dest: ./configs/.clang-format
-  - source: ./.clang-format-ignore
-    dest: ./configs/.clang-format-ignore
   - source: ./.editorconfig
     dest: ./configs/.editorconfig
   - source: ./.gitignore
@@ -57,5 +53,3 @@ lumirlumir/lumirlumir-configs:
     dest: ./configs/jsconfig.json
   - source: ./prettier.config.mjs
     dest: ./configs/prettier.config.mjs
-  - source: ./stylelint.config.mjs
-    dest: ./configs/stylelint.config.mjs
