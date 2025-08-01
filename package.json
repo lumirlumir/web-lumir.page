@@ -68,6 +68,6 @@
     "stylelint-config-standard-scss": "^15.0.1",
     "textlint": "^14.7.1",
     "textlint-rule-allowed-uris": "^2.0.0",
-    "typescript": "^5.8.3"
+    "typescript": "^5.9.2"
   }
 }
