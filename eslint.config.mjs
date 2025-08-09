@@ -38,6 +38,7 @@ export default defineConfig([
     },
     rules: {
       'mark/en-capitalization': 'off',
+      'mark/no-unused-definition': 'off',
     },
   },
 ]);
