@@ -38,7 +38,5 @@ lumirlumir/lumirlumir-configs:
     dest: ./configs/.prettierignore
   - source: ./VScode.code-workspace
     dest: ./configs/VScode.code-workspace
-  - source: ./jsconfig.json
-    dest: ./configs/jsconfig.json
   - source: ./prettier.config.mjs
     dest: ./configs/prettier.config.mjs
