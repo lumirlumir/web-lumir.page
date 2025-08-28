@@ -6,7 +6,7 @@
 // Import
 // --------------------------------------------------------------------------------
 
-import { JSX } from 'react';
+import type React from 'react';
 
 // --------------------------------------------------------------------------------
 // Export
@@ -41,7 +41,7 @@ export interface MarkdownDocumentDataMeta {
     en: string;
     ko: string;
   };
-  reactIcons: JSX.Element;
+  reactIcons: React.JSX.Element;
 }
 
 /**
