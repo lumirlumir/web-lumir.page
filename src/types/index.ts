@@ -1,38 +1,48 @@
-/* eslint-disable @typescript-eslint/consistent-type-definitions */
+/**
+ * @fileoverview Define common types.
+ */
 
-import { JSX } from 'react';
+// --------------------------------------------------------------------------------
+// Import
+// --------------------------------------------------------------------------------
+
+import type React from 'react';
+
+// --------------------------------------------------------------------------------
+// Export
+// --------------------------------------------------------------------------------
 
 /**
  * Represents a Markdown document structure with its `basename`(including extension), `content` and `data`(front matter).
  */
-export type MarkdownDocument = {
+export interface MarkdownDocument {
   /** Including extension */
   basename: string;
   content: string;
   data: MarkdownDocumentData;
-};
+}
 
 /**
  * `MarkdownDocument`'s `data`(front matter).
  */
-export type MarkdownDocumentData = {
+export interface MarkdownDocumentData {
   title: string;
   description: string;
   created: string;
   updated: string;
   tags: MarkdownDocumentDataTag[];
-};
+}
 
 /**
  * Metadata for `MarkdownDocument`'s `data`(front matter).
  */
-export type MarkdownDocumentDataMeta = {
+export interface MarkdownDocumentDataMeta {
   name: {
     en: string;
     ko: string;
   };
-  reactIcons: JSX.Element;
-};
+  reactIcons: React.JSX.Element;
+}
 
 /**
  * `MarkdownDocument`'s `data`'s `tags`.
@@ -65,6 +75,6 @@ export type MarkdownDocumentDataTag =
 /**
  * Metadata for `MarkdownDocument`'s `data`'s `tags`.
  */
-export type MarkdownDocumentDataTagMeta = MarkdownDocumentDataMeta & {
+export interface MarkdownDocumentDataTagMeta extends MarkdownDocumentDataMeta {
   order: number;
-};
+}
