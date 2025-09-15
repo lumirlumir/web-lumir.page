@@ -13,7 +13,7 @@ int main(void) {
   int n = 0;
 
   scanf("%d", &n);
-  PERSON *p = (PERSON *)calloc(n, sizeof(PERSON));
+  PERSON* p = (PERSON*)calloc(n, sizeof(PERSON));
 
   for (int i = 0; i < n; i++) {
     scanf("%d %d", &p[i].w, &p[i].h);

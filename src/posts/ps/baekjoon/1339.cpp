@@ -5,9 +5,9 @@
 #include <cstring>
 using namespace std;
 
-int compare(const void *a, const void *b) { return *(int *)b - *(int *)a; }
+int compare(const void* a, const void* b) { return *(int*)b - *(int*)a; }
 
-int main(int argc, char *argv[]) {
+int main(int argc, char* argv[]) {
   /* Init */
   int AZweight[26] = {};  // A~Z에 해당하는 가중치 값 저장.
 
