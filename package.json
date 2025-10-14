@@ -38,7 +38,7 @@
     "@vercel/speed-insights": "^1.2.0",
     "babel-plugin-react-compiler": "^19.1.0-rc.3",
     "gray-matter": "^4.0.3",
-    "html-react-parser": "^5.2.6",
+    "html-react-parser": "^5.2.7",
     "katex": "^0.16.24",
     "next": "15.5.3",
     "react": "19.1.1",
