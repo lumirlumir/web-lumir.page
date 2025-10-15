@@ -51,7 +51,7 @@
     "@types/node": "^24.6.2",
     "@types/react": "^19.1.15",
     "@types/react-dom": "^19.1.9",
-    "clang-format-git": "^2.0.1",
+    "clang-format-git": "^2.0.2",
     "concurrently": "^9.2.1",
     "editorconfig-checker": "^6.1.0",
     "eslint": "^9.37.0",
