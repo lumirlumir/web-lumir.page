@@ -48,7 +48,7 @@
   },
   "devDependencies": {
     "@types/mdx": "^2.0.13",
-    "@types/node": "^24.6.2",
+    "@types/node": "^24.8.1",
     "@types/react": "^19.1.15",
     "@types/react-dom": "^19.1.9",
     "clang-format-git": "^2.0.2",
