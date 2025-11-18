@@ -232,6 +232,8 @@ HTML `<br>` 태그를 직접 입력한다.
 
 마크다운 문서를 미리보기로 출력할 때, *페이지 나누기* 용도로 많이 사용한다.
 
+<!-- eslint-disable mark/consistent-thematic-break-style -- Used for example -->
+
 #### 2-3-1. `-` style
 
 - 입력
@@ -291,6 +293,8 @@ HTML `<br>` 태그를 직접 입력한다.
   * * *
 
   *****
+
+<!-- eslint-enable mark/consistent-thematic-break-style -- Re-enable -->
 
 ### 2-4. 주석(Comments)
 
@@ -358,6 +362,8 @@ HTML에서 이용하는 `<!-- -->` 기호를 사용한다.
 
 `*` 또는 `_` 기호로 감싼다.
 
+<!-- eslint-disable mark/consistent-emphasis-style -- Used for example -->
+
 - 입력
 
   ```txt
@@ -369,11 +375,15 @@ HTML에서 이용하는 `<!-- -->` 기호를 사용한다.
 
   - *single asterisk*
   - _single underscore_
+
+<!-- eslint-enable mark/consistent-emphasis-style -- Re-enable -->
 
 #### 2-5-2. 두꺼움(진하게)
 
 `**` 또는 `__` 기호로 감싼다.
 
+<!-- eslint-disable mark/consistent-strong-style -- Used for example -->
+
 - 입력
 
   ```txt
@@ -385,6 +395,8 @@ HTML에서 이용하는 `<!-- -->` 기호를 사용한다.
 
   - **double asterisks**
   - __double underscores__
+
+<!-- eslint-enable mark/consistent-strong-style -- Re-enable -->
 
 #### 2-5-3. 취소선
 

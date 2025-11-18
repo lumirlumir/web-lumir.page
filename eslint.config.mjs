@@ -21,9 +21,15 @@ export default defineConfig([
     ['**/build/', '**/coverage/', '**/.next/', '**/archives/'],
     'global/ignores',
   ),
+
   bananass.configs.jsxNext,
   bananass.configs.tsxNext,
-  mark.configs.recommendedGfm,
+  bananass.configs.json,
+  bananass.configs.jsonc,
+  bananass.configs.json5,
+  mark.configs.recommended,
+  mark.configs.stylistic,
+
   {
     name: 'global',
     settings: {
@@ -36,9 +42,29 @@ export default defineConfig([
         },
       },
     },
+  },
+  {
+    name: 'md/global',
+    files: ['**/*.md'],
     rules: {
-      'mark/en-capitalization': 'off',
-      'mark/no-unused-definition': 'off',
+      'mark/allow-link-url': [
+        'error',
+        {
+          disallowUrls: [/^\.\//],
+        },
+      ],
+    },
+  },
+  {
+    name: 'md/posts/docs',
+    files: ['src/posts/docs/**/*.md'],
+    rules: {
+      'mark/allow-image-url': [
+        'error',
+        {
+          allowUrls: [/^\/public\/images\//],
+        },
+      ],
     },
   },
 ]);
