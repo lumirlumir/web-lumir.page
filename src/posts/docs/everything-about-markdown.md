@@ -294,7 +294,7 @@ HTML `<br>` 태그를 직접 입력한다.
 
   *****
 
-<!-- eslint-enable mark/consistent-thematic-break-style -- Re-enable -->  
+<!-- eslint-enable mark/consistent-thematic-break-style -- Re-enable -->
 
 ### 2-4. 주석(Comments)
 
