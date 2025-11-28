@@ -10,7 +10,7 @@ int main(int argc, char* argv[]) {
   cin.tie(0);
   cout.tie(0);
 
-  /* Init */  // »óÇÏÁÂ¿ì
+  /* Init */  // ìƒí•˜ì¢Œìš°
   int dx[4] = {0, 0, -1, 1};
   int dy[4] = {-1, 1, 0, 0};
 
@@ -21,7 +21,7 @@ int main(int argc, char* argv[]) {
   /* BFS */
   while (t--) {
     /* Init */
-    queue<pair<int, int>> q;  // ¼¼·Î °¡·Î
+    queue<pair<int, int>> q;  // ì„¸ë¡œ ê°€ë¡œ
     int ans = 0;
 
     /* Input */
@@ -39,7 +39,7 @@ int main(int argc, char* argv[]) {
     for (int i = 0; i < n; i++) {
       for (int j = 0; j < m; j++) {
         if (map[i][j] == 1) {
-          q.push(make_pair(i, j));  // ¼¼·Î °¡·Î
+          q.push(make_pair(i, j));  // ì„¸ë¡œ ê°€ë¡œ
           ans++;
         }
 

@@ -4,7 +4,7 @@
 long C[10001] = {0, 1};
 
 int fibonacci(int P, int Q) {
-  if (Q == 1)  // Q°¡ 1ÀÏ¶§ ¿¹¿ÜÁ¶°ÇÀ» ¸¸µé¾î¾ß ÇÔ.... ÀÌ°Å ¾ÈÇÏ¸é 100%¿¡¼­ ¸ØÃã
+  if (Q == 1)  // Qê°€ 1ì¼ë•Œ ì˜ˆì™¸ì¡°ê±´ì„ ë§Œë“¤ì–´ì•¼ í•¨.... ì´ê±° ì•ˆí•˜ë©´ 100%ì—ì„œ ë©ˆì¶¤
     return 0;
 
   for (int i = 2; i <= P; i++) C[i] = (C[i - 2] + C[i - 1]) % Q;
@@ -13,9 +13,9 @@ int fibonacci(int P, int Q) {
 }
 /*
 C[i] = ((C[i - 1] % Q) + (C[i - 2] % Q)) % Q;
-À§¿¡ °ÍÀ» »ç¿ëÇÏ¸é ½Ã°£ÃÊ°ú°¡ ¶ä. ¿¬»êÈ½¼ö¸¦ ÁÙ¿©¾ß ÇÑ´Ù.
+ìœ„ì— ê²ƒì„ ì‚¬ìš©í•˜ë©´ ì‹œê°„ì´ˆê³¼ê°€ ëœ¸. ì—°ì‚°íšŸìˆ˜ë¥¼ ì¤„ì—¬ì•¼ í•œë‹¤.
 
-ÀÌ ºÎºÐ Áõ¸í¿¡ ´ëÇØ °øºÎ. (¾Ë°í¸®Áò ¹®ÀÚ¿­ °­ÀÇ¿¡ Áõ¸í ÀÖÀ½.)
+ì´ ë¶€ë¶„ ì¦ëª…ì— ëŒ€í•´ ê³µë¶€. (ì•Œê³ ë¦¬ì¦˜ ë¬¸ìžì—´ ê°•ì˜ì— ì¦ëª… ìžˆìŒ.)
 */
 
 int main(int argc, char* argv[]) {
