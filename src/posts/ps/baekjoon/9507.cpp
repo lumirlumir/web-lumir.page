@@ -31,6 +31,6 @@ int main(int argc, char* argv[]) {
   return 0;
 }
 
-/* long longÀº ¾à 900°æ ±îÁöÀÇ ¼ö¸¦ Ç¥ÇöÇÒ ¼ö ÀÖ´Ù. */
+/* long longì€ ì•½ 900ê²½ ê¹Œì§€ì˜ ìˆ˜ë¥¼ í‘œí˜„í•  ìˆ˜ ìˆë‹¤. */
 
 /* Dynamic Programming. Top Down. */

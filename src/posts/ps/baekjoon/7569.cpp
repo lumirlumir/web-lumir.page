@@ -42,9 +42,9 @@ int main(int argc, char* argv[]) {
       q.pop();
 
       for (int i = 0; i < 6; i++) {
-        int nhei = hei + z[i];  // ³ôÀÌ
-        int nrow = row + y[i];  // ¼¼·Î
-        int ncol = col + x[i];  // °¡·Î
+        int nhei = hei + z[i];  // ë†’ì´
+        int nrow = row + y[i];  // ì„¸ë¡œ
+        int ncol = col + x[i];  // ê°€ë¡œ
 
         if ((0 <= nhei && nhei <= h - 1) && (0 <= nrow && nrow <= n - 1) &&
             (0 <= ncol && ncol <= m - 1))

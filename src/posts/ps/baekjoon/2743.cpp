@@ -20,5 +20,5 @@ int main(int argc, char* argv[]) {
 }
 
 /*
-string class ¿¬½À °â Ç®¾îº» ¹®Á¦.
+string class ì—°ìŠµ ê²¸ í’€ì–´ë³¸ ë¬¸ì œ.
 */

@@ -8,7 +8,7 @@ int main(int argc, char* argv[]) {
   while (true) {
     /* Init */
     int table[10001] = {};
-    // tableÀ» Àü¿ªº¯¼ö·Î ¼±¾ðÇÏ¸é, while¹® ÀçÁøÀÔ½Ã ÃÊ±âÈ­°¡ ¾ÈµÈ´Ù.
+    // tableì„ ì „ì—­ë³€ìˆ˜ë¡œ ì„ ì–¸í•˜ë©´, whileë¬¸ ìž¬ì§„ìž…ì‹œ ì´ˆê¸°í™”ê°€ ì•ˆëœë‹¤.
 
     /* Input */
     int n;
@@ -38,9 +38,9 @@ int main(int argc, char* argv[]) {
 }
 
 /*
-double ÀÚ·áÇü¿¡ 100À» °öÇØ Á¤¼ö·Î º¯È¯½Ã,
-ºÎµ¿¼Ò¼öÁ¡ ¹®Á¦·Î Á¤È®ÇÏÁö ¾ÊÀº °ªÀÌ ¹ÝÈ¯µÉ ¼ö ÀÖÀ¸¹Ç·Î,
-0.5Á¤µµ¸¦ ´õÇØÁÖ¾î¾ß ÇÑ´Ù.
+double ìžë£Œí˜•ì— 100ì„ ê³±í•´ ì •ìˆ˜ë¡œ ë³€í™˜ì‹œ,
+ë¶€ë™ì†Œìˆ˜ì  ë¬¸ì œë¡œ ì •í™•í•˜ì§€ ì•Šì€ ê°’ì´ ë°˜í™˜ë  ìˆ˜ ìžˆìœ¼ë¯€ë¡œ,
+0.5ì •ë„ë¥¼ ë”í•´ì£¼ì–´ì•¼ í•œë‹¤.
 */
 
 /*
