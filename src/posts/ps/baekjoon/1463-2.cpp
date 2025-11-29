@@ -30,10 +30,10 @@ int main(int argc, char* argv[]) {
 }
 
 /*
-1. F(n-1)ÀÇ °ªÀº ¹«Á¶°Ç Á¸ÀçÇÏ¹Ç·Î, INT_MAXÀÇ °ªÀÌ min°ªÀÌ µÇ´Â °æ¿ì´Â ¾ø´Ù.
-µû¶ó¼­, INT_MAXÀÇ ¿À¹öÇÃ·Î¿ì ¹®Á¦´Â »ý°¢ÇÏÁö ¾Ê¾Æµµ µÈ´Ù.
+1. F(n-1)ì˜ ê°’ì€ ë¬´ì¡°ê±´ ì¡´ìž¬í•˜ë¯€ë¡œ, INT_MAXì˜ ê°’ì´ minê°’ì´ ë˜ëŠ” ê²½ìš°ëŠ” ì—†ë‹¤.
+ë”°ë¼ì„œ, INT_MAXì˜ ì˜¤ë²„í”Œë¡œìš° ë¬¸ì œëŠ” ìƒê°í•˜ì§€ ì•Šì•„ë„ ëœë‹¤.
 
-2.TD ¹æ½ÄÀº Stack Overflow ¶§¹®¿¡ Ç®ÀÌ°¡ ºÒ°¡ÇÏ´Ù.
+2.TD ë°©ì‹ì€ Stack Overflow ë•Œë¬¸ì— í’€ì´ê°€ ë¶ˆê°€í•˜ë‹¤.
 */
 
 /*

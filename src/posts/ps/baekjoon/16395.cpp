@@ -22,8 +22,8 @@ int main(int argc, char* argv[]) {
 }
 
 /*
-�ð����⵵ Down : �Ľ�Į�� �ﰢ���� ��Ī.
-�������⵵ Down : Cache �迭 ũ�� ���̱�.
+시간복잡도 Down : 파스칼의 삼각형은 대칭.
+공간복잡도 Down : Cache 배열 크기 줄이기.
 */
 
 /*

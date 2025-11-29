@@ -27,7 +27,7 @@ int main(int argc, char* argv[]) {
     string pars;
     cin >> pars;
     char num[3];
-    int idx = 0;  //'ÀÏ', '½Ê, ÀÏ', '¹é, ½Ê, ÀÏ'ÀÇ ÀÚ¸® ¼ø¼­´ë·Î ÀúÀå.
+    int idx = 0;  //'ì¼', 'ì‹­, ì¼', 'ë°±, ì‹­, ì¼'ì˜ ìë¦¬ ìˆœì„œëŒ€ë¡œ ì €ì¥.
 
     for (auto c : pars) {
       /* '0' ~ '9' */
@@ -86,6 +86,6 @@ int main(int argc, char* argv[]) {
 }
 
 /*
-[Parsing Logic Âü°í]
+[Parsing Logic ì°¸ê³ ]
 https://se-jung-h.tistory.com/entry/BOJC-%EB%B0%B1%EC%A4%80-5430-AC
 */

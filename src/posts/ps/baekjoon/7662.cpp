@@ -74,6 +74,6 @@ int main(int argc, char* argv[]) {
 }
 
 /*
-±¸±Û¿¡ ´Ù¸¥ Ç®ÀÌ ÇÑ¹ø Ã£¾Æº¸ÀÚ.
+êµ¬ê¸€ì— ë‹¤ë¥¸ í’€ì´ í•œë²ˆ ì°¾ì•„ë³´ì.
 https://donggoolosori.github.io/2020/09/24/boj-7662/
 */

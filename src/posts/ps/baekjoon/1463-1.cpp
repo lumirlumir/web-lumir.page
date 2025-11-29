@@ -11,7 +11,7 @@ int C[1000000] = {};  // cache
 
 /* Main */
 int main(int argc, char* argv[]) {
-  /* ÀÔ·Â */
+  /* ìž…ë ¥ */
   int n;
   scanf("%d", &n);
 
@@ -22,10 +22,10 @@ int main(int argc, char* argv[]) {
                 C[i - 1]) +
            1;
 
-  /* Ãâ·Â */
+  /* ì¶œë ¥ */
   printf("%d", C[n]);
 
-  /* ¸¶¹«¸® */
+  /* ë§ˆë¬´ë¦¬ */
   return 0;
 }
 

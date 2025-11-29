@@ -19,7 +19,7 @@ int main(int argc, char* argv[]) {
     string str;
     cin >> str;
     stack<bool> s;
-    bool isno = false;  // flag º¯¼ö
+    bool isno = false;  // flag ë³€ìˆ˜
 
     /* Calculate */
     for (int i = 0; i < str.size(); i++) {
@@ -47,17 +47,17 @@ int main(int argc, char* argv[]) {
 }
 
 /*
-'\n' ÀÌ "\n" º¸´Ù ¼Óµµ°¡ ºü¸£´Ù.
+'\n' ì´ "\n" ë³´ë‹¤ ì†ë„ê°€ ë¹ ë¥´ë‹¤.
 
-»ç¿ëÇÑ ÀÚ·á±¸Á¶ : stack
-Ç®ÀÌ ³»¿ë
-1. '(' ÀÏ ¶§
-        stack¿¡ push
-2. ')' ÀÏ ¶§
-        stackÀÌ ºñ¾îÀÖÁö ¾Ê´Ù¸é pop
-        stackÀÌ ºñ¾îÀÖ´Ù¸é "NO"
-3. ÀÔ·ÂÀ¸·Î ¿Â ¹®ÀÚ¿­ È®ÀÎ ¸¶Ä£ °æ¿ì
-        stackÀÌ ºñ¾îÀÖ´Â °æ¿ì "YES"
-        stackÀÌ ºñ¾îÀÖÁö ¾ÊÀº °æ¿ì "NO"
+ì‚¬ìš©í•œ ìžë£Œêµ¬ì¡° : stack
+í’€ì´ ë‚´ìš©
+1. '(' ì¼ ë•Œ
+        stackì— push
+2. ')' ì¼ ë•Œ
+        stackì´ ë¹„ì–´ìžˆì§€ ì•Šë‹¤ë©´ pop
+        stackì´ ë¹„ì–´ìžˆë‹¤ë©´ "NO"
+3. ìž…ë ¥ìœ¼ë¡œ ì˜¨ ë¬¸ìžì—´ í™•ì¸ ë§ˆì¹œ ê²½ìš°
+        stackì´ ë¹„ì–´ìžˆëŠ” ê²½ìš° "YES"
+        stackì´ ë¹„ì–´ìžˆì§€ ì•Šì€ ê²½ìš° "NO"
 
 */

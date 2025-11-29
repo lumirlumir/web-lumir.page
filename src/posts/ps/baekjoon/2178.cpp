@@ -19,7 +19,7 @@ int main(int argc, char* argv[]) {
   char maze[100][100] = {};
   for (int i = 0; i < n; i++) cin >> maze[i];
 
-  pair<int, int> T(n - 1, m - 1);  // TÀÇ ÁÂÇ¥¸¦ ÀúÀå
+  pair<int, int> T(n - 1, m - 1);  // Tì˜ ì¢Œí‘œë¥¼ ì €ì¥
   queue<pair<int, int>> q;         // <col, row>
 
   /* BFS for Maze */
@@ -91,5 +91,5 @@ int main(int argc, char* argv[]) {
 }
 
 /*
-ÀÚ·á±¸Á¶ ½Ã°£¿¡ Ç¬ ¹®Á¦¿Í µ¿ÀÏÇÏ´Ù.
+ìë£Œêµ¬ì¡° ì‹œê°„ì— í‘¼ ë¬¸ì œì™€ ë™ì¼í•˜ë‹¤.
 */

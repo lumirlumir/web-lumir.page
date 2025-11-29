@@ -13,13 +13,13 @@ class Multitap {
  public:
   /* Constructer & Destructor */
   Multitap(int len) {
-    socket = new int[len]{};  // 0=false·Î ÃÊ±âÈ­.
+    socket = new int[len]{};  // 0=falseë¡œ ì´ˆê¸°í™”.
     this->len = len;
     pocnt = 0;
   }
   ~Multitap() { delete[] socket; }
   /* Func */
-  void plugin(int plug) {  // ¸ÖÆ¼ÅÇÀÇ ºó °ø°£¿¡ idx°¡ ÀÛÀº ¼ø¼­ºÎÅÍ ÇÃ·¯±×¸¦ ²È´Â´Ù.
+  void plugin(int plug) {  // ë©€í‹°íƒ­ì˜ ë¹ˆ ê³µê°„ì— idxê°€ ì‘ì€ ìˆœì„œë¶€í„° í”ŒëŸ¬ê·¸ë¥¼ ê½‚ëŠ”ë‹¤.
     for (int idx = 0; idx < len; idx++)
       if (socket[idx] == 0) {
         socket[idx] = plug;
@@ -34,12 +34,12 @@ class Multitap {
       }
     pocnt++;
   }
-  bool isplug(int plug) const {  // ¸ÖÆ¼ÅÇ¿¡ plug¹ø plug°¡ ²ÈÇôÀÖ³ª ¿©ºÎ È®ÀÎ
+  bool isplug(int plug) const {  // ë©€í‹°íƒ­ì— plugë²ˆ plugê°€ ê½‚í˜€ìˆë‚˜ ì—¬ë¶€ í™•ì¸
     for (int idx = 0; idx < len; idx++)
       if (socket[idx] == plug) return true;
     return false;
   }
-  bool isfull(void) const {  // ¸ÖÆ¼ÅÇÀÌ ÇÏ³ª¶óµµ ºñ¾îÀÖÀ¸¸é false, ²Ë Â÷ÀÖÀ¸¸é true
+  bool isfull(void) const {  // ë©€í‹°íƒ­ì´ í•˜ë‚˜ë¼ë„ ë¹„ì–´ìˆìœ¼ë©´ false, ê½‰ ì°¨ìˆìœ¼ë©´ true
     for (int i = 0; i < len; i++)
       if (socket[i] == false) return false;
     return true;
@@ -50,7 +50,7 @@ class Multitap {
     int maxidx = 0;
 
     /* OPT */
-    for (int i = 0, max = 0; i < this->len; i++) {  // i¹øÂ° socket
+    for (int i = 0, max = 0; i < this->len; i++) {  // ië²ˆì§¸ socket
       int tmp = INT_MAX;
 
       for (int j = idx + 1; j < len; j++)
@@ -84,7 +84,7 @@ int main(int argc, char* argv[]) {
   scanf("%d %d", &N, &K);
 
   Multitap multitap(N);
-  int* job_q = new int[K]{};  // 0À¸·Î ÃÊ±âÈ­.
+  int* job_q = new int[K]{};  // 0ìœ¼ë¡œ ì´ˆê¸°í™”.
 
   for (int i = 0; i < K; i++) scanf("%d", &job_q[i]);
 
@@ -98,10 +98,10 @@ int main(int argc, char* argv[]) {
 
   /* Scheduling */
   for (int i = 0; i < K; i++) {
-    /* ¸ÖÆ¼ÅÇ¿¡ job_q[i]¿¡ ÇØ´çÇÏ´Â ÇÃ·¯±×°¡ ²ÈÇôÀÖÁö ¾ÊÀº °æ¿ì */
+    /* ë©€í‹°íƒ­ì— job_q[i]ì— í•´ë‹¹í•˜ëŠ” í”ŒëŸ¬ê·¸ê°€ ê½‚í˜€ìˆì§€ ì•Šì€ ê²½ìš° */
     if (!multitap.isplug(job_q[i])) {
       /* plugout */
-      if (multitap.isfull())  // ¸ÖÆ¼ÅÇÀÌ ²Ë Â÷ÀÖ´Â °æ¿ì¿¡¸¸ plugout
+      if (multitap.isfull())  // ë©€í‹°íƒ­ì´ ê½‰ ì°¨ìˆëŠ” ê²½ìš°ì—ë§Œ plugout
         multitap.plugout(multitap.opt(job_q, K, i));
 
       /* plugin */
@@ -122,12 +122,12 @@ int main(int argc, char* argv[]) {
 }
 
 /*
-OSÀÇ locality¿¡ °üÇÑ ¹®Á¦.
-OSÀÇ ÆäÀÌÁö ±³Ã¼ ¾Ë°í¸®Áò.
-(ÀÌ Áß °¡Àå ÀÌ»óÀûÀÎ ¾Ë°í¸®ÁòÀÎ OPT ¾Ë°í¸®ÁòÀ» ±¸ÇöÇÏ´Â °ÍÀÌ´Ù.)
-pocnt°ªÀº °á±¹ page faultÀÇ ¹ß»ı È½¼öÀÌ´Ù.
+OSì˜ localityì— ê´€í•œ ë¬¸ì œ.
+OSì˜ í˜ì´ì§€ êµì²´ ì•Œê³ ë¦¬ì¦˜.
+(ì´ ì¤‘ ê°€ì¥ ì´ìƒì ì¸ ì•Œê³ ë¦¬ì¦˜ì¸ OPT ì•Œê³ ë¦¬ì¦˜ì„ êµ¬í˜„í•˜ëŠ” ê²ƒì´ë‹¤.)
+pocntê°’ì€ ê²°êµ­ page faultì˜ ë°œìƒ íšŸìˆ˜ì´ë‹¤.
 
-¹İ·Ê
+ë°˜ë¡€
 [INPUT]
 2 18
 1 2 3 4 3 4 3 4 3 4 1 2 1 2 1 2 1 2

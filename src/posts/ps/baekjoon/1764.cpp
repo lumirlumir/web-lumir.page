@@ -28,7 +28,7 @@ int main(int argc, char* argv[]) {
   while (m--) {
     string str;
     cin >> str;
-    if (ma.find(str) != ma.end()) {  // °ªÀÌ Á¸ÀçÇÏ´Â °æ¿ì
+    if (ma.find(str) != ma.end()) {  // ê°’ì´ ì¡´ìž¬í•˜ëŠ” ê²½ìš°
       ma.find(str)->second = true;
       count++;
     }

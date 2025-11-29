@@ -1,4 +1,4 @@
-/* Á¤´äÇ®ÀÌ */
+/* ì •ë‹µí’€ì´ */
 #pragma warning(disable : 4996)
 #include <algorithm>
 #include <cstdio>
@@ -30,7 +30,7 @@ int main(int argc, char* argv[]) {
   /* End */
   return 0;
 }
-/* ½Ã°£ ÃÊ°ú Ç®ÀÌ */
+/* ì‹œê°„ ì´ˆê³¼ í’€ì´ */
 #pragma warning(disable : 4996)
 #include <algorithm>
 #include <cstdio>
@@ -70,7 +70,7 @@ int main(int argc, char* argv[]) {
   /* End */
   return 0;
 }
-/* ½Ã°£ ÃÊ°ú Ç®ÀÌ */
+/* ì‹œê°„ ì´ˆê³¼ í’€ì´ */
 #pragma warning(disable : 4996)
 #include <cstdio>
 
@@ -105,7 +105,7 @@ int main(int argc, char* argv[]) {
   /* End */
   return 0;
 }
-/* ½Ã°£ ÃÊ°ú Ç®ÀÌ */
+/* ì‹œê°„ ì´ˆê³¼ í’€ì´ */
 #pragma warning(disable : 4996)
 #include <algorithm>
 #include <cstdio>
@@ -134,7 +134,7 @@ int main(int argc, char* argv[]) {
 }
 
 /*
-ºñÆ®¸¶½ºÅ·¿¡ ´ëÇØ °øºÎÇÏÀÚ
-ºñÆ®¿¬»êÀÚ¿¡ ´ëÇØ °øºÎÇÏÀÚ
-12865 ¹®Á¦¿Í ¼¼Æ®¹®Á¦
+ë¹„íŠ¸ë§ˆìŠ¤í‚¹ì— ëŒ€í•´ ê³µë¶€í•˜ì
+ë¹„íŠ¸ì—°ì‚°ìì— ëŒ€í•´ ê³µë¶€í•˜ì
+12865 ë¬¸ì œì™€ ì„¸íŠ¸ë¬¸ì œ
 */

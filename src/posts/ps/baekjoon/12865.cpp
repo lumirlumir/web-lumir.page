@@ -39,7 +39,7 @@ int main(int argc, char* argv[]) {
   return 0;
 }
 
-/* ´õ¿í simpleÇÑ version */
+/* ë”ìš± simpleí•œ version */
 #pragma warning(disable : 4996)
 #include <algorithm>
 #include <cstdio>
@@ -65,7 +65,7 @@ int main(int argc, char* argv[]) {
   /* End */
   return 0;
 }
-/* 12920 ¹®Á¦¿Í ¼¼Æ®¹®Á¦ */
+/* 12920 ë¬¸ì œì™€ ì„¸íŠ¸ë¬¸ì œ */
 /*
 Dynamic Programming. Bottom Up.
 */

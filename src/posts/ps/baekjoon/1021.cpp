@@ -17,13 +17,13 @@ int main(int argc, char* argv[]) {
   int n, m;
   cin >> n >> m;
 
-  for (int i = 1; i <= n; i++)  // deque¿¡´Â 1ºÎÅÍ N±îÁöÀÇ ÀÚ¿¬¼ö°¡ ¼ø¼­´ë·Î µé¾î°¨.
+  for (int i = 1; i <= n; i++)  // dequeì—ëŠ” 1ë¶€í„° Nê¹Œì§€ì˜ ìžì—°ìˆ˜ê°€ ìˆœì„œëŒ€ë¡œ ë“¤ì–´ê°.
     dq.push_back(i);
 
   /* Calculation */
   while (m--) {
     /* Init */
-    int lr = 0;  // 2¹ø¿¬»ê(¿ÞÂÊ ÀÌµ¿, Left Rotation)ÀÇ È½¼ö
+    int lr = 0;  // 2ë²ˆì—°ì‚°(ì™¼ìª½ ì´ë™, Left Rotation)ì˜ íšŸìˆ˜
     int a;
     cin >> a;
 

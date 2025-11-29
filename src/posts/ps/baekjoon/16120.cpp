@@ -11,7 +11,7 @@ int main(int argc, char* argv[]) {
   /* Init */
   string str;
   cin >> str;
-  int cnt = 0;  // 'P'╟║ ©╛╪сю╦╥н Ё╙е╦Ё╜ х╫╪Ж.
+  int cnt = 0;  // 'P'Й╟─ Л≈╟Л├█Л°╪К║° К┌≤М┐─К┌° М ÷Л┬≤.
 
   /* Calculate */
   for (int i = 0; i < str.size(); i++) {

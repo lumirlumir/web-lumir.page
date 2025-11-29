@@ -9,9 +9,9 @@
 #define MAXCYCLE_LEN 536
 #define SP (MAX_LEN / 2)
 /*
-MAXLEN : »çÀÌÅ¬ÀÌ ÆÇº°µÇ±â±îÁöÀÇ ÃÖ´ë ±æÀÌ¸¦ ÃßÁ¤ÇÑ °Í.
-MAXCYCLE : 1000, 2000 µîÀÇ ¾Æ¿¹ Å« ¼ö¸¦ »çÀÌÅ¬ÀÇ ÃÖ´ë ±æÀÌ·Î ÃßÁ¤ÇØµµ µÊ.
-SP : Search Point = »çÀÌÅ¬ Å½»öÀ» ½ÃÀÛÇÒ ÁöÁ¡.
+MAXLEN : ì‚¬ì´í´ì´ íŒë³„ë˜ê¸°ê¹Œì§€ì˜ ìµœëŒ€ ê¸¸ì´ë¥¼ ì¶”ì •í•œ ê²ƒ.
+MAXCYCLE : 1000, 2000 ë“±ì˜ ì•„ì˜ˆ í° ìˆ˜ë¥¼ ì‚¬ì´í´ì˜ ìµœëŒ€ ê¸¸ì´ë¡œ ì¶”ì •í•´ë„ ë¨.
+SP : Search Point = ì‚¬ì´í´ íƒìƒ‰ì„ ì‹œìž‘í•  ì§€ì .
 */
 
 bool F[MAX_LEN] = {};
@@ -32,7 +32,7 @@ int main(int argc, char* argv[]) {
   for (int i = 0; i < K; i++) F[A[i]] = 1;
 
   /* Fill F[MAXLEN] */
-  for (int i = 1; i < MAX_LEN; i++) {  // MAXLEN ±¸°£±îÁö¸¸ °ªÀ» ±¸ÇÔ.
+  for (int i = 1; i < MAX_LEN; i++) {  // MAXLEN êµ¬ê°„ê¹Œì§€ë§Œ ê°’ì„ êµ¬í•¨.
     if (F[i] == 1) continue;
 
     int tmp = 1;
@@ -65,13 +65,13 @@ int main(int argc, char* argv[]) {
   else {
     /* Init */
     int maxcycle_len =
-        0;  // cycle ÁÖ±â°¡ nÀÌ¶ó¸é, MAXCYCLE_LEN¿¡ °¡Àå °¡±î¿î nÀÇ ¹è¼ö°ªÀÌ ±¸ÇØÁü.
+        0;  // cycle ì£¼ê¸°ê°€ nì´ë¼ë©´, MAXCYCLE_LENì— ê°€ìž¥ ê°€ê¹Œìš´ nì˜ ë°°ìˆ˜ê°’ì´ êµ¬í•´ì§.
 
     /* Find Cycle */
     for (int cycle_len = 1; cycle_len <= MAXCYCLE_LEN;
-         cycle_len++) {  // cycle_len°ªÀÌ cycleÀÇ ±æÀÌÀÌ´Ù.
+         cycle_len++) {  // cycle_lenê°’ì´ cycleì˜ ê¸¸ì´ì´ë‹¤.
       /* Comparison */
-      for (int i = 0; i < cycle_len; i++) {  // cycle_len ±æÀÌ¸¸Å­ ¹Ýº¹.
+      for (int i = 0; i < cycle_len; i++) {  // cycle_len ê¸¸ì´ë§Œí¼ ë°˜ë³µ.
         /* cycle : X */
         if (F[(SP + i)] != F[SP + cycle_len + i]) break;
         /* cycle : O */

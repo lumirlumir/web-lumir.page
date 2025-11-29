@@ -1,11 +1,11 @@
-/*Counting Sort ¹®Á¦*/
+/*Counting Sort ë¬¸ì œ*/
 #pragma warning(disable : 4996)
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-void counting_sort(int A[], int k, int n) {  // k´Â ÀÔ·Â ¹è¿­ÀÇ ÃÖ´ñ°ª.
-  /*1´Ü°è*/
+void counting_sort(int A[], int k, int n) {  // këŠ” ì…ë ¥ ë°°ì—´ì˜ ìµœëŒ“ê°’.
+  /*1ë‹¨ê³„*/
   int* count = (int*)calloc(k + 1, sizeof(int));
 
   for (int i = 0; i < n; i++) count[A[i]]++;
@@ -20,7 +20,7 @@ void counting_sort(int A[], int k, int n) {  // k´Â ÀÔ·Â ¹è¿­ÀÇ ÃÖ´ñ°ª.
   // printf("%d ", count[i]);
   // printf("\n");
 
-  /*2´Ü°è*/
+  /*2ë‹¨ê³„*/
   int* Atmp = (int*)calloc(n, sizeof(int));
 
   for (int i = 0; i < n; i++) Atmp[(count[A[i]]--) - 1] = A[i];
@@ -32,7 +32,7 @@ void counting_sort(int A[], int k, int n) {  // k´Â ÀÔ·Â ¹è¿­ÀÇ ÃÖ´ñ°ª.
 
   free(Atmp);
   free(count);
-}  // ÀÌ ¹®Á¦¿¡¼­´Â ÀÌ°Ç ¾È¾¸.
+}  // ì´ ë¬¸ì œì—ì„œëŠ” ì´ê±´ ì•ˆì”€.
 
 int main(void) {
   int k = 10000;

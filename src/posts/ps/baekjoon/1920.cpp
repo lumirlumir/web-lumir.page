@@ -26,7 +26,7 @@ int main(int argc, char* argv[]) {
     int x;
     cin >> x;
 
-    if (us.find(x) == us.end())  // Ã£Áö ¸øÇÑ°æ¿ì
+    if (us.find(x) == us.end())  // ì°¾ì§€ ëª»í•œê²½ìš°
       cout << '0' << '\n';
     else
       cout << '1' << '\n';

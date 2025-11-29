@@ -17,9 +17,9 @@ int main(int argc, char* argv[]) {
   while (n--) {
     int x;
     cin >> x;
-    if (um.find(x) == um.end())  // ¾ø´Â °æ¿ì
+    if (um.find(x) == um.end())  // ì—†ëŠ” ê²½ìš°
       um.insert(make_pair(x, 1));
-    else  // ÀÖ´Â °æ¿ì
+    else  // ìžˆëŠ” ê²½ìš°
       um.find(x)->second++;
   }
   int m;
@@ -27,7 +27,7 @@ int main(int argc, char* argv[]) {
   while (m--) {
     int x;
     cin >> x;
-    if (um.find(x) == um.end())  // ¾ø´Â °æ¿ì
+    if (um.find(x) == um.end())  // ì—†ëŠ” ê²½ìš°
       cout << '0' << ' ';
     else
       cout << um.find(x)->second << ' ';

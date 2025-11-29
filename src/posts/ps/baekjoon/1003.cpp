@@ -7,10 +7,10 @@ typedef struct {
 } Cache;
 
 Cache C[41] = {{1, 0}, {0, 1}, {}};
-// Cache(Memoization), C[0] C[1] Á¦¿Ü ¸â¹öº¯¼ö ¸ğµÎ 0À¸·Î ÃÊ±âÈ­.
+// Cache(Memoization), C[0] C[1] ì œì™¸ ë©¤ë²„ë³€ìˆ˜ ëª¨ë‘ 0ìœ¼ë¡œ ì´ˆê¸°í™”.
 
 void fibonacci(void) {
-  for (int i = 2; i <= 40; i++) {  // 40º¸´Ù ÀÛ°Å³ª °°Àº ÀÚ¿¬¼ö
+  for (int i = 2; i <= 40; i++) {  // 40ë³´ë‹¤ ì‘ê±°ë‚˜ ê°™ì€ ìì—°ìˆ˜
     C[i].num0_cache = C[i - 1].num0_cache + C[i - 2].num0_cache;
     C[i].num1_cache = C[i - 1].num1_cache + C[i - 2].num1_cache;
   }
@@ -33,6 +33,6 @@ int main(int argc, char* argv[]) {
 /*
 Dynamic Programming. Bottom Up.
 
-¹®Á¦ »óÈ²¿¡ µû¶ó TD¹æ½Ä°ú BU¹æ½Ä Áß¿¡¼­ ¾î¶²°É·Î ¹®Á¦¸¦ Ç®Áö
-°áÁ¤ÇÒ ÁÙ ¾Ë¾Æ¾ß ÇÑ´Ù.
+ë¬¸ì œ ìƒí™©ì— ë”°ë¼ TDë°©ì‹ê³¼ BUë°©ì‹ ì¤‘ì—ì„œ ì–´ë–¤ê±¸ë¡œ ë¬¸ì œë¥¼ í’€ì§€
+ê²°ì •í•  ì¤„ ì•Œì•„ì•¼ í•œë‹¤.
 */
