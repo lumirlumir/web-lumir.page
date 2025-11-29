@@ -33,7 +33,7 @@ int main(int argc, char* argv[]) {
   }
 
   /* DFS */
-  // ³»¸²Â÷¼ø Á¤·Ä
+  // ë‚´ë¦¼ì°¨ìˆœ ì •ë ¬
   for (int i = 1; i < edge.size(); i++) sort(edge[i].rbegin(), edge[i].rend());
 
   // DFS
@@ -54,7 +54,7 @@ int main(int argc, char* argv[]) {
   cout << '\n';
 
   /* BFS */
-  // ¿À¸§Â÷¼ø Á¤·Ä
+  // ì˜¤ë¦„ì°¨ìˆœ ì •ë ¬
   for (int i = 1; i < edge.size(); i++) sort(edge[i].begin(), edge[i].end());
 
   // BFS

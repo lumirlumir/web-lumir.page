@@ -4,9 +4,9 @@ using namespace std;
 
 struct cmp {
   bool operator()(const pair<int, char>& a, const pair<int, char>& b) {
-    // µÎ ¼ö°¡ ´Ù¸£´Ù¸é.
+    // ë‘ ìˆ˜ê°€ ë‹¤ë¥´ë‹¤ë©´.
     if (a.first != b.first) return a.first > b.first;
-    // µÎ ¼ö°¡ °°´Ù¸é.
+    // ë‘ ìˆ˜ê°€ ê°™ë‹¤ë©´.
     else
       return a.second < b.second;
   }
@@ -53,4 +53,4 @@ int main(int argc, char* argv[]) {
   return 0;
 }
 
-/* 1927¹ø, 11279¹ø ¹®Á¦¿Í ¼¼Æ® ¹®Á¦ */
+/* 1927ë²ˆ, 11279ë²ˆ ë¬¸ì œì™€ ì„¸íŠ¸ ë¬¸ì œ */

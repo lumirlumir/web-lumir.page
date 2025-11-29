@@ -9,7 +9,7 @@ int compare(const void* a, const void* b) { return *(int*)b - *(int*)a; }
 
 int main(int argc, char* argv[]) {
   /* Init */
-  int AZweight[26] = {};  // A~Z¿¡ ÇØ´çÇÏ´Â °¡ÁßÄ¡ °ª ÀúÀå.
+  int AZweight[26] = {};  // A~Zì— í•´ë‹¹í•˜ëŠ” ê°€ì¤‘ì¹˜ ê°’ ì €ì¥.
 
   /* Input & Weight Calculation */
   int N;

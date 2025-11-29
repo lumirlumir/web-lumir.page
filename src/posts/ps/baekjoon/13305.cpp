@@ -6,7 +6,7 @@ using namespace std;
 
 typedef long long LL;
 
-int min_idx(LL arr[], int e_idx) {  // idx '0'ºÎÅÍ 'e_idx' Áß¿¡¼­ min_idx°ªÀ» Ã£À½.
+int min_idx(LL arr[], int e_idx) {  // idx '0'ë¶€í„° 'e_idx' ì¤‘ì—ì„œ min_idxê°’ì„ ì°¾ìŒ.
   int minimum = INT_MAX;
   int idx = 0;
 
@@ -20,17 +20,17 @@ int min_idx(LL arr[], int e_idx) {  // idx '0'ºÎÅÍ 'e_idx' Áß¿¡¼­ min_idx°ªÀ» Ã£
 }
 
 /*
-Àç±Í ÀÌ¿ë½Ã, ÃÖ¾ÇÀÇ °æ¿ì(µµ½ÃÀÇ ¸®ÅÍ ´ç °¡°İÀÌ ³»¸²Â÷¼øÀÏ¶§)
-O(n^2)ÀÇ ½Ã°£ÀÌ ¼Ò¿äµÈ´Ù. (quick sortÀÇ ÃÖ¾ÇÀÇ °æ¿ì¿Í µ¿ÀÏ)
-calculate_longÀ» ÀÌ¿ëÇÏ¸é 58Á¡ÀÌ ³ª¿Â´Ù.
+ì¬ê·€ ì´ìš©ì‹œ, ìµœì•…ì˜ ê²½ìš°(ë„ì‹œì˜ ë¦¬í„° ë‹¹ ê°€ê²©ì´ ë‚´ë¦¼ì°¨ìˆœì¼ë•Œ)
+O(n^2)ì˜ ì‹œê°„ì´ ì†Œìš”ëœë‹¤. (quick sortì˜ ìµœì•…ì˜ ê²½ìš°ì™€ ë™ì¼)
+calculate_longì„ ì´ìš©í•˜ë©´ 58ì ì´ ë‚˜ì˜¨ë‹¤.
 */
 LL calculate_long(LL dist[], LL cost[], int e_idx) {  // e_idx = end index
   /* Exit */
   if (e_idx == 0) return 0;
 
   /* Init */
-  LL ans = 0;                            // Á¤´ä°ª.
-  int pivot = min_idx(cost, e_idx - 1);  // ½Ã°£º¹Àâµµ O(n)
+  LL ans = 0;                            // ì •ë‹µê°’.
+  int pivot = min_idx(cost, e_idx - 1);  // ì‹œê°„ë³µì¡ë„ O(n)
 
   /* Calculate */
   for (int i = pivot; i < e_idx; i++) ans += cost[pivot] * dist[i];
@@ -39,7 +39,7 @@ LL calculate_long(LL dist[], LL cost[], int e_idx) {  // e_idx = end index
   return calculate_long(dist, cost, pivot) + ans;
 }
 
-/* O(n)ÀÇ ½Ã°£º¹Àâµµ */
+/* O(n)ì˜ ì‹œê°„ë³µì¡ë„ */
 LL calculate_short(LL dist[], LL cost[], int e_idx) {
   /* Init */
   LL ans = 0;
@@ -66,7 +66,7 @@ int main(int argc, char* argv[]) {
   for (int i = 0; i < N; i++) scanf("%lld", &cost[i]);
 
   /* Output */
-  // printf("%lld", calculate_long(dist, pric, N - 1)); //O(n^2)Ç®ÀÌ
+  // printf("%lld", calculate_long(dist, pric, N - 1)); //O(n^2)í’€ì´
   printf("%lld", calculate_short(dist, cost, N - 1));
 
   /* End */
@@ -76,16 +76,16 @@ int main(int argc, char* argv[]) {
 }
 
 /*
-Á¾ÀÌ, ºÏ¸¶Å© ÂüÁ¶.
+ì¢…ì´, ë¶ë§ˆí¬ ì°¸ì¡°.
 
-C++ ½ºÅ¸ÀÏ µ¿ÀûÇÒ´ç ÀÌ¿ë.
-ºĞÇÒÁ¤º¹ ¹æ½ÄÀ¸·Î Ç®¾ú´Ù.
+C++ ìŠ¤íƒ€ì¼ ë™ì í• ë‹¹ ì´ìš©.
+ë¶„í• ì •ë³µ ë°©ì‹ìœ¼ë¡œ í’€ì—ˆë‹¤.
 
-[Á¢±Ù¹æ¹ı]
-±â¸§°ªÀÌ °¡Àå ½Ñ ³ª¶ó¿¡¼­ ±â¸§À» °¡Àå ¸¹ÀÌ ³Ö¾î¾ß ÇÑ´Ù.
+[ì ‘ê·¼ë°©ë²•]
+ê¸°ë¦„ê°’ì´ ê°€ì¥ ì‹¼ ë‚˜ë¼ì—ì„œ ê¸°ë¦„ì„ ê°€ì¥ ë§ì´ ë„£ì–´ì•¼ í•œë‹¤.
 
-¿¹Á¦¿¡¼­´Â °¡°İÀÌ 2ÀÎ ³ª¶ó¿¡¼­ °¡Àå ¸¹Àº ±â¸§À» ³Ö¾î¾ß ÇÑ´Ù.
+ì˜ˆì œì—ì„œëŠ” ê°€ê²©ì´ 2ì¸ ë‚˜ë¼ì—ì„œ ê°€ì¥ ë§ì€ ê¸°ë¦„ì„ ë„£ì–´ì•¼ í•œë‹¤.
 
-[ans ¹üÀ§]
-10^9 = 10¾ï µû¶ó¼­, 10^9 * 10^9 = 10^18, 10^18 = 10°æ
+[ans ë²”ìœ„]
+10^9 = 10ì–µ ë”°ë¼ì„œ, 10^9 * 10^9 = 10^18, 10^18 = 10ê²½
 */

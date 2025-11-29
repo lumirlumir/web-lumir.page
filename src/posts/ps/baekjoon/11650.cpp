@@ -15,12 +15,12 @@ void merge(coordinate A[], int l, int m, int r) {
   coordinate* tmp = (coordinate*)calloc(r - l + 1, sizeof(coordinate));
 
   while (i <= m && j <= r) {
-    if (A[i].x != A[j].x) {  // xÁÂÇ¥°¡ °°Áö ¾ÊÀº °æ¿ì.
+    if (A[i].x != A[j].x) {  // xì¢Œí‘œê°€ ê°™ì§€ ì•Šì€ ê²½ìš°.
       if (A[i].x < A[j].x)
         tmp[t++] = A[i++];
       else if (A[i].x > A[j].x)
         tmp[t++] = A[j++];
-    } else {  // xÁÂÇ¥°¡ °°Àº °æ¿ì.
+    } else {  // xì¢Œí‘œê°€ ê°™ì€ ê²½ìš°.
       if (A[i].y < A[j].y)
         tmp[t++] = A[i++];
       else if (A[i].y > A[j].y)

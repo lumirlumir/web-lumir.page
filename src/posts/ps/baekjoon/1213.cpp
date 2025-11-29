@@ -5,14 +5,14 @@ using namespace std;
 
 int main(int argc, char* argv[]) {
   /* Init */
-  int AZalp[26] = {};  // A~Z±îÁöÀÇ ¾ËÆÄºªÀÇ °³¼ö¸¦ ´ãÀ» ¹è¿­.
+  int AZalp[26] = {};  // A~Zê¹Œì§€ì˜ ì•ŒíŒŒë²³ì˜ ê°œìˆ˜ë¥¼ ë‹´ì„ ë°°ì—´.
   char str[51];
-  scanf("%s", str);  // '\0'Æ÷ÇÔ.
+  scanf("%s", str);  // '\0'í¬í•¨.
 
-  /* °³¼ö¼¼±â */
+  /* ê°œìˆ˜ì„¸ê¸° */
   for (int i = 0; str[i] != '\0'; i++) AZalp[str[i] - 65]++;
 
-  /* È¦¼ö °³¼ö ÆÄ¾Ç */
+  /* í™€ìˆ˜ ê°œìˆ˜ íŒŒì•… */
   int oddnum = 0;
   for (int i = 0; i < 26; i++)
     if (AZalp[i] % 2 == 1)
@@ -21,7 +21,7 @@ int main(int argc, char* argv[]) {
         return 0;
       }
 
-  /* ¹èÄ¡ */
+  /* ë°°ì¹˜ */
   int str_idx = 0;
   // 1
   for (int AZalp_idx = 0; AZalp_idx < 26; AZalp_idx++)
