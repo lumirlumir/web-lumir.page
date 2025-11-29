@@ -1,8 +1,8 @@
 #pragma warning(disable : 4996)
 #include <stdio.h>
 
-int V[502][502] = {};  // ÀÔ·Â°ª ¹ŞÀ» ¹è¿­
-int C[502][502] = {};  // Cache (-1·Î ÃÊ±âÈ­)
+int V[502][502] = {};  // ì…ë ¥ê°’ ë°›ì„ ë°°ì—´
+int C[502][502] = {};  // Cache (-1ë¡œ ì´ˆê¸°í™”)
 
 void init(void) {
   for (int i = 0; i < 502; i++)

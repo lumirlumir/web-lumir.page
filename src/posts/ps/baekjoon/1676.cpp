@@ -1,4 +1,4 @@
-/* Ç®ÀÌ 1 */
+/* í’€ì´ 1 */
 #include <algorithm>
 #include <iostream>
 using namespace std;
@@ -10,7 +10,7 @@ int main(int argc, char* argv[]) {
   cout.tie(0);
 
   /* Init */
-  int arr[2] = {};  // ¼ÒÀÎ¼öºĞÇØ ÈÄ 2, 5ÀÇ °³¼ö ÀúÀå.
+  int arr[2] = {};  // ì†Œì¸ìˆ˜ë¶„í•´ í›„ 2, 5ì˜ ê°œìˆ˜ ì €ì¥.
   int n;
   cin >> n;
 
@@ -19,10 +19,10 @@ int main(int argc, char* argv[]) {
     int x = i;
 
     while (((x % 2) == 0) || ((x % 5) == 0)) {
-      if (x % 2 == 0) {  // 2·Î ³ª´©¾î ¶³¾îÁö´Â °æ¿ì.
+      if (x % 2 == 0) {  // 2ë¡œ ë‚˜ëˆ„ì–´ ë–¨ì–´ì§€ëŠ” ê²½ìš°.
         arr[0]++;
         x /= 2;
-      } else if (x % 5 == 0) {  // 5·Î ³ª´©¾î ¶³¾îÁö´Â °æ¿ì.
+      } else if (x % 5 == 0) {  // 5ë¡œ ë‚˜ëˆ„ì–´ ë–¨ì–´ì§€ëŠ” ê²½ìš°.
         arr[1]++;
         x /= 5;
       }
@@ -36,7 +36,7 @@ int main(int argc, char* argv[]) {
   return 0;
 }
 
-/* Ç®ÀÌ 2 */
+/* í’€ì´ 2 */
 #include <iostream>
 using namespace std;
 

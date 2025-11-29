@@ -3,15 +3,15 @@
 #define min(a, b) (((a) < (b)) ? (a) : (b))
 using namespace std;
 
-char S[1000000] = {};  //'\0'Æ÷ÇÔ.
-int count[2] = {};     // count[0] : 0 -> 1 ÀÇ È½¼ö. count[1] : 1 -> 0ÀÇ È½¼ö.
+char S[1000000] = {};  //'\0'í¬í•¨.
+int count[2] = {};     // count[0] : 0 -> 1 ì˜ íšŸìˆ˜. count[1] : 1 -> 0ì˜ íšŸìˆ˜.
 
 int main(int argc, char* argv[]) {
   /* Input */
   scanf("%s", S);
 
   /* Calculate */
-  for (int i = 0; S[i] != '\0'; i++)  // O(n)ÀÇ ½Ã°£º¹Àâµµ.
+  for (int i = 0; S[i] != '\0'; i++)  // O(n)ì˜ ì‹œê°„ë³µìž¡ë„.
     if (S[i] != S[i + 1]) count[(S[i] == '0' ? 0 : 1)]++;
 
   printf("%d", min(count[0], count[1]));
@@ -21,11 +21,11 @@ int main(int argc, char* argv[]) {
 }
 
 /*
-[Á¢±Ù¹æ¹ý]
-1. 0 -> 1ÀÇ È½¼ö ¼¼±â.
-2. 1 -> 0ÀÇ È½¼ö ¼¼±â.
+[ì ‘ê·¼ë°©ë²•]
+1. 0 -> 1ì˜ íšŸìˆ˜ ì„¸ê¸°.
+2. 1 -> 0ì˜ íšŸìˆ˜ ì„¸ê¸°.
 
-0 or 1 -> null(='\0')À¸·Î °¡´Â ¹æ¹ýµµ È½¼ö¸¦ ¼¼¾îÁà¾ßÇÔ.
+0 or 1 -> null(='\0')ìœ¼ë¡œ ê°€ëŠ” ë°©ë²•ë„ íšŸìˆ˜ë¥¼ ì„¸ì–´ì¤˜ì•¼í•¨.
 
-1°ú 2Áß ÃÖ¼Ú°ª Ã£±â.
+1ê³¼ 2ì¤‘ ìµœì†Ÿê°’ ì°¾ê¸°.
 */
