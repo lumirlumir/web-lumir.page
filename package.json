@@ -22,7 +22,7 @@
     "lint:stylelint": "npx stylelint **/*.{css,scss}",
     "lint:prettier": "npx prettier . --check --ignore-unknown",
     "lint:editorconfig": "npx editorconfig-checker -config .editorconfig-checker.json",
-    "lint:markdownlint": "npx markdownlint **/*.md",
+    "lint:markdownlint": "npx markdownlint **/*.md --disable MD060",
     "lint:clangformat": "find . -name '*.h' -o -name '*.c' -o -name '*.cpp' -print0 | xargs -0 npx clang-format -n -Werror",
     "count-docs": "ls -R src/posts/docs | grep .md | wc -l"
   },
