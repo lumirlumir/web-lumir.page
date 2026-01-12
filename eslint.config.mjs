@@ -9,7 +9,7 @@
 import { fileURLToPath } from 'node:url';
 import { defineConfig, globalIgnores } from 'eslint/config';
 import bananass from 'eslint-config-bananass';
-import mark from 'eslint-plugin-mark';
+import md from 'eslint-markdown';
 
 // --------------------------------------------------------------------------------
 // Export
@@ -27,8 +27,8 @@ export default defineConfig([
   bananass.configs.json,
   bananass.configs.jsonc,
   bananass.configs.json5,
-  mark.configs.recommended,
-  mark.configs.stylistic,
+  md.configs.recommended,
+  md.configs.stylistic,
 
   {
     name: 'global',
@@ -47,7 +47,7 @@ export default defineConfig([
     name: 'md/global',
     files: ['**/*.md'],
     rules: {
-      'mark/allow-link-url': [
+      'md/allow-link-url': [
         'error',
         {
           disallowUrls: [/^\.\//],
@@ -59,7 +59,7 @@ export default defineConfig([
     name: 'md/posts/docs',
     files: ['src/posts/docs/**/*.md'],
     rules: {
-      'mark/allow-image-url': [
+      'md/allow-image-url': [
         'error',
         {
           allowUrls: [/^\/public\/images\//],
