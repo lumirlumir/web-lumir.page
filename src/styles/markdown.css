@@ -1,30 +1,24 @@
 /* stylelint-disable */
 
-// custom
-.markdown-body {
-  ruby {
-    rp,
-    rt {
-      opacity: 0.25;
-      transition: all 0.2s ease-in-out;
-    }
-
-    &:hover {
-      rp,
-      rt {
-        opacity: 1;
-        color: var(--color-fg-default);
-      }
-    }
-  }
+/* custom */
+.markdown-body ruby rp,
+.markdown-body ruby rt {
+  opacity: 0.25;
+  transition: all 0.2s ease-in-out;
 }
 
-// default
+.markdown-body ruby:hover rp,
+.markdown-body ruby:hover rt {
+  opacity: 1;
+  color: var(--color-fg-default);
+}
+
+/* default */
 .markdown-body {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   margin: 0;
-  font-family: $font-stack-system;
+  font-family: var(--font-stack-system);
   font-size: 16px;
   line-height: 1.5;
   word-wrap: break-word;
@@ -80,7 +74,7 @@
 
 .markdown-body b,
 .markdown-body strong {
-  font-weight: $text-weight-semibold;
+  font-weight: var(--text-weight-semibold);
 }
 
 .markdown-body dfn {
@@ -89,17 +83,17 @@
 
 .markdown-body h1 {
   margin: 0.67em 0;
-  font-weight: $text-weight-semibold;
+  font-weight: var(--text-weight-semibold);
   padding-bottom: 0.3em;
   font-size: 2em;
   border-bottom: 1px solid var(--color-border-muted);
 }
 
-// custom
+/* custom */
 .markdown-body mark {
-  background-color: var(--color-main); // default: var(--color-bg-attention-muted);
-  border-radius: $size-border-radius; // default: nothing
-  padding: 0 $size-4; // default: nothing
+  background-color: var(--color-main); /* default: var(--color-bg-attention-muted); */
+  border-radius: var(--size-border-radius); /* default: nothing */
+  padding: 0 var(--size-4); /* default: nothing */
   color: var(--color-fg-default);
 }
 
@@ -127,7 +121,7 @@
   border-style: none;
   max-width: 100%;
   box-sizing: content-box;
-  border-radius: $size-border-radius;
+  border-radius: var(--size-border-radius);
 }
 
 .markdown-body code,
@@ -139,7 +133,7 @@
 }
 
 .markdown-body figure {
-  margin: 1em $size-40;
+  margin: 1em var(--size-40);
 }
 
 .markdown-body hr {
@@ -149,7 +143,7 @@
   border-bottom: 1px solid var(--color-border-muted);
   height: 0.25em;
   padding: 0;
-  margin: $size-24 0;
+  margin: var(--size-24) 0;
   background-color: var(--color-border-default);
   border: 0;
 }
@@ -272,15 +266,15 @@
 
 .markdown-body kbd {
   display: inline-block;
-  padding: $size-4;
-  font: 11px $font-stack-monospace;
+  padding: var(--size-4);
+  font: 11px var(--font-stack-monospace);
   line-height: 10px;
   color: var(--color-fg-default);
   vertical-align: middle;
   background-color: var(--color-bg-muted);
   border: solid 1px var(--color-border-neutral-muted);
   border-bottom-color: var(--color-border-neutral-muted);
-  border-radius: 6px;
+  border-radius: var(--size-border-radius);
   box-shadow: inset 0 -1px 0 var(--color-border-neutral-muted);
 }
 
@@ -290,36 +284,36 @@
 .markdown-body h4,
 .markdown-body h5,
 .markdown-body h6 {
-  margin-top: $size-24;
-  margin-bottom: $size-16;
-  font-weight: $text-weight-semibold;
+  margin-top: var(--size-24);
+  margin-bottom: var(--size-16);
+  font-weight: var(--text-weight-semibold);
   line-height: 1.25;
 }
 
 .markdown-body h2 {
-  font-weight: $text-weight-semibold;
+  font-weight: var(--text-weight-semibold);
   padding-bottom: 0.3em;
   font-size: 1.5em;
   border-bottom: 1px solid var(--color-border-muted);
 }
 
 .markdown-body h3 {
-  font-weight: $text-weight-semibold;
+  font-weight: var(--text-weight-semibold);
   font-size: 1.25em;
 }
 
 .markdown-body h4 {
-  font-weight: $text-weight-semibold;
+  font-weight: var(--text-weight-semibold);
   font-size: 1em;
 }
 
 .markdown-body h5 {
-  font-weight: $text-weight-semibold;
+  font-weight: var(--text-weight-semibold);
   font-size: 0.875em;
 }
 
 .markdown-body h6 {
-  font-weight: $text-weight-semibold;
+  font-weight: var(--text-weight-semibold);
   font-size: 0.85em;
   color: var(--color-fg-muted);
 }
@@ -362,14 +356,14 @@
 .markdown-body tt,
 .markdown-body code,
 .markdown-body samp {
-  font-family: $font-stack-monospace;
+  font-family: var(--font-stack-monospace);
   font-size: 12px;
 }
 
 .markdown-body pre {
   margin-top: 0;
   margin-bottom: 0;
-  font-family: $font-stack-monospace;
+  font-family: var(--font-stack-monospace);
   font-size: 12px;
   word-wrap: normal;
 }
@@ -389,7 +383,7 @@
 }
 
 .markdown-body .mr-2 {
-  margin-right: $size-8 !important;
+  margin-right: var(--size-8) !important;
 }
 
 .markdown-body::before {
@@ -422,7 +416,7 @@
 
 .markdown-body .anchor {
   float: left;
-  padding-right: $size-4;
+  padding-right: var(--size-4);
   margin-left: -20px;
   line-height: 1;
 }
@@ -440,7 +434,7 @@
 .markdown-body pre,
 .markdown-body details {
   margin-top: 0;
-  margin-bottom: $size-16;
+  margin-bottom: var(--size-16);
 }
 
 .markdown-body blockquote > :first-child {
@@ -559,7 +553,7 @@
 }
 
 .markdown-body li > p {
-  margin-top: $size-16;
+  margin-top: var(--size-16);
 }
 
 .markdown-body li + li {
@@ -572,19 +566,19 @@
 
 .markdown-body dl dt {
   padding: 0;
-  margin-top: $size-16;
+  margin-top: var(--size-16);
   font-size: 1em;
   font-style: italic;
-  font-weight: $text-weight-semibold;
+  font-weight: var(--text-weight-semibold);
 }
 
 .markdown-body dl dd {
-  padding: 0 $size-16;
-  margin-bottom: $size-16;
+  padding: 0 var(--size-16);
+  margin-bottom: var(--size-16);
 }
 
 .markdown-body table th {
-  font-weight: $text-weight-semibold;
+  font-weight: var(--text-weight-semibold);
 }
 
 .markdown-body table th,
@@ -749,7 +743,7 @@
 }
 
 .markdown-body .highlight {
-  margin-bottom: $size-16;
+  margin-bottom: var(--size-16);
 }
 
 .markdown-body .highlight pre {
@@ -759,13 +753,13 @@
 
 .markdown-body .highlight pre,
 .markdown-body pre {
-  padding: $size-16;
+  padding: var(--size-16);
   overflow: auto;
   font-size: 85%;
   line-height: 1.45;
   color: var(--color-fg-default);
   background-color: var(--color-bg-muted);
-  border-radius: 6px;
+  border-radius: var(--size-border-radius);
 }
 
 .markdown-body pre code,
@@ -792,7 +786,7 @@
 }
 
 .markdown-body .csv-data .blob-num {
-  padding: 10px $size-8 9px;
+  padding: 10px var(--size-8) 9px;
   text-align: right;
   background: var(--color-bg-default);
   border: 0;
@@ -803,7 +797,7 @@
 }
 
 .markdown-body .csv-data th {
-  font-weight: $text-weight-semibold;
+  font-weight: var(--text-weight-semibold);
   background: var(--color-bg-muted);
   border-top: 0;
 }
@@ -823,13 +817,13 @@
 }
 
 .markdown-body .footnotes ol {
-  padding-left: $size-16;
+  padding-left: var(--size-16);
 }
 
 .markdown-body .footnotes ol ul {
   display: inline-block;
-  padding-left: $size-16;
-  margin-top: $size-16;
+  padding-left: var(--size-16);
+  margin-top: var(--size-16);
 }
 
 .markdown-body .footnotes li {
@@ -838,14 +832,14 @@
 
 .markdown-body .footnotes li:target::before {
   position: absolute;
-  top: calc(size(#{$size-8}) * -1);
-  right: calc(size(#{$size-8}) * -1);
-  bottom: calc(size(#{$size-8}) * -1);
-  left: calc(size(#{$size-24}) * -1);
+  top: calc(var(--size-8) * -1);
+  right: calc(var(--size-8) * -1);
+  bottom: calc(var(--size-8) * -1);
+  left: calc(var(--size-24) * -1);
   pointer-events: none;
   content: '';
   border: 2px solid var(--color-border-accent-emphasis);
-  border-radius: 6px;
+  border-radius: var(--size-border-radius);
 }
 
 .markdown-body .footnotes li:target {
@@ -996,7 +990,7 @@
   font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   font-size: 1em;
   font-style: normal !important;
-  font-weight: $text-weight-normal;
+  font-weight: var(--text-weight-normal);
   line-height: 1;
   vertical-align: -0.075em;
 }
@@ -1011,7 +1005,7 @@
 }
 
 .markdown-body .task-list-item label {
-  font-weight: $text-weight-normal;
+  font-weight: var(--text-weight-normal);
 }
 
 .markdown-body .task-list-item.enabled label {
@@ -1019,7 +1013,7 @@
 }
 
 .markdown-body .task-list-item + .task-list-item {
-  margin-top: $size-4;
+  margin-top: var(--size-4);
 }
 
 .markdown-body .task-list-item .handle {
@@ -1053,8 +1047,8 @@
 }
 
 .markdown-body .markdown-alert {
-  padding: $size-8 $size-16;
-  margin-bottom: $size-16;
+  padding: var(--size-8) var(--size-16);
+  margin-bottom: var(--size-16);
   color: inherit;
   border-left: 0.25em solid var(--color-border-default);
 }
@@ -1069,7 +1063,7 @@
 
 .markdown-body .markdown-alert .markdown-alert-title {
   display: flex;
-  font-weight: $text-weight-medium;
+  font-weight: var(--text-weight-medium);
   align-items: center;
   line-height: 1;
 }
