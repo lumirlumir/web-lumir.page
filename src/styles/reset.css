@@ -1,0 +1,137 @@
+@layer base {
+  html:not(.markdown-body *),
+  body:not(.markdown-body *),
+  div:not(.markdown-body *),
+  span:not(.markdown-body *),
+  applet:not(.markdown-body *),
+  object:not(.markdown-body *),
+  iframe:not(.markdown-body *),
+  h1:not(.markdown-body *),
+  h2:not(.markdown-body *),
+  h3:not(.markdown-body *),
+  h4:not(.markdown-body *),
+  h5:not(.markdown-body *),
+  h6:not(.markdown-body *),
+  p:not(.markdown-body *),
+  blockquote:not(.markdown-body *),
+  pre:not(.markdown-body *),
+  a:not(.markdown-body *),
+  abbr:not(.markdown-body *),
+  acronym:not(.markdown-body *),
+  address:not(.markdown-body *),
+  big:not(.markdown-body *),
+  cite:not(.markdown-body *),
+  code:not(.markdown-body *),
+  del:not(.markdown-body *),
+  dfn:not(.markdown-body *),
+  em:not(.markdown-body *),
+  img:not(.markdown-body *),
+  ins:not(.markdown-body *),
+  kbd:not(.markdown-body *),
+  q:not(.markdown-body *),
+  s:not(.markdown-body *),
+  samp:not(.markdown-body *),
+  small:not(.markdown-body *),
+  strike:not(.markdown-body *),
+  strong:not(.markdown-body *),
+  sub:not(.markdown-body *),
+  sup:not(.markdown-body *),
+  tt:not(.markdown-body *),
+  var:not(.markdown-body *),
+  b:not(.markdown-body *),
+  u:not(.markdown-body *),
+  i:not(.markdown-body *),
+  center:not(.markdown-body *),
+  dl:not(.markdown-body *),
+  dt:not(.markdown-body *),
+  dd:not(.markdown-body *),
+  ol:not(.markdown-body *),
+  ul:not(.markdown-body *),
+  li:not(.markdown-body *),
+  fieldset:not(.markdown-body *),
+  form:not(.markdown-body *),
+  label:not(.markdown-body *),
+  legend:not(.markdown-body *),
+  table:not(.markdown-body *),
+  caption:not(.markdown-body *),
+  tbody:not(.markdown-body *),
+  tfoot:not(.markdown-body *),
+  thead:not(.markdown-body *),
+  tr:not(.markdown-body *),
+  th:not(.markdown-body *),
+  td:not(.markdown-body *),
+  article:not(.markdown-body *),
+  aside:not(.markdown-body *),
+  canvas:not(.markdown-body *),
+  details:not(.markdown-body *),
+  embed:not(.markdown-body *),
+  figure:not(.markdown-body *),
+  figcaption:not(.markdown-body *),
+  footer:not(.markdown-body *),
+  header:not(.markdown-body *),
+  hgroup:not(.markdown-body *),
+  menu:not(.markdown-body *),
+  nav:not(.markdown-body *),
+  output:not(.markdown-body *),
+  ruby:not(.markdown-body *),
+  section:not(.markdown-body *),
+  summary:not(.markdown-body *),
+  time:not(.markdown-body *),
+  mark:not(.markdown-body *),
+  audio:not(.markdown-body *),
+  video:not(.markdown-body *) {
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    font-size: 100%;
+    vertical-align: baseline;
+    border: 0;
+  }
+
+  /* HTML5 display-role reset for older browsers */
+  article:not(.markdown-body *),
+  aside:not(.markdown-body *),
+  details:not(.markdown-body *),
+  figcaption:not(.markdown-body *),
+  figure:not(.markdown-body *),
+  footer:not(.markdown-body *),
+  header:not(.markdown-body *),
+  hgroup:not(.markdown-body *),
+  menu:not(.markdown-body *),
+  nav:not(.markdown-body *),
+  section:not(.markdown-body *) {
+    display: block;
+  }
+
+  body:not(.markdown-body *) {
+    line-height: 1;
+  }
+
+  ol:not(.markdown-body *),
+  ul:not(.markdown-body *) {
+    list-style: none;
+  }
+
+  blockquote:not(.markdown-body *),
+  q:not(.markdown-body *) {
+    quotes: none;
+  }
+
+  blockquote::before:not(.markdown-body *),
+  blockquote::after:not(.markdown-body *),
+  q::before:not(.markdown-body *),
+  q::after:not(.markdown-body *) {
+    content: '';
+    content: none;
+  }
+
+  table:not(.markdown-body *) {
+    border-spacing: 0;
+    border-collapse: collapse;
+  }
+
+  a:not(.markdown-body *) {
+    color: inherit;
+    text-decoration: none;
+  }
+}
