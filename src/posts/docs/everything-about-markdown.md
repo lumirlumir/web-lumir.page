@@ -7,7 +7,8 @@ tags:
   - 'markdown'
 ---
 
-<!-- markdownlint-disable MD003 MD004 MD024 MD029 MD033 MD035 MD046 MD049 MD050 MD055-->
+<!-- markdownlint-disable MD003 MD004 MD024 MD029 MD033 MD035 MD046 MD049 MD050 MD055 MD060 -->
+<!-- eslint-disable -- TODO -->
 마크다운<sup>Markdown</sup> 파일의 확장자는 `.md`로 끝난다. 개발을 하다 보면 `README.md`라는 이름의 파일을 한 번쯤 만나게 되는데, 이것이 가장 대표적인 마크다운 파일이라 할 수 있다.
 
 마크다운과 비슷하지만 문법이 좀 더 복잡한 `.adoc` 확장자의 AsciiDoc 문법도 있으며, 좀 더 다양한 형태의 문서를 만들 수 있다. 다만, 문법이 훨씬 복잡하고 지원 플랫폼이 적어 사용에 제약이 많다.

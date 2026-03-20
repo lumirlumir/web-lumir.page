@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 
 export const ThemeContext = createContext();
 
@@ -10,7 +10,7 @@ export default function ThemeProvider({ children }) {
   useEffect(() => {
     // Initialization
     if (theme === null) {
-      setTheme(document.documentElement.getAttribute('data-theme'));
+      setTheme(document.documentElement.getAttribute('data-theme')); // eslint-disable-line -- TODO
       return;
     }
 

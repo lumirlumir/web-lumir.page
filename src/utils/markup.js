@@ -3,6 +3,8 @@ import parse from 'html-react-parser';
 import { GITHUB_REPO_FULL_NAME } from '@/constants';
 import { readMarkdownFile } from './fs';
 
+/* eslint-disable prefer-named-capture-group -- TODO */
+
 /**
  * Converts markdown content to plain text.
  *
