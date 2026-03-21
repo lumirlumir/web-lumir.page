@@ -11,7 +11,7 @@ import { join } from 'node:path';
 import Katex from '@/components/article/Katex';
 import { PATH_DOCS, EXT_MD, EXT_MD_REGEXP } from '@/constants';
 import { readMarkdownFile, readMarkdownFilesFromDir } from '@/utils/fs';
-import { markdownToText, markdownToJsxFromPath } from '@/utils/markup';
+import { markdownToText, markdownToHtmlFromPath } from '@/utils/markup';
 
 // --------------------------------------------------------------------------------
 // Helpers
@@ -57,7 +57,7 @@ export default async function Page({ params }) {
     <Katex
       className="markdown-body"
       dangerouslySetInnerHTML={{
-        __html: await markdownToJsxFromPath(getFilePath(await params)),
+        __html: await markdownToHtmlFromPath(getFilePath(await params)),
       }}
     />
   );

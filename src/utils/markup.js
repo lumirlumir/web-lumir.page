@@ -60,22 +60,21 @@ export async function markdownToHtml(markdownContent) {
 }
 
 /**
- * Converts markdown content to JSX from path.
+ * Converts markdown content to HTML from path.
  *
  * @async
  * @param {string} pathToMarkdownFile Path to a markdown file.
- * @returns {Promise<JSX.Element>} A promise that resolves to JSX.
+ * @returns {Promise<string>} A promise that resolves to HTML.
  */
-export async function markdownToJsxFromPath(pathToMarkdownFile) {
+export async function markdownToHtmlFromPath(pathToMarkdownFile) {
   const {
     content,
     data: { title },
   } = await readMarkdownFile(pathToMarkdownFile);
 
-  const markdownContent = writeTitleIntoMarkdown(title, content);
-  const jsx = await markdownToHtml(markdownContent);
+  const html = await markdownToHtml(writeTitleIntoMarkdown(title, content));
 
-  return jsx;
+  return html;
 }
 
 /**
