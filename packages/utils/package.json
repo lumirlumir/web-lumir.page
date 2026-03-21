@@ -1,6 +1,7 @@
 {
   "private": true,
   "name": "@lumir/utils",
+  "version": "0.0.0",
   "type": "module",
   "exports": {
     ".": {
@@ -22,6 +23,9 @@
     "test": "npm run test:types && npm run test:unit",
     "test:types": "tsc --noEmit",
     "test:unit": "vitest run"
+  },
+  "dependencies": {
+    "yaml": "^2.8.2"
   },
   "devDependencies": {
     "vitest": "^4.1.0"
