@@ -18,6 +18,7 @@
     "dev:pkg:rp": "npm run dev -w packages/remark-plugins",
     "dev:pkg:u": "npm run dev -w packages/utils",
     "build": "npm-run-all -c -l -p build:pkg:* && next build",
+    "build:pkg": "npm-run-all -c -l -p build:pkg:*",
     "build:pkg:rk": "npm run build -w packages/react-kit",
     "build:pkg:rp": "npm run build -w packages/remark-plugins",
     "build:pkg:u": "npm run build -w packages/utils",

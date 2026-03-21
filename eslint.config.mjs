@@ -35,7 +35,6 @@ export default defineConfig([
     settings: {
       node: {
         resolverConfig: {
-          allowModules: ['@lumir/react-kit', '@lumir/remark-plugins', '@lumir/utils'],
           // `eslint-plugin-n` uses webpack's `enhanced-resolve` under the hood.
           alias: {
             '@': fileURLToPath(new URL('./src', import.meta.url)),
