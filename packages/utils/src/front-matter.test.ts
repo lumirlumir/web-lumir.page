@@ -31,9 +31,11 @@ describe('front-matter', () => {
     });
 
     it('should parse CR front matter correctly', () => {
+      // Note: The YAML parser does not support CR line endings, so CR characters within YAML may not parse correctly.
+      // This test intentionally mixes CR and CRLF line endings to verify parsing behavior.
       const result = frontMatter(
         '---\rtitle: Title\r\nauthor: Author\r---\rHello, world!',
-      ); // Note: The YAML parser does not support CR line endings, so CR characters within YAML may not parse correctly.
+      );
 
       deepStrictEqual(result, {
         content: 'Hello, world!',
