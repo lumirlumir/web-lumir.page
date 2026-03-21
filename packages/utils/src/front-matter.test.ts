@@ -69,6 +69,15 @@ describe('front-matter', () => {
         },
       });
     });
+
+    it('should handle empty YAML front matter as an empty data object', () => {
+      const result = frontMatter('---\n---\nHello, world!');
+
+      deepStrictEqual(result, {
+        content: 'Hello, world!',
+        data: {},
+      });
+    });
   });
 
   describe('when there is no front matter', () => {

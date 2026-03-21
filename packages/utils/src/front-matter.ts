@@ -18,7 +18,7 @@ import yaml from 'yaml';
  * @see https://spec.commonmark.org/0.31.2/#line-ending
  */
 export const frontMatterRegex =
-  /^---(?:\r\n|[\r\n])(?<yaml>[\s\S]*?)(?:\r\n|[\r\n])---(?:\r\n|[\r\n])/;
+  /^---(?:\r\n|[\r\n])(?:(?<yaml>[\s\S]*?)(?:\r\n|[\r\n]))?---(?:\r\n|[\r\n])/;
 
 // --------------------------------------------------------------------------------
 // Export
@@ -59,6 +59,6 @@ export function frontMatter(input: string): {
 
   return {
     content: input.slice(match[0].length),
-    data: yaml.parse(match.groups?.yaml ?? ''),
+    data: yaml.parse(match.groups?.yaml ?? '') ?? {},
   };
 }
