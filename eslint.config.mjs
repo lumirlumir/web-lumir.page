@@ -36,15 +36,8 @@ export default defineConfig([
       node: {
         resolverConfig: {
           // `eslint-plugin-n` uses webpack's `enhanced-resolve` under the hood.
-          alias: {
-            '@/app': fileURLToPath(new URL('./src/app', import.meta.url)),
-            '@/components': fileURLToPath(new URL('./src/components', import.meta.url)),
-            '@/constants': fileURLToPath(new URL('./src/constants', import.meta.url)),
-            '@/data': fileURLToPath(new URL('./src/data', import.meta.url)),
-            '@/posts': fileURLToPath(new URL('./src/posts', import.meta.url)),
-            '@/styles': fileURLToPath(new URL('./src/styles', import.meta.url)),
-            '@/types': fileURLToPath(new URL('./src/types', import.meta.url)),
-            '@/utils': fileURLToPath(new URL('./src/utils', import.meta.url)),
+          fallback: {
+            '@': fileURLToPath(new URL('./src', import.meta.url)),
           },
         },
       },
