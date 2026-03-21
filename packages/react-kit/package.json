@@ -11,6 +11,10 @@
       "types": "./build/hooks/index.d.ts",
       "default": "./build/hooks/index.js"
     },
+    "./svgs": {
+      "types": "./build/svgs/index.d.ts",
+      "default": "./build/svgs/index.js"
+    },
     "./package.json": "./package.json"
   },
   "typesVersions": {
@@ -20,6 +24,9 @@
       ],
       "./hooks": [
         "./build/hooks/index.d.ts"
+      ],
+      "./svgs": [
+        "./build/svgs/index.d.ts"
       ]
     }
   },
