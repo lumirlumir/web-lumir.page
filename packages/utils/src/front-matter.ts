@@ -25,8 +25,8 @@ export const frontMatterRegex =
 // --------------------------------------------------------------------------------
 
 /**
- * Parses the front matter from a string and returns an object containing the content without the front matter and the parsed data.
- * If no front matter is found, it returns the original content and an empty data object.
+ * Parses the front matter from a string and returns the content without the front matter and the parsed data.
+ * If no front matter is found, it returns the original content and `null` data.
  * @example
  *
  * ```ts
