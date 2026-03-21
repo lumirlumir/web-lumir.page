@@ -23,6 +23,9 @@
     "test:types": "tsc --noEmit",
     "test:unit": "vitest run"
   },
+  "dependencies": {
+    "yaml": "^2.8.2"
+  },
   "devDependencies": {
     "vitest": "^4.1.0"
   }

@@ -1,7 +1,7 @@
 import { promises as fs } from 'node:fs';
 import { basename, join } from 'node:path';
 
-import matter from 'gray-matter';
+import { frontMatter } from '@lumir/utils';
 
 import { EXT_MD } from '@/constants';
 
@@ -18,7 +18,7 @@ import { EXT_MD } from '@/constants';
  * @see {@link MarkdownDocument}
  */
 export async function readMarkdownFile(pathToMarkdownFile) {
-  const { content, data } = matter(await fs.readFile(pathToMarkdownFile, 'utf-8'));
+  const { content, data } = frontMatter(await fs.readFile(pathToMarkdownFile, 'utf-8'));
 
   return {
     basename: basename(pathToMarkdownFile),
