@@ -1,0 +1,64 @@
+{
+  "private": true,
+  "name": "@lumir/react-kit",
+  "type": "module",
+  "exports": {
+    "./components": {
+      "types": "./build/components/index.d.ts",
+      "default": "./build/components/index.js"
+    },
+    "./hooks": {
+      "types": "./build/hooks/index.d.ts",
+      "default": "./build/hooks/index.js"
+    },
+    "./svgs": {
+      "types": "./build/svgs/index.d.ts",
+      "default": "./build/svgs/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "typesVersions": {
+    "*": {
+      "./components": [
+        "./build/components/index.d.ts"
+      ],
+      "./hooks": [
+        "./build/hooks/index.d.ts"
+      ],
+      "./svgs": [
+        "./build/svgs/index.d.ts"
+      ]
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "npm run test:types && npm run test:unit",
+    "test:types": "tsc --noEmit",
+    "test:unit": "vitest run"
+  },
+  "peerDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@types/react": {
+      "optional": true
+    },
+    "@types/react-dom": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitest/browser-playwright": "^4.1.0",
+    "playwright": "^1.58.2",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "vitest": "^4.1.0",
+    "vitest-browser-react": "^2.1.0"
+  }
+}

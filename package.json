@@ -6,6 +6,9 @@
   "engines": {
     "node": "^20.19.6"
   },
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "prepare": "husky",
     "dev": "next dev",
