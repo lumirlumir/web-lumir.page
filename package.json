@@ -12,7 +12,10 @@
   ],
   "scripts": {
     "prepare": "husky",
-    "dev": "next dev",
+    "dev": "npm-run-all -c -l -p dev:pkg:* dev:ws",
+    "dev:ws": "next dev",
+    "dev:pkg:rk": "npm run dev -w packages/react-kit",
+    "dev:pkg:u": "npm run dev -w packages/utils",
     "build": "npm-run-all -c -l -p build:pkg:* && next build",
     "build:pkg:rk": "npm run build -w packages/react-kit",
     "build:pkg:u": "npm run build -w packages/utils",
