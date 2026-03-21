@@ -1,5 +1,5 @@
-import parse from 'html-react-parser';
-
+import { remark } from 'remark';
+import { remarkImageUrlReplace } from '@lumir/remark-plugins'; // eslint-disable-line -- TODO
 import { GITHUB_REPO_FULL_NAME } from '@/constants';
 import { readMarkdownFile } from './fs';
 
@@ -31,6 +31,13 @@ export function markdownToText(markdownContent) {
  * @returns {Promise<string>} A promise that resolves to HTML.
  */
 export async function markdownToHtml(markdownContent) {
+  const { value } = await remark()
+    .use(remarkImageUrlReplace, {
+      searchValue: /^\/public/,
+      replaceValue: '',
+    })
+    .process(markdownContent);
+
   const response = await fetch('https://api.github.com/markdown', {
     method: 'POST',
     headers: {
@@ -40,28 +47,16 @@ export async function markdownToHtml(markdownContent) {
       'X-GitHub-Api-Version': '2022-11-28',
     },
     body: JSON.stringify({
-      text: markdownContent,
+      text: String(value),
       mode: 'gfm',
       context: GITHUB_REPO_FULL_NAME,
     }),
     cache: 'force-cache', // https://nextjs.org/docs/app/guides/upgrading/version-15#fetch-requests
   });
 
+  // TODO: Add lazy loading attribute to `<img>` tags in the HTML response from GitHub API.
+
   return response.text();
-}
-
-/**
- * Converts markdown content to JSX.
- *
- * @async
- * @param {string} markdownContent Markdown content.
- * @returns {Promise<JSX.Element>} A promise that resolves to JSX.
- */
-export async function markdownToJsx(markdownContent) {
-  const html = await markdownToHtml(markdownContent);
-  const jsx = htmlToJsx(html);
-
-  return jsx;
 }
 
 /**
@@ -78,29 +73,9 @@ export async function markdownToJsxFromPath(pathToMarkdownFile) {
   } = await readMarkdownFile(pathToMarkdownFile);
 
   const markdownContent = writeTitleIntoMarkdown(title, content);
-  const jsx = await markdownToJsx(markdownContent);
+  const jsx = await markdownToHtml(markdownContent);
 
   return jsx;
-}
-
-/**
- * Converts HTML to JSX using `html-react-parser`
- *
- * @param {string} html HTML
- * @returns {JSX.Element} JSX
- */
-export function htmlToJsx(html) {
-  return parse(html, {
-    replace({ name, attribs }) {
-      // <img>
-      if (name === 'img') {
-        attribs.src = attribs.src.startsWith('/public')
-          ? attribs.src.replace(/^\/public/, '')
-          : attribs.src;
-        attribs.loading = 'lazy';
-      }
-    },
-  });
 }
 
 /**

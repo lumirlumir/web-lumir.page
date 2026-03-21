@@ -54,8 +54,11 @@ export async function generateMetadata({ params }) {
 
 export default async function Page({ params }) {
   return (
-    <Katex className="markdown-body">
-      {await markdownToJsxFromPath(getFilePath(await params))}
-    </Katex>
+    <Katex
+      className="markdown-body"
+      dangerouslySetInnerHTML={{
+        __html: await markdownToJsxFromPath(getFilePath(await params)),
+      }}
+    />
   );
 }
