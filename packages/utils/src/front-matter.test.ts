@@ -80,6 +80,18 @@ describe('front-matter', () => {
         data: {},
       });
     });
+
+    it('should handle front matter without content as an empty string', () => {
+      const result = frontMatter('---\ntitle: Title\nauthor: Author\n---');
+
+      deepStrictEqual(result, {
+        content: '',
+        data: {
+          title: 'Title',
+          author: 'Author',
+        },
+      });
+    });
   });
 
   describe('when there is no front matter', () => {
