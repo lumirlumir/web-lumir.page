@@ -32,6 +32,7 @@ export default defineConfig([
 
   {
     name: 'global',
+    files: ['src/**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx}'],
     settings: {
       node: {
         resolverConfig: {
