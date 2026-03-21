@@ -46,19 +46,19 @@ export const frontMatterRegex =
  */
 export function frontMatter(input: string): {
   content: string;
-  data: Record<string, unknown>;
+  data: unknown;
 } {
   const match = input.match(frontMatterRegex);
 
   if (!match) {
     return {
       content: input,
-      data: {},
+      data: null,
     };
   }
 
   return {
     content: input.slice(match[0].length),
-    data: yaml.parse(match.groups?.yaml ?? '') ?? {},
+    data: yaml.parse(match.groups?.yaml ?? ''),
   };
 }

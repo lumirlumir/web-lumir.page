@@ -16,6 +16,27 @@ import { frontMatter } from './front-matter.js';
 
 describe('front-matter', () => {
   describe('when there is a front matter', () => {
+    it('should handle empty YAML front matter as `null`', () => {
+      const result = frontMatter('---\n---\nHello, world!');
+
+      deepStrictEqual(result, {
+        content: 'Hello, world!',
+        data: null,
+      });
+    });
+
+    it('should handle front matter without content as an empty string', () => {
+      const result = frontMatter('---\ntitle: Title\nauthor: Author\n---');
+
+      deepStrictEqual(result, {
+        content: '',
+        data: {
+          title: 'Title',
+          author: 'Author',
+        },
+      });
+    });
+
     it('should parse CRLF front matter correctly', () => {
       const result = frontMatter(
         '---\r\ntitle: Title\r\nauthor: Author\r\n---\r\nHello, world!',
@@ -72,35 +93,32 @@ describe('front-matter', () => {
       });
     });
 
-    it('should handle empty YAML front matter as an empty data object', () => {
-      const result = frontMatter('---\n---\nHello, world!');
+    it('should handle front matter with a numeric value', () => {
+      const result = frontMatter('---\n1\n---\nHello, world!');
 
       deepStrictEqual(result, {
         content: 'Hello, world!',
-        data: {},
+        data: 1,
       });
     });
 
-    it('should handle front matter without content as an empty string', () => {
-      const result = frontMatter('---\ntitle: Title\nauthor: Author\n---');
+    it('should handle front matter with an array value', () => {
+      const result = frontMatter('---\n[1, 2, 3]\n---\nHello, world!');
 
       deepStrictEqual(result, {
-        content: '',
-        data: {
-          title: 'Title',
-          author: 'Author',
-        },
+        content: 'Hello, world!',
+        data: [1, 2, 3],
       });
     });
   });
 
   describe('when there is no front matter', () => {
-    it('should return the original content and an empty data object', () => {
+    it('should return the original content and `null` data', () => {
       const result = frontMatter('Hello, world!');
 
       deepStrictEqual(result, {
         content: 'Hello, world!',
-        data: {},
+        data: null,
       });
     });
   });
