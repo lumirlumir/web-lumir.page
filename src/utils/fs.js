@@ -1,7 +1,7 @@
 import { promises as fs } from 'node:fs';
 import { basename, join } from 'node:path';
 
-import { frontMatter } from '@lumir/utils'; // eslint-disable-line n/no-missing-import -- TODO: Delete it later.
+import { frontMatter } from '@lumir/utils';
 
 import { EXT_MD } from '@/constants';
 

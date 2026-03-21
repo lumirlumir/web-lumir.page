@@ -1,5 +1,5 @@
 import { remark } from 'remark';
-import { remarkImageUrlReplace } from '@lumir/remark-plugins'; // eslint-disable-line -- TODO
+import { remarkImageUrlReplace } from '@lumir/remark-plugins';
 import { GITHUB_REPO_FULL_NAME } from '@/constants';
 import { readMarkdownFile } from './fs';
 
