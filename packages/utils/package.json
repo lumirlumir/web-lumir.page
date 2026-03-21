@@ -1,6 +1,7 @@
 {
   "private": true,
   "name": "@lumir/utils",
+  "version": "0.0.0",
   "type": "module",
   "exports": {
     ".": {
