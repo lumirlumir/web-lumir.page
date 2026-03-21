@@ -30,10 +30,10 @@ export interface RemarkImageUrlReplaceOptions {
  * import { remark } from 'remark';
  * import { remarkImageUrlReplace } from '@lumir/remark-plugins';
  *
- * const file = await remark().use(remarkImageUrlReplace({
+ * const file = await remark().use(remarkImageUrlReplace, {
  *   searchValue: /^http:\/\//,
  *   replaceValue: 'https://',
- * })).process('![Image](http://example.com/image.png)');
+ * }).process('![Image](http://example.com/image.png)');
  *
  * console.log(file.value); // Output: '![Image](https://example.com/image.png)'
  * ```
