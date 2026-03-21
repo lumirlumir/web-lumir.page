@@ -32,12 +32,12 @@ export default defineConfig([
 
   {
     name: 'global',
-    files: ['src/**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx}'],
     settings: {
       node: {
         resolverConfig: {
+          allowModules: ['@lumir/react-kit', '@lumir/remark-plugins', '@lumir/utils'],
           // `eslint-plugin-n` uses webpack's `enhanced-resolve` under the hood.
-          fallback: {
+          alias: {
             '@': fileURLToPath(new URL('./src', import.meta.url)),
           },
         },
