@@ -1,6 +1,7 @@
 {
   "buildCommand": "npm run count-docs && npm run build:a:fb --prefix ../..",
   "framework": "nextjs",
+  "ignoreCommand": "bash ../../scripts/vercel-ignore-command.sh",
   "installCommand": "npm install --prefix ../..",
   "outputDirectory": ".next",
   "regions": ["icn1"]
