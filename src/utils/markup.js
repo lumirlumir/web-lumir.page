@@ -1,5 +1,6 @@
+import { rehypeImageLazyLoading, rehypeImageUrlReplace } from '@lumir/rehype-plugins';
 import { remark } from 'remark';
-import { remarkImageUrlReplace } from '@lumir/remark-plugins';
+import { rehype } from 'rehype';
 import { GITHUB_REPO_FULL_NAME } from '@/constants';
 import { readMarkdownFile } from './fs';
 
@@ -31,12 +32,7 @@ export function markdownToText(markdownContent) {
  * @returns {Promise<string>} A promise that resolves to HTML.
  */
 export async function markdownToHtml(markdownContent) {
-  const { value } = await remark()
-    .use(remarkImageUrlReplace, {
-      searchValue: /^\/public/,
-      replaceValue: '',
-    })
-    .process(markdownContent);
+  const { value: markdownValue } = await remark().process(markdownContent);
 
   const response = await fetch('https://api.github.com/markdown', {
     method: 'POST',
@@ -47,16 +43,24 @@ export async function markdownToHtml(markdownContent) {
       'X-GitHub-Api-Version': '2022-11-28',
     },
     body: JSON.stringify({
-      text: String(value),
+      text: String(markdownValue),
       mode: 'gfm',
       context: GITHUB_REPO_FULL_NAME,
     }),
     cache: 'force-cache', // https://nextjs.org/docs/app/guides/upgrading/version-15#fetch-requests
   });
 
-  // TODO: Add lazy loading attribute to `<img>` tags in the HTML response from GitHub API.
+  const html = await response.text();
 
-  return response.text();
+  const { value: htmlValue } = await rehype()
+    .use(rehypeImageLazyLoading)
+    .use(rehypeImageUrlReplace, {
+      searchValue: /^\/public/,
+      replaceValue: '',
+    })
+    .process(html);
+
+  return String(htmlValue);
 }
 
 /**
