@@ -12,7 +12,7 @@
   ],
   "scripts": {
     "prepare": "husky",
-    "test": "vitest run --coverage --exclude packages/react-kit && npm run test:pkg:rk",
+    "test": "vitest run --coverage --exclude packages/react-kit/** && npm run test:pkg:rk",
     "test:pkg:rk": "npm run test:unit -w packages/react-kit",
     "dev": "npm-run-all -c -l -p dev:pkg:* dev:a:fb",
     "dev:a:fb": "npm run dev -w apps/front-blog",
