@@ -6,26 +6,17 @@
 // Import
 // --------------------------------------------------------------------------------
 
-import { expect, test } from 'vitest';
-import SVGWrapper from './svg-wrapper.js';
-
-// --------------------------------------------------------------------------------
-// Helpers
-// --------------------------------------------------------------------------------
-
-const browserTest =
-  globalThis.__vitest_worker__?.ctx?.pool === 'browser' ? test : test.skip;
+import { describe, it, expect } from 'vitest';
+import { render } from 'vitest-browser-react';
+import { SVGWrapper } from './svg-wrapper.js';
 
 // --------------------------------------------------------------------------------
 // Test
 // --------------------------------------------------------------------------------
 
-browserTest(
-  'svg-wrapper should render an svg component with merged attrs and props',
-  async () => {
-    const { render } = await import('vitest-browser-react');
-
-    const TestIcon = SVGWrapper({
+describe('svg-wrapper', () => {
+  it('should render an svg component with merged attrs and props', async () => {
+    const Icon = SVGWrapper({
       attrs: {
         viewBox: '0 0 24 24',
         role: 'img',
@@ -34,30 +25,29 @@ browserTest(
     });
 
     const screen = await render(
-      <TestIcon
+      <Icon
+        aria-label="test icon"
+        color="rgb(255, 0, 0)"
         data-testid="icon"
         size={24}
-        color="rgb(255, 0, 0)"
         style={{ display: 'block' }}
-        aria-label="test icon"
       />,
     );
 
     const svg = screen.container.querySelector('svg');
 
     expect(svg).not.toBeNull();
+    expect(svg?.getAttribute('viewBox')).toBe('0 0 24 24');
+    expect(svg?.getAttribute('role')).toBe('img');
     expect(svg?.querySelectorAll('path')).toHaveLength(1);
     expect(svg?.getAttribute('aria-label')).toBe('test icon');
-    expect(svg?.getAttribute('fill')).toBe('currentColor');
-    expect(svg?.getAttribute('height')).toBe('24');
-    expect(svg?.getAttribute('role')).toBe('img');
-    expect(svg?.getAttribute('stroke')).toBe('currentColor');
-    expect(svg?.getAttribute('stroke-width')).toBe('0');
+    expect(svg?.getAttribute('data-testid')).toBe('icon');
     expect(svg?.getAttribute('style')).toBe('color: rgb(255, 0, 0); display: block;');
-    expect(svg?.getAttribute('viewBox')).toBe('0 0 24 24');
-    expect(svg?.getAttribute('width')).toBe('24');
+    expect(svg?.getAttribute('stroke')).toBe('currentColor');
+    expect(svg?.getAttribute('fill')).toBe('currentColor');
+    expect(svg?.getAttribute('stroke-width')).toBe('0');
     expect(svg?.getAttribute('xmlns')).toBe('http://www.w3.org/2000/svg');
-
-    await expect.element(screen.getByTestId('icon')).toBeVisible();
-  },
-);
+    expect(svg?.getAttribute('width')).toBe('24');
+    expect(svg?.getAttribute('height')).toBe('24');
+  });
+});

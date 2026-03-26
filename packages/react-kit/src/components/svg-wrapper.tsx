@@ -30,7 +30,7 @@ export interface SVGProps extends SVGAttributes<SVGElement> {
 // Export
 // --------------------------------------------------------------------------------
 
-export default function SVGWrapper({ attrs, children }: SVGWrapperProps) {
+export function SVGWrapper({ attrs, children }: SVGWrapperProps) {
   return function SVG({
     size = '1em',
     color = 'currentColor',

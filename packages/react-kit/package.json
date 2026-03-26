@@ -36,7 +36,7 @@
     "dev": "tsc --watch",
     "test": "npm run test:types && npm run test:unit",
     "test:types": "tsc --noEmit",
-    "test:unit": "vitest run"
+    "test:unit": "vitest run --coverage"
   },
   "peerDependencies": {
     "@types/react": "^19.0.0",
