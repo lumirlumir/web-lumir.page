@@ -55,6 +55,18 @@ describe('rehype-image-url-replace', () => {
         ].join('\n'),
       );
     });
+
+    it('should handle `y` flag in the search pattern', async () => {
+      const file = await rehype()
+        .data('settings', { fragment: true })
+        .use(rehypeImageUrlReplace, {
+          searchValue: /^\/public/y,
+          replaceValue: '',
+        })
+        .process('<img src="/public/images/example.png">');
+
+      strictEqual(file.value, '<img src="/images/example.png">');
+    });
   });
 
   describe('when the image URL does not match the search pattern', () => {

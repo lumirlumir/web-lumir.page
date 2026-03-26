@@ -21,6 +21,12 @@ export interface RehypeImageUrlReplaceOptions {
 }
 
 // --------------------------------------------------------------------------------
+// Helper
+// --------------------------------------------------------------------------------
+
+const yFlagRegex = /y/g;
+
+// --------------------------------------------------------------------------------
 // Export
 // --------------------------------------------------------------------------------
 
@@ -44,12 +50,23 @@ export function rehypeImageUrlReplace({
   searchValue,
   replaceValue,
 }: RehypeImageUrlReplaceOptions) {
+  const sanitizedSearchValue = new RegExp(
+    searchValue.source,
+    searchValue.flags.replace(yFlagRegex, ''),
+  );
+
   return (tree: Root) => {
     visit(tree, 'element', node => {
-      if (node.tagName === 'img' && searchValue.test(node.properties?.src as string)) {
+      if (
+        node.tagName === 'img' &&
+        sanitizedSearchValue.test(node.properties?.src as string)
+      ) {
         node.properties = {
           ...node.properties,
-          src: (node.properties?.src as string).replace(searchValue, replaceValue),
+          src: (node.properties?.src as string).replace(
+            sanitizedSearchValue,
+            replaceValue,
+          ),
         };
       }
     });
