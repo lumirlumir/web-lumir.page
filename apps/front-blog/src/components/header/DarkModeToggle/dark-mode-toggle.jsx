@@ -3,7 +3,7 @@
 import { useContext } from 'react';
 import { ThemeContext } from '@/components/common/ThemeProvider';
 
-import styles from './DarkModeToggle.module.scss';
+import styles from './dark-mode-toggle.module.scss';
 
 export default function DarkModeToggle() {
   const { theme, toggleTheme } = useContext(ThemeContext);

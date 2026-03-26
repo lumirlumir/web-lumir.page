@@ -1,5 +1,5 @@
 import React from 'react';
-import './ScrollBar.scss';
+import './scroll-bar.scss';
 
 function ScrollBar() {
   return <div className="ScrollBar" />;

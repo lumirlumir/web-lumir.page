@@ -1,3 +1,3 @@
-import ButtonSingle from './ButtonSingle';
+import ButtonSingle from './button-single';
 
 export default ButtonSingle;

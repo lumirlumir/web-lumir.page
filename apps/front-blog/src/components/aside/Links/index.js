@@ -1,3 +1,3 @@
-import Links from './Links';
+import Links from './links';
 
 export default Links;

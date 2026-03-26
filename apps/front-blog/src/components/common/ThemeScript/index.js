@@ -1,3 +1,3 @@
-import ThemeScript from './ThemeScript';
+import ThemeScript from './theme-script';
 
 export default ThemeScript;

@@ -1,3 +1,3 @@
-import Aside from './Aside';
+import Aside from './aside';
 
 export default Aside;

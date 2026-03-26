@@ -1,3 +1,3 @@
-import ProgBar from './ProgBar';
+import ProgBar from './prog-bar';
 
 export default ProgBar;

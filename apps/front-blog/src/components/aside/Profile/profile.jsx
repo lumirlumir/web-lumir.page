@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import { getGithubUsers } from '@/utils/fetch';
 
-import styles from './Profile.module.scss';
+import styles from './profile.module.scss';
 
 export default async function Profile() {
   const { avatar_url: avatarUrl, bio, name } = await getGithubUsers();

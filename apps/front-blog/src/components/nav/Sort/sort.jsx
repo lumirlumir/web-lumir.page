@@ -12,7 +12,7 @@ import {
 
 import { MARKDOWN_DOCUMENT_DATA_META } from '@/data';
 
-import styles from './Sort.module.scss';
+import styles from './sort.module.scss';
 
 function SortContainer({ children }) {
   const [isOpen, setIsOpen] = useState(false);

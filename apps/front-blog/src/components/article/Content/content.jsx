@@ -4,7 +4,7 @@ import { EXT_MD_REGEXP } from '@/constants';
 import { MARKDOWN_DOCUMENT_DATA_META, MARKDOWN_DOCUMENT_DATA_TAG_META } from '@/data';
 import { markdownToHtml } from '@/utils/markup';
 
-import styles from './Content.module.scss';
+import styles from './content.module.scss';
 
 function ContentBoxContainer({ children }) {
   return <div className={styles['content-box-container']}>{children}</div>;

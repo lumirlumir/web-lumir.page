@@ -1,3 +1,3 @@
-import Categories from './Categories';
+import Categories from './categories';
 
 export default Categories;

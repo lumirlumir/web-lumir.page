@@ -1,3 +1,3 @@
-import DocSearch from './DocSearch';
+import DocSearch from './doc-search';
 
 export default DocSearch;

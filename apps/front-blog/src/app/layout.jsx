@@ -20,7 +20,7 @@ import Main from '@/components/layouts/Main';
 
 import Categories from '@/components/aside/Categories';
 import Links from '@/components/aside/Links';
-import Profile from '@/components/aside/Profile/Profile';
+import Profile from '@/components/aside/Profile';
 
 import DarkModeToggle from '@/components/header/DarkModeToggle';
 import DocSearch from '@/components/header/DocSearch';

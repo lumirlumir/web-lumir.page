@@ -1,3 +1,3 @@
-import ButtonMulti from './ButtonMulti';
+import ButtonMulti from './button-multi';
 
 export default ButtonMulti;

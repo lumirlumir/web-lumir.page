@@ -8,7 +8,7 @@
 
 import Article from '@/components/layouts/Article';
 import Nav from '@/components/layouts/Nav';
-import Section from '@/components/layouts/Section/Section';
+import Section from '@/components/layouts/Section';
 import Giscus from '@/components/section/Giscus';
 
 // --------------------------------------------------------------------------------

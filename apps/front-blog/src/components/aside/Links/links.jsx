@@ -3,7 +3,7 @@ import { FaGithub, FaHouseChimney } from '@lumir/react-kit/svgs';
 
 import { getGithubUsers } from '@/utils/fetch';
 
-import styles from './Links.module.scss';
+import styles from './links.module.scss';
 
 export default async function Links() {
   const { html_url: htmlUrl } = await getGithubUsers();

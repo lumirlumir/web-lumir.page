@@ -1,3 +1,3 @@
-import Katex from './Katex';
+import Katex from './katex';
 
 export default Katex;

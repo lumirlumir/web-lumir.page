@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import { getGithubUsers } from '@/utils/fetch';
 
-import styles from './Title.module.scss';
+import styles from './title.module.scss';
 
 export default async function Title() {
   const { avatar_url: avatarUrl, bio, name } = await getGithubUsers();

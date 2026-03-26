@@ -2,9 +2,9 @@
 
 import { DocSearch as DocSearchOriginal } from '@docsearch/react';
 
-import styles from './DocSearch.module.scss';
+import styles from './doc-search.module.scss';
 import '@docsearch/css';
-import './DocSearch.scss';
+import './doc-search.scss';
 
 export default function DocSearch() {
   return (

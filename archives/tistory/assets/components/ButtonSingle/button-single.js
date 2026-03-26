@@ -1,5 +1,5 @@
 import React from 'react';
-import './ButtonSingle.scss';
+import './button-single.scss';
 
 function ButtonSingle(props) {
   /* Variables */

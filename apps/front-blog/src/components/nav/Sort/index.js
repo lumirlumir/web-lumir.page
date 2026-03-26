@@ -1,3 +1,3 @@
-import Sort from './Sort';
+import Sort from './sort';
 
 export default Sort;

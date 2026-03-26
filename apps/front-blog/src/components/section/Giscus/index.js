@@ -1,3 +1,3 @@
-import Giscus from './Giscus';
+import Giscus from './giscus';
 
 export default Giscus;

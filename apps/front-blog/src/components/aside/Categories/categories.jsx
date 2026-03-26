@@ -5,7 +5,7 @@ import { PATH_DOCS } from '@/constants';
 import { MARKDOWN_DOCUMENT_DATA_TAG_META } from '@/data';
 import { readMarkdownTagTree } from '@/utils/fs';
 
-import styles from './Categories.module.scss';
+import styles from './categories.module.scss';
 
 export default async function Categories() {
   const tagTree = await readMarkdownTagTree(PATH_DOCS);

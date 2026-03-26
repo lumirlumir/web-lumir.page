@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { HiOutlineMenuAlt2 } from '@lumir/react-kit/svgs';
 
-import styles from './Aside.module.scss';
+import styles from './aside.module.scss';
 
 export default function Aside({ children }) {
   const [visible, setVisible] = useState(false);
