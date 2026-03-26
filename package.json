@@ -13,7 +13,8 @@
   "scripts": {
     "prepare": "husky",
     "test": "vitest run --coverage",
-    "dev:a:fb": "npm-run-all -c -l -p dev:pkg:* && npm run dev -w apps/front-blog",
+    "dev": "npm-run-all -c -l -p dev:pkg:* dev:a:fb",
+    "dev:a:fb": "npm run dev -w apps/front-blog",
     "dev:pkg:rk": "npm run dev -w packages/react-kit",
     "dev:pkg:rhp": "npm run dev -w packages/rehype-plugins",
     "dev:pkg:rmp": "npm run dev -w packages/remark-plugins",
