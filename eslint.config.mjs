@@ -15,7 +15,6 @@ import md from 'eslint-markdown';
 // Export
 // --------------------------------------------------------------------------------
 
-/** @type {import("eslint").Linter.Config[]} */
 export default defineConfig([
   globalIgnores(
     ['**/build/', '**/coverage/', '**/.next/', '**/archives/'],
@@ -31,13 +30,16 @@ export default defineConfig([
   md.configs.stylistic,
 
   {
-    name: 'global',
+    name: 'global/apps/front-blog',
     settings: {
+      next: {
+        rootDir: fileURLToPath(new URL('./apps/front-blog', import.meta.url)),
+      },
       node: {
         resolverConfig: {
           // `eslint-plugin-n` uses webpack's `enhanced-resolve` under the hood.
           alias: {
-            '@': fileURLToPath(new URL('./src', import.meta.url)),
+            '@': fileURLToPath(new URL('./apps/front-blog/src', import.meta.url)),
           },
         },
       },
@@ -57,7 +59,7 @@ export default defineConfig([
   },
   {
     name: 'md/posts/docs',
-    files: ['src/posts/docs/**/*.md'],
+    files: ['apps/front-blog/src/posts/docs/**/*.md'],
     rules: {
       'md/allow-image-url': [
         'error',

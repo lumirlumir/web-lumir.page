@@ -1,0 +1,7 @@
+{
+  "buildCommand": "npm run count-docs && npm run build:a:fb --prefix ../..",
+  "framework": "nextjs",
+  "installCommand": "npm install --prefix ../..",
+  "outputDirectory": ".next",
+  "regions": ["icn1"]
+}
