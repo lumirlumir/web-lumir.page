@@ -1,9 +1,8 @@
 // Integrate with VScode so that related information can be displayed when hovering the mouse.
 {
   "compilerOptions": {
-    "baseUrl": ".", // Set the base path to the current root directory.
     "paths": {
-      "@/*": ["src/*"] // Map the '@' alias to the 'src' directory.
+      "@/*": ["./src/*"] // Map the '@' alias to the 'src' directory.
     }
   },
   "include": [

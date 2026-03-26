@@ -2,7 +2,6 @@ import { rehypeImageLazyLoading, rehypeImageUrlReplace } from '@lumir/rehype-plu
 import { remark } from 'remark';
 import { rehype } from 'rehype';
 import { GITHUB_REPO_FULL_NAME } from '@/constants';
-import { readMarkdownFile } from './fs';
 
 /* eslint-disable prefer-named-capture-group -- TODO */
 
@@ -62,24 +61,6 @@ export async function markdownToHtml(markdownContent) {
     .process(html);
 
   return String(htmlValue);
-}
-
-/**
- * Converts markdown content to HTML from path.
- *
- * @async
- * @param {string} pathToMarkdownFile Path to a markdown file.
- * @returns {Promise<string>} A promise that resolves to HTML.
- */
-export async function markdownToHtmlFromPath(pathToMarkdownFile) {
-  const {
-    content,
-    data: { title },
-  } = await readMarkdownFile(pathToMarkdownFile);
-
-  const html = await markdownToHtml(writeTitleIntoMarkdown(title, content));
-
-  return html;
 }
 
 /**

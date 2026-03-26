@@ -6,20 +6,11 @@
 // Import
 // --------------------------------------------------------------------------------
 
-import { join } from 'node:path';
-
+import { frontMatter } from '@lumir/utils';
 import Katex from '@/components/article/Katex';
-import { PATH_DOCS, EXT_MD, EXT_MD_REGEXP } from '@/constants';
-import { readMarkdownFile, readMarkdownFilesFromDir } from '@/utils/fs';
-import { markdownToText, markdownToHtmlFromPath } from '@/utils/markup';
-
-// --------------------------------------------------------------------------------
-// Helpers
-// --------------------------------------------------------------------------------
-
-function getFilePath(params) {
-  return join(PATH_DOCS, `${params.markdown}${EXT_MD}`);
-}
+import { PATH_DOCS, EXT_MD_REGEXP } from '@/constants';
+import { readMarkdownFilesFromDir } from '@/utils/fs';
+import { markdownToText, markdownToHtml, writeTitleIntoMarkdown } from '@/utils/markup';
 
 // --------------------------------------------------------------------------------
 // Named Export
@@ -38,9 +29,12 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }) {
+  const { default: markdown } = await import(
+    `../../../posts/docs/${(await params).markdown}.md`
+  );
   const {
     data: { title, description },
-  } = await readMarkdownFile(getFilePath(await params));
+  } = frontMatter(markdown);
 
   return {
     title: markdownToText(title),
@@ -53,11 +47,19 @@ export async function generateMetadata({ params }) {
 // --------------------------------------------------------------------------------
 
 export default async function Page({ params }) {
+  const { default: markdown } = await import(
+    `../../../posts/docs/${(await params).markdown}.md`
+  );
+  const {
+    content,
+    data: { title },
+  } = frontMatter(markdown);
+
   return (
     <Katex
       className="markdown-body"
       dangerouslySetInnerHTML={{
-        __html: await markdownToHtmlFromPath(getFilePath(await params)),
+        __html: await markdownToHtml(writeTitleIntoMarkdown(title, content)),
       }}
     />
   );
