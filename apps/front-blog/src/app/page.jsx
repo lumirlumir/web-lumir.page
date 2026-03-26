@@ -6,7 +6,7 @@
 // Import
 // --------------------------------------------------------------------------------
 
-import Article from '@/components/layouts/Article';
+import Article from '@/components/layouts/article';
 
 import { getGithubUsers } from '@/utils/fetch';
 

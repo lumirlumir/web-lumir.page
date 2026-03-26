@@ -7,7 +7,7 @@
 // --------------------------------------------------------------------------------
 
 import { frontMatter } from '@lumir/utils';
-import Katex from '@/components/article/Katex';
+import Katex from '@/components/article/katex';
 import { PATH_DOCS, EXT_MD_REGEXP } from '@/constants';
 import { readMarkdownFilesFromDir } from '@/utils/fs';
 import { markdownToText, markdownToHtml, writeTitleIntoMarkdown } from '@/utils/markup';
