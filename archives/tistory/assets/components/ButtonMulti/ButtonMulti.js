@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import './button-multi.scss';
-import ButtonSingle from '../button-single';
+import './ButtonMulti.scss';
+import ButtonSingle from '../ButtonSingle';
 
 function ButtonMulti(props) {
   /* Variables */

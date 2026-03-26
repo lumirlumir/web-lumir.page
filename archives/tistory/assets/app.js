@@ -11,10 +11,10 @@ import {
 } from 'react-icons/ai';
 import { GrSoundcloud } from 'react-icons/gr';
 
-import ScrollBar from './components/scroll-bar';
-import ProgBar from './components/prog-bar';
-import ButtonSingle from './components/button-single';
-import ButtonMulti from './components/button-multi';
+import ScrollBar from './components/ScrollBar';
+import ProgBar from './components/ProgBar';
+import ButtonSingle from './components/ButtonSingle';
+import ButtonMulti from './components/ButtonMulti';
 
 ReactDOM.render(
   <>

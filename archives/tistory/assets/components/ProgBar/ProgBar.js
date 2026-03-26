@@ -1,5 +1,5 @@
 import React from 'react';
-import './prog-bar.scss';
+import './ProgBar.scss';
 
 function ProgBar() {
   window.addEventListener('scroll', () => {

@@ -3,7 +3,7 @@ import { join } from 'path';
 import Link from 'next/link';
 
 import { DOCS, EXTENSION } from '@/constants/path';
-import { readDirTree } from './dir-tree';
+import { readDirTree } from '@/utils/fs/dirTree';
 
 /* Custom Declaration */
 const { md, mdRegExp } = EXTENSION;
