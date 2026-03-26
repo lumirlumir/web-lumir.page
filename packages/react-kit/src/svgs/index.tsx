@@ -6,7 +6,7 @@
 // Import
 // --------------------------------------------------------------------------------
 
-import SVGWrapper from '../components/svg-wrapper.js';
+import { SVGWrapper } from '../components/svg-wrapper.js';
 
 // --------------------------------------------------------------------------------
 // Export
