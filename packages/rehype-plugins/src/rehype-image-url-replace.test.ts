@@ -1,5 +1,5 @@
 /**
- * @fileoverview Test for `remark-image-url-replace.ts`
+ * @fileoverview Test for `rehype-image-url-replace.ts`
  */
 
 // --------------------------------------------------------------------------------
@@ -7,38 +7,40 @@
 // --------------------------------------------------------------------------------
 
 import { strictEqual } from 'node:assert';
-import { remark } from 'remark';
+import { rehype } from 'rehype';
 import { describe, it } from 'vitest';
-import { remarkImageUrlReplace } from './remark-image-url-replace.js';
+import { rehypeImageUrlReplace } from './rehype-image-url-replace.js';
 
 // --------------------------------------------------------------------------------
 // Test
 // --------------------------------------------------------------------------------
 
-describe('remark-image-url-replace', () => {
+describe('rehype-image-url-replace', () => {
   describe('when the image URL matches the search pattern', () => {
     it('should replace the image URL', async () => {
-      const { value } = await remark()
-        .use(remarkImageUrlReplace, {
+      const { value } = await rehype()
+        .data('settings', { fragment: true })
+        .use(rehypeImageUrlReplace, {
           searchValue: /^\/public/,
           replaceValue: '',
         })
-        .process('![Image](/public/images/example.png)\n');
+        .process('<img src="/public/images/example.png">');
 
-      strictEqual(value, '![Image](/images/example.png)\n');
+      strictEqual(value, '<img src="/images/example.png">');
     });
 
     it('should replace all matching image URLs', async () => {
-      const { value } = await remark()
-        .use(remarkImageUrlReplace, {
+      const { value } = await rehype()
+        .data('settings', { fragment: true })
+        .use(rehypeImageUrlReplace, {
           searchValue: /^\/public/,
           replaceValue: '',
         })
         .process(
           [
-            '![Image 1](/public/images/example-1.png)',
+            '<img src="/public/images/example-1.png">',
             '',
-            '![Image 2](/public/images/example-2.png)',
+            '<img src="/public/images/example-2.png">',
             '',
           ].join('\n'),
         );
@@ -46,9 +48,9 @@ describe('remark-image-url-replace', () => {
       strictEqual(
         value,
         [
-          '![Image 1](/images/example-1.png)',
+          '<img src="/images/example-1.png">',
           '',
-          '![Image 2](/images/example-2.png)',
+          '<img src="/images/example-2.png">',
           '',
         ].join('\n'),
       );
@@ -57,14 +59,15 @@ describe('remark-image-url-replace', () => {
 
   describe('when the image URL does not match the search pattern', () => {
     it('should keep the original image URL', async () => {
-      const { value } = await remark()
-        .use(remarkImageUrlReplace, {
+      const { value } = await rehype()
+        .data('settings', { fragment: true })
+        .use(rehypeImageUrlReplace, {
           searchValue: /^\/public/,
           replaceValue: '',
         })
-        .process('![Image](/assets/example.png)\n');
+        .process('<img src="/assets/example.png">');
 
-      strictEqual(value, '![Image](/assets/example.png)\n');
+      strictEqual(value, '<img src="/assets/example.png">');
     });
   });
 });

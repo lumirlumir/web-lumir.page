@@ -1,0 +1,35 @@
+{
+  "private": true,
+  "name": "@lumir/rehype-plugins",
+  "version": "0.0.0",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./build/index.d.ts",
+      "default": "./build/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "typesVersions": {
+    "*": {
+      ".": [
+        "./build/index.d.ts"
+      ]
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "npm run test:types && npm run test:unit",
+    "test:types": "tsc --noEmit",
+    "test:unit": "vitest run"
+  },
+  "dependencies": {
+    "unist-util-visit": "^5.1.0"
+  },
+  "devDependencies": {
+    "@types/hast": "^3.0.4",
+    "rehype": "^13.0.2",
+    "vitest": "^4.1.0"
+  }
+}
