@@ -7,7 +7,6 @@
 // --------------------------------------------------------------------------------
 
 import { fileURLToPath } from 'node:url';
-import createMDX from '@next/mdx';
 
 // --------------------------------------------------------------------------------
 // Helpers
@@ -40,28 +39,20 @@ const nextConfig = {
       },
     },
   }),
-};
 
-/**
- * @see https://nextjs.org/docs/app/guides/mdx
- * @see https://github.com/vercel/next.js/tree/canary/examples/mdx
- * @see https://github.com/vercel/next.js/tree/canary/packages/next-mdx
- * @see https://mdxjs.com/packages/mdx/#fields
- */
-const withMDX = createMDX({
-  extension: /\.(?:md|mdx)$/i,
-  options: {
-    // remarkPlugins: [],
-    // rehypePlugins: [],
-    // remarkRehypeOptions: {},
-    // format: 'md',
-    // mdExtensions: ['.md'],
-    // stylePropertyNameCase: 'dom' // or 'css'
+  webpack(config) {
+    // Add a rule to handle Markdown files as raw text.
+    config.module.rules.push({
+      test: /\.md$/,
+      type: 'asset/source',
+    });
+
+    return config;
   },
-});
+};
 
 // --------------------------------------------------------------------------------
 // Export
 // --------------------------------------------------------------------------------
 
-export default withMDX(nextConfig);
+export default nextConfig;
