@@ -33,9 +33,9 @@ export interface RehypeImageUrlReplaceOptions {
  * const file = await rehype().use(rehypeImageUrlReplace, {
  *   searchValue: /^http:\/\//,
  *   replaceValue: 'https://',
- * }).process('<img src="http://example.com/image.png" />');
+ * }).process('<img src="http://example.com/image.png">');
  *
- * console.log(file.value); // Output: '<img src="https://example.com/image.png" />'
+ * console.log(file.value); // Output: '<img src="https://example.com/image.png">'
  * ```
  */
 export function rehypeImageUrlReplace({

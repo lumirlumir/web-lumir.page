@@ -18,7 +18,7 @@ import { rehypeImageUrlReplace } from './rehype-image-url-replace.js';
 describe('rehype-image-url-replace', () => {
   describe('when the image URL matches the search pattern', () => {
     it('should replace the image URL', async () => {
-      const { value } = await rehype()
+      const file = await rehype()
         .data('settings', { fragment: true })
         .use(rehypeImageUrlReplace, {
           searchValue: /^\/public/,
@@ -26,11 +26,11 @@ describe('rehype-image-url-replace', () => {
         })
         .process('<img src="/public/images/example.png">');
 
-      strictEqual(value, '<img src="/images/example.png">');
+      strictEqual(file.value, '<img src="/images/example.png">');
     });
 
     it('should replace all matching image URLs', async () => {
-      const { value } = await rehype()
+      const file = await rehype()
         .data('settings', { fragment: true })
         .use(rehypeImageUrlReplace, {
           searchValue: /^\/public/,
@@ -46,7 +46,7 @@ describe('rehype-image-url-replace', () => {
         );
 
       strictEqual(
-        value,
+        file.value,
         [
           '<img src="/images/example-1.png">',
           '',
@@ -59,7 +59,7 @@ describe('rehype-image-url-replace', () => {
 
   describe('when the image URL does not match the search pattern', () => {
     it('should keep the original image URL', async () => {
-      const { value } = await rehype()
+      const file = await rehype()
         .data('settings', { fragment: true })
         .use(rehypeImageUrlReplace, {
           searchValue: /^\/public/,
@@ -67,7 +67,7 @@ describe('rehype-image-url-replace', () => {
         })
         .process('<img src="/assets/example.png">');
 
-      strictEqual(value, '<img src="/assets/example.png">');
+      strictEqual(file.value, '<img src="/assets/example.png">');
     });
   });
 });
