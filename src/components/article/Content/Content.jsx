@@ -35,7 +35,7 @@ export default async function Content({ markdownDocument }) {
 
         <div
           className={`${styles.description} markdown-body`}
-          dangerouslySetInnerHTML={{ __html: await markdownToHtml(description) }} // eslint-disable-line react/no-danger -- Safe because the title is controlled and sanitized.
+          dangerouslySetInnerHTML={{ __html: await markdownToHtml(description) }} // eslint-disable-line react/no-danger -- Safe because the description is controlled and sanitized.
         />
 
         <ContentBoxContainer>
