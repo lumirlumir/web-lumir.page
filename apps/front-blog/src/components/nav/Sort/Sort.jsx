@@ -7,8 +7,8 @@ import {
   FaAngleUp,
   FaArrowDownWideShort,
   FaArrowUpShortWide,
-} from 'react-icons/fa6';
-import { GrSort } from 'react-icons/gr';
+  GrSort,
+} from '@lumir/react-kit/svgs';
 
 import { MARKDOWN_DOCUMENT_DATA_META } from '@/data';
 

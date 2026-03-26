@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { HiOutlineMenuAlt2 } from 'react-icons/hi';
+import { HiOutlineMenuAlt2 } from '@lumir/react-kit/svgs';
 
 import styles from './Aside.module.scss';
 

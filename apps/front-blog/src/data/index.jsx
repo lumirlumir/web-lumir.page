@@ -1,29 +1,33 @@
-import { RiJavascriptFill } from 'react-icons/ri';
-import { TbBrandNextjs } from 'react-icons/tb';
-import { MdDataObject } from 'react-icons/md';
-import { BiLogoVisualStudio } from 'react-icons/bi';
-import { GiHummingbird } from 'react-icons/gi';
-import { LuHeading1, LuNetwork } from 'react-icons/lu';
-import { SiCplusplus, SiOpenai, SiThealgorithms, SiSynology } from 'react-icons/si';
 import {
+  BiLogoVisualStudio,
   FaBook,
-  FaTag,
-  FaRegCalendarPlus,
-  FaRegCalendarXmark,
-  FaHtml5,
-  FaMarkdown,
+  FaBookOpen,
+  FaCode,
   FaCss3Alt,
+  FaDatabase,
+  FaGithub,
+  FaHtml5,
+  FaLaptopCode,
+  FaLinux,
+  FaMarkdown,
   FaNodeJs,
   FaNpm,
   FaReact,
-  FaLinux,
-  FaDatabase,
-  FaGithub,
-  FaCode,
+  FaRegCalendarPlus,
+  FaRegCalendarXmark,
   FaScrewdriverWrench,
-  FaLaptopCode,
-  FaBookOpen,
-} from 'react-icons/fa6';
+  FaTag,
+  GiHummingbird,
+  LuHeading1,
+  LuNetwork,
+  MdDataObject,
+  RiJavascriptFill,
+  SiCplusplus,
+  SiOpenai,
+  SiSynology,
+  SiThealgorithms,
+  TbBrandNextjs,
+} from '@lumir/react-kit/svgs';
 
 /**
  * @typedef {import('@/types').MarkdownDocumentData} MarkdownDocumentData
