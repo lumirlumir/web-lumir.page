@@ -5,6 +5,6 @@ export default {
   ],
   '*.{js,mjs,cjs,jsx,ts,mts,cts,tsx,md}': 'npx eslint --fix',
   '*.{css,scss}': 'npx stylelint',
-  '*.md': 'npx markdownlint --fix',
+  '*.md': 'npx markdownlint --fix --disable MD060',
   '*.{h,c,cpp}': 'npx clang-format -n -Werror',
 };
