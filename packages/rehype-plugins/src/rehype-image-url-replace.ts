@@ -2,8 +2,6 @@
  * @fileoverview rehype-image-url-replace.
  */
 
-// TODO: Handle `g` or `y` flags in `searchValue` as it can cause unexpected behavior.
-
 // --------------------------------------------------------------------------------
 // Import
 // --------------------------------------------------------------------------------
