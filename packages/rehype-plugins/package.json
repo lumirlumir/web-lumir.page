@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "@lumir/utils",
+  "name": "@lumir/rehype-plugins",
   "version": "0.0.0",
   "type": "module",
   "exports": {
@@ -25,9 +25,11 @@
     "test:unit": "vitest run"
   },
   "dependencies": {
-    "yaml": "^2.8.3"
+    "unist-util-visit": "^5.1.0"
   },
   "devDependencies": {
+    "@types/hast": "^3.0.4",
+    "rehype": "^13.0.2",
     "vitest": "^4.1.1"
   }
 }

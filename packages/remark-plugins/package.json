@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "@lumir/utils",
+  "name": "@lumir/remark-plugins",
   "version": "0.0.0",
   "type": "module",
   "exports": {
@@ -25,9 +25,11 @@
     "test:unit": "vitest run"
   },
   "dependencies": {
-    "yaml": "^2.8.3"
+    "unist-util-visit": "^5.1.0"
   },
   "devDependencies": {
+    "@types/mdast": "^4.0.4",
+    "remark": "^15.0.1",
     "vitest": "^4.1.1"
   }
 }

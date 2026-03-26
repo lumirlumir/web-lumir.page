@@ -11,7 +11,7 @@ import { join } from 'node:path';
 import Katex from '@/components/article/Katex';
 import { PATH_DOCS, EXT_MD, EXT_MD_REGEXP } from '@/constants';
 import { readMarkdownFile, readMarkdownFilesFromDir } from '@/utils/fs';
-import { markdownToText, markdownToJsxFromPath } from '@/utils/markup';
+import { markdownToText, markdownToHtmlFromPath } from '@/utils/markup';
 
 // --------------------------------------------------------------------------------
 // Helpers
@@ -54,8 +54,11 @@ export async function generateMetadata({ params }) {
 
 export default async function Page({ params }) {
   return (
-    <Katex className="markdown-body">
-      {await markdownToJsxFromPath(getFilePath(await params))}
-    </Katex>
+    <Katex
+      className="markdown-body"
+      dangerouslySetInnerHTML={{
+        __html: await markdownToHtmlFromPath(getFilePath(await params)),
+      }}
+    />
   );
 }

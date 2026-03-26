@@ -1,5 +1,6 @@
-import parse from 'html-react-parser';
-
+import { rehypeImageLazyLoading, rehypeImageUrlReplace } from '@lumir/rehype-plugins';
+import { remark } from 'remark';
+import { rehype } from 'rehype';
 import { GITHUB_REPO_FULL_NAME } from '@/constants';
 import { readMarkdownFile } from './fs';
 
@@ -31,6 +32,8 @@ export function markdownToText(markdownContent) {
  * @returns {Promise<string>} A promise that resolves to HTML.
  */
 export async function markdownToHtml(markdownContent) {
+  const { value: markdownValue } = await remark().process(markdownContent);
+
   const response = await fetch('https://api.github.com/markdown', {
     method: 'POST',
     headers: {
@@ -40,67 +43,43 @@ export async function markdownToHtml(markdownContent) {
       'X-GitHub-Api-Version': '2022-11-28',
     },
     body: JSON.stringify({
-      text: markdownContent,
+      text: String(markdownValue),
       mode: 'gfm',
       context: GITHUB_REPO_FULL_NAME,
     }),
     cache: 'force-cache', // https://nextjs.org/docs/app/guides/upgrading/version-15#fetch-requests
   });
 
-  return response.text();
+  const html = await response.text();
+
+  const { value: htmlValue } = await rehype()
+    .data('settings', { fragment: true })
+    .use(rehypeImageLazyLoading)
+    .use(rehypeImageUrlReplace, {
+      searchValue: /^\/public/,
+      replaceValue: '',
+    })
+    .process(html);
+
+  return String(htmlValue);
 }
 
 /**
- * Converts markdown content to JSX.
- *
- * @async
- * @param {string} markdownContent Markdown content.
- * @returns {Promise<JSX.Element>} A promise that resolves to JSX.
- */
-export async function markdownToJsx(markdownContent) {
-  const html = await markdownToHtml(markdownContent);
-  const jsx = htmlToJsx(html);
-
-  return jsx;
-}
-
-/**
- * Converts markdown content to JSX from path.
+ * Converts markdown content to HTML from path.
  *
  * @async
  * @param {string} pathToMarkdownFile Path to a markdown file.
- * @returns {Promise<JSX.Element>} A promise that resolves to JSX.
+ * @returns {Promise<string>} A promise that resolves to HTML.
  */
-export async function markdownToJsxFromPath(pathToMarkdownFile) {
+export async function markdownToHtmlFromPath(pathToMarkdownFile) {
   const {
     content,
     data: { title },
   } = await readMarkdownFile(pathToMarkdownFile);
 
-  const markdownContent = writeTitleIntoMarkdown(title, content);
-  const jsx = await markdownToJsx(markdownContent);
+  const html = await markdownToHtml(writeTitleIntoMarkdown(title, content));
 
-  return jsx;
-}
-
-/**
- * Converts HTML to JSX using `html-react-parser`
- *
- * @param {string} html HTML
- * @returns {JSX.Element} JSX
- */
-export function htmlToJsx(html) {
-  return parse(html, {
-    replace({ name, attribs }) {
-      // <img>
-      if (name === 'img') {
-        attribs.src = attribs.src.startsWith('/public')
-          ? attribs.src.replace(/^\/public/, '')
-          : attribs.src;
-        attribs.loading = 'lazy';
-      }
-    },
-  });
+  return html;
 }
 
 /**

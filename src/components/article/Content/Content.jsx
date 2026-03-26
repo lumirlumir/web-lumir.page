@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import { EXT_MD_REGEXP } from '@/constants';
 import { MARKDOWN_DOCUMENT_DATA_META, MARKDOWN_DOCUMENT_DATA_TAG_META } from '@/data';
-import { markdownToJsx } from '@/utils/markup';
+import { markdownToHtml } from '@/utils/markup';
 
 import styles from './Content.module.scss';
 
@@ -19,7 +19,7 @@ function ContentBoxItem({ icon, text }) {
   );
 }
 
-export default function Content({ markdownDocument }) {
+export default async function Content({ markdownDocument }) {
   const {
     basename,
     data: { title, description, created, updated, tags },
@@ -28,11 +28,15 @@ export default function Content({ markdownDocument }) {
   return (
     <Link href={`/posts/${basename.replace(EXT_MD_REGEXP, '')}`}>
       <div className={styles.content}>
-        <div className={`${styles.title} markdown-body`}>{markdownToJsx(title)}</div>
+        <div
+          className={`${styles.title} markdown-body`}
+          dangerouslySetInnerHTML={{ __html: await markdownToHtml(title) }} // eslint-disable-line react/no-danger -- Safe because the title is controlled and sanitized.
+        />
 
-        <div className={`${styles.description} markdown-body`}>
-          {markdownToJsx(description)}
-        </div>
+        <div
+          className={`${styles.description} markdown-body`}
+          dangerouslySetInnerHTML={{ __html: await markdownToHtml(description) }} // eslint-disable-line react/no-danger -- Safe because the description is controlled and sanitized.
+        />
 
         <ContentBoxContainer>
           <ContentBoxItem
