@@ -1,5 +1,5 @@
 /**
- * @fileoverview svg.
+ * @fileoverview Inlined SVG icon components used by front-blog, wrapped with SVGWrapper.
  */
 
 // --------------------------------------------------------------------------------
