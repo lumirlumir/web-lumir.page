@@ -1,1 +1,1 @@
-// Dummy File
+export * from './svg-wrapper.js';

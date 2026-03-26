@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { FaPen } from 'react-icons/fa6';
+import { FaPen } from '@lumir/react-kit/svgs';
 
 import { PATH_DOCS } from '@/constants';
 import { MARKDOWN_DOCUMENT_DATA_TAG_META } from '@/data';

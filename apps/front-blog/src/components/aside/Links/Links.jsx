@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { FaHouseChimney, FaGithub } from 'react-icons/fa6';
+import { FaGithub, FaHouseChimney } from '@lumir/react-kit/svgs';
 
 import { getGithubUsers } from '@/utils/fetch';
 
