@@ -8,8 +8,8 @@
 
 import { Suspense } from 'react';
 
-import Content from '@/components/article/Content';
-import Loading from '@/components/common/Loading';
+import Content from '@/components/article/content';
+import Loading from '@/components/common/loading';
 import { PATH_DOCS } from '@/constants';
 import { compareMarkdownDocument } from '@/utils/compare';
 import { readMarkdownTagTree } from '@/utils/fs';

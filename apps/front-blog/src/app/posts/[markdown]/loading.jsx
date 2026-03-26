@@ -6,7 +6,7 @@
 // Import
 // --------------------------------------------------------------------------------
 
-import LoadingOriginal from '@/components/common/Loading';
+import LoadingOriginal from '@/components/common/loading';
 
 // --------------------------------------------------------------------------------
 // Default Export

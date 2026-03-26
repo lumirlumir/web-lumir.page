@@ -6,9 +6,9 @@
 // Import
 // --------------------------------------------------------------------------------
 
-import Article from '@/components/layouts/Article';
-import Nav from '@/components/layouts/Nav';
-import Sort from '@/components/nav/Sort';
+import Article from '@/components/layouts/article';
+import Nav from '@/components/layouts/nav';
+import Sort from '@/components/nav/sort';
 
 // --------------------------------------------------------------------------------
 // Default Export
