@@ -53,6 +53,7 @@ export async function markdownToHtml(markdownContent) {
   const html = await response.text();
 
   const { value: htmlValue } = await rehype()
+    .data('settings', { fragment: true })
     .use(rehypeImageLazyLoading)
     .use(rehypeImageUrlReplace, {
       searchValue: /^\/public/,

@@ -47,7 +47,7 @@
     "module": "NodeNext",
     "moduleResolution": "nodenext",
     "rootDir": "./src",
-    "types": ["mdast"],
+    "types": ["hast"],
 
     /* Emit */
     "declaration": true,
