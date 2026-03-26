@@ -6,10 +6,10 @@
 // Import
 // --------------------------------------------------------------------------------
 
-import Article from '@/components/layouts/Article';
-import Nav from '@/components/layouts/Nav';
-import Section from '@/components/layouts/Section/Section';
-import Giscus from '@/components/section/Giscus';
+import Article from '@/components/layouts/article';
+import Nav from '@/components/layouts/nav';
+import Section from '@/components/layouts/section';
+import Giscus from '@/components/section/giscus';
 
 // --------------------------------------------------------------------------------
 // Default Export
