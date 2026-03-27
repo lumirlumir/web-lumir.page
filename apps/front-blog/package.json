@@ -19,7 +19,7 @@
     "@lumir/rehype-plugins": "^0.0.0",
     "@lumir/remark-plugins": "^0.0.0",
     "@lumir/utils": "^0.0.0",
-    "@next/third-parties": "^15.5.9",
+    "@next/third-parties": "^15.5.14",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
     "babel-plugin-react-compiler": "^1.0.0",
