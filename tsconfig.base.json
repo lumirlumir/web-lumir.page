@@ -25,6 +25,11 @@
     /* Modules */
     "module": "NodeNext",
     "moduleResolution": "nodenext",
+    "types": ["node"],
+
+    /* Emit */
+    "declaration": true,
+    "emitDeclarationOnly": true,
 
     /* JavaScript Support */
     "allowJs": true,
@@ -32,6 +37,8 @@
 
     /* Interop Constraints */
     "allowSyntheticDefaultImports": true,
+    "erasableSyntaxOnly": true,
+    "verbatimModuleSyntax": true,
 
     /* Language and Environment */
     "target": "ESNext"

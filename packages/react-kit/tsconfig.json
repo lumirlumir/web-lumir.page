@@ -22,11 +22,12 @@
     "**/fixtures/**"
   ],
   "compilerOptions": {
+    /* Modules */
     "rootDir": "./src",
-    "types": ["react"],
+    "types": ["react", "react-dom"],
 
     /* Emit */
-    "declaration": true,
+    "emitDeclarationOnly": false,
     "outDir": "build",
 
     /* Language and Environment */

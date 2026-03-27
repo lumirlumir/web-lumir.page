@@ -22,11 +22,12 @@
     "**/fixtures/**"
   ],
   "compilerOptions": {
+    /* Modules */
     "rootDir": "./src",
     "types": ["hast"],
 
     /* Emit */
-    "declaration": true,
+    "emitDeclarationOnly": false,
     "outDir": "build"
   }
 }
