@@ -57,6 +57,6 @@
     "stylelint": "^16.26.1",
     "stylelint-config-recess-order": "^7.4.0",
     "stylelint-config-standard-scss": "^16.0.0",
-    "typescript": "^5.9.3"
+    "typescript": "^6.0.2"
   }
 }
