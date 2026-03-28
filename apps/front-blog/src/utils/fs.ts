@@ -46,12 +46,11 @@ export async function readMarkdownFilesFromDir(
 
 /**
  * Asynchronously reads a directory and generates a tag tree from markdown files.
- * @param {string} dirPath Path to a directory containing markdown files.
- * @returns {Promise<{[key: string]: MarkdownDocument[]}>} A promise that resolves to a tag tree.
- * @see {@link MarkdownDocument}
  */
-export async function readMarkdownTagTree(dirPath: string) {
-  const tagTree = {}; // Initialize an empty object to store the tag tree.
+export async function readMarkdownTagTree(
+  dirPath: string,
+): Promise<Record<string, VMarkdownFile[]>> {
+  const tagTree: Record<string, VMarkdownFile[]> = {}; // Initialize an empty object to store the tag tree.
   const markdownDocuments = await readMarkdownFilesFromDir(dirPath);
 
   for (const markdownDocument of markdownDocuments) {

@@ -1,20 +1,18 @@
+import { type VMarkdownFile } from '@/data/v-markdown-file';
 import { markdownToText } from './markup';
 
-/**
- * @typedef {import('@/types').MarkdownDocument} MarkdownDocument
- */
+/* eslint-disable import/prefer-default-export */
 
 /**
  * Use with an array of {@link MarkdownDocument} type.
- *
- * @param {'title' | 'created' | 'updated'} sort `'title'`, `'created'` or `'updated'` can be used.
- * @param {'asc' | 'desc'} order `'asc'` or `'desc'` can be used.
- * @returns {function} A comparison function for use with `Array.prototype.sort`.
  */
-export function compareMarkdownDocument(sort, order) {
+export function compareMarkdownDocument(
+  sort: 'title' | 'created' | 'updated',
+  order: 'asc' | 'desc',
+) {
   switch (sort) {
     case 'title': {
-      return function (a, b) {
+      return function (a: VMarkdownFile, b: VMarkdownFile) {
         const titleA = markdownToText(a.data.title.toLowerCase()); // Case insensitive.
         const titleB = markdownToText(b.data.title.toLowerCase()); // Case insensitive.
 
@@ -25,7 +23,7 @@ export function compareMarkdownDocument(sort, order) {
     }
     case 'created':
     case 'updated': {
-      return function (a, b) {
+      return function (a: VMarkdownFile, b: VMarkdownFile) {
         const dateA = new Date(a.data[sort]);
         const dateB = new Date(b.data[sort]);
 
