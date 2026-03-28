@@ -64,6 +64,8 @@ Use this guide when preparing any PR in this repository.
 - The workflow extracts allowed scopes from every `package.json` `name` field in the repo.
 - Use an existing package/application name such as `front-blog`, `@lumir/utils`, `@lumir/react-kit`, `@lumir/rehype-plugins`, or `@lumir/remark-plugins`.
 - Use `*` for repo-wide/docs/tooling changes when a single package scope is not appropriate.
+- Additional allowed scopes are `deps`, `deps-dev`, `release`, `sync-server`, and `sync-client`.
+- `deps` and `deps-dev` are intended for `chore` changes that update dependencies.
 
 #### `description` rules
 
