@@ -1,5 +1,5 @@
 /**
- * @fileoverview front-matter.
+ * @fileoverview frontmatter.
  */
 
 // --------------------------------------------------------------------------------
@@ -17,7 +17,7 @@ import yaml from 'yaml';
  * Line endings can be CRLF (`\r\n`), CR (`\r`), or LF (`\n`) as per CommonMark specification.
  * @see https://spec.commonmark.org/0.31.2/#line-ending
  */
-export const frontMatterRegex =
+export const frontmatterRegex =
   /^---(?:\r\n|[\r\n])(?:(?<yaml>[\s\S]*?)(?:\r\n|[\r\n]))?---(?:\r\n|[\r\n]|$)/;
 
 // --------------------------------------------------------------------------------
@@ -30,9 +30,9 @@ export const frontMatterRegex =
  * @example
  *
  * ```ts
- * import { frontMatter } from '@lumir/utils';
+ * import { frontmatter } from '@lumir/utils';
  *
- * const result = frontMatter(`---\ntitle: Title\nauthor: Author\n---\nHello, world!`);
+ * const result = frontmatter(`---\ntitle: Title\nauthor: Author\n---\nHello, world!`);
  *
  * console.log(result);
  * // {
@@ -44,11 +44,11 @@ export const frontMatterRegex =
  * // }
  * ```
  */
-export function frontMatter(input: string): {
+export function frontmatter(input: string): {
   content: string;
   data: unknown;
 } {
-  const match = input.match(frontMatterRegex);
+  const match = input.match(frontmatterRegex);
 
   if (!match) {
     return {

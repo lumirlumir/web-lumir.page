@@ -1,2 +1,2 @@
 export * from './cn.js';
-export * from './front-matter.js';
+export * from './frontmatter.js';
