@@ -12,7 +12,7 @@ export function compareMarkdownDocument(
 ) {
   switch (sort) {
     case 'title': {
-      return function (a: VMarkdownFile, b: VMarkdownFile) {
+      return (a: VMarkdownFile, b: VMarkdownFile) => {
         const titleA = markdownToText(a.data.title.toLowerCase()); // Case insensitive.
         const titleB = markdownToText(b.data.title.toLowerCase()); // Case insensitive.
 
@@ -23,7 +23,7 @@ export function compareMarkdownDocument(
     }
     case 'created':
     case 'updated': {
-      return function (a: VMarkdownFile, b: VMarkdownFile) {
+      return (a: VMarkdownFile, b: VMarkdownFile) => {
         const dateA = new Date(a.data[sort]);
         const dateB = new Date(b.data[sort]);
 
@@ -33,8 +33,8 @@ export function compareMarkdownDocument(
         }
 
         return order === 'asc'
-          ? dateA - dateB // Ascending.
-          : dateB - dateA; // Descending.
+          ? dateA.getTime() - dateB.getTime() // Ascending.
+          : dateB.getTime() - dateA.getTime(); // Descending.
       };
     }
     default: {
