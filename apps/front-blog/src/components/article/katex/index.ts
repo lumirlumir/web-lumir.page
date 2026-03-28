@@ -1,3 +1,3 @@
-import Katex from './katex.jsx';
+import Katex from './katex';
 
 export default Katex;

@@ -1,3 +1,3 @@
-import FlexContainer from './flex-container.jsx';
+import FlexContainer from './flex-container';
 
 export default FlexContainer;

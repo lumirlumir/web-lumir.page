@@ -1,3 +1,3 @@
-import Giscus from './giscus.jsx';
+import Giscus from './giscus';
 
 export default Giscus;

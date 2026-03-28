@@ -1,3 +1,3 @@
-import DocSearch from './doc-search.jsx';
+import DocSearch from './doc-search';
 
 export default DocSearch;

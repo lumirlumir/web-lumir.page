@@ -41,7 +41,7 @@ export default async function Page({ params, searchParams }) {
       {tagTree[await params.tag]
         .sort(compareMarkdownDocument(sort, order))
         .map(markdownDocument => (
-          <Content key={markdownDocument.basename} markdownDocument={markdownDocument} />
+          <Content key={markdownDocument.basename} vMarkdownFile={markdownDocument} />
         ))}
     </Suspense>
   );
