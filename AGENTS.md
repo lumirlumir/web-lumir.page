@@ -9,7 +9,6 @@
 
 - Treat each directory under `packages/` as an independently testable/buildable unit within the workspace graph.
 - Keep package-level changes aligned with root tooling and scripts (do not bypass root conventions).
-- If a change affects behavior documented on the site, update relevant docs in `apps/front-blog/src/posts/docs/` in the same PR.
 
 ## High-Value Working Rules for AI Agents
 
