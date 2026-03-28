@@ -53,7 +53,7 @@ Use this guide when preparing any PR in this repository.
 ### 1. PR Title (required)
 
 - Title format is validated by `.github/workflows/pull-request.yml`.
-- Use Conventional Commits: `<type>[scope]: <description>`
+- Use Conventional Commits: `<type>(<scope>): <description>` (optionally `<type>(<scope>)!: <description>` for breaking changes)
 
 #### `type` rules
 
