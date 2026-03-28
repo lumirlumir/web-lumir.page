@@ -9,6 +9,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "test:types": "tsc",
     "count-docs": "ls -R src/posts/docs | grep .md | wc -l"
   },
   "dependencies": {

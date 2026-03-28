@@ -1,3 +1,11 @@
+/**
+ * @fileoverview This file contains the metadata for the markdown documents, such as the name and the icon.
+ */
+
+// --------------------------------------------------------------------------------
+// Import
+// --------------------------------------------------------------------------------
+
 import {
   BiLogoVisualStudio,
   FaBook,
@@ -29,19 +37,22 @@ import {
   TbBrandNextjs,
 } from '@lumir/react-kit/svgs';
 
-/**
- * @typedef {import('@/types').MarkdownDocumentData} MarkdownDocumentData
- * @typedef {import('@/types').MarkdownDocumentDataMeta} MarkdownDocumentDataMeta
- * @typedef {import('@/types').MarkdownDocumentDataTag} MarkdownDocumentDataTag
- * @typedef {import('@/types').MarkdownDocumentDataTagMeta} MarkdownDocumentDataTagMeta
- */
+// --------------------------------------------------------------------------------
+// Typedef
+// --------------------------------------------------------------------------------
 
-/**
- * The keys should be declared in {@link MarkdownDocumentData}.
- *
- * @type {{[key: string]: MarkdownDocumentDataMeta}}
- */
-export const MARKDOWN_DOCUMENT_DATA_META = Object.freeze({
+import type {
+  MarkdownDocumentData,
+  MarkdownDocumentDataMeta,
+  MarkdownDocumentDataTag,
+  MarkdownDocumentDataTagMeta,
+} from '@/types';
+
+// --------------------------------------------------------------------------------
+// Export
+// --------------------------------------------------------------------------------
+
+export const MARKDOWN_DOCUMENT_DATA_META = {
   title: {
     name: {
       en: 'Title',
@@ -77,12 +88,10 @@ export const MARKDOWN_DOCUMENT_DATA_META = Object.freeze({
     },
     reactIcons: <FaTag />,
   },
-});
+} as const satisfies { [key in keyof MarkdownDocumentData]: MarkdownDocumentDataMeta };
 
 /**
  * The keys should be declared in {@link MarkdownDocumentDataTag}.
- *
- * @type {{[key: string]: MarkdownDocumentDataTagMeta}}
  */
 export const MARKDOWN_DOCUMENT_DATA_TAG_META = Object.freeze({
   html: {
@@ -269,4 +278,4 @@ export const MARKDOWN_DOCUMENT_DATA_TAG_META = Object.freeze({
     reactIcons: <FaBookOpen />,
     order: 23,
   },
-});
+}) satisfies Record<MarkdownDocumentDataTag, MarkdownDocumentDataTagMeta>;
