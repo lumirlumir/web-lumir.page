@@ -3,8 +3,7 @@
 ## Repository Context
 
 - This repository is a **monorepo managed with npm workspaces**.
-- Main application code lives in `apps/front-blog/`. Shared code lives in `packages/`.
-- Markdown documentation and site content live in `apps/front-blog/src/posts/docs/`.
+- Main application code lives in `apps/`. Shared code lives in `packages/`.
 
 ## Monorepo Conventions
 
@@ -17,7 +16,7 @@
 - Keep changes **small, focused, and local** to the requested scope.
 - Refer to at least three similar existing code examples and patterns in the repository for guidance.
 - Prefer editing existing files/patterns instead of introducing new abstractions.
-- When touching package code, check for related workspace dependencies in sibling packages under `packages/` and in `apps/front-blog/`.
+- When touching package code, check for related workspace dependencies in sibling packages under `packages/` and in `apps/`.
 
 ## Bootstrapping
 
@@ -28,17 +27,20 @@
 
 Run from repo root:
 
+- `npm run test`
 - `npm run build:pkg`
-- `npm run lint`
-- `npm test`
 - `npm run build:a:fb` when the change affects `apps/front-blog/` runtime or production output
+- `npm run lint`
+
+Sandbox note:
+
+- If `npm run lint` fails only because `editorconfig-checker` cannot download its binary due to the DNS proxy in this environment, treat that specific failure as ignorable and continue with the remaining validation results.
 
 For faster iteration, use workspace-scoped commands when appropriate:
 
 - `npm run test -w <workspace-name>`
 - `npm run build -w <workspace-name>`
 - `npm run dev -w <workspace-name>`
-- `npm run lint:markdownlint` for Markdown-only changes
 
 ## Testing Style
 
@@ -78,11 +80,11 @@ Use this guide when preparing any PR in this repository.
 
 ### 2. PR Description (required)
 
-Keep content concise and include:
+Follow the repository PR template exactly and keep content concise.
 
 - **summary**: what changed and why
-- **scope**: affected packages/directories (for example `apps/front-blog/...`, `packages/...`)
-- **validation**: commands run and results (for example `npm run build:pkg`, `npm run lint`, `npm test`)
+- **scope**: affected packages/directories (for example `apps/...`, `packages/...`)
+- **validation**: commands run and results (for example `npm run test`, `npm run build:pkg`, `npm lint`)
 - **notes**: any limitations or follow-up items
 
 ### 3. Quality checks before submitting
@@ -102,4 +104,4 @@ Keep content concise and include:
 - Include only discoverable, codebase-backed changes.
 - Avoid speculative refactors and broad formatting churn.
 - Call out any assumptions when code context is incomplete.
-- Prefer explicit file references in explanations (for example: `apps/front-blog/...`, `packages/...`, `.github/workflows/pull-request.yml`).
+- Prefer explicit file references in explanations (for example: `apps/...`, `packages/...`, `.github/workflows/pull-request.yml`).
