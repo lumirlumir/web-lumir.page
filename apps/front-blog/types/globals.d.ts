@@ -36,3 +36,12 @@ declare module '*.module.scss' {
   const classes: CSSModuleClasses;
   export default classes;
 }
+
+/**
+ * Global type declarations for JSX modules imported from TypeScript barrel files.
+ */
+declare module '*.jsx' {
+  const jsxModule: unknown;
+  export const ThemeContext: unknown;
+  export default jsxModule;
+}
