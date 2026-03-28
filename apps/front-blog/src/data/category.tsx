@@ -1,5 +1,5 @@
 /**
- * @fileoverview This file contains the metadata for the markdown documents, such as the name and the icon.
+ * @fileoverview TODO
  */
 
 // --------------------------------------------------------------------------------
@@ -8,7 +8,6 @@
 
 import {
   BiLogoVisualStudio,
-  FaBook,
   FaBookOpen,
   FaCode,
   FaCss3Alt,
@@ -21,12 +20,8 @@ import {
   FaNodeJs,
   FaNpm,
   FaReact,
-  FaRegCalendarPlus,
-  FaRegCalendarXmark,
   FaScrewdriverWrench,
-  FaTag,
   GiHummingbird,
-  LuHeading1,
   LuNetwork,
   MdDataObject,
   RiJavascriptFill,
@@ -36,64 +31,26 @@ import {
   SiThealgorithms,
   TbBrandNextjs,
 } from '@lumir/react-kit/svgs';
+import { type MetaWithOrder } from './meta';
 
 // --------------------------------------------------------------------------------
 // Typedef
 // --------------------------------------------------------------------------------
 
-import type {
-  MarkdownDocumentData,
-  MarkdownDocumentDataMeta,
-  MarkdownDocumentDataTag,
-  MarkdownDocumentDataTagMeta,
-} from '@/types';
+/**
+ * Represents the key of the category defined in the `categoryMeta` object,
+ */
+export type CategoryKey = keyof typeof categoryMeta;
 
 // --------------------------------------------------------------------------------
 // Export
 // --------------------------------------------------------------------------------
 
-export const MARKDOWN_DOCUMENT_DATA_META = {
-  title: {
-    name: {
-      en: 'Title',
-      ko: '제목',
-    },
-    reactIcons: <LuHeading1 />,
-  },
-  description: {
-    name: {
-      en: 'Description',
-      ko: '설명',
-    },
-    reactIcons: <FaBook />,
-  },
-  created: {
-    name: {
-      en: 'Created Date',
-      ko: '생성한 날짜',
-    },
-    reactIcons: <FaRegCalendarPlus />,
-  },
-  updated: {
-    name: {
-      en: 'Updated Date',
-      ko: '수정한 날짜',
-    },
-    reactIcons: <FaRegCalendarXmark />,
-  },
-  tags: {
-    name: {
-      en: 'Tags',
-      ko: '태그',
-    },
-    reactIcons: <FaTag />,
-  },
-} as const satisfies { [key in keyof MarkdownDocumentData]: MarkdownDocumentDataMeta };
-
 /**
- * The keys should be declared in {@link MarkdownDocumentDataTag}.
+ * An object containing metadata for the categories,
+ * including their names in English and Korean, as well as associated React icons and their order.
  */
-export const MARKDOWN_DOCUMENT_DATA_TAG_META = Object.freeze({
+export const categoryMeta = {
   html: {
     name: {
       en: 'HTML',
@@ -278,4 +235,4 @@ export const MARKDOWN_DOCUMENT_DATA_TAG_META = Object.freeze({
     reactIcons: <FaBookOpen />,
     order: 23,
   },
-}) satisfies Record<MarkdownDocumentDataTag, MarkdownDocumentDataTagMeta>;
+} as const satisfies Record<string, MetaWithOrder>;
