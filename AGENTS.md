@@ -83,7 +83,7 @@ Follow the repository PR template exactly and keep content concise.
 
 - **summary**: what changed and why
 - **scope**: affected packages/directories (for example `apps/...`, `packages/...`)
-- **validation**: commands run and results (for example `npm run test`, `npm run build:pkg`, `npm lint`)
+- **validation**: commands run and results (for example `npm run test`, `npm run build:pkg`, `npm run lint`)
 - **notes**: any limitations or follow-up items
 
 ### 3. Quality checks before submitting
