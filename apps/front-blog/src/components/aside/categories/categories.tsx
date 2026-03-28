@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { FaPen } from '@lumir/react-kit/svgs';
 
 import { PATH_DOCS } from '@/constants';
-import { MARKDOWN_DOCUMENT_DATA_TAG_META } from '@/data';
+import { categoryMeta } from '@/data/category';
 import { readMarkdownTagTree } from '@/utils/fs';
 
 import styles from './categories.module.scss';
@@ -13,16 +13,12 @@ export default async function Categories() {
   return (
     <ul className={styles.categories}>
       {Object.keys(tagTree)
-        .sort(
-          (a, b) =>
-            MARKDOWN_DOCUMENT_DATA_TAG_META[a].order -
-            MARKDOWN_DOCUMENT_DATA_TAG_META[b].order,
-        ) // Ascending.
+        .sort((a, b) => categoryMeta[a].order - categoryMeta[b].order) // Ascending.
         .map(tag => {
           const {
             name: { en, ko },
             reactIcons,
-          } = MARKDOWN_DOCUMENT_DATA_TAG_META[tag];
+          } = categoryMeta[tag];
 
           return (
             <li key={tag}>

@@ -29,11 +29,10 @@
       "@/*": ["./src/*"] // Map the '@' alias to the 'src' directory.
     },
     "rootDir": "./src",
-    "types": ["react", "react-dom"],
+    "types": ["node", "react", "react-dom", "./types/globals.d.ts"],
 
     /* Emit */
     "noEmit": true,
-    "outDir": "build",
 
     /* JavaScript Support */
     "allowJs": false, // TODO: Enable this later.

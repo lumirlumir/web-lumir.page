@@ -10,7 +10,7 @@ import {
   GrSort,
 } from '@lumir/react-kit/svgs';
 
-import { MARKDOWN_DOCUMENT_DATA_META } from '@/data';
+import { frontmatterMeta } from '@/data/frontmatter';
 
 import styles from './sort.module.scss';
 
@@ -52,15 +52,13 @@ function SortItem({ sort, order }) {
 
   return (
     <li className={styles['sort-item']} onClick={() => onClick(sort, order)}>
-      <div className={styles['react-icons']}>
-        {MARKDOWN_DOCUMENT_DATA_META[sort].reactIcons}
-      </div>
+      <div className={styles['react-icons']}>{frontmatterMeta[sort].reactIcons}</div>
       <div
         className={styles['name-en']}
-      >{`${MARKDOWN_DOCUMENT_DATA_META[sort].name.en} / ${order === 'desc' ? 'Desc' : 'Asc'}`}</div>
+      >{`${frontmatterMeta[sort].name.en} / ${order === 'desc' ? 'Desc' : 'Asc'}`}</div>
       <div
         className={styles['name-ko']}
-      >{`${MARKDOWN_DOCUMENT_DATA_META[sort].name.ko} / ${order === 'desc' ? '내림차순' : '오름차순'}`}</div>
+      >{`${frontmatterMeta[sort].name.ko} / ${order === 'desc' ? '내림차순' : '오름차순'}`}</div>
       <div className={styles.order}>
         {order === 'desc' ? <FaArrowDownWideShort /> : <FaArrowUpShortWide />}
       </div>

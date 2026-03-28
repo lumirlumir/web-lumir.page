@@ -7,11 +7,8 @@ import { GITHUB_REPO_FULL_NAME } from '@/constants';
 
 /**
  * Converts markdown content to plain text.
- *
- * @param {string} markdownContent Markdown content.
- * @returns {string} Plain text.
  */
-export function markdownToText(markdownContent) {
+export function markdownToText(markdownContent: string): string {
   return (
     markdownContent
       // Inline Code Block(`)
@@ -25,12 +22,8 @@ export function markdownToText(markdownContent) {
 
 /**
  * Converts markdown content to HTML using GitHub's Markdown API.
- *
- * @async
- * @param {string} markdownContent Markdown content.
- * @returns {Promise<string>} A promise that resolves to HTML.
  */
-export async function markdownToHtml(markdownContent) {
+export async function markdownToHtml(markdownContent: string): Promise<string> {
   const { value: markdownValue } = await remark().process(markdownContent);
 
   const response = await fetch('https://api.github.com/markdown', {
@@ -65,11 +58,7 @@ export async function markdownToHtml(markdownContent) {
 
 /**
  * Adds a title as a top-level heading to the given markdown content.
- *
- * @param {string} title Title to add as a heading.
- * @param {string} markdownContent Markdown content.
- * @returns {string} Markdown content with the title as a heading, if provided.
  */
-export function writeTitleIntoMarkdown(title, markdownContent) {
+export function writeTitleIntoMarkdown(title: string, markdownContent: string) {
   return `${title ? `# ${title}\n\n` : ''}${markdownContent}`;
 }

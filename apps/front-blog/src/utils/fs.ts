@@ -1,29 +1,22 @@
 import { promises as fs } from 'node:fs';
 import { basename, join } from 'node:path';
-
 import { frontMatter } from '@lumir/utils';
-
 import { EXT_MD } from '@/constants';
-
-/**
- * @typedef {import('@/types').MarkdownDocument} MarkdownDocument
- */
+import { type Frontmatter } from '@/data/frontmatter';
+import { type VMarkdownFile } from '@/data/v-markdown-file';
 
 /**
  * Asynchronously reads a Markdown file and returns a `MarkdownDocument` type object.
- *
- * @async
- * @param {string} pathToMarkdownFile Path to a Markdown file.
- * @returns {Promise<MarkdownDocument>} A promise that resolves to a `MarkdownDocument` type object.
- * @see {@link MarkdownDocument}
  */
-export async function readMarkdownFile(pathToMarkdownFile) {
+export async function readMarkdownFile(
+  pathToMarkdownFile: string,
+): Promise<VMarkdownFile> {
   const { content, data } = frontMatter(await fs.readFile(pathToMarkdownFile, 'utf-8'));
 
   return {
     basename: basename(pathToMarkdownFile),
     content,
-    data,
+    data: data as Frontmatter,
   };
 }
 
@@ -35,8 +28,10 @@ export async function readMarkdownFile(pathToMarkdownFile) {
  * @returns {Promise<MarkdownDocument[]>} A promise that resolves to a list(array) of `MarkdownDocument` type object.
  * @see {@link MarkdownDocument}
  */
-export async function readMarkdownFilesFromDir(dirPath) {
-  const markdownDocuments = [];
+export async function readMarkdownFilesFromDir(
+  dirPath: string,
+): Promise<VMarkdownFile[]> {
+  const markdownDocuments: VMarkdownFile[] = [];
   const markdownFilePaths = (await fs.readdir(dirPath)).filter(filePath =>
     filePath.endsWith(EXT_MD),
   );
@@ -51,13 +46,11 @@ export async function readMarkdownFilesFromDir(dirPath) {
 
 /**
  * Asynchronously reads a directory and generates a tag tree from markdown files.
- *
- * @async
  * @param {string} dirPath Path to a directory containing markdown files.
  * @returns {Promise<{[key: string]: MarkdownDocument[]}>} A promise that resolves to a tag tree.
  * @see {@link MarkdownDocument}
  */
-export async function readMarkdownTagTree(dirPath) {
+export async function readMarkdownTagTree(dirPath: string) {
   const tagTree = {}; // Initialize an empty object to store the tag tree.
   const markdownDocuments = await readMarkdownFilesFromDir(dirPath);
 

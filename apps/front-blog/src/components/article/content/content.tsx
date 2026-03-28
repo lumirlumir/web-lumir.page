@@ -1,10 +1,24 @@
+/**
+ * @fileoverview content.
+ */
+
+// --------------------------------------------------------------------------------
+// Import
+// --------------------------------------------------------------------------------
+
 import Link from 'next/link';
 
 import { EXT_MD_REGEXP } from '@/constants';
-import { MARKDOWN_DOCUMENT_DATA_META, MARKDOWN_DOCUMENT_DATA_TAG_META } from '@/data';
+import { frontmatterMeta } from '@/data/frontmatter';
+import { categoryMeta } from '@/data/category';
 import { markdownToHtml } from '@/utils/markup';
+import { type VMarkdownFile } from '@/data/v-markdown-file';
 
 import styles from './content.module.scss';
+
+// --------------------------------------------------------------------------------
+// Helper
+// --------------------------------------------------------------------------------
 
 function ContentBoxContainer({ children }) {
   return <div className={styles['content-box-container']}>{children}</div>;
@@ -19,12 +33,18 @@ function ContentBoxItem({ icon, text }) {
   );
 }
 
-export default async function Content({ markdownDocument }) {
-  const {
+// --------------------------------------------------------------------------------
+// Export
+// --------------------------------------------------------------------------------
+
+export default async function Content({
+  vMarkdownFile: {
     basename,
     data: { title, description, created, updated, tags },
-  } = markdownDocument;
-
+  },
+}: {
+  vMarkdownFile: VMarkdownFile;
+}) {
   return (
     <Link href={`/posts/${basename.replace(EXT_MD_REGEXP, '')}`}>
       <div className={styles.content}>
@@ -39,22 +59,16 @@ export default async function Content({ markdownDocument }) {
         />
 
         <ContentBoxContainer>
-          <ContentBoxItem
-            icon={MARKDOWN_DOCUMENT_DATA_META.created.reactIcons}
-            text={created}
-          />
-          <ContentBoxItem
-            icon={MARKDOWN_DOCUMENT_DATA_META.updated.reactIcons}
-            text={updated}
-          />
+          <ContentBoxItem icon={frontmatterMeta.created.reactIcons} text={created} />
+          <ContentBoxItem icon={frontmatterMeta.updated.reactIcons} text={updated} />
         </ContentBoxContainer>
 
         <ContentBoxContainer>
           {tags.map(tag => (
             <ContentBoxItem
               key={tag}
-              icon={MARKDOWN_DOCUMENT_DATA_META.tags.reactIcons}
-              text={MARKDOWN_DOCUMENT_DATA_TAG_META[tag].name.en}
+              icon={frontmatterMeta.tags.reactIcons}
+              text={categoryMeta[tag].name.en}
             />
           ))}
         </ContentBoxContainer>
