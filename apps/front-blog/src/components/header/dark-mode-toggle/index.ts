@@ -1,3 +1,3 @@
-import DarkModeToggle from './dark-mode-toggle.jsx';
+import DarkModeToggle from './dark-mode-toggle';
 
 export default DarkModeToggle;

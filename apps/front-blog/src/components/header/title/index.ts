@@ -1,3 +1,3 @@
-import Title from './title.jsx';
+import Title from './title';
 
 export default Title;

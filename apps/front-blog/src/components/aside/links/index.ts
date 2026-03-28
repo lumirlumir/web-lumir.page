@@ -1,3 +1,3 @@
-import Links from './links.jsx';
+import Links from './links';
 
 export default Links;
