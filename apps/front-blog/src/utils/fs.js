@@ -36,15 +36,14 @@ export async function readMarkdownFile(pathToMarkdownFile) {
  * @see {@link MarkdownDocument}
  */
 export async function readMarkdownFilesFromDir(dirPath) {
-  const markdownDocuments = [];
   const markdownFilePaths = (await fs.readdir(dirPath)).filter(filePath =>
     filePath.endsWith(EXT_MD),
   );
-
-  for (const markdownFilePath of markdownFilePaths) {
-    const markdownDocument = await readMarkdownFile(join(dirPath, markdownFilePath)); // eslint-disable-line no-await-in-loop -- TODO: Delete it later.
-    markdownDocuments.push(markdownDocument);
-  }
+  const markdownDocuments = await Promise.all(
+    markdownFilePaths.map(markdownFilePath =>
+      readMarkdownFile(join(dirPath, markdownFilePath)),
+    ),
+  );
 
   return markdownDocuments;
 }
