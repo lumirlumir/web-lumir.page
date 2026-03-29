@@ -8,17 +8,19 @@
 
 import Link from 'next/link';
 import { FaPen } from '@lumir/react-kit/svgs';
-import { PATH_DOCS } from '@/constants';
-import { categoryMeta, type CategoryKey } from '@/data/category';
-import { readMarkdownTagTree } from '@/utils/fs';
+import { categoryMeta } from '@/data/category';
+import {
+  listNonEmptyCategoryKeys,
+  loadMarkdownCollection,
+} from '@/utils/markdown-collection';
 import styles from './categories.module.scss';
 
 // --------------------------------------------------------------------------------
 // Helper
 // --------------------------------------------------------------------------------
 
-const tagTree = await readMarkdownTagTree(PATH_DOCS);
-const tags = Object.keys(tagTree) as CategoryKey[];
+const { category } = await loadMarkdownCollection();
+const categoryKeys = listNonEmptyCategoryKeys(category);
 
 // --------------------------------------------------------------------------------
 // Export
@@ -27,22 +29,22 @@ const tags = Object.keys(tagTree) as CategoryKey[];
 export default async function Categories() {
   return (
     <ul className={styles.categories}>
-      {tags
+      {categoryKeys
         .sort((a, b) => categoryMeta[a].order - categoryMeta[b].order) // Ascending.
-        .map(tag => {
+        .map(categoryKey => {
           const {
             name: { en, ko },
             reactIcons,
-          } = categoryMeta[tag];
+          } = categoryMeta[categoryKey];
 
           return (
-            <li key={tag}>
-              <Link href={`/categories/${tag}`}>
+            <li key={categoryKey}>
+              <Link href={`/categories/${categoryKey}`}>
                 <div className={styles['react-icons']}>{reactIcons}</div>
                 <div className={styles['name-en']}>{en}</div>
                 <div className={styles['name-ko']}>{ko}</div>
                 <div className={styles['count-docs']}>
-                  <span>{tagTree[tag]?.length}</span>
+                  <span>{category[categoryKey]?.length}</span>
                   <FaPen />
                 </div>
               </Link>

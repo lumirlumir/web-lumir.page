@@ -2,6 +2,8 @@
  * @fileoverview Defines markdown markup helpers.
  */
 
+/* eslint-disable prefer-named-capture-group -- TODO */
+
 // --------------------------------------------------------------------------------
 // Import
 // --------------------------------------------------------------------------------
@@ -10,8 +12,6 @@ import { rehypeImageLazyLoading, rehypeImageUrlReplace } from '@lumir/rehype-plu
 import { remark } from 'remark';
 import { rehype } from 'rehype';
 import { GITHUB_REPO_FULL_NAME } from '@/constants';
-
-/* eslint-disable prefer-named-capture-group -- TODO */
 
 // --------------------------------------------------------------------------------
 // Export

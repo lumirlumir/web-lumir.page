@@ -40,11 +40,40 @@ import { type MetaWithOrder } from './meta';
 /**
  * Represents the key of the category defined in the `categoryMeta` object.
  */
-export type CategoryKey = keyof typeof categoryMeta;
+export type CategoryKey = (typeof categoryKeys)[number];
 
 // --------------------------------------------------------------------------------
 // Export
 // --------------------------------------------------------------------------------
+
+/**
+ * Represents the keys of the category, which are used to identify each category in the `categoryMeta` object.
+ */
+export const categoryKeys = [
+  'html',
+  'markdown',
+  'css',
+  'cpp',
+  'javascript',
+  'nodejs',
+  'npm',
+  'react',
+  'nextjs',
+  'linux',
+  'data',
+  'database',
+  'git',
+  'vscode',
+  'openai',
+  'baekjoon',
+  'programmers',
+  'algorithm',
+  'network',
+  'convention',
+  'cs',
+  'synology',
+  'essay',
+] as const;
 
 /**
  * An object containing metadata for the category fields,
@@ -235,4 +264,4 @@ export const categoryMeta = {
     reactIcons: <FaBookOpen />,
     order: 23,
   },
-} as const satisfies Record<string, MetaWithOrder>;
+} as const satisfies Record<CategoryKey, MetaWithOrder>;

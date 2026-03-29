@@ -7,18 +7,22 @@
 // --------------------------------------------------------------------------------
 
 import { type MetadataRoute } from 'next';
-import { WEBSITE_URL, PATH_DOCS, EXT_MD_REGEXP } from '@/constants';
-import { readMarkdownFilesFromDir } from '@/utils/fs';
+import { WEBSITE_URL } from '@/constants';
+import { loadMarkdownCollection } from '@/utils/markdown-collection';
+
+// --------------------------------------------------------------------------------
+// Helper
+// --------------------------------------------------------------------------------
+
+const { all } = await loadMarkdownCollection();
 
 // --------------------------------------------------------------------------------
 // Default Export
 // --------------------------------------------------------------------------------
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const markdownDocuments = await readMarkdownFilesFromDir(PATH_DOCS);
-
-  return markdownDocuments.map(({ basename, data: { updated } }) => ({
-    url: `${WEBSITE_URL}/posts/${basename.replace(EXT_MD_REGEXP, '')}`,
+  return all.map(({ slug, data: { updated } }) => ({
+    url: `${WEBSITE_URL}/posts/${slug}`,
     lastModified: updated,
     changeFrequency: 'monthly',
     priority: 1.0,

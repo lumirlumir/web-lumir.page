@@ -8,12 +8,10 @@
 
 import Link from 'next/link';
 import { type JSX, type PropsWithChildren } from 'react';
-import { EXT_MD_REGEXP } from '@/constants';
-import { frontmatterMeta } from '@/data/frontmatter';
 import { categoryMeta } from '@/data/category';
-import { markdownToHtml } from '@/utils/markup';
+import { frontmatterMeta } from '@/data/frontmatter';
 import { type VMarkdownFileMeta } from '@/data/v-markdown-file';
-
+import { markdownToHtml } from '@/utils/markup';
 import styles from './content.module.scss';
 
 // --------------------------------------------------------------------------------
@@ -39,14 +37,14 @@ function ContentBoxItem({ icon, text }: { icon: JSX.Element; text: string }) {
 
 export default async function Content({
   vMarkdownFileMeta: {
-    basename,
+    slug,
     data: { title, description, created, updated, tags },
   },
 }: {
   vMarkdownFileMeta: VMarkdownFileMeta;
 }) {
   return (
-    <Link href={`/posts/${basename.replace(EXT_MD_REGEXP, '')}`}>
+    <Link href={`/posts/${slug}`}>
       <div className={styles.content}>
         <div
           className={`${styles.title} markdown-body`}

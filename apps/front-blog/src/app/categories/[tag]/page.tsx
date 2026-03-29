@@ -9,18 +9,20 @@
 import { Suspense } from 'react';
 import Content from '@/components/article/content';
 import Loading from '@/components/common/loading';
-import { PATH_DOCS } from '@/constants';
+import { type CategoryKey } from '@/data/category';
 import { type FrontmatterKeySortable } from '@/data/frontmatter';
 import { type SortKey } from '@/data/sort';
 import { compareMarkdownDocument } from '@/utils/compare';
-import { readMarkdownTagTree } from '@/utils/fs';
-import type { CategoryKey } from '@/data/category';
+import {
+  listNonEmptyCategoryKeys,
+  loadMarkdownCollection,
+} from '@/utils/markdown-collection';
 
 // --------------------------------------------------------------------------------
 // Helper
 // --------------------------------------------------------------------------------
 
-const tagTree = await readMarkdownTagTree(PATH_DOCS);
+const { category } = await loadMarkdownCollection();
 
 // --------------------------------------------------------------------------------
 // Named Export
@@ -38,9 +40,9 @@ export const dynamicParams = false;
 export async function generateStaticParams(): Promise<
   Awaited<PageProps<'/categories/[tag]'>['params']>[]
 > {
-  const tags = Object.keys(tagTree);
-
-  return tags.map(tag => ({ tag }));
+  return listNonEmptyCategoryKeys(category).map(categoryKey => ({
+    tag: categoryKey,
+  }));
 }
 
 // --------------------------------------------------------------------------------
@@ -63,13 +65,10 @@ export default async function Page({
       key={normalizedSort + normalizedOrder}
       fallback={<Loading content="목록" />}
     >
-      {tagTree[tag as CategoryKey]
+      {category[tag as CategoryKey]
         ?.toSorted(compareMarkdownDocument(normalizedSort, normalizedOrder))
         .map(vMarkdownFileMeta => (
-          <Content
-            key={vMarkdownFileMeta.basename}
-            vMarkdownFileMeta={vMarkdownFileMeta}
-          />
+          <Content key={vMarkdownFileMeta.slug} vMarkdownFileMeta={vMarkdownFileMeta} />
         ))}
     </Suspense>
   );
