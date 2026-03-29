@@ -33,7 +33,7 @@ import Title from '@/components/header/title';
 import { GOOGLE_GA_ID } from '@/constants';
 import { getGithubUsers } from '@/utils/fetch';
 
-import '@/styles/index.css';
+import '../styles/index.css';
 
 // --------------------------------------------------------------------------------
 // Named Export

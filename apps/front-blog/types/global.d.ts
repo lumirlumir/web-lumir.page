@@ -16,6 +16,14 @@ type CSSModuleClasses = Readonly<Record<string, string>>;
 // --------------------------------------------------------------------------------
 
 /**
+ * Global type declarations for CSS files.
+ *
+ * This file allows TypeScript to understand imports of CSS files,
+ * providing type safety and autocompletion for class names.
+ */
+declare module '*.css';
+
+/**
  * Global type declarations for CSS modules.
  *
  * This file allows TypeScript to understand imports of CSS modules,
@@ -25,6 +33,14 @@ declare module '*.module.css' {
   const classes: CSSModuleClasses;
   export default classes;
 }
+
+/**
+ * Global type declarations for SCSS files.
+ *
+ * This file allows TypeScript to understand imports of SCSS files,
+ * providing type safety and autocompletion for class names.
+ */
+declare module '*.scss';
 
 /**
  * Global type declarations for SCSS modules.

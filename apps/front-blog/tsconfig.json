@@ -9,7 +9,8 @@
     "src/**/*.mts",
     "src/**/*.cts",
     "src/**/*.tsx",
-    "types/*.d.ts"
+    "types/**/*.ts",
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     "src/**/*.test.js",
@@ -29,8 +30,9 @@
     "paths": {
       "@/*": ["./src/*"] // Map the '@' alias to the 'src' directory.
     },
+    "resolveJsonModule": true,
     "rootDir": "./src",
-    "types": ["node", "react", "react-dom", "./types/globals.d.ts"],
+    "types": ["node", "react", "react-dom", "./types/global.d.ts"],
 
     /* Emit */
     "noEmit": true,
@@ -39,8 +41,22 @@
     "allowJs": false, // TODO: Enable this later.
     "checkJs": false, // TODO: Enable this later.
 
+    /* Editor Support */
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+
     /* Language and Environment */
-    "jsx": "react-jsx",
+    "jsx": "preserve",
+    "lib": ["dom", "dom.iterable", "esnext"],
+
+    /* Interop Constraints */
+    "esModuleInterop": true,
+
+    /* Projects */
+    "incremental": true,
 
     /* Completeness */
     "skipLibCheck": true
