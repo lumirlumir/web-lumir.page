@@ -1,0 +1,60 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "include": [
+    "src/**/*.js",
+    "src/**/*.mjs",
+    "src/**/*.cjs",
+    "src/**/*.jsx",
+    "src/**/*.ts",
+    "src/**/*.mts",
+    "src/**/*.cts",
+    "src/**/*.tsx",
+    "types/**/*.ts",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "src/**/*.test.js",
+    "src/**/*.test.mjs",
+    "src/**/*.test.cjs",
+    "src/**/*.test.jsx",
+    "src/**/*.test.ts",
+    "src/**/*.test.mts",
+    "src/**/*.test.cts",
+    "src/**/*.test.tsx",
+    "**/fixtures/**"
+  ],
+  "compilerOptions": {
+    /* Modules */
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "paths": {
+      "@/*": ["./src/*"] // Map the '@' alias to the 'src' directory.
+    },
+    "resolveJsonModule": true,
+    "rootDirs": ["./src", "./.next/types"],
+    "types": ["node", "react", "react-dom"],
+
+    /* Emit */
+    "noEmit": true,
+
+    /* Editor Support */
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+
+    /* Language and Environment */
+    "jsx": "preserve",
+    "lib": ["dom", "dom.iterable", "esnext"],
+
+    /* Interop Constraints */
+    "esModuleInterop": true,
+
+    /* Projects */
+    "incremental": true,
+
+    /* Completeness */
+    "skipLibCheck": true
+  }
+}

@@ -17,7 +17,7 @@ import md from 'eslint-markdown';
 
 export default defineConfig([
   globalIgnores(
-    ['**/build/', '**/coverage/', '**/.next/', '**/archives/'],
+    ['**/build/', '**/coverage/', '**/.next/', '**/archives/', '**/next-env.d.ts'],
     'global/ignores',
   ),
 
@@ -42,6 +42,11 @@ export default defineConfig([
             '@': fileURLToPath(new URL('./apps/front-blog/src', import.meta.url)),
           },
         },
+      },
+    },
+    languageOptions: {
+      globals: {
+        PageProps: false, // Next.js
       },
     },
   },
