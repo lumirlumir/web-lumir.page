@@ -31,8 +31,8 @@
       "@/*": ["./src/*"] // Map the '@' alias to the 'src' directory.
     },
     "resolveJsonModule": true,
-    "rootDirs": ["./src", ".next/types/**/*.ts"],
-    "types": ["node", "react", "react-dom", "./types/global.d.ts"],
+    "rootDirs": ["./src", "./.next/types"],
+    "types": ["node", "react", "react-dom"],
 
     /* Emit */
     "noEmit": true,

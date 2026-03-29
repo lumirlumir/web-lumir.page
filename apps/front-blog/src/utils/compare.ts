@@ -39,7 +39,7 @@ export function compareMarkdownDocument(sort: FrontmatterKeySortable, order: Sor
         const dateB = new Date(b.data[sort]);
 
         // NaN check for invalid dates
-        if (Number.isNaN(dateA) || Number.isNaN(dateB)) {
+        if (Number.isNaN(dateA.getTime()) || Number.isNaN(dateB.getTime())) {
           throw new TypeError('Invalid date format.');
         }
 

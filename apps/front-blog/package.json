@@ -9,7 +9,7 @@
     "dev": "next dev",
     "build": "next build --no-lint",
     "start": "next start",
-    "test:types": "tsc",
+    "test:types": "next typegen && tsc",
     "count-docs": "ls -R src/posts/docs | grep .md | wc -l"
   },
   "dependencies": {
