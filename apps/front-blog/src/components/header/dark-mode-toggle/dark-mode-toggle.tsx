@@ -1,9 +1,25 @@
+/**
+ * @fileoverview dark-mode-toggle.
+ */
+
+// --------------------------------------------------------------------------------
+// Directive
+// --------------------------------------------------------------------------------
+
 'use client';
+
+// --------------------------------------------------------------------------------
+// Import
+// --------------------------------------------------------------------------------
 
 import { useContext } from 'react';
 import { ThemeContext } from '@/components/common/theme-provider';
 
 import styles from './dark-mode-toggle.module.scss';
+
+// --------------------------------------------------------------------------------
+// Export
+// --------------------------------------------------------------------------------
 
 export default function DarkModeToggle() {
   const { theme, toggleTheme } = useContext(ThemeContext);

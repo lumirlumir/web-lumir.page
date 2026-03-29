@@ -1,9 +1,21 @@
+/**
+ * @fileoverview profile.
+ */
+
+// --------------------------------------------------------------------------------
+// Import
+// --------------------------------------------------------------------------------
+
 import Image from 'next/image';
 import Link from 'next/link';
 
 import { getGithubUsers } from '@/utils/fetch';
 
 import styles from './profile.module.scss';
+
+// --------------------------------------------------------------------------------
+// Export
+// --------------------------------------------------------------------------------
 
 export default async function Profile() {
   const { avatar_url: avatarUrl, bio, name } = await getGithubUsers();

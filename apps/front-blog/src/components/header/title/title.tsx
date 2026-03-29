@@ -1,9 +1,21 @@
+/**
+ * @fileoverview title.
+ */
+
+// --------------------------------------------------------------------------------
+// Import
+// --------------------------------------------------------------------------------
+
 import Image from 'next/image';
 import Link from 'next/link';
 
 import { getGithubUsers } from '@/utils/fetch';
 
 import styles from './title.module.scss';
+
+// --------------------------------------------------------------------------------
+// Export
+// --------------------------------------------------------------------------------
 
 export default async function Title() {
   const { avatar_url: avatarUrl, bio, name } = await getGithubUsers();

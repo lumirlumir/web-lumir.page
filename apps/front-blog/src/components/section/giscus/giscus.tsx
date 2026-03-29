@@ -1,10 +1,26 @@
+/**
+ * @fileoverview giscus.
+ */
+
+// --------------------------------------------------------------------------------
+// Directive
+// --------------------------------------------------------------------------------
+
 'use client';
+
+// --------------------------------------------------------------------------------
+// Import
+// --------------------------------------------------------------------------------
 
 import { useContext } from 'react';
 import GiscusOriginal from '@giscus/react';
 
 import { ThemeContext } from '@/components/common/theme-provider';
 import { GITHUB_REPO_FULL_NAME } from '@/constants';
+
+// --------------------------------------------------------------------------------
+// Export
+// --------------------------------------------------------------------------------
 
 export default function Giscus() {
   const { theme } = useContext(ThemeContext);

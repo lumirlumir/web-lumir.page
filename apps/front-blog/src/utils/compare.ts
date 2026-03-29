@@ -1,7 +1,19 @@
+/**
+ * @fileoverview Compares markdown documents.
+ */
+
+// --------------------------------------------------------------------------------
+// Import
+// --------------------------------------------------------------------------------
+
 import { type VMarkdownFile } from '@/data/v-markdown-file';
 import { markdownToText } from './markup';
 
 /* eslint-disable import/prefer-default-export */
+
+// --------------------------------------------------------------------------------
+// Export
+// --------------------------------------------------------------------------------
 
 /**
  * Use with an array of {@link MarkdownDocument} type.

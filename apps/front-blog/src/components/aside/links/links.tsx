@@ -1,9 +1,21 @@
+/**
+ * @fileoverview links.
+ */
+
+// --------------------------------------------------------------------------------
+// Import
+// --------------------------------------------------------------------------------
+
 import Link from 'next/link';
 import { FaGithub, FaHouseChimney } from '@lumir/react-kit/svgs';
 
 import { getGithubUsers } from '@/utils/fetch';
 
 import styles from './links.module.scss';
+
+// --------------------------------------------------------------------------------
+// Export
+// --------------------------------------------------------------------------------
 
 export default async function Links() {
   const { html_url: htmlUrl } = await getGithubUsers();

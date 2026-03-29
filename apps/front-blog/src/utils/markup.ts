@@ -1,9 +1,21 @@
+/**
+ * @fileoverview Defines markdown markup helpers.
+ */
+
+// --------------------------------------------------------------------------------
+// Import
+// --------------------------------------------------------------------------------
+
 import { rehypeImageLazyLoading, rehypeImageUrlReplace } from '@lumir/rehype-plugins';
 import { remark } from 'remark';
 import { rehype } from 'rehype';
 import { GITHUB_REPO_FULL_NAME } from '@/constants';
 
 /* eslint-disable prefer-named-capture-group -- TODO */
+
+// --------------------------------------------------------------------------------
+// Export
+// --------------------------------------------------------------------------------
 
 /**
  * Converts markdown content to plain text.

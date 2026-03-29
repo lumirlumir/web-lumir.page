@@ -1,3 +1,11 @@
+/**
+ * @fileoverview Defines file system helpers for markdown documents.
+ */
+
+// --------------------------------------------------------------------------------
+// Import
+// --------------------------------------------------------------------------------
+
 import { promises as fs } from 'node:fs';
 import { basename, join } from 'node:path';
 
@@ -6,6 +14,10 @@ import { frontmatter } from '@lumir/utils';
 import { EXT_MD } from '@/constants';
 import { type Frontmatter } from '@/data/frontmatter';
 import { type VMarkdownFile } from '@/data/v-markdown-file';
+
+// --------------------------------------------------------------------------------
+// Export
+// --------------------------------------------------------------------------------
 
 /**
  * Asynchronously reads a Markdown file and returns a `MarkdownDocument` type object.

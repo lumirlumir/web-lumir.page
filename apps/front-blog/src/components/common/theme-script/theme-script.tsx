@@ -1,3 +1,11 @@
+/**
+ * @fileoverview theme-script.
+ */
+
+// --------------------------------------------------------------------------------
+// Export
+// --------------------------------------------------------------------------------
+
 export default function ThemeScript() {
   const themeScript = `
 function getTheme() {

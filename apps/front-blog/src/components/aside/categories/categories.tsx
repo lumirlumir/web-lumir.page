@@ -1,3 +1,11 @@
+/**
+ * @fileoverview categories.
+ */
+
+// --------------------------------------------------------------------------------
+// Import
+// --------------------------------------------------------------------------------
+
 import Link from 'next/link';
 import { FaPen } from '@lumir/react-kit/svgs';
 
@@ -6,6 +14,10 @@ import { categoryMeta } from '@/data/category';
 import { readMarkdownTagTree } from '@/utils/fs';
 
 import styles from './categories.module.scss';
+
+// --------------------------------------------------------------------------------
+// Export
+// --------------------------------------------------------------------------------
 
 export default async function Categories() {
   const tagTree = await readMarkdownTagTree(PATH_DOCS);
