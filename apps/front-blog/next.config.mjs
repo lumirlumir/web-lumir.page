@@ -39,6 +39,7 @@ const nextConfig = {
       },
     },
   }),
+  typedRoutes: true,
 
   webpack(config) {
     // Add a rule to handle Markdown files as raw text.

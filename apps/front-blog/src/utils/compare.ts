@@ -2,26 +2,25 @@
  * @fileoverview Compares markdown documents.
  */
 
+/* eslint-disable import/prefer-default-export */
+
 // --------------------------------------------------------------------------------
 // Import
 // --------------------------------------------------------------------------------
 
+import { type FrontmatterKeySortable } from '@/data/frontmatter';
+import { type SortKey } from '@/data/sort';
 import { type VMarkdownFile } from '@/data/v-markdown-file';
 import { markdownToText } from './markup';
-
-/* eslint-disable import/prefer-default-export */
 
 // --------------------------------------------------------------------------------
 // Export
 // --------------------------------------------------------------------------------
 
 /**
- * Use with an array of {@link MarkdownDocument} type.
+ * Returns a comparison function for sorting markdown documents based on the specified sort key and order.
  */
-export function compareMarkdownDocument(
-  sort: 'title' | 'created' | 'updated',
-  order: 'asc' | 'desc',
-) {
+export function compareMarkdownDocument(sort: FrontmatterKeySortable, order: SortKey) {
   switch (sort) {
     case 'title': {
       return (a: VMarkdownFile, b: VMarkdownFile) => {

@@ -23,7 +23,7 @@ import { GITHUB_REPO_FULL_NAME } from '@/constants';
 // --------------------------------------------------------------------------------
 
 export default function Giscus() {
-  const { theme } = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext)!;
 
   return (
     <GiscusOriginal
@@ -36,7 +36,7 @@ export default function Giscus() {
       reactionsEnabled="1"
       emitMetadata="0"
       inputPosition="top"
-      theme={theme}
+      theme={theme!}
       lang="ko"
       loading="lazy"
     />

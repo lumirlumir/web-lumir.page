@@ -31,15 +31,11 @@
       "@/*": ["./src/*"] // Map the '@' alias to the 'src' directory.
     },
     "resolveJsonModule": true,
-    "rootDir": "./src",
+    "rootDirs": ["./src", ".next/types/**/*.ts"],
     "types": ["node", "react", "react-dom", "./types/global.d.ts"],
 
     /* Emit */
     "noEmit": true,
-
-    /* JavaScript Support */
-    "allowJs": false, // TODO: Enable this later.
-    "checkJs": false, // TODO: Enable this later.
 
     /* Editor Support */
     "plugins": [

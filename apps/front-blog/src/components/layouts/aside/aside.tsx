@@ -21,7 +21,7 @@ import styles from './aside.module.scss';
 // --------------------------------------------------------------------------------
 
 export default function Aside({ children }: PropsWithChildren) {
-  const [visible, setVisible] = useState<boolean>(false);
+  const [visible, setVisible] = useState<boolean>(false); // TODO: create `useToggle` hook
 
   return (
     <>

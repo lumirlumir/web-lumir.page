@@ -10,6 +10,7 @@ import { readdir, readFile } from 'node:fs/promises';
 import { basename, join } from 'node:path';
 import { frontmatter } from '@lumir/utils';
 import { EXT_MD } from '@/constants';
+import { type CategoryKey } from '@/data/category';
 import { type Frontmatter } from '@/data/frontmatter';
 import { type VMarkdownFile } from '@/data/v-markdown-file';
 
@@ -56,8 +57,8 @@ export async function readMarkdownFilesFromDir(
  */
 export async function readMarkdownTagTree(
   dirPath: string,
-): Promise<Record<string, VMarkdownFile[]>> {
-  const tagTree: Record<string, VMarkdownFile[]> = {}; // Initialize an empty object to store the tag tree.
+): Promise<Partial<Record<CategoryKey, VMarkdownFile[]>>> {
+  const tagTree: Partial<Record<CategoryKey, VMarkdownFile[]>> = {}; // Initialize an empty object to store the tag tree.
   const markdownDocuments = await readMarkdownFilesFromDir(dirPath);
 
   for (const markdownDocument of markdownDocuments) {

@@ -10,26 +10,34 @@ import { Suspense } from 'react';
 import Content from '@/components/article/content';
 import Loading from '@/components/common/loading';
 import { PATH_DOCS } from '@/constants';
+import { type FrontmatterKeySortable } from '@/data/frontmatter';
+import { type SortKey } from '@/data/sort';
 import { compareMarkdownDocument } from '@/utils/compare';
 import { readMarkdownTagTree } from '@/utils/fs';
+import type { CategoryKey } from '@/data/category';
 
 // --------------------------------------------------------------------------------
-// Typedef
+// Helper
 // --------------------------------------------------------------------------------
 
-interface Params {
-  tag: string;
-}
+const tagTree = await readMarkdownTagTree(PATH_DOCS);
 
 // --------------------------------------------------------------------------------
 // Named Export
 // --------------------------------------------------------------------------------
 
-// Control what happens when a dynamic segment is visited that was not generated with `generateStaticParams`.
+/**
+ * Control what happens when a dynamic segment is visited that was not generated with `generateStaticParams`.
+ * @see https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config/dynamicParams
+ */
 export const dynamicParams = false;
 
-export async function generateStaticParams() {
-  const tagTree = await readMarkdownTagTree(PATH_DOCS);
+/**
+ * @see https://nextjs.org/docs/app/api-reference/functions/generate-static-params
+ */
+export async function generateStaticParams(): Promise<
+  Awaited<PageProps<'/categories/[tag]'>['params']>[]
+> {
   const tags = Object.keys(tagTree);
 
   return tags.map(tag => ({ tag }));
@@ -42,22 +50,23 @@ export async function generateStaticParams() {
 export default async function Page({
   params,
   searchParams,
-}: {
-  params: Promise<Params>;
-  searchParams: Promise<{
-    sort?: 'updated' | 'title' | 'created';
-    order?: 'asc' | 'desc';
-  }>;
-}) {
-  const { sort = 'updated', order = 'desc' } = await searchParams;
-  const tagTree = await readMarkdownTagTree(PATH_DOCS);
+}: PageProps<'/categories/[tag]'>) {
+  const { tag } = await params;
+  const { sort, order } = await searchParams; // TODO: Rename `sort` and `order`.
+
+  const normalizedSort: FrontmatterKeySortable =
+    sort === 'title' || sort === 'created' || sort === 'updated' ? sort : 'updated';
+  const normalizedOrder: SortKey = order === 'asc' || order === 'desc' ? order : 'desc';
 
   return (
-    <Suspense key={sort + order} fallback={<Loading content="목록" />}>
-      {tagTree[(await params).tag]
-        .sort(compareMarkdownDocument(sort, order))
-        .map(markdownDocument => (
-          <Content key={markdownDocument.basename} vMarkdownFile={markdownDocument} />
+    <Suspense
+      key={normalizedSort + normalizedOrder}
+      fallback={<Loading content="목록" />}
+    >
+      {tagTree[tag as CategoryKey]
+        ?.sort(compareMarkdownDocument(normalizedSort, normalizedOrder))
+        .map(vMarkdownFile => (
+          <Content key={vMarkdownFile.basename} vMarkdownFile={vMarkdownFile} />
         ))}
     </Suspense>
   );

@@ -7,14 +7,13 @@
 // --------------------------------------------------------------------------------
 
 import Image from 'next/image';
-
 import styles from './loading.module.scss';
 
 // --------------------------------------------------------------------------------
 // Export
 // --------------------------------------------------------------------------------
 
-export default function Loading({ content }) {
+export default function Loading({ content }: { content: string }) {
   return (
     <div className={styles.loading}>
       <div>

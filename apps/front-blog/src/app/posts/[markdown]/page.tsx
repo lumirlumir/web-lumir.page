@@ -15,23 +15,21 @@ import { readMarkdownFilesFromDir } from '@/utils/fs';
 import { markdownToText, markdownToHtml, writeTitleIntoMarkdown } from '@/utils/markup';
 
 // --------------------------------------------------------------------------------
-// Typedef
-// --------------------------------------------------------------------------------
-
-interface Params {
-  markdown: string;
-}
-
-// --------------------------------------------------------------------------------
 // Named Export
 // --------------------------------------------------------------------------------
 
 /**
  * Control what happens when a dynamic segment is visited that was not generated with `generateStaticParams`.
+ * @see https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config/dynamicParams
  */
 export const dynamicParams = false;
 
-export async function generateStaticParams(): Promise<Params[]> {
+/**
+ * @see https://nextjs.org/docs/app/api-reference/functions/generate-static-params
+ */
+export async function generateStaticParams(): Promise<
+  Awaited<PageProps<'/posts/[markdown]'>['params']>[]
+> {
   const markdownDocuments = await readMarkdownFilesFromDir(PATH_DOCS);
   const paths = markdownDocuments.map(markdownDocument => markdownDocument.basename);
 
@@ -40,17 +38,17 @@ export async function generateStaticParams(): Promise<Params[]> {
   }));
 }
 
+/**
+ * @see https://nextjs.org/docs/app/api-reference/functions/generate-metadata
+ */
 export async function generateMetadata({
   params,
-}: {
-  params: Promise<Params>;
-}): Promise<Metadata> {
-  const { default: markdown } = await import(
-    `../../../posts/docs/${(await params).markdown}.md`
-  );
+}: PageProps<'/posts/[markdown]'>): Promise<Metadata> {
+  const { markdown } = await params;
+  const { default: markdownContent } = await import(`../../../posts/docs/${markdown}.md`);
   const {
     data: { title, description },
-  } = frontmatter(markdown) as { data: Frontmatter }; // TODO: Update the `frontmatter` function to support generic type parameters for better type safety and inference.
+  } = frontmatter(markdownContent) as { data: Frontmatter }; // TODO: Update the `frontmatter` function to support generic type parameters for better type safety and inference.
 
   return {
     title: markdownToText(title),
@@ -62,14 +60,13 @@ export async function generateMetadata({
 // Default Export
 // --------------------------------------------------------------------------------
 
-export default async function Page({ params }: { params: Promise<Params> }) {
-  const { default: markdown } = await import(
-    `../../../posts/docs/${(await params).markdown}.md`
-  );
+export default async function Page({ params }: PageProps<'/posts/[markdown]'>) {
+  const { markdown } = await params;
+  const { default: markdownContent } = await import(`../../../posts/docs/${markdown}.md`);
   const {
     content,
     data: { title },
-  } = frontmatter(markdown) as { content: string; data: Frontmatter }; // TODO: Update the `frontmatter` function to support generic type parameters for better type safety and inference.
+  } = frontmatter(markdownContent) as { content: string; data: Frontmatter }; // TODO: Update the `frontmatter` function to support generic type parameters for better type safety and inference.
 
   return (
     <Katex

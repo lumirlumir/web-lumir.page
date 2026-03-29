@@ -12,26 +12,19 @@
 // Import
 // --------------------------------------------------------------------------------
 
-import { useState } from 'react';
 import { usePathname, useSearchParams, useRouter } from 'next/navigation';
-import {
-  FaAngleDown,
-  FaAngleUp,
-  FaArrowDownWideShort,
-  FaArrowUpShortWide,
-  GrSort,
-} from '@lumir/react-kit/svgs';
-
-import { frontmatterMeta } from '@/data/frontmatter';
-
+import { useState, type PropsWithChildren } from 'react';
+import { FaAngleDown, FaAngleUp, GrSort } from '@lumir/react-kit/svgs';
+import { frontmatterMeta, type FrontmatterKeySortable } from '@/data/frontmatter';
+import { sortMeta, type SortKey } from '@/data/sort';
 import styles from './sort.module.scss';
 
 // --------------------------------------------------------------------------------
 // Helper
 // --------------------------------------------------------------------------------
 
-function SortContainer({ children }) {
-  const [isOpen, setIsOpen] = useState(false);
+function SortContainer({ children }: PropsWithChildren) {
+  const [isOpen, setIsOpen] = useState<boolean>(false); // TODO: Create `useToggle` hook later.
 
   function onClick() {
     setIsOpen(prevState => !prevState);
@@ -47,22 +40,23 @@ function SortContainer({ children }) {
         <div className={styles['name-ko']}>정렬</div>
         <div className={styles.order}>{isOpen ? <FaAngleUp /> : <FaAngleDown />}</div>
       </div>
-      {Boolean(isOpen) && <ul>{children}</ul>}
+      {isOpen ? <ul>{children}</ul> : null}
     </div>
   );
 }
 
-function SortItem({ sort, order }) {
+function SortItem({ sort, order }: { sort: FrontmatterKeySortable; order: SortKey }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const { replace } = useRouter();
 
-  function onClick(sort, order) {
+  function onClick(sort: FrontmatterKeySortable, order: SortKey) {
     const params = new URLSearchParams(searchParams);
 
     params.set('sort', sort);
     params.set('order', order);
 
+    // @ts-expect-error -- TODO
     replace(`${pathname}?${params.toString()}`);
   }
 
@@ -71,13 +65,11 @@ function SortItem({ sort, order }) {
       <div className={styles['react-icons']}>{frontmatterMeta[sort].reactIcons}</div>
       <div
         className={styles['name-en']}
-      >{`${frontmatterMeta[sort].name.en} / ${order === 'desc' ? 'Desc' : 'Asc'}`}</div>
+      >{`${frontmatterMeta[sort].name.en} / ${sortMeta[order].name.en}`}</div>
       <div
         className={styles['name-ko']}
-      >{`${frontmatterMeta[sort].name.ko} / ${order === 'desc' ? '내림차순' : '오름차순'}`}</div>
-      <div className={styles.order}>
-        {order === 'desc' ? <FaArrowDownWideShort /> : <FaArrowUpShortWide />}
-      </div>
+      >{`${frontmatterMeta[sort].name.ko} / ${sortMeta[order].name.ko}`}</div>
+      <div className={styles.order}>{sortMeta[order].reactIcons}</div>
     </li>
   );
 }
@@ -98,6 +90,4 @@ export default function Sort() {
     </SortContainer>
   );
 }
-
-// TODO: useCallback hook
 // TODO: add `title` prop for a11y

@@ -51,6 +51,16 @@ export interface Frontmatter {
   tags: CategoryKey[]; // TODO: Rename `tags` to `categories` later.
 }
 
+/**
+ * Represents the key of the frontmatter defined in the `frontmatterMeta` object.
+ */
+export type FrontmatterKey = keyof Frontmatter;
+
+/**
+ * Represents the keys of the frontmatter that can be sorted, excluding `description` and `tags` which are not typically used for sorting.
+ */
+export type FrontmatterKeySortable = Exclude<FrontmatterKey, 'description' | 'tags'>;
+
 // --------------------------------------------------------------------------------
 // Export
 // --------------------------------------------------------------------------------
@@ -95,4 +105,4 @@ export const frontmatterMeta = {
     },
     reactIcons: <FaTag />,
   },
-} as const satisfies Record<keyof Frontmatter, Meta>;
+} as const satisfies Record<FrontmatterKey, Meta>;

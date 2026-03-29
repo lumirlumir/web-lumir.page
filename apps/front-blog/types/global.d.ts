@@ -22,6 +22,7 @@ type CSSModuleClasses = Readonly<Record<string, string>>;
  * providing type safety and autocompletion for class names.
  */
 declare module '*.css';
+declare module '*/css';
 
 /**
  * Global type declarations for CSS modules.
@@ -41,6 +42,7 @@ declare module '*.module.css' {
  * providing type safety and autocompletion for class names.
  */
 declare module '*.scss';
+declare module '*/scss';
 
 /**
  * Global type declarations for SCSS modules.

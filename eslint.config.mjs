@@ -44,6 +44,11 @@ export default defineConfig([
         },
       },
     },
+    languageOptions: {
+      globals: {
+        PageProps: false, // Next.js
+      },
+    },
   },
   {
     name: 'md/global',

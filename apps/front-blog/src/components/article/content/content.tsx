@@ -7,7 +7,7 @@
 // --------------------------------------------------------------------------------
 
 import Link from 'next/link';
-
+import { type JSX, type PropsWithChildren } from 'react';
 import { EXT_MD_REGEXP } from '@/constants';
 import { frontmatterMeta } from '@/data/frontmatter';
 import { categoryMeta } from '@/data/category';
@@ -20,11 +20,11 @@ import styles from './content.module.scss';
 // Helper
 // --------------------------------------------------------------------------------
 
-function ContentBoxContainer({ children }) {
+function ContentBoxContainer({ children }: PropsWithChildren) {
   return <div className={styles['content-box-container']}>{children}</div>;
 }
 
-function ContentBoxItem({ icon, text }) {
+function ContentBoxItem({ icon, text }: { icon: JSX.Element; text: string }) {
   return (
     <span className={styles['content-box-item']}>
       <span className={styles['react-icons']}>{icon}</span>
