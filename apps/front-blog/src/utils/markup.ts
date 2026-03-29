@@ -10,7 +10,11 @@
 
 import { rehypeImageLazyLoading, rehypeImageUrlReplace } from '@lumir/rehype-plugins';
 import { remark } from 'remark';
+import remarkParse from 'remark-parse';
+import remarkRehype from 'remark-rehype';
 import { rehype } from 'rehype';
+import rehypeStringify from 'rehype-stringify';
+import { unified } from 'unified';
 import { GITHUB_REPO_FULL_NAME } from '@/constants';
 
 // --------------------------------------------------------------------------------
@@ -66,6 +70,24 @@ export async function markdownToHtml(markdownContent: string): Promise<string> {
     .process(html);
 
   return String(htmlValue);
+}
+
+/**
+ * Converts markdown content to HTML using unified with remark and rehype, without relying on GitHub's Markdown API.
+ */ // TODO: Consolidate this with `markdownToHtml` and remove the GitHub API dependency.
+export async function markdownToHtmlSimple(markdownContent: string): Promise<string> {
+  const file = await unified()
+    .use(remarkParse)
+    .use(remarkRehype, { allowDangerousHtml: true })
+    .use(rehypeImageLazyLoading)
+    .use(rehypeImageUrlReplace, {
+      searchValue: /^\/public/,
+      replaceValue: '',
+    })
+    .use(rehypeStringify, { allowDangerousHtml: true })
+    .process(markdownContent);
+
+  return String(file);
 }
 
 /**
