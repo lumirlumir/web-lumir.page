@@ -12,33 +12,34 @@ import { frontmatter } from '@lumir/utils';
 import { EXT_MD } from '@/constants';
 import { type CategoryKey } from '@/data/category';
 import { type Frontmatter } from '@/data/frontmatter';
-import { type VMarkdownFile } from '@/data/v-markdown-file';
+import { type VMarkdownFileMeta } from '@/data/v-markdown-file';
 
 // --------------------------------------------------------------------------------
 // Export
 // --------------------------------------------------------------------------------
 
 /**
- * Asynchronously reads a Markdown file and returns a `VMarkdownFile` type object.
+ * Asynchronously reads a Markdown file and returns a `VMarkdownFileMeta` type object.
  * @param pathToMarkdownFile The path to the Markdown file to read.
  */
-export async function readMarkdownFile(pathToMarkdownFile: string) {
-  const { content, data } = frontmatter(await readFile(pathToMarkdownFile, 'utf-8'));
+export async function readMarkdownFile(
+  pathToMarkdownFile: string,
+): Promise<VMarkdownFileMeta> {
+  const { data } = frontmatter(await readFile(pathToMarkdownFile, 'utf-8'));
 
   return {
     basename: basename(pathToMarkdownFile),
-    content,
     data: data as Frontmatter,
   };
 }
 
 /**
- * Asynchronously reads a directory and returns an array of `VMarkdownFile` type objects.
+ * Asynchronously reads a directory and returns an array of `VMarkdownFileMeta` type objects.
  * @param dirPath The path to the directory containing Markdown files to read.
  */
 export async function readMarkdownFilesFromDir(
   dirPath: string,
-): Promise<VMarkdownFile[]> {
+): Promise<VMarkdownFileMeta[]> {
   const markdownFilePaths = (await readdir(dirPath)).filter(filePath =>
     filePath.endsWith(EXT_MD),
   );
@@ -57,8 +58,8 @@ export async function readMarkdownFilesFromDir(
  */
 export async function readMarkdownTagTree(
   dirPath: string,
-): Promise<Partial<Record<CategoryKey, VMarkdownFile[]>>> {
-  const tagTree: Partial<Record<CategoryKey, VMarkdownFile[]>> = {}; // Initialize an empty object to store the tag tree.
+): Promise<Partial<Record<CategoryKey, VMarkdownFileMeta[]>>> {
+  const tagTree: Partial<Record<CategoryKey, VMarkdownFileMeta[]>> = {}; // Initialize an empty object to store the tag tree.
   const markdownDocuments = await readMarkdownFilesFromDir(dirPath);
 
   for (const markdownDocument of markdownDocuments) {

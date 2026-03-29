@@ -65,8 +65,11 @@ export default async function Page({
     >
       {tagTree[tag as CategoryKey]
         ?.toSorted(compareMarkdownDocument(normalizedSort, normalizedOrder))
-        .map(vMarkdownFile => (
-          <Content key={vMarkdownFile.basename} vMarkdownFile={vMarkdownFile} />
+        .map(vMarkdownFileMeta => (
+          <Content
+            key={vMarkdownFileMeta.basename}
+            vMarkdownFileMeta={vMarkdownFileMeta}
+          />
         ))}
     </Suspense>
   );
