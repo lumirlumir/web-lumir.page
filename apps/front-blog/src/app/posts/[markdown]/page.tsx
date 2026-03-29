@@ -9,10 +9,15 @@
 import { type Metadata } from 'next';
 import { frontmatter } from '@lumir/utils';
 import Katex from '@/components/article/katex';
-import { PATH_DOCS, EXT_MD_REGEXP } from '@/constants';
 import { type Frontmatter } from '@/data/frontmatter';
 import { readMarkdownFilesFromDir } from '@/utils/fs';
 import { markdownToText, markdownToHtml, writeTitleIntoMarkdown } from '@/utils/markup';
+
+// --------------------------------------------------------------------------------
+// Helper
+// --------------------------------------------------------------------------------
+
+const markdownDocuments = await readMarkdownFilesFromDir();
 
 // --------------------------------------------------------------------------------
 // Named Export
@@ -30,11 +35,8 @@ export const dynamicParams = false;
 export async function generateStaticParams(): Promise<
   Awaited<PageProps<'/posts/[markdown]'>['params']>[]
 > {
-  const markdownDocuments = await readMarkdownFilesFromDir(PATH_DOCS);
-  const paths = markdownDocuments.map(markdownDocument => markdownDocument.basename);
-
-  return paths.map(path => ({
-    markdown: path.replace(EXT_MD_REGEXP, ''),
+  return markdownDocuments.map(markdownDocument => ({
+    markdown: markdownDocument.basename,
   }));
 }
 

@@ -9,18 +9,17 @@
 import { Suspense } from 'react';
 import Content from '@/components/article/content';
 import Loading from '@/components/common/loading';
-import { PATH_DOCS } from '@/constants';
+import { type CategoryKey } from '@/data/category';
 import { type FrontmatterKeySortable } from '@/data/frontmatter';
 import { type SortKey } from '@/data/sort';
 import { compareMarkdownDocument } from '@/utils/compare';
 import { readMarkdownTagTree } from '@/utils/fs';
-import type { CategoryKey } from '@/data/category';
 
 // --------------------------------------------------------------------------------
 // Helper
 // --------------------------------------------------------------------------------
 
-const tagTree = await readMarkdownTagTree(PATH_DOCS);
+const tagTree = await readMarkdownTagTree();
 
 // --------------------------------------------------------------------------------
 // Named Export

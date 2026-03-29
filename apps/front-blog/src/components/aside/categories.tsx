@@ -8,7 +8,6 @@
 
 import Link from 'next/link';
 import { FaPen } from '@lumir/react-kit/svgs';
-import { PATH_DOCS } from '@/constants';
 import { categoryMeta, type CategoryKey } from '@/data/category';
 import { readMarkdownTagTree } from '@/utils/fs';
 import styles from './categories.module.scss';
@@ -17,7 +16,7 @@ import styles from './categories.module.scss';
 // Helper
 // --------------------------------------------------------------------------------
 
-const tagTree = await readMarkdownTagTree(PATH_DOCS);
+const tagTree = await readMarkdownTagTree();
 const tags = Object.keys(tagTree) as CategoryKey[];
 
 // --------------------------------------------------------------------------------
