@@ -8,21 +8,21 @@
 
 import { type MetadataRoute } from 'next';
 import { WEBSITE_URL } from '@/constants';
-import { readMarkdownFilesFromDir } from '@/utils/fs';
+import { loadMarkdownCollection } from '@/utils/markdown-collection';
 
 // --------------------------------------------------------------------------------
 // Helper
 // --------------------------------------------------------------------------------
 
-const markdownDocuments = await readMarkdownFilesFromDir();
+const { all } = await loadMarkdownCollection();
 
 // --------------------------------------------------------------------------------
 // Default Export
 // --------------------------------------------------------------------------------
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  return markdownDocuments.map(({ basename, data: { updated } }) => ({
-    url: `${WEBSITE_URL}/posts/${basename}`,
+  return all.map(({ slug, data: { updated } }) => ({
+    url: `${WEBSITE_URL}/posts/${slug}`,
     lastModified: updated,
     changeFrequency: 'monthly',
     priority: 1.0,

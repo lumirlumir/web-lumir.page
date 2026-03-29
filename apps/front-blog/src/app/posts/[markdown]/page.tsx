@@ -10,14 +10,14 @@ import { type Metadata } from 'next';
 import { frontmatter } from '@lumir/utils';
 import Katex from '@/components/article/katex';
 import { type Frontmatter } from '@/data/frontmatter';
-import { readMarkdownFilesFromDir } from '@/utils/fs';
+import { loadMarkdownCollection } from '@/utils/markdown-collection';
 import { markdownToText, markdownToHtml, writeTitleIntoMarkdown } from '@/utils/markup';
 
 // --------------------------------------------------------------------------------
 // Helper
 // --------------------------------------------------------------------------------
 
-const markdownDocuments = await readMarkdownFilesFromDir();
+const { all } = await loadMarkdownCollection();
 
 // --------------------------------------------------------------------------------
 // Named Export
@@ -35,8 +35,8 @@ export const dynamicParams = false;
 export async function generateStaticParams(): Promise<
   Awaited<PageProps<'/posts/[markdown]'>['params']>[]
 > {
-  return markdownDocuments.map(markdownDocument => ({
-    markdown: markdownDocument.basename,
+  return all.map(({ slug }) => ({
+    markdown: slug,
   }));
 }
 

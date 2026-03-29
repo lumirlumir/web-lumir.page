@@ -37,14 +37,14 @@ function ContentBoxItem({ icon, text }: { icon: JSX.Element; text: string }) {
 
 export default async function Content({
   vMarkdownFileMeta: {
-    basename,
+    slug,
     data: { title, description, created, updated, tags },
   },
 }: {
   vMarkdownFileMeta: VMarkdownFileMeta;
 }) {
   return (
-    <Link href={`/posts/${basename}`}>
+    <Link href={`/posts/${slug}`}>
       <div className={styles.content}>
         <div
           className={`${styles.title} markdown-body`}

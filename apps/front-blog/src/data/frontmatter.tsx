@@ -28,27 +28,27 @@ export interface Frontmatter {
   /**
    * The title of the Markdown document, providing a concise and descriptive name for the content.
    */
-  title: string;
+  readonly title: string;
 
   /**
    * The description of the Markdown document, providing a brief summary or overview of its content.
    */
-  description: string;
+  readonly description: string;
 
   /**
    * The created date of the Markdown document, indicating when the document was initially created or published.
    */
-  created: string;
+  readonly created: string;
 
   /**
    * The updated date of the Markdown document, indicating when the document was last modified or updated.
    */
-  updated: string;
+  readonly updated: string;
 
   /**
    * The tags of the Markdown document, representing the categories associated with the content.
    */
-  tags: CategoryKey[]; // TODO: Rename `tags` to `categories` later.
+  readonly tags: CategoryKey[]; // TODO: Rename `tags` to `categories` later.
 }
 
 /**
