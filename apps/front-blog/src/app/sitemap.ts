@@ -1,21 +1,25 @@
 /**
- * @fileoverview Root page.
+ * @fileoverview `sitemap.xml` generator for path `/`.
  */
 
 // --------------------------------------------------------------------------------
 // Import
 // --------------------------------------------------------------------------------
 
-import Article from '@/components/layouts/article';
-
-import { getGithubUsers } from '@/utils/fetch';
+import { type MetadataRoute } from 'next';
+import { WEBSITE_URL } from '@/constants';
 
 // --------------------------------------------------------------------------------
 // Default Export
 // --------------------------------------------------------------------------------
 
-export default async function Page() {
-  const { name } = await getGithubUsers();
-
-  return <Article>{`Hello, It's ${name}'s blog!`}</Article>;
+export default function sitemap(): MetadataRoute.Sitemap {
+  return [
+    {
+      url: WEBSITE_URL,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.5,
+    },
+  ];
 }

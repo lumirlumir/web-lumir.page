@@ -6,6 +6,7 @@
 // Import
 // --------------------------------------------------------------------------------
 
+import { type MetadataRoute } from 'next';
 import { WEBSITE_URL, PATH_DOCS, EXT_MD_REGEXP } from '@/constants';
 import { readMarkdownFilesFromDir } from '@/utils/fs';
 
@@ -13,7 +14,7 @@ import { readMarkdownFilesFromDir } from '@/utils/fs';
 // Default Export
 // --------------------------------------------------------------------------------
 
-export default async function sitemap() {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const markdownDocuments = await readMarkdownFilesFromDir(PATH_DOCS);
 
   return markdownDocuments.map(({ basename, data: { updated } }) => ({

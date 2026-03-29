@@ -6,6 +6,9 @@
 // Import
 // --------------------------------------------------------------------------------
 
+import { type Metadata } from 'next';
+import { type PropsWithChildren } from 'react';
+
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { GoogleAnalytics } from '@next/third-parties/google';
@@ -36,7 +39,7 @@ import '@/styles/index.css';
 // Named Export
 // --------------------------------------------------------------------------------
 
-export async function generateMetadata() {
+export async function generateMetadata(): Promise<Metadata> {
   const { bio, name } = await getGithubUsers();
 
   return {
@@ -52,7 +55,7 @@ export async function generateMetadata() {
 // Default Export
 // --------------------------------------------------------------------------------
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="ko" data-theme="dark">
       <ThemeProvider>

@@ -1,29 +1,20 @@
 /**
- * @fileoverview `robots.txt` generator.
+ * @fileoverview Root page.
  */
 
 // --------------------------------------------------------------------------------
 // Import
 // --------------------------------------------------------------------------------
 
-import { WEBSITE_URL } from '@/constants';
+import Article from '@/components/layouts/article';
+import { getGithubUsers } from '@/utils/fetch';
 
 // --------------------------------------------------------------------------------
 // Default Export
 // --------------------------------------------------------------------------------
 
-export default function robots() {
-  const SITEMAP = 'sitemap.xml';
+export default async function Page() {
+  const { name } = await getGithubUsers();
 
-  return {
-    rules: {
-      userAgent: '*',
-      allow: '/',
-    },
-    sitemap: [
-      `${WEBSITE_URL}/${SITEMAP}`,
-      `${WEBSITE_URL}/posts/${SITEMAP}`,
-      `${WEBSITE_URL}/categories/${SITEMAP}`,
-    ],
-  };
+  return <Article>{`Hello, It's ${name}'s blog!`}</Article>;
 }

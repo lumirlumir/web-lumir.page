@@ -6,11 +6,9 @@
 // Import
 // --------------------------------------------------------------------------------
 
-import { promises as fs } from 'node:fs';
+import { readdir, readFile } from 'node:fs/promises';
 import { basename, join } from 'node:path';
-
 import { frontmatter } from '@lumir/utils';
-
 import { EXT_MD } from '@/constants';
 import { type Frontmatter } from '@/data/frontmatter';
 import { type VMarkdownFile } from '@/data/v-markdown-file';
@@ -20,10 +18,11 @@ import { type VMarkdownFile } from '@/data/v-markdown-file';
 // --------------------------------------------------------------------------------
 
 /**
- * Asynchronously reads a Markdown file and returns a `MarkdownDocument` type object.
+ * Asynchronously reads a Markdown file and returns a `VMarkdownFile` type object.
+ * @param pathToMarkdownFile The path to the Markdown file to read.
  */
 export async function readMarkdownFile(pathToMarkdownFile: string) {
-  const { content, data } = frontmatter(await fs.readFile(pathToMarkdownFile, 'utf-8'));
+  const { content, data } = frontmatter(await readFile(pathToMarkdownFile, 'utf-8'));
 
   return {
     basename: basename(pathToMarkdownFile),
@@ -33,17 +32,13 @@ export async function readMarkdownFile(pathToMarkdownFile: string) {
 }
 
 /**
- * Asynchronously reads a directory and returns a list(array) of `MarkdownDocument` type object.
- *
- * @async
- * @param {string} dirPath Path to a directory containing markdown files.
- * @returns {Promise<MarkdownDocument[]>} A promise that resolves to a list(array) of `MarkdownDocument` type object.
- * @see {@link MarkdownDocument}
+ * Asynchronously reads a directory and returns an array of `VMarkdownFile` type objects.
+ * @param dirPath The path to the directory containing Markdown files to read.
  */
 export async function readMarkdownFilesFromDir(
   dirPath: string,
 ): Promise<VMarkdownFile[]> {
-  const markdownFilePaths = (await fs.readdir(dirPath)).filter(filePath =>
+  const markdownFilePaths = (await readdir(dirPath)).filter(filePath =>
     filePath.endsWith(EXT_MD),
   );
   const markdownDocuments = await Promise.all(
@@ -57,6 +52,7 @@ export async function readMarkdownFilesFromDir(
 
 /**
  * Asynchronously reads a directory and generates a tag tree from markdown files.
+ * @param dirPath The path to the directory containing Markdown files to read.
  */
 export async function readMarkdownTagTree(
   dirPath: string,

@@ -7,12 +7,19 @@
 // --------------------------------------------------------------------------------
 
 import { Suspense } from 'react';
-
 import Content from '@/components/article/content';
 import Loading from '@/components/common/loading';
 import { PATH_DOCS } from '@/constants';
 import { compareMarkdownDocument } from '@/utils/compare';
 import { readMarkdownTagTree } from '@/utils/fs';
+
+// --------------------------------------------------------------------------------
+// Typedef
+// --------------------------------------------------------------------------------
+
+interface Params {
+  tag: string;
+}
 
 // --------------------------------------------------------------------------------
 // Named Export
@@ -32,13 +39,22 @@ export async function generateStaticParams() {
 // Default Export
 // --------------------------------------------------------------------------------
 
-export default async function Page({ params, searchParams }) {
+export default async function Page({
+  params,
+  searchParams,
+}: {
+  params: Promise<Params>;
+  searchParams: Promise<{
+    sort?: 'updated' | 'title' | 'created';
+    order?: 'asc' | 'desc';
+  }>;
+}) {
   const { sort = 'updated', order = 'desc' } = await searchParams;
   const tagTree = await readMarkdownTagTree(PATH_DOCS);
 
   return (
     <Suspense key={sort + order} fallback={<Loading content="목록" />}>
-      {tagTree[await params.tag]
+      {tagTree[(await params).tag]
         .sort(compareMarkdownDocument(sort, order))
         .map(markdownDocument => (
           <Content key={markdownDocument.basename} vMarkdownFile={markdownDocument} />
