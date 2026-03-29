@@ -12,7 +12,7 @@ import { EXT_MD_REGEXP } from '@/constants';
 import { frontmatterMeta } from '@/data/frontmatter';
 import { categoryMeta } from '@/data/category';
 import { markdownToHtml } from '@/utils/markup';
-import { type VMarkdownFile } from '@/data/v-markdown-file';
+import { type VMarkdownFileMeta } from '@/data/v-markdown-file';
 
 import styles from './content.module.scss';
 
@@ -38,12 +38,12 @@ function ContentBoxItem({ icon, text }: { icon: JSX.Element; text: string }) {
 // --------------------------------------------------------------------------------
 
 export default async function Content({
-  vMarkdownFile: {
+  vMarkdownFileMeta: {
     basename,
     data: { title, description, created, updated, tags },
   },
 }: {
-  vMarkdownFile: VMarkdownFile;
+  vMarkdownFileMeta: VMarkdownFileMeta;
 }) {
   return (
     <Link href={`/posts/${basename.replace(EXT_MD_REGEXP, '')}`}>
