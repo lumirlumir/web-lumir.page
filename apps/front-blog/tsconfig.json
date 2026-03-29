@@ -8,7 +8,8 @@
     "src/**/*.ts",
     "src/**/*.mts",
     "src/**/*.cts",
-    "src/**/*.tsx"
+    "src/**/*.tsx",
+    "types/*.d.ts"
   ],
   "exclude": [
     "src/**/*.test.js",

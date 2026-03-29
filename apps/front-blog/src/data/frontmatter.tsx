@@ -1,5 +1,5 @@
 /**
- * @fileoverview TODO
+ * @fileoverview Defines the types and metadata for the frontmatter.
  */
 
 // --------------------------------------------------------------------------------
@@ -48,7 +48,7 @@ export interface Frontmatter {
   /**
    * The tags of the Markdown document, representing the categories associated with the content.
    */
-  tags: CategoryKey[];
+  tags: CategoryKey[]; // TODO: Rename `tags` to `categories` later.
 }
 
 // --------------------------------------------------------------------------------

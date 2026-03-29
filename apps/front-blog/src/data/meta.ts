@@ -1,49 +1,49 @@
 /**
- * @fileoverview TODO.
+ * @fileoverview Defines shared metadata types.
  */
 
 // --------------------------------------------------------------------------------
 // Import
 // --------------------------------------------------------------------------------
 
-import type React from 'react';
+import { type JSX } from 'react';
 
 // --------------------------------------------------------------------------------
 // Export
 // --------------------------------------------------------------------------------
 
 /**
- * Represents the metadata structure, including their names in English and Korean, as well as associated React icons.
+ * Represents shared metadata with localized display names and an associated React icon.
  */
 export interface Meta {
   /**
-   * The name of the category in English and Korean.
+   * The localized display name in English and Korean.
    */
   name: {
     /**
-     * The name of the category in English.
+     * The display name in English.
      */
     en: string;
 
     /**
-     * The name of the category in Korean.
+     * The display name in Korean.
      */
     ko: string;
   };
 
   /**
-   * The React icon associated with the category, represented as a JSX element.
+   * The React icon associated with the metadata item, represented as a JSX element.
    */
-  reactIcons: React.JSX.Element;
+  reactIcons: JSX.Element;
 }
 
 /**
- * Represents the metadata structure with an additional `order` property,
- * which can be used for sorting or displaying categories in a specific sequence.
+ * Represents shared metadata with an additional `order` property,
+ * which can be used for sorting or displaying items in a specific sequence.
  */
 export interface MetaWithOrder extends Meta {
   /**
-   * The order of the category, which can be used for sorting or displaying categories in a specific sequence.
+   * The order of the item, which can be used for sorting or displaying items in a specific sequence.
    */
   order: number;
 }

@@ -1,5 +1,5 @@
 /**
- * @fileoverview Define common types.
+ * @fileoverview Defines the structure of a virtual Markdown file.
  */
 
 // --------------------------------------------------------------------------------

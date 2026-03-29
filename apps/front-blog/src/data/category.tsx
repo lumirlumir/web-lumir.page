@@ -1,5 +1,5 @@
 /**
- * @fileoverview TODO
+ * @fileoverview Defines the types and metadata for the category.
  */
 
 // --------------------------------------------------------------------------------
@@ -38,7 +38,7 @@ import { type MetaWithOrder } from './meta';
 // --------------------------------------------------------------------------------
 
 /**
- * Represents the key of the category defined in the `categoryMeta` object,
+ * Represents the key of the category defined in the `categoryMeta` object.
  */
 export type CategoryKey = keyof typeof categoryMeta;
 
@@ -47,7 +47,7 @@ export type CategoryKey = keyof typeof categoryMeta;
 // --------------------------------------------------------------------------------
 
 /**
- * An object containing metadata for the categories,
+ * An object containing metadata for the category fields,
  * including their names in English and Korean, as well as associated React icons and their order.
  */
 export const categoryMeta = {
