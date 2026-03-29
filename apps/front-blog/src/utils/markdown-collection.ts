@@ -94,9 +94,9 @@ export async function loadMarkdownCollection(): Promise<MarkdownCollection> {
  * Returns a list of category keys that have at least one associated Markdown file in the collection.
  */
 export function listNonEmptyCategoryKeys(
-  MarkdownCollectionCategory: MarkdownCollection['category'],
+  markdownCollectionCategory: MarkdownCollection['category'],
 ): CategoryKey[] {
   return categoryKeys.filter(
-    categoryKey => MarkdownCollectionCategory[categoryKey].length > 0,
+    categoryKey => markdownCollectionCategory[categoryKey].length > 0,
   );
 }
