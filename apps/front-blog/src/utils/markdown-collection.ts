@@ -96,7 +96,7 @@ export async function loadMarkdownCollection(): Promise<MarkdownCollection> {
 export function listNonEmptyCategoryKeys(
   MarkdownCollectionCategory: MarkdownCollection['category'],
 ): CategoryKey[] {
-  return Object.keys(MarkdownCollectionCategory).filter(
-    categoryKey => MarkdownCollectionCategory[categoryKey as CategoryKey].length > 0,
-  ) as CategoryKey[];
+  return categoryKeys.filter(
+    categoryKey => MarkdownCollectionCategory[categoryKey].length > 0,
+  );
 }
