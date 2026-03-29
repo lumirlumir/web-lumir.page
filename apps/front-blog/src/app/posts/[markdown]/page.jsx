@@ -6,7 +6,7 @@
 // Import
 // --------------------------------------------------------------------------------
 
-import { frontMatter } from '@lumir/utils';
+import { frontmatter } from '@lumir/utils';
 import Katex from '@/components/article/katex';
 import { PATH_DOCS, EXT_MD_REGEXP } from '@/constants';
 import { readMarkdownFilesFromDir } from '@/utils/fs';
@@ -34,7 +34,7 @@ export async function generateMetadata({ params }) {
   );
   const {
     data: { title, description },
-  } = frontMatter(markdown);
+  } = frontmatter(markdown);
 
   return {
     title: markdownToText(title),
@@ -53,7 +53,7 @@ export default async function Page({ params }) {
   const {
     content,
     data: { title },
-  } = frontMatter(markdown);
+  } = frontmatter(markdown);
 
   return (
     <Katex

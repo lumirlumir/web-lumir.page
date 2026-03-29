@@ -1,6 +1,8 @@
 import { promises as fs } from 'node:fs';
 import { basename, join } from 'node:path';
-import { frontMatter } from '@lumir/utils';
+
+import { frontmatter } from '@lumir/utils';
+
 import { EXT_MD } from '@/constants';
 import { type Frontmatter } from '@/data/frontmatter';
 import { type VMarkdownFile } from '@/data/v-markdown-file';
@@ -8,10 +10,8 @@ import { type VMarkdownFile } from '@/data/v-markdown-file';
 /**
  * Asynchronously reads a Markdown file and returns a `MarkdownDocument` type object.
  */
-export async function readMarkdownFile(
-  pathToMarkdownFile: string,
-): Promise<VMarkdownFile> {
-  const { content, data } = frontMatter(await fs.readFile(pathToMarkdownFile, 'utf-8'));
+export async function readMarkdownFile(pathToMarkdownFile: string) {
+  const { content, data } = frontmatter(await fs.readFile(pathToMarkdownFile, 'utf-8'));
 
   return {
     basename: basename(pathToMarkdownFile),
