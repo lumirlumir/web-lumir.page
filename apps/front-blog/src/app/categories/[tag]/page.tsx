@@ -64,7 +64,7 @@ export default async function Page({
       fallback={<Loading content="목록" />}
     >
       {tagTree[tag as CategoryKey]
-        ?.sort(compareMarkdownDocument(normalizedSort, normalizedOrder))
+        ?.toSorted(compareMarkdownDocument(normalizedSort, normalizedOrder))
         .map(vMarkdownFile => (
           <Content key={vMarkdownFile.basename} vMarkdownFile={vMarkdownFile} />
         ))}
