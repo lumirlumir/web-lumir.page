@@ -3,7 +3,7 @@ title: '자바스크립트(***JavaScript***)의 구성'
 description: '웹 브라우저에서의 JavaScript는 `window` 객체를 중심으로, ECMAScript(코어), DOM, BOM 세 가지 하위 요소로 구성되며, 각각 웹 페이지의 내용과 브라우저 기능을 제어한다.'
 created: '2024-05-08'
 updated: '2024-06-12'
-tags:
+categories:
   - 'javascript'
 ---
 

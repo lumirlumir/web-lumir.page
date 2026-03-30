@@ -3,7 +3,7 @@ title: '`raw.githubusercontent.com`과 `cdn.jsdelivr.net`의 차이점'
 description: '`raw.githubusercontent.com`은 GitHub의 파일을 원본 그대로 제공하는 반면, `cdn.jsdelivr.net`은 최적화된 콘텐츠를 빠르고 안정적으로 제공하는 CDN 서비스로, 각각의 목적과 기능이 다르다.'
 created: '2024-08-02'
 updated: '2024-08-02'
-tags:
+categories:
   - 'git'
 ---
 

@@ -3,7 +3,7 @@ title: 'Next.js에서 File-based Metadata를 이용할 때, Favicon이 정상적
 description: 'Favicon이 Next.js의 App Router에서 변경되지 않는 문제는 브라우저의 캐싱 때문일 수 있으며, 개발자 도구를 통해 캐시 비우기 및 강력 새로고침을 수행하면 해결될 가능성이 높다.'
 created: '2024-09-18'
 updated: '2024-09-18'
-tags:
+categories:
   - 'nextjs'
 ---
 

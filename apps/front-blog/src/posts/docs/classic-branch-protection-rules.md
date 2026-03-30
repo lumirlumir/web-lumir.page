@@ -3,7 +3,7 @@ title: "GitHub's classic branch protection rules"
 description: 'Branch 보호 규칙은 GitHub에서 협업 시 혼란을 방지하기 위해 특정 Branch에 대한 접근과 변경 사항을 관리하는 필수 규칙으로, PR 요구, 승인, 상태 체크 등 다양한 설정을 통해 코드 품질과 협업 효율성을 높인다.'
 created: '2024-06-31'
 updated: '2024-06-31'
-tags:
+categories:
   - 'git'
 ---
 

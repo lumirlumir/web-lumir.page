@@ -3,7 +3,7 @@ title: 'Git Repository 이름 규칙'
 description: 'Git Repository 이름은 소문자와 대시(`-`)를 사용하여 명확하고 일관성 있게 작성해야 하며, 나중에 비슷한 이름의 Repository를 구분할 수 있도록 구체적으로 작성하는 것이 좋다.'
 created: '2024-07-21'
 updated: '2024-07-21'
-tags:
+categories:
   - 'convention'
   - 'git'
 ---

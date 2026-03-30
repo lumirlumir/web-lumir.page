@@ -66,7 +66,7 @@ export async function loadMarkdownCollection(): Promise<MarkdownCollection> {
     markdownFilePaths.map(markdownFilePath =>
       readFile(join(postsPath, markdownFilePath), 'utf8').then(content => {
         const { data } = frontmatter(content);
-        const { tags } = data as Frontmatter;
+        const { categories } = data as Frontmatter;
 
         const vMarkdownFileMeta: VMarkdownFileMeta = {
           slug: basename(markdownFilePath, EXT_MD),
@@ -76,9 +76,9 @@ export async function loadMarkdownCollection(): Promise<MarkdownCollection> {
         // `all`
         all.push(vMarkdownFileMeta);
         // `category`
-        tags.forEach(tag => {
-          category[tag] ??= [];
-          category[tag].push(vMarkdownFileMeta);
+        categories.forEach(categoryKey => {
+          category[categoryKey] ??= [];
+          category[categoryKey].push(vMarkdownFileMeta);
         });
       }),
     ),
