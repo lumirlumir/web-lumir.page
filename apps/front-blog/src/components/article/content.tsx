@@ -62,11 +62,11 @@ export default async function Content({
         </ContentBoxContainer>
 
         <ContentBoxContainer>
-          {categories.map(categoryKey => (
+          {categories.map(category => (
             <ContentBoxItem
-              key={categoryKey}
+              key={category}
               icon={frontmatterMeta.categories.reactIcons}
-              text={categoryMeta[categoryKey].name.en}
+              text={categoryMeta[category].name.en}
             />
           ))}
         </ContentBoxContainer>

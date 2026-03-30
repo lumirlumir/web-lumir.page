@@ -54,7 +54,7 @@ const postsPath = join(process.cwd(), 'src', 'posts', 'docs');
 export async function loadMarkdownCollection(): Promise<MarkdownCollection> {
   // Initialize empty structures to store the collection data.
   const all: MarkdownCollection['all'] = [];
-  const category: MarkdownCollection['category'] = Object.fromEntries(
+  const markdownCollectionCategory: MarkdownCollection['category'] = Object.fromEntries(
     categoryKeys.map(categoryKey => [categoryKey, [] as VMarkdownFileMeta[]]),
   ) as MarkdownCollection['category'];
 
@@ -76,9 +76,9 @@ export async function loadMarkdownCollection(): Promise<MarkdownCollection> {
         // `all`
         all.push(vMarkdownFileMeta);
         // `category`
-        categories.forEach(categoryKey => {
-          category[categoryKey] ??= [];
-          category[categoryKey].push(vMarkdownFileMeta);
+        categories.forEach(category => {
+          markdownCollectionCategory[category] ??= [];
+          markdownCollectionCategory[category].push(vMarkdownFileMeta);
         });
       }),
     ),
@@ -86,7 +86,7 @@ export async function loadMarkdownCollection(): Promise<MarkdownCollection> {
 
   return {
     all,
-    category,
+    category: markdownCollectionCategory,
   };
 }
 
