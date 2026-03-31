@@ -1,6 +1,7 @@
 /**
  * @fileoverview Defines the helper functions for converting markdown content to plain text.
- * @see https://github.com/remarkjs/remark/tree/main/packages/remark-stringify#remark-stringify (`remark-stringify`)
+ * @see https://github.com/syntax-tree/mdast-util-to-string#readme (`mdast-util-to-string`)
+ * @see https://github.com/remarkjs/remark/tree/main/packages/remark-parse#remark-parse (`remark-parse`)
  * @see https://github.com/remarkjs/strip-markdown (`strip-markdown`)
  * @see https://github.com/unifiedjs/unified#readme (`unified`)
  */
