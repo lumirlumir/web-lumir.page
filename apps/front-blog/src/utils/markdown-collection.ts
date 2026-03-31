@@ -53,8 +53,8 @@ const postsPath = join(process.cwd(), 'src', 'posts', 'docs');
  */
 export async function loadMarkdownCollection(): Promise<MarkdownCollection> {
   // Initialize empty structures to store the collection data.
-  const all: MarkdownCollection['all'] = [];
-  const category: MarkdownCollection['category'] = Object.fromEntries(
+  const markdownCollectionAll: MarkdownCollection['all'] = [];
+  const markdownCollectionCategory: MarkdownCollection['category'] = Object.fromEntries(
     categoryKeys.map(categoryKey => [categoryKey, [] as VMarkdownFileMeta[]]),
   ) as MarkdownCollection['category'];
 
@@ -66,7 +66,7 @@ export async function loadMarkdownCollection(): Promise<MarkdownCollection> {
     markdownFilePaths.map(markdownFilePath =>
       readFile(join(postsPath, markdownFilePath), 'utf8').then(content => {
         const { data } = frontmatter(content);
-        const { tags } = data as Frontmatter;
+        const { categories } = data as Frontmatter;
 
         const vMarkdownFileMeta: VMarkdownFileMeta = {
           slug: basename(markdownFilePath, EXT_MD),
@@ -74,19 +74,19 @@ export async function loadMarkdownCollection(): Promise<MarkdownCollection> {
         };
 
         // `all`
-        all.push(vMarkdownFileMeta);
+        markdownCollectionAll.push(vMarkdownFileMeta);
         // `category`
-        tags.forEach(tag => {
-          category[tag] ??= [];
-          category[tag].push(vMarkdownFileMeta);
+        categories.forEach(category => {
+          markdownCollectionCategory[category] ??= [];
+          markdownCollectionCategory[category].push(vMarkdownFileMeta);
         });
       }),
     ),
   );
 
   return {
-    all,
-    category,
+    all: markdownCollectionAll,
+    category: markdownCollectionCategory,
   };
 }
 

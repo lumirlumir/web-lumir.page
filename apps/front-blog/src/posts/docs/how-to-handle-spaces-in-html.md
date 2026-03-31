@@ -3,7 +3,7 @@ title: 'HTML에서 공백을 다루는 방법: `&nbsp;`, `&ensp;`, `&emsp;`'
 description: '`&nbsp;`, `&ensp;`, `&emsp;`는 각각 1칸, 2칸, 3칸 정도 너비의 공백을 생성한다.'
 created: '2024-07-16'
 updated: '2024-07-16'
-tags:
+categories:
   - 'html'
 ---
 

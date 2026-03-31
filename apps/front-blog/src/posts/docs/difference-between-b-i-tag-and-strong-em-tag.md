@@ -3,7 +3,7 @@ title: '`<b>` `<i>` ***Tag***와 `<strong>` `<em>` ***Tag***의 차이점'
 description: '`<b>`와 `<i>`는 시각적 스타일만 제공하는 물리적 태그인 반면, `<strong>`과 `<em>`은 의미를 전달하는 논리적(시멘틱) 태그로 웹 접근성에 중요한 역할을 한다.'
 created: '2024-05-22'
 updated: '2024-05-26'
-tags:
+categories:
   - 'html'
 ---
 
