@@ -10,7 +10,7 @@ import Link from 'next/link';
 import { type JSX, type PropsWithChildren } from 'react';
 import { categoryMeta } from '@/data/category';
 import { frontmatterMeta } from '@/data/frontmatter';
-import { type VMarkdownFileMeta } from '@/data/v-markdown-file';
+import { type VMarkdownFile } from '@/data/v-markdown-file';
 import { markdownToHtml } from '@/utils';
 import styles from './content.module.scss';
 
@@ -36,12 +36,12 @@ function ContentBoxItem({ icon, text }: { icon: JSX.Element; text: string }) {
 // --------------------------------------------------------------------------------
 
 export default async function Content({
-  vMarkdownFileMeta: {
+  vMarkdownFile: {
     slug,
     data: { title, description, created, updated, categories },
   },
 }: {
-  vMarkdownFileMeta: VMarkdownFileMeta;
+  vMarkdownFile: VMarkdownFile;
 }) {
   return (
     <Link href={`/posts/${slug}`}>

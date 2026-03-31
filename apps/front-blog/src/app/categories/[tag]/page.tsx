@@ -15,14 +15,14 @@ import { type SortKey } from '@/data/sort';
 import { compareMarkdownDocument } from '@/utils/compare';
 import {
   listNonEmptyCategoryKeys,
-  loadMarkdownCollection,
+  markdownCollection,
 } from '@/utils/markdown-collection';
 
 // --------------------------------------------------------------------------------
 // Helper
 // --------------------------------------------------------------------------------
 
-const { category } = await loadMarkdownCollection();
+const { category } = markdownCollection;
 
 // --------------------------------------------------------------------------------
 // Named Export
@@ -67,8 +67,8 @@ export default async function Page({
     >
       {category[tag as CategoryKey]
         ?.toSorted(compareMarkdownDocument(normalizedSort, normalizedOrder))
-        .map(vMarkdownFileMeta => (
-          <Content key={vMarkdownFileMeta.slug} vMarkdownFileMeta={vMarkdownFileMeta} />
+        .map(vMarkdownFile => (
+          <Content key={vMarkdownFile.slug} vMarkdownFile={vMarkdownFile} />
         ))}
     </Suspense>
   );

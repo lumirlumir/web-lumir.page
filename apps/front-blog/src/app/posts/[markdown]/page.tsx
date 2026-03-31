@@ -7,18 +7,9 @@
 // --------------------------------------------------------------------------------
 
 import { type Metadata } from 'next';
-import { frontmatter } from '@lumir/utils';
 import Katex from '@/components/article/katex';
-import { type Frontmatter } from '@/data/frontmatter';
-import { loadMarkdownCollection } from '@/utils/markdown-collection';
-import { markdownToText } from '@/utils';
+import { markdownCollection, markdownToText } from '@/utils';
 import { markdownToHtml, writeTitleIntoMarkdown } from '@/utils/markup';
-
-// --------------------------------------------------------------------------------
-// Helper
-// --------------------------------------------------------------------------------
-
-const { all } = await loadMarkdownCollection();
 
 // --------------------------------------------------------------------------------
 // Named Export
@@ -36,7 +27,7 @@ export const dynamicParams = false;
 export async function generateStaticParams(): Promise<
   Awaited<PageProps<'/posts/[markdown]'>['params']>[]
 > {
-  return all.map(({ slug }) => ({
+  return markdownCollection.all.map(({ slug }) => ({
     markdown: slug,
   }));
 }
@@ -48,10 +39,7 @@ export async function generateMetadata({
   params,
 }: PageProps<'/posts/[markdown]'>): Promise<Metadata> {
   const { markdown } = await params;
-  const { default: markdownContent } = await import(`../../../posts/docs/${markdown}.md`);
-  const {
-    data: { title, description },
-  } = frontmatter(markdownContent) as { data: Frontmatter }; // TODO: Update the `frontmatter` function to support generic type parameters for better type safety and inference.
+  const { title, description } = markdownCollection.slug[markdown].data;
 
   return {
     title: await markdownToText(title),
@@ -65,11 +53,10 @@ export async function generateMetadata({
 
 export default async function Page({ params }: PageProps<'/posts/[markdown]'>) {
   const { markdown } = await params;
-  const { default: markdownContent } = await import(`../../../posts/docs/${markdown}.md`);
   const {
     content,
     data: { title },
-  } = frontmatter(markdownContent) as { content: string; data: Frontmatter }; // TODO: Update the `frontmatter` function to support generic type parameters for better type safety and inference.
+  } = markdownCollection.slug[markdown];
 
   return (
     <Katex

@@ -10,14 +10,14 @@ import { type MetadataRoute } from 'next';
 import { WEBSITE_URL } from '@/constants';
 import {
   listNonEmptyCategoryKeys,
-  loadMarkdownCollection,
+  markdownCollection,
 } from '@/utils/markdown-collection';
 
 // --------------------------------------------------------------------------------
 // Helper
 // --------------------------------------------------------------------------------
 
-const { category } = await loadMarkdownCollection();
+const { category } = markdownCollection;
 const categoryKeys = listNonEmptyCategoryKeys(category);
 
 // --------------------------------------------------------------------------------

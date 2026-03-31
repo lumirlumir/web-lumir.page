@@ -11,7 +11,7 @@ import { FaPen } from '@lumir/react-kit/svgs';
 import { categoryMeta } from '@/data/category';
 import {
   listNonEmptyCategoryKeys,
-  loadMarkdownCollection,
+  markdownCollection,
 } from '@/utils/markdown-collection';
 import styles from './categories.module.scss';
 
@@ -19,7 +19,7 @@ import styles from './categories.module.scss';
 // Helper
 // --------------------------------------------------------------------------------
 
-const { category } = await loadMarkdownCollection();
+const { category } = markdownCollection;
 const categoryKeys = listNonEmptyCategoryKeys(category);
 
 // --------------------------------------------------------------------------------
