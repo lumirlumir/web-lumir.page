@@ -11,7 +11,8 @@ import { frontmatter } from '@lumir/utils';
 import Katex from '@/components/article/katex';
 import { type Frontmatter } from '@/data/frontmatter';
 import { loadMarkdownCollection } from '@/utils/markdown-collection';
-import { markdownToText, markdownToHtml, writeTitleIntoMarkdown } from '@/utils/markup';
+import { markdownToText } from '@/utils';
+import { markdownToHtml, writeTitleIntoMarkdown } from '@/utils/markup';
 
 // --------------------------------------------------------------------------------
 // Helper
@@ -53,8 +54,8 @@ export async function generateMetadata({
   } = frontmatter(markdownContent) as { data: Frontmatter }; // TODO: Update the `frontmatter` function to support generic type parameters for better type safety and inference.
 
   return {
-    title: markdownToText(title),
-    description: markdownToText(description),
+    title: await markdownToText(title),
+    description: await markdownToText(description),
   };
 }
 

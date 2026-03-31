@@ -11,7 +11,7 @@ import { type JSX, type PropsWithChildren } from 'react';
 import { categoryMeta } from '@/data/category';
 import { frontmatterMeta } from '@/data/frontmatter';
 import { type VMarkdownFileMeta } from '@/data/v-markdown-file';
-import { markdownToHtml } from '@/utils/markup';
+import { markdownToHtml } from '@/utils';
 import styles from './content.module.scss';
 
 // --------------------------------------------------------------------------------
@@ -48,12 +48,12 @@ export default async function Content({
       <div className={styles.content}>
         <div
           className={`${styles.title} markdown-body`}
-          dangerouslySetInnerHTML={{ __html: await markdownToHtml(title) }} // eslint-disable-line react/no-danger -- Safe because the title is controlled and sanitized.
+          dangerouslySetInnerHTML={{ __html: await markdownToHtml(title) }} // eslint-disable-line react/no-danger -- Safe because the title comes from the local file system and is controlled.
         />
 
         <div
           className={`${styles.description} markdown-body`}
-          dangerouslySetInnerHTML={{ __html: await markdownToHtml(description) }} // eslint-disable-line react/no-danger -- Safe because the description is controlled and sanitized.
+          dangerouslySetInnerHTML={{ __html: await markdownToHtml(description) }} // eslint-disable-line react/no-danger -- Safe because the description comes from the local file system and is controlled.
         />
 
         <ContentBoxContainer>
