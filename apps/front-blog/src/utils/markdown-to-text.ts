@@ -16,6 +16,12 @@ import stripMarkdown from 'strip-markdown';
 import { unified } from 'unified';
 
 // --------------------------------------------------------------------------------
+// Helper
+// --------------------------------------------------------------------------------
+
+const processor = unified().use(remarkParse).use(stripMarkdown);
+
+// --------------------------------------------------------------------------------
 // Export
 // --------------------------------------------------------------------------------
 
@@ -24,7 +30,6 @@ import { unified } from 'unified';
  * @param markdown The markdown content to convert.
  */
 export async function markdownToText(markdown: string): Promise<string> {
-  const processor = unified().use(remarkParse).use(stripMarkdown);
   const tree = await processor.run(processor.parse(markdown));
 
   return toString(tree);
@@ -35,7 +40,6 @@ export async function markdownToText(markdown: string): Promise<string> {
  * @param markdown The markdown content to convert.
  */
 export function markdownToTextSync(markdown: string): string {
-  const processor = unified().use(remarkParse).use(stripMarkdown);
   const tree = processor.runSync(processor.parse(markdown));
 
   return toString(tree);

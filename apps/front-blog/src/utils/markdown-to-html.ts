@@ -19,6 +19,20 @@ import rehypeStringify from 'rehype-stringify';
 import { unified } from 'unified';
 
 // --------------------------------------------------------------------------------
+// Helper
+// --------------------------------------------------------------------------------
+
+const processor = unified()
+  .use(remarkParse)
+  .use(remarkRehype, { allowDangerousHtml: true })
+  .use(rehypeImageLazyLoading)
+  .use(rehypeImageUrlReplace, {
+    searchValue: /^\/public/,
+    replaceValue: '',
+  })
+  .use(rehypeStringify, { allowDangerousHtml: true });
+
+// --------------------------------------------------------------------------------
 // Export
 // --------------------------------------------------------------------------------
 
@@ -27,16 +41,7 @@ import { unified } from 'unified';
  * @param markdown The markdown content to convert.
  */
 export async function markdownToHtml(markdown: string): Promise<string> {
-  const file = await unified()
-    .use(remarkParse)
-    .use(remarkRehype, { allowDangerousHtml: true })
-    .use(rehypeImageLazyLoading)
-    .use(rehypeImageUrlReplace, {
-      searchValue: /^\/public/,
-      replaceValue: '',
-    })
-    .use(rehypeStringify, { allowDangerousHtml: true })
-    .process(markdown);
+  const file = await processor.process(markdown);
 
   return String(file);
 }

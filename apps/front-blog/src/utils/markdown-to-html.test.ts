@@ -39,7 +39,7 @@ describe('markdown-to-html', () => {
       strictEqual(await markdownToHtml(markdown), html);
     });
 
-    it('should convert Markdown `inlineCode` syntax` - 1', async () => {
+    it('should convert Markdown `inlineCode` syntax - 1', async () => {
       const markdown = 'HTML에서 공백을 다루는 방법: `&nbsp;`, `&ensp;`, `&emsp;`';
       const html =
         '<p>HTML에서 공백을 다루는 방법: <code>&#x26;nbsp;</code>, <code>&#x26;ensp;</code>, <code>&#x26;emsp;</code></p>';
@@ -47,7 +47,7 @@ describe('markdown-to-html', () => {
       strictEqual(await markdownToHtml(markdown), html);
     });
 
-    it('should convert Markdown `inlineCode` syntax` - 2', async () => {
+    it('should convert Markdown `inlineCode` syntax - 2', async () => {
       const markdown =
         '자바스크립트 CommonJS 및 ES 모듈 내보내기/불러오기 (`require` 및 `import`)';
       const html =
