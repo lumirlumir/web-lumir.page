@@ -27,7 +27,7 @@ export async function markdownToText(markdown: string): Promise<string> {
   const processor = unified().use(remarkParse).use(stripMarkdown);
   const tree = await processor.run(processor.parse(markdown));
 
-  return toString(tree).trimEnd();
+  return toString(tree);
 }
 
 /**
@@ -38,5 +38,5 @@ export function markdownToTextSync(markdown: string): string {
   const processor = unified().use(remarkParse).use(stripMarkdown);
   const tree = processor.runSync(processor.parse(markdown));
 
-  return toString(tree).trimEnd();
+  return toString(tree);
 }
