@@ -32,7 +32,7 @@
     },
     "resolveJsonModule": true,
     "rootDirs": ["./src", "./.next/types"],
-    "types": ["node", "react", "react-dom"],
+    "types": ["node", "react", "react-dom", "webpack-env"],
 
     /* Emit */
     "noEmit": true,

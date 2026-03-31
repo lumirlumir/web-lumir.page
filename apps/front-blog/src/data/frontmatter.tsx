@@ -61,7 +61,7 @@ export type FrontmatterKey = keyof Frontmatter;
 /**
  * Represents the keys of the frontmatter that can be sorted, excluding `description` and `categories` which are not typically used for sorting.
  */
-export type FrontmatterKeySortable = Exclude<
+export type SortableFrontmatterKey = Exclude<
   FrontmatterKey,
   'description' | 'categories'
 >;

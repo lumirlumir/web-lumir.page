@@ -8,9 +8,9 @@
 // Import
 // --------------------------------------------------------------------------------
 
-import { type FrontmatterKeySortable } from '@/data/frontmatter';
+import { type SortableFrontmatterKey } from '@/data/frontmatter';
 import { type SortKey } from '@/data/sort';
-import { type VMarkdownFileMeta } from '@/data/v-markdown-file';
+import { type VMarkdownFile } from '@/data/v-markdown-file';
 import { markdownToTextSync } from './markdown-to-text';
 
 // --------------------------------------------------------------------------------
@@ -20,10 +20,10 @@ import { markdownToTextSync } from './markdown-to-text';
 /**
  * Returns a comparison function for sorting markdown documents based on the specified sort key and order.
  */
-export function compareMarkdownDocument(sort: FrontmatterKeySortable, order: SortKey) {
+export function compareMarkdownDocument(sort: SortableFrontmatterKey, order: SortKey) {
   switch (sort) {
     case 'title': {
-      return (a: VMarkdownFileMeta, b: VMarkdownFileMeta) => {
+      return (a: VMarkdownFile, b: VMarkdownFile) => {
         const titleA = markdownToTextSync(a.data.title.toLowerCase()); // Case insensitive.
         const titleB = markdownToTextSync(b.data.title.toLowerCase()); // Case insensitive.
 
@@ -34,7 +34,7 @@ export function compareMarkdownDocument(sort: FrontmatterKeySortable, order: Sor
     }
     case 'created':
     case 'updated': {
-      return (a: VMarkdownFileMeta, b: VMarkdownFileMeta) => {
+      return (a: VMarkdownFile, b: VMarkdownFile) => {
         const dateA = new Date(a.data[sort]);
         const dateB = new Date(b.data[sort]);
 
