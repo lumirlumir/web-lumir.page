@@ -8,7 +8,7 @@
 // Import
 // --------------------------------------------------------------------------------
 
-import { type FrontmatterKeySortable } from '@/data/frontmatter';
+import { type SortableFrontmatterKey } from '@/data/frontmatter';
 import { type SortKey } from '@/data/sort';
 import { type VMarkdownFile } from '@/data/v-markdown-file';
 import { markdownToTextSync } from './markdown-to-text';
@@ -20,7 +20,7 @@ import { markdownToTextSync } from './markdown-to-text';
 /**
  * Returns a comparison function for sorting markdown documents based on the specified sort key and order.
  */
-export function compareMarkdownDocument(sort: FrontmatterKeySortable, order: SortKey) {
+export function compareMarkdownDocument(sort: SortableFrontmatterKey, order: SortKey) {
   switch (sort) {
     case 'title': {
       return (a: VMarkdownFile, b: VMarkdownFile) => {

@@ -8,7 +8,7 @@
 
 import { type Metadata } from 'next';
 import Katex from '@/components/article/katex';
-import { markdownCollection, markdownToText } from '@/utils';
+import { markdownCollectionAll, markdownCollectionSlug, markdownToText } from '@/utils';
 import { markdownToHtml, writeTitleIntoMarkdown } from '@/utils/markup';
 
 // --------------------------------------------------------------------------------
@@ -27,7 +27,7 @@ export const dynamicParams = false;
 export async function generateStaticParams(): Promise<
   Awaited<PageProps<'/posts/[markdown]'>['params']>[]
 > {
-  return markdownCollection.all.map(({ slug }) => ({
+  return markdownCollectionAll.map(({ slug }) => ({
     markdown: slug,
   }));
 }
@@ -39,7 +39,7 @@ export async function generateMetadata({
   params,
 }: PageProps<'/posts/[markdown]'>): Promise<Metadata> {
   const { markdown } = await params;
-  const { title, description } = markdownCollection.slug[markdown].data;
+  const { title, description } = markdownCollectionSlug[markdown].data;
 
   return {
     title: await markdownToText(title),
@@ -56,7 +56,7 @@ export default async function Page({ params }: PageProps<'/posts/[markdown]'>) {
   const {
     content,
     data: { title },
-  } = markdownCollection.slug[markdown];
+  } = markdownCollectionSlug[markdown];
 
   return (
     <Katex

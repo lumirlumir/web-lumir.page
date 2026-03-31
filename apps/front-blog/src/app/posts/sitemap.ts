@@ -8,14 +8,14 @@
 
 import { type MetadataRoute } from 'next';
 import { WEBSITE_URL } from '@/constants';
-import { markdownCollection } from '@/utils/markdown-collection';
+import { markdownCollectionAll } from '@/utils';
 
 // --------------------------------------------------------------------------------
 // Default Export
 // --------------------------------------------------------------------------------
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  return markdownCollection.all.map(({ slug, data: { updated } }) => ({
+  return markdownCollectionAll.map(({ slug, data: { updated } }) => ({
     url: `${WEBSITE_URL}/posts/${slug}`,
     lastModified: updated,
     changeFrequency: 'monthly',

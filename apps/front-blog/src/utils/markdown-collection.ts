@@ -18,98 +18,90 @@ import { type VMarkdownFile } from '@/data/v-markdown-file';
 // --------------------------------------------------------------------------------
 
 /**
- * Represents a collection of Markdown files, organized in three ways:
- * - `all`: an array of all Markdown file metadata
- * - `slug`: a record mapping each slug to its corresponding metadata for easy access
- * - `category`: a record mapping category keys to arrays of corresponding metadata
+ * An array containing the metadata of all Markdown files in the collection.
+ *
+ * @example
+ * ```ts
+ * [
+ *   {
+ *     slug: 'example-post',
+ *     data: {
+ *       title: 'Example Post',
+ *       description: 'This is an example post.',
+ *       created: '2024-01-01',
+ *       updated: '2024-01-02',
+ *       categories: ['tech', 'news'],
+ *     },
+ *     content: '# Example Post\n\nThis is the content of the example post.',
+ *   },
+ *   // ...more
+ * ]
+ * ```
  */
-export interface MarkdownCollection {
-  /**
-   * An array containing the metadata of all Markdown files in the collection.
-   *
-   * @example
-   * ```ts
-   * [
-   *   {
-   *     slug: 'example-post',
-   *     data: {
-   *       title: 'Example Post',
-   *       description: 'This is an example post.',
-   *       created: '2024-01-01',
-   *       updated: '2024-01-02',
-   *       categories: ['tech', 'news'],
-   *     },
-   *     content: '# Example Post\n\nThis is the content of the example post.',
-   *   },
-   *   // ...more
-   * ]
-   * ```
-   */
-  readonly all: VMarkdownFile[];
+export type MarkdownCollectionAll = readonly VMarkdownFile[];
 
-  /**
-   * A record mapping each slug to its corresponding metadata for easy access.
-   *
-   * @example
-   * ```ts
-   * {
-   *   'example-post': {
-   *     slug: 'example-post',
-   *     data: {
-   *       title: 'Example Post',
-   *       description: 'This is an example post.',
-   *       created: '2024-01-01',
-   *       updated: '2024-01-02',
-   *       categories: ['tech', 'news'],
-   *     },
-   *     content: '# Example Post\n\nThis is the content of the example post.',
-   *   },
-   *   // ...more
-   * }
-   * ```
-   */
-  readonly slug: Record<string, VMarkdownFile>;
+/**
+ * A record mapping each slug to its corresponding metadata.
+ *
+ * @example
+ * ```ts
+ * {
+ *   'example-post': {
+ *     slug: 'example-post',
+ *     data: {
+ *       title: 'Example Post',
+ *       description: 'This is an example post.',
+ *       created: '2024-01-01',
+ *       updated: '2024-01-02',
+ *       categories: ['tech', 'news'],
+ *     },
+ *     content: '# Example Post\n\nThis is the content of the example post.',
+ *   },
+ *   // ...more
+ * }
+ * ```
+ */
+export type MarkdownCollectionSlug = Record<string, VMarkdownFile>;
 
-  /**
-   * A record mapping each category key to an array of metadata for Markdown files that belong to that category.
-   *
-   * @example
-   * ```ts
-   * {
-   *   tech: [
-   *     {
-   *       slug: 'example-post',
-   *       data: {
-   *         title: 'Example Post',
-   *         description: 'This is an example post.',
-   *         created: '2024-01-01',
-   *         updated: '2024-01-02',
-   *         categories: ['tech', 'news'],
-   *       },
-   *       content: '# Example Post\n\nThis is the content of the example post.',
-   *     },
-   *     // ...more
-   *   ],
-   *   news: [
-   *     {
-   *       slug: 'example-post',
-   *       data: {
-   *         title: 'Example Post',
-   *         description: 'This is an example post.',
-   *         created: '2024-01-01',
-   *         updated: '2024-01-02',
-   *         categories: ['tech', 'news'],
-   *       },
-   *       content: '# Example Post\n\nThis is the content of the example post.',
-   *     },
-   *     // ...more
-   *   ],
-   *   // ...more
-   * }
-   * ```
-   */
-  readonly category: Record<CategoryKey, VMarkdownFile[]>;
-}
+/**
+ * A record mapping each category key to an array of metadata for Markdown files that belong to that category.
+ *
+ * @example
+ * ```ts
+ * {
+ *   tech: [
+ *     {
+ *       slug: 'example-post',
+ *       data: {
+ *         title: 'Example Post',
+ *         description: 'This is an example post.',
+ *         created: '2024-01-01',
+ *         updated: '2024-01-02',
+ *         categories: ['tech', 'news'],
+ *       },
+ *       content: '# Example Post\n\nThis is the content of the example post.',
+ *     },
+ *     // ...more
+ *   ],
+ *   news: [
+ *     {
+ *       slug: 'example-post',
+ *       data: {
+ *         title: 'Example Post',
+ *         description: 'This is an example post.',
+ *         created: '2024-01-01',
+ *         updated: '2024-01-02',
+ *         categories: ['tech', 'news'],
+ *       },
+ *       content: '# Example Post\n\nThis is the content of the example post.',
+ *     },
+ *     // ...more
+ *   ],
+ *   // ...more
+ * }
+ * ```
+ */
+export type MarkdownCollectionCategory = Record<CategoryKey, VMarkdownFile[]>;
 
 // --------------------------------------------------------------------------------
 // Helper
@@ -131,11 +123,93 @@ const vMarkdownFiles: VMarkdownFile[] = context.keys().map(key => {
   };
 });
 
-const markdownCollectionAll: MarkdownCollection['all'] = vMarkdownFiles;
-const markdownCollectionSlug: MarkdownCollection['slug'] = {};
-const markdownCollectionCategory: MarkdownCollection['category'] = Object.fromEntries(
+/**
+ * An array containing the metadata of all Markdown files in the collection.
+ *
+ * @example
+ * ```ts
+ * [
+ *   {
+ *     slug: 'example-post',
+ *     data: {
+ *       title: 'Example Post',
+ *       description: 'This is an example post.',
+ *       created: '2024-01-01',
+ *       updated: '2024-01-02',
+ *       categories: ['tech', 'news'],
+ *     },
+ *     content: '# Example Post\n\nThis is the content of the example post.',
+ *   },
+ *   // ...more
+ * ]
+ * ```
+ */
+const markdownCollectionAll: MarkdownCollectionAll = vMarkdownFiles;
+
+/**
+ * A record mapping each slug to its corresponding metadata.
+ *
+ * @example
+ * ```ts
+ * {
+ *   'example-post': {
+ *     slug: 'example-post',
+ *     data: {
+ *       title: 'Example Post',
+ *       description: 'This is an example post.',
+ *       created: '2024-01-01',
+ *       updated: '2024-01-02',
+ *       categories: ['tech', 'news'],
+ *     },
+ *     content: '# Example Post\n\nThis is the content of the example post.',
+ *   },
+ *   // ...more
+ * }
+ * ```
+ */
+const markdownCollectionSlug: MarkdownCollectionSlug = {};
+
+/**
+ * A record mapping each category key to an array of metadata for Markdown files that belong to that category.
+ *
+ * @example
+ * ```ts
+ * {
+ *   tech: [
+ *     {
+ *       slug: 'example-post',
+ *       data: {
+ *         title: 'Example Post',
+ *         description: 'This is an example post.',
+ *         created: '2024-01-01',
+ *         updated: '2024-01-02',
+ *         categories: ['tech', 'news'],
+ *       },
+ *       content: '# Example Post\n\nThis is the content of the example post.',
+ *     },
+ *     // ...more
+ *   ],
+ *   news: [
+ *     {
+ *       slug: 'example-post',
+ *       data: {
+ *         title: 'Example Post',
+ *         description: 'This is an example post.',
+ *         created: '2024-01-01',
+ *         updated: '2024-01-02',
+ *         categories: ['tech', 'news'],
+ *       },
+ *       content: '# Example Post\n\nThis is the content of the example post.',
+ *     },
+ *     // ...more
+ *   ],
+ *   // ...more
+ * }
+ * ```
+ */
+const markdownCollectionCategory: MarkdownCollectionCategory = Object.fromEntries(
   categoryKeys.map(categoryKey => [categoryKey, [] as VMarkdownFile[]]),
-) as MarkdownCollection['category'];
+) as MarkdownCollectionCategory;
 
 // --------------------------------------------------------------------------------
 // Load and Organize Markdown Files
@@ -157,20 +231,14 @@ vMarkdownFiles.forEach(vMarkdownFile => {
 // Export
 // --------------------------------------------------------------------------------
 
-/**
- * A structured collection of Markdown files for easy access by list, slug, and category.
- */
-export const markdownCollection: MarkdownCollection = {
-  all: markdownCollectionAll,
-  slug: markdownCollectionSlug,
-  category: markdownCollectionCategory,
-};
+export { markdownCollectionAll, markdownCollectionSlug, markdownCollectionCategory };
 
 /**
  * Returns a list of category keys that have at least one associated Markdown file in the collection.
+ * @param category The `MarkdownCollectionCategory` to check for non-empty categories.
  */
 export function listNonEmptyCategoryKeys(
-  category: MarkdownCollection['category'],
+  category: MarkdownCollectionCategory,
 ): CategoryKey[] {
   return categoryKeys.filter(categoryKey => category[categoryKey].length > 0);
 }

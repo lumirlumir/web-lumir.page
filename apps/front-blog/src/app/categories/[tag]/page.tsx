@@ -10,19 +10,10 @@ import { Suspense } from 'react';
 import Content from '@/components/article/content';
 import Loading from '@/components/common/loading';
 import { type CategoryKey } from '@/data/category';
-import { type FrontmatterKeySortable } from '@/data/frontmatter';
+import { type SortableFrontmatterKey } from '@/data/frontmatter';
 import { type SortKey } from '@/data/sort';
+import { listNonEmptyCategoryKeys, markdownCollectionCategory } from '@/utils';
 import { compareMarkdownDocument } from '@/utils/compare';
-import {
-  listNonEmptyCategoryKeys,
-  markdownCollection,
-} from '@/utils/markdown-collection';
-
-// --------------------------------------------------------------------------------
-// Helper
-// --------------------------------------------------------------------------------
-
-const { category } = markdownCollection;
 
 // --------------------------------------------------------------------------------
 // Named Export
@@ -40,7 +31,7 @@ export const dynamicParams = false;
 export async function generateStaticParams(): Promise<
   Awaited<PageProps<'/categories/[tag]'>['params']>[]
 > {
-  return listNonEmptyCategoryKeys(category).map(categoryKey => ({
+  return listNonEmptyCategoryKeys(markdownCollectionCategory).map(categoryKey => ({
     tag: categoryKey,
   }));
 }
@@ -56,7 +47,7 @@ export default async function Page({
   const { tag } = await params;
   const { sort, order } = await searchParams; // TODO: Rename `sort` and `order`.
 
-  const normalizedSort: FrontmatterKeySortable =
+  const normalizedSort: SortableFrontmatterKey =
     sort === 'title' || sort === 'created' || sort === 'updated' ? sort : 'updated';
   const normalizedOrder: SortKey = order === 'asc' || order === 'desc' ? order : 'desc';
 
@@ -65,7 +56,7 @@ export default async function Page({
       key={normalizedSort + normalizedOrder}
       fallback={<Loading content="목록" />}
     >
-      {category[tag as CategoryKey]
+      {markdownCollectionCategory[tag as CategoryKey]
         ?.toSorted(compareMarkdownDocument(normalizedSort, normalizedOrder))
         .map(vMarkdownFile => (
           <Content key={vMarkdownFile.slug} vMarkdownFile={vMarkdownFile} />
