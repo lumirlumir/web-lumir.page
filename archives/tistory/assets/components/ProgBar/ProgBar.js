@@ -1,4 +1,3 @@
-import React from 'react';
 import './ProgBar.scss';
 
 function ProgBar() {

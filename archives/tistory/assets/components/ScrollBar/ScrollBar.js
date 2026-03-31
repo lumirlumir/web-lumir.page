@@ -1,4 +1,3 @@
-import React from 'react';
 import './ScrollBar.scss';
 
 function ScrollBar() {
