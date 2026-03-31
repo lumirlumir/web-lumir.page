@@ -34,8 +34,8 @@ export const dynamicParams = false;
 export async function generateStaticParams(): Promise<
   Awaited<PageProps<'/categories/[category]'>['params']>[]
 > {
-  return listNonEmptyCategoryKeys(markdownCollectionCategory).map(categoryKey => ({
-    category: categoryKey,
+  return listNonEmptyCategoryKeys(markdownCollectionCategory).map(category => ({
+    category,
   }));
 }
 
@@ -47,7 +47,7 @@ export default async function Page({
   params,
   searchParams,
 }: PageProps<'/categories/[category]'>) {
-  const { category: categoryKey } = await params;
+  const { category } = await params;
   const { sort, order } = await searchParams; // TODO: Rename `sort` and `order`.
 
   const normalizedSort: SortableFrontmatterKey =
@@ -59,7 +59,7 @@ export default async function Page({
       key={normalizedSort + normalizedOrder}
       fallback={<Loading content="목록" />}
     >
-      {markdownCollectionCategory[categoryKey as CategoryKey]
+      {markdownCollectionCategory[category as CategoryKey]
         ?.toSorted(compareMarkdownDocument(normalizedSort, normalizedOrder))
         .map(vMarkdownFile => (
           <Content key={vMarkdownFile.slug} vMarkdownFile={vMarkdownFile} />
