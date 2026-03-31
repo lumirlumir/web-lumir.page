@@ -1,5 +1,5 @@
 /**
- * @fileoverview Hook for managing boolean toggle state with a memoized toggle handler.
+ * @fileoverview Hook for managing boolean toggle state.
  * @see https://github.com/toss/react-simplikit/blob/main/packages/core/src/hooks/useToggle/useToggle.ts
  */
 
@@ -7,7 +7,7 @@
 // Import
 // --------------------------------------------------------------------------------
 
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 
 // --------------------------------------------------------------------------------
 // Export
@@ -22,9 +22,9 @@ import { useCallback, useState } from 'react';
 export function useToggle(initialValue = false) {
   const [state, setState] = useState(initialValue);
 
-  const toggle = useCallback(() => {
+  function toggle() {
     setState(previousState => !previousState);
-  }, []);
+  }
 
   return [state, toggle] as const;
 }
