@@ -3,7 +3,7 @@ title: 'Git Commit Message 규칙'
 description: 'Commit Message는 명령문 형태로 작성하며, Header, Body, Footer로 구성된다. 제목은 50글자 이내, 첫 글자 대문자, 마침표 없이 작성하고, 상세 설명은 Body에 추가하며, 이슈 관련 정보는 Footer에 작성한다.'
 created: '2024-05-29'
 updated: '2024-06-11'
-tags:
+categories:
   - 'convention'
   - 'git'
 ---

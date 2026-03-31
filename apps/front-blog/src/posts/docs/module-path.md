@@ -3,7 +3,7 @@ title: '`path` 모듈'
 description: 'Node.js의 `path` 모듈은 파일과 폴더의 경로 작업을 위한 다양한 메서드(`normalize`, `join`, `resolve`, `dirname`, `basename`, `extname`, `parse`)를 제공한다.'
 created: '2024-04-02'
 updated: '2024-10-08'
-tags:
+categories:
   - 'nodejs'
 ---
 
