@@ -38,10 +38,10 @@ export const dynamicParams = false;
  * @see https://nextjs.org/docs/app/api-reference/functions/generate-static-params
  */
 export async function generateStaticParams(): Promise<
-  Awaited<PageProps<'/categories/[tag]'>['params']>[]
+  Awaited<PageProps<'/categories/[category]'>['params']>[]
 > {
   return listNonEmptyCategoryKeys(category).map(categoryKey => ({
-    tag: categoryKey,
+    category: categoryKey,
   }));
 }
 
@@ -52,8 +52,8 @@ export async function generateStaticParams(): Promise<
 export default async function Page({
   params,
   searchParams,
-}: PageProps<'/categories/[tag]'>) {
-  const { tag } = await params;
+}: PageProps<'/categories/[category]'>) {
+  const { category: categoryKey } = await params;
   const { sort, order } = await searchParams; // TODO: Rename `sort` and `order`.
 
   const normalizedSort: FrontmatterKeySortable =
@@ -65,7 +65,7 @@ export default async function Page({
       key={normalizedSort + normalizedOrder}
       fallback={<Loading content="목록" />}
     >
-      {category[tag as CategoryKey]
+      {category[categoryKey as CategoryKey]
         ?.toSorted(compareMarkdownDocument(normalizedSort, normalizedOrder))
         .map(vMarkdownFileMeta => (
           <Content key={vMarkdownFileMeta.slug} vMarkdownFileMeta={vMarkdownFileMeta} />
