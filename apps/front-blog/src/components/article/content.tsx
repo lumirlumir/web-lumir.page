@@ -38,7 +38,7 @@ function ContentBoxItem({ icon, text }: { icon: JSX.Element; text: string }) {
 export default async function Content({
   vMarkdownFileMeta: {
     slug,
-    data: { title, description, created, updated, tags },
+    data: { title, description, created, updated, categories },
   },
 }: {
   vMarkdownFileMeta: VMarkdownFileMeta;
@@ -62,11 +62,11 @@ export default async function Content({
         </ContentBoxContainer>
 
         <ContentBoxContainer>
-          {tags.map(tag => (
+          {categories.map(category => (
             <ContentBoxItem
-              key={tag}
-              icon={frontmatterMeta.tags.reactIcons}
-              text={categoryMeta[tag].name.en}
+              key={category}
+              icon={frontmatterMeta.categories.reactIcons}
+              text={categoryMeta[category].name.en}
             />
           ))}
         </ContentBoxContainer>

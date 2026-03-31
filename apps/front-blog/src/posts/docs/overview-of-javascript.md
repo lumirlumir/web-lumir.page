@@ -3,7 +3,7 @@ title: '자바스크립트(***JavaScript***)의 개요'
 description: '자바스크립트는 처음에 클라이언트 측 스크립트 언어로 시작했지만, ECMAScript 표준을 기반으로 브라우저와 서버 측에서 다양한 상호작용과 복잡한 프로그래밍을 수행하는 강력한 언어로 발전했다.'
 created: '2024-05-08'
 updated: '2024-07-12'
-tags:
+categories:
   - 'javascript'
 ---
 
