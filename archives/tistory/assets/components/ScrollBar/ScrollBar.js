@@ -1,7 +1,5 @@
 import './ScrollBar.scss';
 
-function ScrollBar() {
+export default function ScrollBar() {
   return <div className="ScrollBar" />;
 }
-
-export default ScrollBar;

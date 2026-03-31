@@ -1,6 +1,6 @@
 import './ProgBar.scss';
 
-function ProgBar() {
+export default function ProgBar() {
   window.addEventListener('scroll', () => {
     document
       .querySelector('html')
@@ -12,5 +12,3 @@ function ProgBar() {
 
   return <div className="ProgBar" />;
 }
-
-export default ProgBar;

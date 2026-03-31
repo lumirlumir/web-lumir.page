@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './ButtonMulti.scss';
 import ButtonSingle from '../ButtonSingle';
 
-function ButtonMulti(props) {
+export default function ButtonMulti(props) {
   /* Variables */
   // props
   const { children, title, position, top, right, bottom, left } = props;
@@ -31,5 +31,3 @@ function ButtonMulti(props) {
     </>
   );
 }
-
-export default ButtonMulti;
