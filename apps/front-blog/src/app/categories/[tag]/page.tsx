@@ -12,7 +12,10 @@ import Loading from '@/components/common/loading';
 import { type CategoryKey } from '@/data/category';
 import { type SortableFrontmatterKey } from '@/data/frontmatter';
 import { type SortKey } from '@/data/sort';
-import { listNonEmptyCategoryKeys, markdownCollectionCategory } from '@/utils';
+import {
+  listNonEmptyCategoryKeys,
+  markdownCollectionCategory,
+} from '@/utils/markdown-collection';
 import { compareMarkdownDocument } from '@/utils/compare';
 
 // --------------------------------------------------------------------------------

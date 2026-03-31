@@ -8,7 +8,11 @@
 
 import { type Metadata } from 'next';
 import Katex from '@/components/article/katex';
-import { markdownCollectionAll, markdownCollectionSlug, markdownToText } from '@/utils';
+import {
+  markdownCollectionAll,
+  markdownCollectionSlug,
+} from '@/utils/markdown-collection';
+import { markdownToText } from '@/utils/markdown-to-text';
 import { markdownToHtml, writeTitleIntoMarkdown } from '@/utils/markup';
 
 // --------------------------------------------------------------------------------

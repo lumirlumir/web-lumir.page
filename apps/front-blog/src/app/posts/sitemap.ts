@@ -8,7 +8,7 @@
 
 import { type MetadataRoute } from 'next';
 import { WEBSITE_URL } from '@/constants';
-import { markdownCollectionAll } from '@/utils';
+import { markdownCollectionAll } from '@/utils/markdown-collection';
 
 // --------------------------------------------------------------------------------
 // Default Export

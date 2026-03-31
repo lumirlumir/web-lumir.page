@@ -11,7 +11,7 @@ import { type JSX, type PropsWithChildren } from 'react';
 import { categoryMeta } from '@/data/category';
 import { frontmatterMeta } from '@/data/frontmatter';
 import { type VMarkdownFile } from '@/data/v-markdown-file';
-import { markdownToHtml } from '@/utils';
+import { markdownToHtml } from '@/utils/markdown-to-html';
 import styles from './content.module.scss';
 
 // --------------------------------------------------------------------------------

@@ -8,7 +8,10 @@
 
 import { type MetadataRoute } from 'next';
 import { WEBSITE_URL } from '@/constants';
-import { listNonEmptyCategoryKeys, markdownCollectionCategory } from '@/utils';
+import {
+  listNonEmptyCategoryKeys,
+  markdownCollectionCategory,
+} from '@/utils/markdown-collection';
 
 // --------------------------------------------------------------------------------
 // Default Export
