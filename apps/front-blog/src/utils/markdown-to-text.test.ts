@@ -43,7 +43,7 @@ describe('markdown-to-text', () => {
 
   it('should convert Markdown `inlineCode` syntax - 1', async () => {
     const markdown = 'HTML에서 공백을 다루는 방법: `&nbsp;`, `&ensp;`, `&emsp;`';
-    const text = 'HTML에서 공백을 다루는 방법: \\&nbsp;, \\&ensp;, \\&emsp;';
+    const text = 'HTML에서 공백을 다루는 방법: &nbsp;, &ensp;, &emsp;';
 
     strictEqual(await markdownToText(markdown), text);
     strictEqual(markdownToTextSync(markdown), text);
@@ -60,7 +60,7 @@ describe('markdown-to-text', () => {
 
   it('should convert Markdown `inlineCode` syntax with HTML tags', async () => {
     const markdown = '`<b>` `<i>` ***Tag***와 `<strong>` `<em>` ***Tag***의 차이점';
-    const text = '\\<b> \\<i> Tag와 \\<strong> \\<em> Tag의 차이점';
+    const text = '<b> <i> Tag와 <strong> <em> Tag의 차이점';
 
     strictEqual(await markdownToText(markdown), text);
     strictEqual(markdownToTextSync(markdown), text);

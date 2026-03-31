@@ -9,8 +9,8 @@
 // Import
 // --------------------------------------------------------------------------------
 
+import { toString } from 'mdast-util-to-string';
 import remarkParse from 'remark-parse';
-import remarkStringify from 'remark-stringify';
 import stripMarkdown from 'strip-markdown';
 import { unified } from 'unified';
 
@@ -23,13 +23,10 @@ import { unified } from 'unified';
  * @param markdown The markdown content to convert.
  */
 export async function markdownToText(markdown: string): Promise<string> {
-  const file = await unified()
-    .use(remarkParse)
-    .use(stripMarkdown)
-    .use(remarkStringify)
-    .process(markdown);
+  const processor = unified().use(remarkParse).use(stripMarkdown);
+  const tree = await processor.run(processor.parse(markdown));
 
-  return String(file).trimEnd();
+  return toString(tree).trimEnd();
 }
 
 /**
@@ -37,11 +34,8 @@ export async function markdownToText(markdown: string): Promise<string> {
  * @param markdown The markdown content to convert.
  */
 export function markdownToTextSync(markdown: string): string {
-  const file = unified()
-    .use(remarkParse)
-    .use(stripMarkdown)
-    .use(remarkStringify)
-    .processSync(markdown);
+  const processor = unified().use(remarkParse).use(stripMarkdown);
+  const tree = processor.runSync(processor.parse(markdown));
 
-  return String(file).trimEnd();
+  return toString(tree).trimEnd();
 }
