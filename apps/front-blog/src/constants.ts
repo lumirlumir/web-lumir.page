@@ -15,8 +15,5 @@ export const GITHUB_REPO_OWNER = 'lumirlumir';
 export const GITHUB_REPO_NAME = `web-${WEBSITE_NAME}`;
 export const GITHUB_REPO_FULL_NAME = `${GITHUB_REPO_OWNER}/${GITHUB_REPO_NAME}`;
 
-// Extension
-export const EXT_MD = '.md';
-
 // Google
 export const GOOGLE_GA_ID = 'G-2G4YHTE048';
