@@ -2,8 +2,6 @@
  * @fileoverview Defines markdown markup helpers.
  */
 
-/* eslint-disable prefer-named-capture-group -- TODO */
-
 // --------------------------------------------------------------------------------
 // Import
 // --------------------------------------------------------------------------------
@@ -15,21 +13,6 @@ import { GITHUB_REPO_FULL_NAME } from '@/constants';
 // --------------------------------------------------------------------------------
 // Export
 // --------------------------------------------------------------------------------
-
-/**
- * Converts markdown content to plain text.
- */
-export function markdownToText(markdownContent: string): string {
-  return (
-    markdownContent
-      // Inline Code Block(`)
-      .replace(/`(.+?)`/g, '$1')
-      // Italic(*), Bold(**), Italic & Bold(***)
-      .replace(/(\*{1,3})(\S)(.*?\S)??\1/g, '$2$3')
-      // <sup>...</sup>
-      .replace(/<sup>\s*(.*?)\s*<\/sup>/g, '($1)')
-  );
-}
 
 /**
  * Converts markdown content to HTML using GitHub's Markdown API.

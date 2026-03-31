@@ -5,8 +5,6 @@
  * @see https://github.com/unifiedjs/unified#readme (`unified`)
  */
 
-/* eslint-disable import/prefer-default-export -- TODO: Refactor to use named exports */
-
 // --------------------------------------------------------------------------------
 // Import
 // --------------------------------------------------------------------------------
@@ -21,7 +19,7 @@ import { unified } from 'unified';
 // --------------------------------------------------------------------------------
 
 /**
- * Converts markdown content to plain text using `unified` with `remark`.
+ * Converts markdown content to plain text asynchronously using `unified` with `remark`.
  * @param markdown The markdown content to convert.
  */
 export async function markdownToText(markdown: string): Promise<string> {
@@ -30,6 +28,20 @@ export async function markdownToText(markdown: string): Promise<string> {
     .use(stripMarkdown)
     .use(remarkStringify)
     .process(markdown);
+
+  return String(file).trimEnd();
+}
+
+/**
+ * Converts markdown content to plain text synchronously using `unified` with `remark`.
+ * @param markdown The markdown content to convert.
+ */
+export function markdownToTextSync(markdown: string): string {
+  const file = unified()
+    .use(remarkParse)
+    .use(stripMarkdown)
+    .use(remarkStringify)
+    .processSync(markdown);
 
   return String(file).trimEnd();
 }

@@ -23,7 +23,7 @@ import { unified } from 'unified';
 // --------------------------------------------------------------------------------
 
 /**
- * Converts markdown content to HTML using `unified` with `remark` and `rehype`.
+ * Converts markdown content to HTML asynchronously using `unified` with `remark` and `rehype`.
  * @param markdown The markdown content to convert.
  */
 export async function markdownToHtml(markdown: string): Promise<string> {

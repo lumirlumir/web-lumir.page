@@ -11,7 +11,7 @@
 import { type FrontmatterKeySortable } from '@/data/frontmatter';
 import { type SortKey } from '@/data/sort';
 import { type VMarkdownFileMeta } from '@/data/v-markdown-file';
-import { markdownToText } from './markup';
+import { markdownToTextSync } from './markdown-to-text';
 
 // --------------------------------------------------------------------------------
 // Export
@@ -24,8 +24,8 @@ export function compareMarkdownDocument(sort: FrontmatterKeySortable, order: Sor
   switch (sort) {
     case 'title': {
       return (a: VMarkdownFileMeta, b: VMarkdownFileMeta) => {
-        const titleA = markdownToText(a.data.title.toLowerCase()); // Case insensitive.
-        const titleB = markdownToText(b.data.title.toLowerCase()); // Case insensitive.
+        const titleA = markdownToTextSync(a.data.title.toLowerCase()); // Case insensitive.
+        const titleB = markdownToTextSync(b.data.title.toLowerCase()); // Case insensitive.
 
         return order === 'asc'
           ? titleA.localeCompare(titleB, 'ko') // Ascending.

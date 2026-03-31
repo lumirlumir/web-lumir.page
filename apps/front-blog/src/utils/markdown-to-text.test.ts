@@ -8,28 +8,77 @@
 
 import { strictEqual } from 'node:assert';
 import { describe, it } from 'vitest';
-import { markdownToText } from './markdown-to-text.js';
+import { markdownToText, markdownToTextSync } from './markdown-to-text.js';
 
 // --------------------------------------------------------------------------------
 // Test
 // --------------------------------------------------------------------------------
 
 describe('markdown-to-text', () => {
-  describe('should convert Markdown `inlineCode` syntax', async () => {
-    it('HTML에서 공백을 다루는 방법: `&nbsp;`, `&ensp;`, `&emsp;`', async () => {
-      const markdown = 'HTML에서 공백을 다루는 방법: `&nbsp;`, `&ensp;`, `&emsp;`';
-      const text = await markdownToText(markdown);
-      const expectedText = 'HTML에서 공백을 다루는 방법: \\&nbsp;, \\&ensp;, \\&emsp;';
+  it('should preserve plain text - 1', async () => {
+    const markdown = '한글 유니코드(Unicode)';
+    const text = '한글 유니코드(Unicode)';
 
-      strictEqual(text, expectedText);
-    });
+    strictEqual(await markdownToText(markdown), text);
+    strictEqual(markdownToTextSync(markdown), text);
+  });
 
-    it('`<b>` `<i>` ***Tag***와 `<strong>` `<em>` ***Tag***의 차이점', async () => {
-      const markdown = '`<b>` `<i>` ***Tag***와 `<strong>` `<em>` ***Tag***의 차이점';
-      const text = await markdownToText(markdown);
-      const expectedText = '\\<b> \\<i> Tag와 \\<strong> \\<em> Tag의 차이점';
+  it('should preserve plain text - 2', async () => {
+    const markdown = "GitHub's classic branch protection rules";
+    const text = "GitHub's classic branch protection rules";
 
-      strictEqual(text, expectedText);
-    });
+    strictEqual(await markdownToText(markdown), text);
+    strictEqual(markdownToTextSync(markdown), text);
+  });
+
+  it('should preserve plain text - 3', async () => {
+    const markdown =
+      'Next.js에서 File-based Metadata를 이용할 때, Favicon이 정상적으로 반영되지 않는 현상';
+    const text =
+      'Next.js에서 File-based Metadata를 이용할 때, Favicon이 정상적으로 반영되지 않는 현상';
+
+    strictEqual(await markdownToText(markdown), text);
+    strictEqual(markdownToTextSync(markdown), text);
+  });
+
+  it('should convert Markdown `inlineCode` syntax - 1', async () => {
+    const markdown = 'HTML에서 공백을 다루는 방법: `&nbsp;`, `&ensp;`, `&emsp;`';
+    const text = 'HTML에서 공백을 다루는 방법: \\&nbsp;, \\&ensp;, \\&emsp;';
+
+    strictEqual(await markdownToText(markdown), text);
+    strictEqual(markdownToTextSync(markdown), text);
+  });
+
+  it('should convert Markdown `inlineCode` syntax - 2', async () => {
+    const markdown =
+      '자바스크립트 CommonJS 및 ES 모듈 내보내기/불러오기 (`require` 및 `import`)';
+    const text = '자바스크립트 CommonJS 및 ES 모듈 내보내기/불러오기 (require 및 import)';
+
+    strictEqual(await markdownToText(markdown), text);
+    strictEqual(markdownToTextSync(markdown), text);
+  });
+
+  it('should convert Markdown `inlineCode` syntax with HTML tags', async () => {
+    const markdown = '`<b>` `<i>` ***Tag***와 `<strong>` `<em>` ***Tag***의 차이점';
+    const text = '\\<b> \\<i> Tag와 \\<strong> \\<em> Tag의 차이점';
+
+    strictEqual(await markdownToText(markdown), text);
+    strictEqual(markdownToTextSync(markdown), text);
+  });
+
+  it('should convert Markdown `strong` and `emphasis` syntax', async () => {
+    const markdown = '자바스크립트(***JavaScript***)의 구성';
+    const text = '자바스크립트(JavaScript)의 구성';
+
+    strictEqual(await markdownToText(markdown), text);
+    strictEqual(markdownToTextSync(markdown), text);
+  });
+
+  it('should remove HTML `<sup>` tags', async () => {
+    const markdown = '마크다운<sup>Markdown</sup>의 모든 것';
+    const text = '마크다운Markdown의 모든 것';
+
+    strictEqual(await markdownToText(markdown), text);
+    strictEqual(markdownToTextSync(markdown), text);
   });
 });
