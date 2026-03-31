@@ -53,8 +53,8 @@ const postsPath = join(process.cwd(), 'src', 'posts', 'docs');
  */
 export async function loadMarkdownCollection(): Promise<MarkdownCollection> {
   // Initialize empty structures to store the collection data.
-  const all: MarkdownCollection['all'] = [];
-  const categoryMap: MarkdownCollection['category'] = Object.fromEntries(
+  const markdownCollectionAll: MarkdownCollection['all'] = [];
+  const markdownCollectionCategory: MarkdownCollection['category'] = Object.fromEntries(
     categoryKeys.map(categoryKey => [categoryKey, [] as VMarkdownFileMeta[]]),
   ) as MarkdownCollection['category'];
 
@@ -74,19 +74,19 @@ export async function loadMarkdownCollection(): Promise<MarkdownCollection> {
         };
 
         // `all`
-        all.push(vMarkdownFileMeta);
+        markdownCollectionAll.push(vMarkdownFileMeta);
         // `category`
         categories.forEach(category => {
-          categoryMap[category] ??= [];
-          categoryMap[category].push(vMarkdownFileMeta);
+          markdownCollectionCategory[category] ??= [];
+          markdownCollectionCategory[category].push(vMarkdownFileMeta);
         });
       }),
     ),
   );
 
   return {
-    all,
-    category: categoryMap,
+    all: markdownCollectionAll,
+    category: markdownCollectionCategory,
   };
 }
 
