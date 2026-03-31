@@ -18,7 +18,7 @@ import { unified } from 'unified';
 // --------------------------------------------------------------------------------
 
 /**
- *
+ * Converts markdown content to plain text using `unified` with `remark`.
  * @see https://github.com/remarkjs/remark/tree/main/packages/remark-stringify#remark-stringify (`remark-stringify`)
  * @see https://github.com/remarkjs/strip-markdown (`strip-markdown`)
  */
@@ -29,5 +29,5 @@ export async function markdownToText(markdown: string): Promise<string> {
     .use(remarkStringify)
     .process(markdown);
 
-  return String(file);
+  return String(file).trimEnd();
 }
