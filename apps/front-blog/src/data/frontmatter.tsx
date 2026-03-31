@@ -27,11 +27,13 @@ import { type Meta } from './meta';
 export interface Frontmatter {
   /**
    * The title of the Markdown document, providing a concise and descriptive name for the content.
+   * - Markdown and HTML syntax are allowed in this field.
    */
   readonly title: string;
 
   /**
    * The description of the Markdown document, providing a brief summary or overview of its content.
+   * - Markdown and HTML syntax are allowed in this field.
    */
   readonly description: string;
 

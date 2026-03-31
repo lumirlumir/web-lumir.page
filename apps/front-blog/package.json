@@ -33,12 +33,15 @@
     "remark": "^15.0.1",
     "remark-parse": "^11.0.0",
     "remark-rehype": "^11.1.2",
+    "remark-stringify": "^11.0.0",
     "sass": "^1.98.0",
     "sharp": "^0.34.5",
+    "strip-markdown": "^6.0.0",
     "unified": "^11.0.5"
   },
   "devDependencies": {
     "@types/react": "^19.2.14",
-    "@types/react-dom": "^19.2.3"
+    "@types/react-dom": "^19.2.3",
+    "vitest": "^4.1.1"
   }
 }
