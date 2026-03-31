@@ -9,7 +9,6 @@
 // --------------------------------------------------------------------------------
 
 import { rehypeImageLazyLoading, rehypeImageUrlReplace } from '@lumir/rehype-plugins';
-import { remark } from 'remark';
 import { rehype } from 'rehype';
 import { GITHUB_REPO_FULL_NAME } from '@/constants';
 
@@ -35,9 +34,7 @@ export function markdownToText(markdownContent: string): string {
 /**
  * Converts markdown content to HTML using GitHub's Markdown API.
  */ // TODO: Consolidate this with `./markdown-to-html.ts` and remove the GitHub API dependency.
-export async function markdownToHtml(markdownContent: string): Promise<string> {
-  const { value: markdownValue } = await remark().process(markdownContent);
-
+export async function markdownToHtml(markdown: string): Promise<string> {
   const response = await fetch('https://api.github.com/markdown', {
     method: 'POST',
     headers: {
@@ -47,7 +44,7 @@ export async function markdownToHtml(markdownContent: string): Promise<string> {
       'X-GitHub-Api-Version': '2022-11-28',
     },
     body: JSON.stringify({
-      text: String(markdownValue),
+      text: String(markdown),
       mode: 'gfm',
       context: GITHUB_REPO_FULL_NAME,
     }),
@@ -56,7 +53,7 @@ export async function markdownToHtml(markdownContent: string): Promise<string> {
 
   const html = await response.text();
 
-  const { value: htmlValue } = await rehype()
+  const file = await rehype()
     .data('settings', { fragment: true })
     .use(rehypeImageLazyLoading)
     .use(rehypeImageUrlReplace, {
@@ -65,7 +62,7 @@ export async function markdownToHtml(markdownContent: string): Promise<string> {
     })
     .process(html);
 
-  return String(htmlValue);
+  return String(file);
 }
 
 /**
