@@ -81,7 +81,7 @@ $screen-breakpoints: (
   2xl: 1536px,
 );
 
-@mixin selector-scrollbar($size-token: 4, $axis: y) {
+@mixin selector-scrollbar($width: 0.25rem, $axis: y) {
   @if $axis == y {
     overflow: hidden scroll;
   } @else {
@@ -90,12 +90,10 @@ $screen-breakpoints: (
 
   // Global usage: `*::webkit-scrollbar`.
   &::-webkit-scrollbar {
-    @if $size-token == 0 {
+    @if $width == 0 {
       display: none;
-    } @else if $size-token == 2 {
-      width: var(--size-2);
     } @else {
-      width: var(--size-4);
+      width: $width;
 
       &-thumb {
         background-color: var(--color-border-default);

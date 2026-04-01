@@ -1,5 +1,5 @@
 .body {
-  @include selector-scrollbar(4);
+  @include selector-scrollbar(0.25rem);
 
   display: grid;
   grid-template-rows: var(--size-header-height) 1fr;

@@ -1,5 +1,5 @@
 .nav {
-  @include selector-scrollbar(2);
+  @include selector-scrollbar(0.125rem);
 
   position: sticky;
   top: var(--size-header-height);
