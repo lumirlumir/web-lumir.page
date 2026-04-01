@@ -13,6 +13,7 @@
 // --------------------------------------------------------------------------------
 
 import { createContext, useEffect, useState, type PropsWithChildren } from 'react';
+import { useToggle } from '@lumir/react-kit/hooks';
 
 // --------------------------------------------------------------------------------
 // Typedef
@@ -34,25 +35,28 @@ export const ThemeContext = createContext<{
 // --------------------------------------------------------------------------------
 
 export default function ThemeProvider({ children }: PropsWithChildren) {
-  const [theme, setTheme] = useState<Theme>(null); // Should be 'dark' or 'light' after initialized with `useEffect`.
+  const [initialized, setInitialized] = useState(false);
+  const [isDarkTheme, toggleTheme] = useToggle(false);
+  const resolvedTheme = isDarkTheme ? 'dark' : 'light';
+  const theme = initialized ? resolvedTheme : null;
 
   useEffect(() => {
     // Initialization
-    if (theme === null) {
-      // eslint-disable-next-line -- TODO
-      setTheme(document.documentElement.getAttribute('data-theme') as Theme);
+    if (!initialized) {
+      const initialTheme = document.documentElement.getAttribute('data-theme');
+
+      if (initialTheme === 'dark') toggleTheme();
+      else if (initialTheme !== 'light')
+        throw TypeError('Invalid theme. Use "dark" or "light".');
+
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- Theme is initialized from the DOM after mount.
+      setInitialized(true);
       return;
     }
 
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('data-theme', theme);
-  }, [theme]);
-
-  const toggleTheme = () => {
-    if (theme === 'dark') setTheme('light');
-    else if (theme === 'light') setTheme('dark');
-    else throw TypeError('Invalid theme. Use "dark" or "light".');
-  };
+    document.documentElement.setAttribute('data-theme', resolvedTheme);
+    localStorage.setItem('data-theme', resolvedTheme);
+  }, [initialized, resolvedTheme, toggleTheme]);
 
   return <ThemeContext value={{ theme, toggleTheme }}>{children}</ThemeContext>;
 }

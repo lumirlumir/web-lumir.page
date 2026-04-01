@@ -12,7 +12,8 @@
 // Import
 // --------------------------------------------------------------------------------
 
-import { useState, type PropsWithChildren } from 'react';
+import { type PropsWithChildren } from 'react';
+import { useToggle } from '@lumir/react-kit/hooks';
 import { HiOutlineMenuAlt2 } from '@lumir/react-kit/svgs';
 import styles from './aside.module.scss';
 
@@ -21,7 +22,7 @@ import styles from './aside.module.scss';
 // --------------------------------------------------------------------------------
 
 export default function Aside({ children }: PropsWithChildren) {
-  const [visible, setVisible] = useState<boolean>(false); // TODO: create `useToggle` hook
+  const [visible, toggleVisible] = useToggle(false);
 
   return (
     <>
@@ -30,9 +31,7 @@ export default function Aside({ children }: PropsWithChildren) {
       </aside>
       <div
         className={`${styles.div} ${visible ? styles.visible : ''}`}
-        onClick={() => {
-          setVisible(prevState => !prevState);
-        }}
+        onClick={toggleVisible}
       >
         <HiOutlineMenuAlt2 />
       </div>
