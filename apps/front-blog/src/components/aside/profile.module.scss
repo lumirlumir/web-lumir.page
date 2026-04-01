@@ -2,21 +2,21 @@
   @include props-flex-center;
 
   flex-direction: column;
-  margin: $size-16;
+  margin: var(--size-16);
 
   > img {
     border-radius: 50%;
   }
 
   > .user-name {
-    padding: $size-16 0;
-    font-size: $size-20;
-    font-weight: $text-weight-semibold;
+    padding: var(--size-16) 0;
+    font-size: var(--size-20);
+    font-weight: var(--text-weight-semibold);
   }
 
   > .user-bio {
-    font-size: $size-12;
+    font-size: var(--size-12);
     color: var(--color-fg-muted);
-    letter-spacing: $size-letter-spacing-small;
+    letter-spacing: var(--size-letter-spacing-small);
   }
 }

@@ -1,10 +1,10 @@
 .body {
-  @include selector-scrollbar;
+  @include selector-scrollbar(0.25rem);
 
   display: grid;
-  grid-template-rows: $size-header-height 1fr;
-  grid-template-columns: $size-sidebar-width 1fr;
-  font-family: $font-stack-system;
+  grid-template-rows: var(--size-header-height) 1fr;
+  grid-template-columns: var(--size-sidebar-width) 1fr;
+  font-family: var(--font-stack-system);
   color: var(--color-fg-default);
   background-color: var(--color-bg-inset);
 

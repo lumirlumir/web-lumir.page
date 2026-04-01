@@ -4,18 +4,19 @@
   z-index: 1;
   display: flex;
   justify-content: space-between;
-  padding: 0 $size-article-padding-small;
+  padding: 0 var(--size-article-padding-small);
   background-color: inherit;
-  border-bottom: $border-default;
+  border-bottom: var(--border-default);
 
   @include screen(lg) {
-    padding: 0 ($size-article-padding-small * 2) 0 $size-article-padding-large;
+    padding: 0 calc(var(--size-article-padding-small) * 2) 0
+      var(--size-article-padding-large);
   }
 
   @include screen(xl) {
     display: grid;
-    grid-template-columns: $size-sidebar-width 1fr min-content;
-    padding: 0 ($size-article-padding-small * 2) 0 0;
+    grid-template-columns: var(--size-sidebar-width) 1fr min-content;
+    padding: 0 calc(var(--size-article-padding-small) * 2) 0 0;
 
     > div:first-child {
       grid-area: 1 / 1 / 2 / 2;

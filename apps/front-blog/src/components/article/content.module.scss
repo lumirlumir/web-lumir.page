@@ -6,19 +6,19 @@
 }
 
 .content-box-item {
-  padding: $size-6 $size-10;
-  margin-right: $size-8;
-  font-size: $size-12;
-  letter-spacing: $size-letter-spacing-small;
-  border: $border-default;
-  border-radius: $size-border-radius;
+  padding: var(--size-6) var(--size-10);
+  margin-right: var(--size-8);
+  font-size: var(--size-12);
+  letter-spacing: var(--size-letter-spacing-small);
+  border: var(--border-default);
+  border-radius: var(--size-border-radius);
 
   > .react-icons {
-    padding-right: $size-4;
+    padding-right: var(--size-4);
   }
 
   @include screen(sm) {
-    font-size: $size-14;
+    font-size: var(--size-14);
   }
 }
 
@@ -27,30 +27,30 @@
 
   display: flex;
   flex-direction: column;
-  padding: $size-16 $size-24;
-  margin-bottom: $size-16;
+  padding: var(--size-16) var(--size-24);
+  margin-bottom: var(--size-16);
   background-color: var(--color-bg-default);
-  border: $border-default;
-  border-radius: $size-border-radius;
+  border: var(--border-default);
+  border-radius: var(--size-border-radius);
 
   > div {
-    margin-bottom: $size-8;
+    margin-bottom: var(--size-8);
   }
 
   .title {
     @include props-ellipsis(3);
 
-    font-size: $size-24;
-    font-weight: $text-weight-semibold;
-    letter-spacing: $size-letter-spacing-medium;
+    font-size: var(--size-24);
+    font-weight: var(--text-weight-semibold);
+    letter-spacing: var(--size-letter-spacing-medium);
   }
 
   .description {
     @include props-ellipsis(4);
 
-    font-size: $size-14;
+    font-size: var(--size-14);
     color: var(--color-fg-muted);
-    letter-spacing: $size-letter-spacing-small;
+    letter-spacing: var(--size-letter-spacing-small);
   }
 
   &:hover {
@@ -64,13 +64,13 @@
     .title {
       @include props-line-clamp(1);
 
-      font-size: $size-28;
+      font-size: var(--size-28);
     }
 
     .description {
       @include props-line-clamp(2);
 
-      font-size: $size-16;
+      font-size: var(--size-16);
     }
   }
 }
