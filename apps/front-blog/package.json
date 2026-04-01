@@ -6,8 +6,8 @@
     "node": "^20.19.6"
   },
   "scripts": {
-    "dev": "next dev",
-    "build": "next build --no-lint",
+    "dev": "next dev --webpack",
+    "build": "next build --webpack",
     "start": "next start",
     "test:types": "next typegen && tsc",
     "count-docs": "ls -R src/posts/docs | grep .md | wc -l"
@@ -20,13 +20,13 @@
     "@lumir/rehype-plugins": "^0.0.0",
     "@lumir/remark-plugins": "^0.0.0",
     "@lumir/utils": "^0.0.0",
-    "@next/third-parties": "^15.5.14",
+    "@next/third-parties": "^16.2.2",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
     "babel-plugin-react-compiler": "^1.0.0",
     "katex": "^0.16.43",
     "mdast-util-to-string": "^4.0.0",
-    "next": "^15.5.14",
+    "next": "^16.2.2",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "rehype": "^13.0.2",
