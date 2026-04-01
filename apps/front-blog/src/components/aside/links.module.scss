@@ -1,14 +1,14 @@
 .links {
   @include props-flex-center;
 
-  padding: $size-8 0 $size-16;
+  padding: var(--size-8) 0 var(--size-16);
 
   > li > a {
     @include props-flex-center;
     @include selector-hover-default;
 
     flex-direction: column;
-    padding: $size-6;
+    padding: var(--size-6);
 
     &:hover {
       > svg {
@@ -17,20 +17,20 @@
     }
 
     > * {
-      margin: $size-2;
+      margin: var(--size-2);
     }
 
     > svg {
-      width: $size-24;
-      height: $size-24;
+      width: var(--size-24);
+      height: var(--size-24);
     }
 
     > span {
       @include props-flex-center;
 
-      width: $size-40;
+      width: var(--size-40);
       color: var(--color-fg-muted);
-      letter-spacing: $size-letter-spacing-medium;
+      letter-spacing: var(--size-letter-spacing-medium);
     }
   }
 }

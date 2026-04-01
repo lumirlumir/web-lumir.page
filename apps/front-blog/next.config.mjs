@@ -26,7 +26,7 @@ const nextConfig = {
   },
   sassOptions: {
     includePaths: [fileURLToPath(new URL('./src/styles', import.meta.url))],
-    additionalData: "@import 'utils/mixins';\n@import 'utils/variables';",
+    additionalData: "@import 'utils/mixins';",
   },
   experimental: {
     reactCompiler: true,
