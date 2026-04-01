@@ -23,7 +23,7 @@ import { useState } from 'react';
  * @returns Current boolean state and a function that toggles it.
  * @example
  * ```tsx
- * import { useToggle } from '@lumir/react-kit';
+ * import { useToggle } from '@lumir/react-kit/hooks';
  *
  * function Component() {
  *   const [open, toggle] = useToggle(false);
