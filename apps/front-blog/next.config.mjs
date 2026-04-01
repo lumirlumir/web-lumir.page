@@ -25,12 +25,10 @@ const nextConfig = {
     ],
   },
   sassOptions: {
-    includePaths: [fileURLToPath(new URL('./src/styles', import.meta.url))],
-    additionalData: "@import 'utils/mixins';",
+    loadPaths: [fileURLToPath(new URL('./src/styles', import.meta.url))],
+    additionalData: "@use 'utils/mixins' as *;",
   },
-  experimental: {
-    reactCompiler: true,
-  },
+  reactCompiler: true,
   // Remove `console.*` output except `console.warn` and `console.error` only in production.
   ...(isProd && {
     compiler: {
