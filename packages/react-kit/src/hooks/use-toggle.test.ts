@@ -23,7 +23,7 @@ describe('use-toggle', () => {
     assert.strictEqual(typeof toggle, 'function');
   });
 
-  it('Default initial value should be `true` when provided', async () => {
+  it('Initial value should be `true` when provided', async () => {
     const { result } = await renderHook(() => useToggle(true));
     const [state, toggle] = result.current;
 
