@@ -3,7 +3,7 @@ title: '***VScode***와 ***Visual Studio***의 차이점'
 description: '***VScode***는 경량 코드 편집기로 확장성을 제공하며, ***Visual Studio***는 모든 기능을 갖춘 통합 개발 환경(IDE)으로 무겁고 속도가 느리지만 ***.NET*** 및 ***C*** 계열 언어 개발에 최적화되어 있어 사용 목적에 따라 선택이 필요하다.'
 created: '2024-05-26'
 updated: '2024-05-26'
-tags:
+categories:
   - 'vscode'
 ---
 

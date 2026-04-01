@@ -19,22 +19,22 @@ export interface Meta {
   /**
    * The localized display name in English and Korean.
    */
-  name: {
+  readonly name: {
     /**
      * The display name in English.
      */
-    en: string;
+    readonly en: string;
 
     /**
      * The display name in Korean.
      */
-    ko: string;
+    readonly ko: string;
   };
 
   /**
    * The React icon associated with the metadata item, represented as a JSX element.
    */
-  reactIcons: JSX.Element;
+  readonly reactIcons: JSX.Element;
 }
 
 /**
@@ -45,5 +45,5 @@ export interface MetaWithOrder extends Meta {
   /**
    * The order of the item, which can be used for sorting or displaying items in a specific sequence.
    */
-  order: number;
+  readonly order: number;
 }

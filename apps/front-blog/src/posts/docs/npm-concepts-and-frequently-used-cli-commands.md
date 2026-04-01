@@ -3,7 +3,7 @@ title: '`npm` 개념 및 자주 사용하는 CLI 명령어 모음'
 description: '`npm`은 Node.js의 패키지 관리 도구로, 패키지 설치, 초기화, 업데이트 및 삭제를 지원하며, 다양한 플래그를 통해 의존성과 개발 의존성을 효율적으로 관리할 수 있게 해준다.'
 created: '2024-08-01'
 updated: '2024-08-01'
-tags:
+categories:
   - 'npm'
 ---
 

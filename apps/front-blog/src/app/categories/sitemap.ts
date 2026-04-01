@@ -7,18 +7,19 @@
 // --------------------------------------------------------------------------------
 
 import { type MetadataRoute } from 'next';
-import { WEBSITE_URL, PATH_DOCS } from '@/constants';
-import { readMarkdownTagTree } from '@/utils/fs';
+import { WEBSITE_URL } from '@/constants';
+import {
+  listNonEmptyCategoryKeys,
+  markdownCollectionCategory,
+} from '@/utils/markdown-collection';
 
 // --------------------------------------------------------------------------------
 // Default Export
 // --------------------------------------------------------------------------------
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const tagTree = await readMarkdownTagTree(PATH_DOCS);
-
-  return Object.keys(tagTree).map(tag => ({
-    url: `${WEBSITE_URL}/categories/${tag}`,
+  return listNonEmptyCategoryKeys(markdownCollectionCategory).map(categoryKey => ({
+    url: `${WEBSITE_URL}/categories/${categoryKey}`,
     lastModified: new Date(),
     changeFrequency: 'weekly',
     priority: 0.8,

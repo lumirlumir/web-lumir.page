@@ -13,21 +13,21 @@ import { type Frontmatter } from '@/data/frontmatter';
 // --------------------------------------------------------------------------------
 
 /**
- * Represents a Virtual Markdown file, containing the `basename` (including extension), `content`, and `data` (frontmatter) of the Markdown document.
+ * Represents a Virtual Markdown file, containing the `slug` (excluding extension), `data` (frontmatter), and `content` of the Markdown document.
  */
 export interface VMarkdownFile {
   /**
-   * The basename of the Markdown file, including the extension (e.g., `example.md`).
+   * The slug of the Markdown file, excluding the leading directory path and extension (e.g., `example` for `./example.md`).
    */
-  basename: string;
-
-  /**
-   * The content of the Markdown file, representing the raw Markdown text.
-   */
-  content: string;
+  readonly slug: string;
 
   /**
    * The data of the Markdown file, representing the frontmatter metadata defined in the `Frontmatter` interface.
    */
-  data: Frontmatter;
+  readonly data: Frontmatter;
+
+  /**
+   * The content of the Markdown file, representing the raw Markdown text.
+   */
+  readonly content: string;
 }

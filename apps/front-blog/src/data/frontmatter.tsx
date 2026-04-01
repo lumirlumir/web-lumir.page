@@ -22,33 +22,35 @@ import { type Meta } from './meta';
 
 /**
  * Represents the frontmatter of a Markdown document,
- * containing metadata such as `title`, `description`, `created` date, `updated` date, and `tags`.
+ * containing metadata such as `title`, `description`, `created` date, `updated` date, and `categories`.
  */
 export interface Frontmatter {
   /**
    * The title of the Markdown document, providing a concise and descriptive name for the content.
+   * - Markdown and HTML syntax are allowed in this field.
    */
-  title: string;
+  readonly title: string;
 
   /**
    * The description of the Markdown document, providing a brief summary or overview of its content.
+   * - Markdown and HTML syntax are allowed in this field.
    */
-  description: string;
+  readonly description: string;
 
   /**
    * The created date of the Markdown document, indicating when the document was initially created or published.
    */
-  created: string;
+  readonly created: string;
 
   /**
    * The updated date of the Markdown document, indicating when the document was last modified or updated.
    */
-  updated: string;
+  readonly updated: string;
 
   /**
-   * The tags of the Markdown document, representing the categories associated with the content.
+   * The categories of the Markdown document, representing the categories associated with the content.
    */
-  tags: CategoryKey[]; // TODO: Rename `tags` to `categories` later.
+  readonly categories: CategoryKey[];
 }
 
 /**
@@ -57,9 +59,12 @@ export interface Frontmatter {
 export type FrontmatterKey = keyof Frontmatter;
 
 /**
- * Represents the keys of the frontmatter that can be sorted, excluding `description` and `tags` which are not typically used for sorting.
+ * Represents the keys of the frontmatter that can be sorted, excluding `description` and `categories` which are not typically used for sorting.
  */
-export type FrontmatterKeySortable = Exclude<FrontmatterKey, 'description' | 'tags'>;
+export type SortableFrontmatterKey = Exclude<
+  FrontmatterKey,
+  'description' | 'categories'
+>;
 
 // --------------------------------------------------------------------------------
 // Export
@@ -98,10 +103,10 @@ export const frontmatterMeta = {
     },
     reactIcons: <FaRegCalendarXmark />,
   },
-  tags: {
+  categories: {
     name: {
-      en: 'Tags',
-      ko: '태그',
+      en: 'Categories',
+      ko: '카테고리',
     },
     reactIcons: <FaTag />,
   },

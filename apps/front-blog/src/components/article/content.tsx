@@ -8,12 +8,10 @@
 
 import Link from 'next/link';
 import { type JSX, type PropsWithChildren } from 'react';
-import { EXT_MD_REGEXP } from '@/constants';
-import { frontmatterMeta } from '@/data/frontmatter';
 import { categoryMeta } from '@/data/category';
-import { markdownToHtml } from '@/utils/markup';
+import { frontmatterMeta } from '@/data/frontmatter';
 import { type VMarkdownFile } from '@/data/v-markdown-file';
-
+import { markdownToHtml } from '@/utils/markdown-to-html';
 import styles from './content.module.scss';
 
 // --------------------------------------------------------------------------------
@@ -39,23 +37,23 @@ function ContentBoxItem({ icon, text }: { icon: JSX.Element; text: string }) {
 
 export default async function Content({
   vMarkdownFile: {
-    basename,
-    data: { title, description, created, updated, tags },
+    slug,
+    data: { title, description, created, updated, categories },
   },
 }: {
   vMarkdownFile: VMarkdownFile;
 }) {
   return (
-    <Link href={`/posts/${basename.replace(EXT_MD_REGEXP, '')}`}>
+    <Link href={`/posts/${slug}`}>
       <div className={styles.content}>
         <div
           className={`${styles.title} markdown-body`}
-          dangerouslySetInnerHTML={{ __html: await markdownToHtml(title) }} // eslint-disable-line react/no-danger -- Safe because the title is controlled and sanitized.
+          dangerouslySetInnerHTML={{ __html: await markdownToHtml(title) }} // eslint-disable-line react/no-danger -- Safe because the title comes from the local file system and is controlled.
         />
 
         <div
           className={`${styles.description} markdown-body`}
-          dangerouslySetInnerHTML={{ __html: await markdownToHtml(description) }} // eslint-disable-line react/no-danger -- Safe because the description is controlled and sanitized.
+          dangerouslySetInnerHTML={{ __html: await markdownToHtml(description) }} // eslint-disable-line react/no-danger -- Safe because the description comes from the local file system and is controlled.
         />
 
         <ContentBoxContainer>
@@ -64,11 +62,11 @@ export default async function Content({
         </ContentBoxContainer>
 
         <ContentBoxContainer>
-          {tags.map(tag => (
+          {categories.map(category => (
             <ContentBoxItem
-              key={tag}
-              icon={frontmatterMeta.tags.reactIcons}
-              text={categoryMeta[tag].name.en}
+              key={category}
+              icon={frontmatterMeta.categories.reactIcons}
+              text={categoryMeta[category].name.en}
             />
           ))}
         </ContentBoxContainer>

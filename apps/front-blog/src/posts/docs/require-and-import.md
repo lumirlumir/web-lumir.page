@@ -3,7 +3,7 @@ title: '자바스크립트 CommonJS 및 ES 모듈 내보내기/불러오기 (`re
 description: 'Node.js에서 모듈을 불러오는 방법으로 `require`(CommonJS)와 `import`(ES6)가 있으며, 각각의 사용법과 장단점이 있다. CommonJS는 하위 호환성을 유지하며, `exports`와 `module.exports`를 통해 객체를 내보내고 불러온다. 반면, ES6 모듈은 가독성이 높고 성능이 우수하며, `export`와 `default export`를 사용해 더 명확하게 모듈을 관리한다. ES 모듈을 사용할 때는 `.js` 확장자를 붙여야 한다.'
 created: '2024-04-02'
 updated: '2024-07-22'
-tags:
+categories:
   - 'nodejs'
 ---
 

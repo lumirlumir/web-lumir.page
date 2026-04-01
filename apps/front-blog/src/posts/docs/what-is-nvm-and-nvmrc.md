@@ -3,7 +3,7 @@ title: '`nvm`과 `.nvmrc`란 무엇인가?'
 description: '`nvm`은 Node.js 버전 관리 도구로, `.nvmrc` 파일을 사용해 프로젝트에 필요한 Node.js 버전을 기록하고 쉽게 설치하거나 변경할 수 있도록 돕는다.'
 created: '2024-07-20'
 updated: '2024-07-22'
-tags:
+categories:
   - 'nodejs'
 ---
 

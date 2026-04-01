@@ -3,7 +3,7 @@ title: '서버 컴포넌트에서 파일을 불러올 때, `process.cwd()`와 `_
 description: 'Next.js에서는 번들링 후 경로가 변경될 수 있는 `__dirname`보다, 항상 프로젝트 루트 디렉토리를 가리키는 `process.cwd()`를 사용하는 것이 파일 경로 관리에 더 안정적이다.'
 created: '2024-09-14'
 updated: '2024-09-14'
-tags:
+categories:
   - 'nextjs'
 ---
 

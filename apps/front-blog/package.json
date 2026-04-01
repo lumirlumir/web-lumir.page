@@ -25,16 +25,23 @@
     "@vercel/speed-insights": "^2.0.0",
     "babel-plugin-react-compiler": "^1.0.0",
     "katex": "^0.16.43",
+    "mdast-util-to-string": "^4.0.0",
     "next": "^15.5.14",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "rehype": "^13.0.2",
-    "remark": "^15.0.1",
+    "rehype-stringify": "^10.0.1",
+    "remark-parse": "^11.0.0",
+    "remark-rehype": "^11.1.2",
     "sass": "^1.98.0",
-    "sharp": "^0.34.5"
+    "sharp": "^0.34.5",
+    "strip-markdown": "^6.0.0",
+    "unified": "^11.0.5"
   },
   "devDependencies": {
     "@types/react": "^19.2.14",
-    "@types/react-dom": "^19.2.3"
+    "@types/react-dom": "^19.2.3",
+    "@types/webpack-env": "^1.18.8",
+    "vitest": "^4.1.1"
   }
 }

@@ -1,7 +1,6 @@
-import React from 'react';
 import './ButtonSingle.scss';
 
-function ButtonSingle(props) {
+export default function ButtonSingle(props) {
   /* Variables */
   const { children, click, title, position, top, right, bottom, left } = props;
   const style = { title, position, top, right, bottom, left };
@@ -21,5 +20,3 @@ function ButtonSingle(props) {
     </div>
   );
 }
-
-export default ButtonSingle;

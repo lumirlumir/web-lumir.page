@@ -7,12 +7,13 @@
 // --------------------------------------------------------------------------------
 
 import { type Metadata } from 'next';
-import { frontmatter } from '@lumir/utils';
 import Katex from '@/components/article/katex';
-import { PATH_DOCS, EXT_MD_REGEXP } from '@/constants';
-import { type Frontmatter } from '@/data/frontmatter';
-import { readMarkdownFilesFromDir } from '@/utils/fs';
-import { markdownToText, markdownToHtml, writeTitleIntoMarkdown } from '@/utils/markup';
+import {
+  markdownCollectionAll,
+  markdownCollectionSlug,
+} from '@/utils/markdown-collection';
+import { markdownToText } from '@/utils/markdown-to-text';
+import { markdownToHtml, writeTitleIntoMarkdown } from '@/utils/markup';
 
 // --------------------------------------------------------------------------------
 // Named Export
@@ -30,11 +31,8 @@ export const dynamicParams = false;
 export async function generateStaticParams(): Promise<
   Awaited<PageProps<'/posts/[markdown]'>['params']>[]
 > {
-  const markdownDocuments = await readMarkdownFilesFromDir(PATH_DOCS);
-  const paths = markdownDocuments.map(markdownDocument => markdownDocument.basename);
-
-  return paths.map(path => ({
-    markdown: path.replace(EXT_MD_REGEXP, ''),
+  return markdownCollectionAll.map(({ slug }) => ({
+    markdown: slug,
   }));
 }
 
@@ -45,14 +43,11 @@ export async function generateMetadata({
   params,
 }: PageProps<'/posts/[markdown]'>): Promise<Metadata> {
   const { markdown } = await params;
-  const { default: markdownContent } = await import(`../../../posts/docs/${markdown}.md`);
-  const {
-    data: { title, description },
-  } = frontmatter(markdownContent) as { data: Frontmatter }; // TODO: Update the `frontmatter` function to support generic type parameters for better type safety and inference.
+  const { title, description } = markdownCollectionSlug[markdown].data;
 
   return {
-    title: markdownToText(title),
-    description: markdownToText(description),
+    title: await markdownToText(title),
+    description: await markdownToText(description),
   };
 }
 
@@ -62,11 +57,10 @@ export async function generateMetadata({
 
 export default async function Page({ params }: PageProps<'/posts/[markdown]'>) {
   const { markdown } = await params;
-  const { default: markdownContent } = await import(`../../../posts/docs/${markdown}.md`);
   const {
     content,
     data: { title },
-  } = frontmatter(markdownContent) as { content: string; data: Frontmatter }; // TODO: Update the `frontmatter` function to support generic type parameters for better type safety and inference.
+  } = markdownCollectionSlug[markdown];
 
   return (
     <Katex

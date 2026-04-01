@@ -3,7 +3,7 @@ title: '`console.log()`와 `console.dir()`의 차이점'
 description: '`console.log()`는 주로 디버깅을 위해 정보를 콘솔에 출력하는 함수로, 트리 구조의 HTML 요소를 출력하며, `console.dir()`은 객체의 속성과 트리 구조를 자세히 표시하는 함수로, JSON과 유사한 객체 표현을 제공한다.'
 created: '2024-04-02'
 updated: '2024-05-26'
-tags:
+categories:
   - 'javascript'
 ---
 

@@ -3,7 +3,7 @@ title: '한글 유니코드(Unicode)'
 description: '자바스크립트에서 한글 유니코드의 구조와 범위(호환용 자모, 현대 자모, 완성형 한글)를 설명하며, 정규표현식과 유니코드 계산 방법 등을 다룬다.'
 created: '2024-07-27'
 updated: '2025-03-21'
-tags:
+categories:
   - 'markdown'
   - 'cs'
 ---
