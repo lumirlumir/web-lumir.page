@@ -1,3 +1,6 @@
+/* use */
+@use 'sass:map';
+
 /* props */
 @mixin props-flex-center {
   display: flex;
@@ -72,15 +75,6 @@
   }
 }
 
-// Keep Sass breakpoint literals here because CSS custom properties cannot be used in media queries.
-$screen-breakpoints: (
-  sm: 640px,
-  md: 768px,
-  lg: 1024px,
-  xl: 1280px,
-  2xl: 1536px,
-);
-
 @mixin selector-scrollbar($width: 0.25rem, $axis: y) {
   @if $axis == y {
     overflow: hidden scroll;
@@ -104,8 +98,16 @@ $screen-breakpoints: (
 }
 
 /* media */
+$screen-breakpoints: (
+  sm: 640px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1280px,
+  2xl: 1536px,
+);
+
 @mixin screen($breakpoint) {
-  @media (min-width: map-get($screen-breakpoints, $breakpoint)) {
+  @media (min-width: map.get($screen-breakpoints, $breakpoint)) {
     @content;
   }
 }
