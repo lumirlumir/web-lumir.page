@@ -6,72 +6,52 @@
 // Import
 // --------------------------------------------------------------------------------
 
-import { afterEach, describe, expect, it } from 'vitest';
+import { assert, describe, it } from 'vitest';
+import { renderHook } from 'vitest-browser-react';
 import { useToggle } from './use-toggle.js';
-
-// --------------------------------------------------------------------------------
-// Helper
-// --------------------------------------------------------------------------------
-
-Object.assign(globalThis, { IS_REACT_ACT_ENVIRONMENT: true });
-
-const describeIfBrowser = typeof document === 'undefined' ? describe.skip : describe;
-
-async function renderUseToggle(initialValue?: boolean) {
-  const { renderHook } = await import('vitest-browser-react');
-
-  return renderHook(({ value = false }: { value?: boolean } = {}) => useToggle(value), {
-    initialProps: { value: initialValue },
-  });
-}
-
-afterEach(async () => {
-  if (typeof document === 'undefined') {
-    return;
-  }
-
-  const { cleanup } = await import('vitest-browser-react');
-  await cleanup();
-});
 
 // --------------------------------------------------------------------------------
 // Test
 // --------------------------------------------------------------------------------
 
-describeIfBrowser('use-toggle', () => {
-  it('should initialize with the default value false', async () => {
-    const { result, unmount } = await renderUseToggle();
+describe('use-toggle', () => {
+  it('Default initial value should be `false` when not provided', async () => {
+    const { result } = await renderHook(() => useToggle());
+    const [state, toggle] = result.current;
 
-    expect(result.current[0]).toBe(false);
-
-    await unmount();
+    assert.strictEqual(state, false);
+    assert.strictEqual(typeof toggle, 'function');
   });
 
-  it('should initialize with the provided value true', async () => {
-    const { result, unmount } = await renderUseToggle(true);
+  it('Default initial value should be `true` when provided', async () => {
+    const { result } = await renderHook(() => useToggle(true));
+    const [state, toggle] = result.current;
 
-    expect(result.current[0]).toBe(true);
-
-    await unmount();
+    assert.strictEqual(state, true);
+    assert.strictEqual(typeof toggle, 'function');
   });
 
-  it('should toggle value when toggle is called', async () => {
-    const { result, act, unmount } = await renderUseToggle(false);
+  it('`toggle` function should toggle the state value', async () => {
+    const { act, result } = await renderHook(() => useToggle(false));
 
-    expect(result.current[0]).toBe(false);
+    const [firstState, toggle] = result.current;
 
-    await act(() => {
-      result.current[1]();
+    assert.strictEqual(firstState, false);
+
+    await act(async () => {
+      toggle();
     });
 
-    expect(result.current[0]).toBe(true);
+    const [secondState] = result.current;
 
-    await act(() => {
-      result.current[1]();
+    assert.strictEqual(secondState, true);
+
+    await act(async () => {
+      toggle();
     });
 
-    expect(result.current[0]).toBe(false);
+    const [thirdState] = result.current;
 
-    await unmount();
+    assert.strictEqual(thirdState, false);
   });
 });
