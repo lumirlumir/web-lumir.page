@@ -36,27 +36,29 @@ export const ThemeContext = createContext<{
 
 export default function ThemeProvider({ children }: PropsWithChildren) {
   const [initialized, setInitialized] = useState(false);
-  const [isDarkTheme, toggleTheme] = useToggle(false);
+  const [isDarkTheme, toggleTheme] = useToggle(
+    typeof document !== 'undefined' &&
+      document.documentElement.getAttribute('data-theme') === 'dark',
+  );
   const resolvedTheme = isDarkTheme ? 'dark' : 'light';
   const theme = initialized ? resolvedTheme : null;
 
   useEffect(() => {
-    // Initialization
-    if (!initialized) {
-      const initialTheme = document.documentElement.getAttribute('data-theme');
+    const initialTheme = document.documentElement.getAttribute('data-theme');
 
-      if (initialTheme === 'dark') toggleTheme();
-      else if (initialTheme !== 'light')
-        throw TypeError('Invalid theme. Use "dark" or "light".');
+    if (initialTheme !== 'dark' && initialTheme !== 'light')
+      throw TypeError('Invalid theme. Use "dark" or "light".');
 
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- Theme is initialized from the DOM after mount.
-      setInitialized(true);
-      return;
-    }
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- Theme is initialized from the DOM after mount.
+    setInitialized(true);
+  }, []);
+
+  useEffect(() => {
+    if (!initialized) return;
 
     document.documentElement.setAttribute('data-theme', resolvedTheme);
     localStorage.setItem('data-theme', resolvedTheme);
-  }, [initialized, resolvedTheme, toggleTheme]);
+  }, [initialized, resolvedTheme]);
 
   return <ThemeContext value={{ theme, toggleTheme }}>{children}</ThemeContext>;
 }

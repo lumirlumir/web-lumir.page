@@ -9,7 +9,7 @@
 // Import
 // --------------------------------------------------------------------------------
 
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 // --------------------------------------------------------------------------------
 // Export
@@ -42,9 +42,9 @@ export function useToggle(
 ): readonly [state: boolean, toggle: () => void] {
   const [state, setState] = useState<boolean>(initialValue);
 
-  function toggle() {
+  const toggle = useCallback(() => {
     setState(previousState => !previousState);
-  }
+  }, []);
 
   return [state, toggle] as const;
 }
