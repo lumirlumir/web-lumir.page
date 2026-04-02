@@ -15,6 +15,7 @@
 import { type PropsWithChildren } from 'react';
 import { useToggle } from '@lumir/react-kit/hooks';
 import { HiOutlineMenuAlt2 } from '@lumir/react-kit/svgs';
+import { cn } from '@lumir/utils';
 import styles from './aside.module.scss';
 
 // --------------------------------------------------------------------------------
@@ -26,13 +27,8 @@ export default function Aside({ children }: PropsWithChildren) {
 
   return (
     <>
-      <aside className={`${styles.aside} ${visible ? styles.visible : ''}`}>
-        {children}
-      </aside>
-      <div
-        className={`${styles.div} ${visible ? styles.visible : ''}`}
-        onClick={toggleVisible}
-      >
+      <aside className={cn(styles.aside, visible && styles.visible)}>{children}</aside>
+      <div className={cn(styles.div, visible && styles.visible)} onClick={toggleVisible}>
         <HiOutlineMenuAlt2 />
       </div>
     </>
