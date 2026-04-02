@@ -25,11 +25,11 @@
     "test:unit": "vitest run"
   },
   "dependencies": {
+    "remark": "^15.0.1",
     "unist-util-visit": "^5.1.0"
   },
   "devDependencies": {
     "@types/mdast": "^4.0.4",
-    "remark": "^15.0.1",
     "vitest": "^4.1.1"
   }
 }
