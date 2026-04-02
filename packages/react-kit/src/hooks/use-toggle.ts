@@ -26,12 +26,12 @@ import { useCallback, useState } from 'react';
  * import { useToggle } from '@lumir/react-kit/hooks';
  *
  * function Component() {
- *   const [open, toggle] = useToggle(false);
+ *   const [isOpen, toggleIsOpen] = useToggle(false);
  *
  *   return (
  *     <div>
- *       <p>Bottom Sheet state: {open ? 'opened' : 'closed'}</p>
- *       <button onClick={toggle}>Toggle</button>
+ *       <p>Bottom Sheet state: {isOpen ? 'opened' : 'closed'}</p>
+ *       <button onClick={toggleIsOpen}>Toggle</button>
  *     </div>
  *   );
  * }
