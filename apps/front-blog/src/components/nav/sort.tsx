@@ -13,7 +13,8 @@
 // --------------------------------------------------------------------------------
 
 import { usePathname, useSearchParams, useRouter } from 'next/navigation';
-import { useState, type PropsWithChildren } from 'react';
+import { type PropsWithChildren } from 'react';
+import { useToggle } from '@lumir/react-kit/hooks';
 import { FaAngleDown, FaAngleUp, GrSort } from '@lumir/react-kit/svgs';
 import { frontmatterMeta, type SortableFrontmatterKey } from '@/data/frontmatter';
 import { sortMeta, type SortKey } from '@/data/sort';
@@ -24,15 +25,11 @@ import styles from './sort.module.scss';
 // --------------------------------------------------------------------------------
 
 function SortContainer({ children }: PropsWithChildren) {
-  const [isOpen, setIsOpen] = useState<boolean>(false); // TODO: Create `useToggle` hook later.
-
-  function onClick() {
-    setIsOpen(prevState => !prevState);
-  }
+  const [isOpen, toggleIsOpen] = useToggle(false);
 
   return (
     <div>
-      <div className={styles['sort-item']} onClick={onClick}>
+      <div className={styles['sort-item']} onClick={toggleIsOpen}>
         <div className={styles['react-icons']}>
           <GrSort />
         </div>
