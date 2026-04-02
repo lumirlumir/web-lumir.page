@@ -16,7 +16,7 @@ import { useToggle } from './use-toggle.js';
 
 describe('index', () => {
   it('should re-export `useToggle`', () => {
-    assert.deepStrictEqual(Object.keys(indexModule), ['useToggle']);
+    assert.deepStrictEqual(Object.keys(indexModule).sort(), ['useToggle']);
     assert.strictEqual(indexModule.useToggle, useToggle);
   });
 });
