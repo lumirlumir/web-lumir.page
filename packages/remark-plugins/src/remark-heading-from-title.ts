@@ -2,8 +2,6 @@
  * @fileoverview remark-heading-from-title.
  */
 
-/* eslint-disable import/prefer-default-export */
-
 // --------------------------------------------------------------------------------
 // Import
 // --------------------------------------------------------------------------------
@@ -14,6 +12,12 @@ import type { Heading, Root, RootContent } from 'mdast';
 // --------------------------------------------------------------------------------
 // Helper
 // --------------------------------------------------------------------------------
+
+const FRONTMATTER_NODE_TYPES = new Set(['yaml', 'toml']);
+
+export interface RemarkHeadingFromTitleOptions {
+  title: string;
+}
 
 function getHeadingFromTitle(title: string): Heading | undefined {
   if (!title.trim()) {
@@ -29,7 +33,7 @@ function getHeadingFromTitle(title: string): Heading | undefined {
 }
 
 function getHeadingInsertIndex(children: RootContent[]): number {
-  return children.findIndex(node => !['yaml', 'toml'].includes(node.type));
+  return children.findIndex(node => !FRONTMATTER_NODE_TYPES.has(node.type));
 }
 
 // --------------------------------------------------------------------------------
@@ -39,7 +43,7 @@ function getHeadingInsertIndex(children: RootContent[]): number {
 /**
  * A remark plugin to prepend an H1 heading generated from the provided title.
  */
-export function remarkHeadingFromTitle(title: string) {
+export function remarkHeadingFromTitle({ title }: RemarkHeadingFromTitleOptions) {
   return (tree: Root) => {
     const heading = getHeadingFromTitle(title);
 
