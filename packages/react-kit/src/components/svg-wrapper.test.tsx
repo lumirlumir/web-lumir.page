@@ -6,7 +6,7 @@
 // Import
 // --------------------------------------------------------------------------------
 
-import { describe, it, expect } from 'vitest';
+import { assert, describe, it } from 'vitest';
 import { render } from 'vitest-browser-react';
 import { SVGWrapper } from './svg-wrapper.js';
 
@@ -36,18 +36,21 @@ describe('svg-wrapper', () => {
 
     const svg = screen.container.querySelector('svg');
 
-    expect(svg).not.toBeNull();
-    expect(svg?.getAttribute('viewBox')).toBe('0 0 24 24');
-    expect(svg?.getAttribute('role')).toBe('img');
-    expect(svg?.querySelectorAll('path')).toHaveLength(1);
-    expect(svg?.getAttribute('aria-label')).toBe('test icon');
-    expect(svg?.getAttribute('data-testid')).toBe('icon');
-    expect(svg?.getAttribute('style')).toBe('color: rgb(255, 0, 0); display: block;');
-    expect(svg?.getAttribute('stroke')).toBe('currentColor');
-    expect(svg?.getAttribute('fill')).toBe('currentColor');
-    expect(svg?.getAttribute('stroke-width')).toBe('0');
-    expect(svg?.getAttribute('xmlns')).toBe('http://www.w3.org/2000/svg');
-    expect(svg?.getAttribute('width')).toBe('24');
-    expect(svg?.getAttribute('height')).toBe('24');
+    assert.isNotNull(svg);
+    assert.strictEqual(svg.getAttribute('viewBox'), '0 0 24 24');
+    assert.strictEqual(svg.getAttribute('role'), 'img');
+    assert.strictEqual(svg.querySelectorAll('path').length, 1);
+    assert.strictEqual(svg.getAttribute('aria-label'), 'test icon');
+    assert.strictEqual(svg.getAttribute('data-testid'), 'icon');
+    assert.strictEqual(
+      svg.getAttribute('style'),
+      'color: rgb(255, 0, 0); display: block;',
+    );
+    assert.strictEqual(svg.getAttribute('stroke'), 'currentColor');
+    assert.strictEqual(svg.getAttribute('fill'), 'currentColor');
+    assert.strictEqual(svg.getAttribute('stroke-width'), '0');
+    assert.strictEqual(svg.getAttribute('xmlns'), 'http://www.w3.org/2000/svg');
+    assert.strictEqual(svg.getAttribute('width'), '24');
+    assert.strictEqual(svg.getAttribute('height'), '24');
   });
 });
