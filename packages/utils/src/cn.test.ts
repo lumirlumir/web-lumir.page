@@ -8,8 +8,7 @@
 // Import
 // --------------------------------------------------------------------------------
 
-import { strictEqual } from 'node:assert';
-import { describe, it } from 'vitest';
+import { assert, describe, it } from 'vitest';
 import { cn } from './cn.js';
 
 // --------------------------------------------------------------------------------
@@ -18,48 +17,48 @@ import { cn } from './cn.js';
 
 describe('cn', () => {
   it('strings', () => {
-    strictEqual(cn(''), '');
-    strictEqual(cn('foo'), 'foo');
-    strictEqual(cn(true && 'foo'), 'foo');
-    strictEqual(cn(false && 'foo'), '');
+    assert.strictEqual(cn(''), '');
+    assert.strictEqual(cn('foo'), 'foo');
+    assert.strictEqual(cn(true && 'foo'), 'foo');
+    assert.strictEqual(cn(false && 'foo'), '');
   });
 
   it('strings (variadic)', () => {
-    strictEqual(cn(''), '');
-    strictEqual(cn('foo', 'bar'), 'foo bar');
-    strictEqual(cn(true && 'foo', false && 'bar', 'baz'), 'foo baz');
-    strictEqual(cn(false && 'foo', 'bar', 'baz', ''), 'bar baz');
+    assert.strictEqual(cn(''), '');
+    assert.strictEqual(cn('foo', 'bar'), 'foo bar');
+    assert.strictEqual(cn(true && 'foo', false && 'bar', 'baz'), 'foo baz');
+    assert.strictEqual(cn(false && 'foo', 'bar', 'baz', ''), 'bar baz');
   });
 
   it('empties', () => {
-    strictEqual(cn(''), '');
-    strictEqual(cn(undefined), '');
-    strictEqual(cn(null), '');
-    strictEqual(cn(0), '');
+    assert.strictEqual(cn(''), '');
+    assert.strictEqual(cn(undefined), '');
+    assert.strictEqual(cn(null), '');
+    assert.strictEqual(cn(0), '');
   });
 
   // Ignores all non-strings
   it('non-strings', () => {
     // number
-    strictEqual(cn(1), '');
-    strictEqual(cn(1, 2), '');
-    strictEqual(cn(Infinity), '');
-    strictEqual(cn(NaN), '');
-    strictEqual(cn(0), '');
+    assert.strictEqual(cn(1), '');
+    assert.strictEqual(cn(1, 2), '');
+    assert.strictEqual(cn(Infinity), '');
+    assert.strictEqual(cn(NaN), '');
+    assert.strictEqual(cn(0), '');
 
     // objects
-    strictEqual(cn({}), '');
-    strictEqual(cn(null), '');
-    strictEqual(cn({ a: 1 }), '');
-    strictEqual(cn({ a: 1 }, { b: 2 }), '');
+    assert.strictEqual(cn({}), '');
+    assert.strictEqual(cn(null), '');
+    assert.strictEqual(cn({ a: 1 }), '');
+    assert.strictEqual(cn({ a: 1 }, { b: 2 }), '');
 
     // arrays
-    strictEqual(cn([]), '');
-    strictEqual(cn(['foo']), '');
-    strictEqual(cn(['foo', 'bar']), '');
+    assert.strictEqual(cn([]), '');
+    assert.strictEqual(cn(['foo']), '');
+    assert.strictEqual(cn(['foo', 'bar']), '');
 
     // functions
-    strictEqual(
+    assert.strictEqual(
       cn(() => {}),
       '',
     );

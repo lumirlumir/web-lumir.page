@@ -6,9 +6,8 @@
 // Import
 // --------------------------------------------------------------------------------
 
-import { strictEqual } from 'node:assert';
 import { rehype } from 'rehype';
-import { describe, it } from 'vitest';
+import { assert, describe, it } from 'vitest';
 import { rehypeImageLazyLoading } from './rehype-image-lazy-loading.js';
 
 // --------------------------------------------------------------------------------
@@ -23,7 +22,10 @@ describe('rehype-image-lazy-loading', () => {
         .use(rehypeImageLazyLoading)
         .process('<img src="http://example.com/image.png">');
 
-      strictEqual(file.value, '<img src="http://example.com/image.png" loading="lazy">');
+      assert.strictEqual(
+        file.value,
+        '<img src="http://example.com/image.png" loading="lazy">',
+      );
     });
 
     it('should add the `loading="lazy"` attribute to all images', async () => {
@@ -39,7 +41,7 @@ describe('rehype-image-lazy-loading', () => {
           ].join('\n'),
         );
 
-      strictEqual(
+      assert.strictEqual(
         file.value,
         [
           '<img src="http://example.com/image.png" loading="lazy">',
@@ -58,7 +60,10 @@ describe('rehype-image-lazy-loading', () => {
         .use(rehypeImageLazyLoading)
         .process('<img src="http://example.com/image.png" loading="eager">');
 
-      strictEqual(file.value, '<img src="http://example.com/image.png" loading="eager">');
+      assert.strictEqual(
+        file.value,
+        '<img src="http://example.com/image.png" loading="eager">',
+      );
     });
 
     it('should keep the original loading attribute - 2', async () => {
@@ -67,7 +72,10 @@ describe('rehype-image-lazy-loading', () => {
         .use(rehypeImageLazyLoading)
         .process('<img src="http://example.com/image.png" loading="auto">');
 
-      strictEqual(file.value, '<img src="http://example.com/image.png" loading="auto">');
+      assert.strictEqual(
+        file.value,
+        '<img src="http://example.com/image.png" loading="auto">',
+      );
     });
   });
 });
