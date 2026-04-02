@@ -14,6 +14,7 @@
 
 import { useState, type PropsWithChildren } from 'react';
 import { HiOutlineMenuAlt2 } from '@lumir/react-kit/svgs';
+import { cn } from '@lumir/utils';
 import styles from './aside.module.scss';
 
 // --------------------------------------------------------------------------------
@@ -25,11 +26,9 @@ export default function Aside({ children }: PropsWithChildren) {
 
   return (
     <>
-      <aside className={`${styles.aside} ${visible ? styles.visible : ''}`}>
-        {children}
-      </aside>
+      <aside className={cn(styles.aside, visible && styles.visible)}>{children}</aside>
       <div
-        className={`${styles.div} ${visible ? styles.visible : ''}`}
+        className={cn(styles.div, visible && styles.visible)}
         onClick={() => {
           setVisible(prevState => !prevState);
         }}
