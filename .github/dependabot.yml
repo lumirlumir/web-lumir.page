@@ -11,29 +11,33 @@ updates:
     directories:
       - '**/*'
     groups:
-      dev-dependencies:
-        dependency-type: 'development'
-        patterns:
-          - '*'
       babel:
         patterns:
           - '@babel/*'
+      next:
+        patterns:
+          - 'next'
+          - '@next/*'
       react:
         patterns:
           - 'react'
           - 'react-dom'
           - '@types/react'
           - '@types/react-dom'
-      next:
-        patterns:
-          - 'next'
-          - '@next/*'
       shikijs:
         patterns:
           - '@shikijs/*'
       typescript-eslint:
         patterns:
           - '@typescript-eslint/*'
+      vitest:
+        patterns:
+          - 'vitest'
+          - '@vitest/*'
+      dev-dependencies:
+        dependency-type: 'development'
+        patterns:
+          - '*'
     open-pull-requests-limit: 2
     schedule:
       interval: 'daily'
