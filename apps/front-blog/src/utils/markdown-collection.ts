@@ -116,9 +116,26 @@ const context = import.meta.webpackContext('../posts/docs', {
 const vMarkdownFiles: VMarkdownFile[] = context.keys().map(key => {
   const { data, content } = frontmatter(context(key));
 
+  if (!isFrontmatter(data)) {
+    throw new Error(
+      `
+Invalid frontmatter in Markdown file: \`${key}\`
+
+Expected frontmatter format:
+  - \`title: string\`
+  - \`description: string\`
+  - \`created: string\`
+  - \`updated: string\`
+  - \`categories: CategoryKey[]\`
+
+Received data: \`${JSON.stringify(data, null, 2)}\`
+`,
+    );
+  }
+
   return {
     slug: key.replace(/^\.\//, '').replace(/\.md$/, ''),
-    data: data as Frontmatter,
+    data,
     content,
   };
 });
@@ -210,6 +227,34 @@ const markdownCollectionSlug: MarkdownCollectionSlug = {};
 const markdownCollectionCategory: MarkdownCollectionCategory = Object.fromEntries(
   categoryKeys.map(categoryKey => [categoryKey, [] as VMarkdownFile[]]),
 ) as MarkdownCollectionCategory;
+
+/**
+ * Type guard to check if the given data conforms to the `Frontmatter` interface.
+ * @param data The data to check for conformity to the `Frontmatter` interface.
+ */
+function isFrontmatter(data: unknown): data is Frontmatter {
+  return (
+    // check `object`
+    typeof data === 'object' &&
+    data !== null &&
+    // check `title`
+    'title' in data &&
+    typeof data.title === 'string' &&
+    // check `description`
+    'description' in data &&
+    typeof data.description === 'string' &&
+    // check `created`
+    'created' in data &&
+    typeof data.created === 'string' &&
+    // check `updated`
+    'updated' in data &&
+    typeof data.updated === 'string' &&
+    // check `categories`
+    'categories' in data &&
+    Array.isArray(data.categories) &&
+    data.categories.every(category => categoryKeys.includes(category))
+  );
+}
 
 // --------------------------------------------------------------------------------
 // Load and Organize Markdown Files
