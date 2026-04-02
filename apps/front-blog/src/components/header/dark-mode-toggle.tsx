@@ -22,7 +22,7 @@ import styles from './dark-mode-toggle.module.scss';
 // --------------------------------------------------------------------------------
 
 export default function DarkModeToggle() {
-  const { theme, toggleTheme } = useContext(ThemeContext)!; // TODO: Create `useToggle` hook later.
+  const { theme, toggleTheme } = useContext(ThemeContext)!; // TODO: Refactor `ThemeContext` later.
 
   return (
     <div className={styles['dark-mode-toggle']}>

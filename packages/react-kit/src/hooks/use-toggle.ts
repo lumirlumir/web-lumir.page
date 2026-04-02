@@ -9,7 +9,7 @@
 // Import
 // --------------------------------------------------------------------------------
 
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 // --------------------------------------------------------------------------------
 // Export
@@ -26,12 +26,12 @@ import { useState } from 'react';
  * import { useToggle } from '@lumir/react-kit/hooks';
  *
  * function Component() {
- *   const [open, toggle] = useToggle(false);
+ *   const [isOpen, toggleIsOpen] = useToggle(false);
  *
  *   return (
  *     <div>
- *       <p>Bottom Sheet state: {open ? 'opened' : 'closed'}</p>
- *       <button onClick={toggle}>Toggle</button>
+ *       <p>Bottom Sheet state: {isOpen ? 'opened' : 'closed'}</p>
+ *       <button onClick={toggleIsOpen}>Toggle</button>
  *     </div>
  *   );
  * }
@@ -42,9 +42,9 @@ export function useToggle(
 ): readonly [state: boolean, toggle: () => void] {
   const [state, setState] = useState<boolean>(initialValue);
 
-  function toggle() {
+  const toggle = useCallback(() => {
     setState(previousState => !previousState);
-  }
+  }, []);
 
   return [state, toggle] as const;
 }
