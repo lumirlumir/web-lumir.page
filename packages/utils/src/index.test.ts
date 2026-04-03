@@ -7,7 +7,7 @@
 // --------------------------------------------------------------------------------
 
 import { assert, describe, it } from 'vitest';
-import { cn, frontmatter, frontmatterRegex } from './index.js';
+import { cn, frontmatter } from './index.js';
 
 // --------------------------------------------------------------------------------
 // Test
@@ -23,11 +23,6 @@ describe('index', () => {
     it('`frontmatter` should be defined', () => {
       assert.isDefined(frontmatter);
       assert.strictEqual(typeof frontmatter, 'function');
-    });
-
-    it('`frontmatterRegex` should be defined', () => {
-      assert.isDefined(frontmatterRegex);
-      assert.instanceOf(frontmatterRegex, RegExp);
     });
   });
 });
