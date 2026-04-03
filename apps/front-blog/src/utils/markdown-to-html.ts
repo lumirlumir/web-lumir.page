@@ -4,6 +4,7 @@
  * @see https://github.com/remarkjs/remark-math (`remark-math`)
  * @see https://github.com/remarkjs/remark/tree/main/packages/remark-parse#remark-parse (`remark-parse`)
  * @see https://github.com/remarkjs/remark-rehype#readme (`remark-rehype`)
+ * @see https://github.com/rehypejs/rehype-github/tree/main/packages/alert#rehype-github-alert (`rehype-github-alert`)
  * @see https://github.com/remarkjs/remark-math/tree/main/packages/rehype-katex#rehype-katex (`rehype-katex`)
  * @see https://github.com/rehypejs/rehype-starry-night (`rehype-starry-night`)
  * @see https://github.com/rehypejs/rehype/tree/main/packages/rehype-stringify#rehype-stringify (`rehype-stringify`)
@@ -22,6 +23,7 @@ import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
+import rehypeGitHubAlert from 'rehype-github-alert';
 import rehypeKatex from 'rehype-katex';
 import rehypeStarryNight from 'rehype-starry-night';
 import rehypeStringify from 'rehype-stringify';
@@ -69,8 +71,9 @@ export async function markdownToHtml(
     .use(remarkMath) // TODO: add tests in https://github.com/remarkjs/remark-math
     .use(remarkHeadingFromTitle, options?.title)
     .use(remarkRehype, { allowDangerousHtml: true })
-    .use(rehypeStarryNight)
+    .use(rehypeGitHubAlert) // TODO: add tests
     .use(rehypeKatex) // TODO: add tests
+    .use(rehypeStarryNight)
     .use(rehypeImageLazyLoading)
     .use(rehypeImageUrlReplace, {
       searchValue: /^\/public/,
