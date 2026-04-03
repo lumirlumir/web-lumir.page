@@ -2,7 +2,7 @@
 title: '마크다운<sup>Markdown</sup>의 모든 것'
 description: '마크다운<sup>Markdown</sup> 및 GFM<sup>GitHub Flavored Markdown</sup>에 대한 개념, 문법, 사용법, 활용법 총 정리.'
 created: '2024-05-25'
-updated: '2024-10-26'
+updated: '2026-04-04'
 categories:
   - 'markdown'
 ---
@@ -60,7 +60,7 @@ categories:
 
 - 입력
 
-  ```txt
+  ```md
   # This is ATX style H1
   ## This is ATX style H2
   ### This is ATX style H3
@@ -95,7 +95,7 @@ categories:
 
 - 입력
 
-  ```txt
+  ```md
   # This is Closed ATX style H1 #
   ## This is Closed ATX style H2 ##
   ### This is Closed ATX style H3 ###
@@ -134,7 +134,7 @@ categories:
 
 - 입력
 
-  ```txt
+  ```md
   This is Setext style H1
   =============
 
@@ -159,7 +159,7 @@ categories:
 
 - 입력
 
-  ```txt
+  ```md
   This is Setext style H2
   -------------
 
@@ -187,7 +187,7 @@ categories:
 
 - 입력
 
-  ```txt
+  ```md
   - 줄 바꿈을 하기 위해서는 문장 마지막에 2칸 이상 띄어쓰기 해야한다.
     이렇게
 
@@ -239,7 +239,7 @@ HTML `<br>` 태그를 직접 입력한다.
 
 - 입력
 
-  ```txt
+  ```md
   ---
 
   - - -
@@ -259,7 +259,7 @@ HTML `<br>` 태그를 직접 입력한다.
 
 - 입력
 
-  ```txt
+  ```md
   ___
 
   _ _ _
@@ -279,7 +279,7 @@ HTML `<br>` 태그를 직접 입력한다.
 
 - 입력
 
-  ```txt
+  ```md
   ***
 
   * * *
@@ -367,7 +367,7 @@ HTML에서 이용하는 `<!-- -->` 기호를 사용한다.
 
 - 입력
 
-  ```txt
+  ```md
   - *single asterisk*
   - _single underscore_
   ```
@@ -387,7 +387,7 @@ HTML에서 이용하는 `<!-- -->` 기호를 사용한다.
 
 - 입력
 
-  ```txt
+  ```md
   - **double asterisks**
   - __double underscores__
   ```
@@ -405,7 +405,7 @@ HTML에서 이용하는 `<!-- -->` 기호를 사용한다.
 
 - 입력
 
-  ```txt
+  ```md
   - ~~double tildes~~
   ```
 
@@ -418,7 +418,7 @@ HTML에서 이용하는 `<!-- -->` 기호를 사용한다.
 
 - 입력
 
-  ```txt
+  ```md
   - ~~***Mixed***~~
   ```
 
@@ -435,7 +435,7 @@ HTML에서 이용하는 `<!-- -->` 기호를 사용한다.
 
 - 입력
 
-  ```txt
+  ```md
   > This is a first blockquote.
   > > This is a second blockquote.
   > > > This is a third blockquote.
@@ -449,7 +449,7 @@ HTML에서 이용하는 `<!-- -->` 기호를 사용한다.
 
 - 입력
 
-  ```txt
+  ```md
   > ### This is H3
   >
   > - List
@@ -619,7 +619,7 @@ HTML에서 이용하는 `<!-- -->` 기호를 사용한다.
 
 - 입력
 
-  ```txt
+  ```md
   - [Google][GoogleRef1]
   - [Naver][NaverRef1]
 
@@ -649,7 +649,7 @@ HTML에서 이용하는 `<!-- -->` 기호를 사용한다.
 
 - 입력
 
-  ```txt
+  ```md
   - 문서 안에서 [참조 링크]를 그대로 사용할 수도 있다.
 
   [참조 링크]: https://www.naver.com "Hello Naver"
@@ -696,7 +696,7 @@ HTML에서 이용하는 `<!-- -->` 기호를 사용한다.
 
 - 입력
 
-  ```txt
+  ```md
   - [1. 마크다운에 대하여](#1-markdown에-대하여)
 
   - [2. 마크다운 사용법(문법) - 표준 마크다운 문법](#2-markdown-사용법문법---표준-마크다운-문법)
@@ -850,7 +850,7 @@ Markdown style은 사이즈 조절 기능이 없기 때문에, HTML `<img src=""
 
 - 입력
 
-  ````txt
+  ````md
   ```java
   public class BootSpringBootApplication {
     public static void main(String[] args) {
@@ -876,7 +876,7 @@ Markdown style은 사이즈 조절 기능이 없기 때문에, HTML `<img src=""
 
 - 입력
 
-  ```txt
+  ```md
   This is a normal paragraph:
 
       This is a code block.
@@ -896,7 +896,7 @@ Markdown style은 사이즈 조절 기능이 없기 때문에, HTML `<img src=""
 
 - 입력
 
-  ```txt
+  ```md
   This is a normal paragraph:
       This is a code block.
   end code block.
@@ -1012,7 +1012,7 @@ Markdown style은 사이즈 조절 기능이 없기 때문에, HTML `<img src=""
 
 - 입력
 
-  ```txt
+  ```md
   테이블 생성
 
   |헤더1|헤더2|헤더3|헤더4|
@@ -1129,7 +1129,7 @@ Markdown style은 사이즈 조절 기능이 없기 때문에, HTML `<img src=""
 
 - 입력
 
-  ```txt
+  ```md
   This sentence uses `$` delimiters to show math inline: $\sqrt{3x-1}+(1+x)^2$
   ```
 
@@ -1145,7 +1145,7 @@ Markdown style은 사이즈 조절 기능이 없기 때문에, HTML `<img src=""
 
 - 입력
 
-  ```txt
+  ```md
   **The Cauchy-Schwarz Inequality**
   $$\left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)$$
   ```
@@ -1165,7 +1165,7 @@ Markdown style은 사이즈 조절 기능이 없기 때문에, HTML `<img src=""
 
 - 입력
 
-  ```txt
+  ```md
   > [!NOTE]
   > Useful information that users should know, even when skimming content.
 
