@@ -47,3 +47,5 @@ export default function Katex({ children, ...props }: PropsWithChildren<KatexPro
     </div>
   );
 }
+
+// TODO: Remove this component.

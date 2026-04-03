@@ -7,7 +7,6 @@
 // --------------------------------------------------------------------------------
 
 import { type Metadata } from 'next';
-import Katex from '@/components/article/katex';
 import {
   markdownCollectionAll,
   markdownCollectionSlug,
@@ -63,7 +62,7 @@ export default async function Page({ params }: PageProps<'/posts/[markdown]'>) {
   } = markdownCollectionSlug[markdown];
 
   return (
-    <Katex
+    <div
       className="markdown-body"
       dangerouslySetInnerHTML={{
         __html: await markdownToHtml(content, { title }),
