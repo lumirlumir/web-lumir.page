@@ -2,39 +2,14 @@
  * @fileoverview remark-heading-from-title.
  */
 
+/* eslint-disable import/prefer-default-export -- TODO */
+
 // --------------------------------------------------------------------------------
 // Import
 // --------------------------------------------------------------------------------
 
-import { remark } from 'remark';
-import type { Heading, Root, RootContent } from 'mdast';
-
-// --------------------------------------------------------------------------------
-// Helper
-// --------------------------------------------------------------------------------
-
-const FRONTMATTER_NODE_TYPES = new Set(['yaml', 'toml']);
-
-export interface RemarkHeadingFromTitleOptions {
-  title: string;
-}
-
-function getHeadingFromTitle(title: string): Heading | undefined {
-  if (!title.trim()) {
-    return undefined;
-  }
-
-  const tree = remark().parse(`# ${title}`);
-  const heading = tree.children.find(
-    (node): node is Heading => node.type === 'heading' && node.depth === 1,
-  );
-
-  return heading;
-}
-
-function getHeadingInsertIndex(children: RootContent[]): number {
-  return children.findIndex(node => !FRONTMATTER_NODE_TYPES.has(node.type));
-}
+import { fromMarkdown } from 'mdast-util-from-markdown';
+import type { Heading, Root } from 'mdast';
 
 // --------------------------------------------------------------------------------
 // Export
@@ -42,21 +17,26 @@ function getHeadingInsertIndex(children: RootContent[]): number {
 
 /**
  * A remark plugin to prepend an H1 heading generated from the provided title.
+ * @example
+ *
+ * ```ts
+ * import { remark } from 'remark';
+ * import { remarkHeadingFromTitle } from '@lumir/remark-plugins';
+ *
+ * const file = await remark().use(remarkHeadingFromTitle, 'title').process('paragraph');
+ *
+ * console.log(file.value); // Output: '# title\n\nparagraph'
+ * ```
  */
-export function remarkHeadingFromTitle({ title }: RemarkHeadingFromTitleOptions) {
+export function remarkHeadingFromTitle(title?: string) {
+  if (typeof title !== 'string' || title === '') {
+    return () => {};
+  }
+
   return (tree: Root) => {
-    const heading = getHeadingFromTitle(title);
-
-    if (!heading) {
-      return;
-    }
-
-    const insertIndex = getHeadingInsertIndex(tree.children);
-
-    tree.children.splice(
-      insertIndex >= 0 ? insertIndex : tree.children.length,
-      0,
-      heading,
+    tree.children.unshift(
+      // Prepend an H1 heading generated from the provided title.
+      fromMarkdown(`# ${title}`).children[0] as Heading,
     );
   };
 }
