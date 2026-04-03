@@ -12,7 +12,7 @@ import { cn } from '@lumir/utils';
 import { categoryMeta } from '@/data/category';
 import { frontmatterMeta } from '@/data/frontmatter';
 import { type VMarkdownFile } from '@/data/v-markdown-file';
-import { markdownToHtml } from '@/utils/markdown-to-html';
+import { markdownToHtmlLite } from '@/utils/markdown-to-html';
 import styles from './content.module.scss';
 
 // --------------------------------------------------------------------------------
@@ -49,12 +49,12 @@ export default async function Content({
       <div className={styles.content}>
         <div
           className={cn(styles.title, 'markdown-body')}
-          dangerouslySetInnerHTML={{ __html: await markdownToHtml(title) }} // eslint-disable-line react/no-danger -- Safe because the title comes from the local file system and is controlled.
+          dangerouslySetInnerHTML={{ __html: await markdownToHtmlLite(title) }} // eslint-disable-line react/no-danger -- Safe because the title comes from the local file system and is controlled.
         />
 
         <div
           className={cn(styles.description, 'markdown-body')}
-          dangerouslySetInnerHTML={{ __html: await markdownToHtml(description) }} // eslint-disable-line react/no-danger -- Safe because the description comes from the local file system and is controlled.
+          dangerouslySetInnerHTML={{ __html: await markdownToHtmlLite(description) }} // eslint-disable-line react/no-danger -- Safe because the description comes from the local file system and is controlled.
         />
 
         <ContentBoxContainer>

@@ -11,8 +11,6 @@
  * @see https://github.com/unifiedjs/unified#readme (`unified`)
  */
 
-/* eslint-disable import/prefer-default-export -- TODO: Refactor to use named exports */
-
 // --------------------------------------------------------------------------------
 // Import
 // --------------------------------------------------------------------------------
@@ -79,6 +77,31 @@ export async function markdownToHtml(
       searchValue: /^\/public/,
       replaceValue: '',
     })
+    .use(rehypeStringify, { allowDangerousHtml: true })
+    .process(markdown);
+
+  return String(file);
+}
+
+/**
+ * Converts markdown content to HTML asynchronously using `unified` with `remark` and `rehype`, without any additional plugins or transformations.
+ * @param markdown The markdown content to convert.
+ * @example
+ * ```ts
+ * import { markdownToHtmlLite } from '@/utils/markdown-to-html';
+ *
+ * const markdown = 'Foo Bar Baz';
+ * const html = await markdownToHtmlLite(markdown);
+ *
+ * console.log(html);
+ * // Output:
+ * // <p>Foo Bar Baz</p>
+ * ```
+ */ // TODO: Add tests
+export async function markdownToHtmlLite(markdown: string): Promise<string> {
+  const file = await unified()
+    .use(remarkParse)
+    .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeStringify, { allowDangerousHtml: true })
     .process(markdown);
 
