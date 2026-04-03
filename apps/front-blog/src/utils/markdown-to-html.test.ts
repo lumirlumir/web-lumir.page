@@ -103,5 +103,21 @@ describe('markdown-to-html', () => {
 
       assert.strictEqual(await markdownToHtml(markdown), html);
     });
+
+    it('should convert code blocks with syntax highlighting - 1', async () => {
+      const markdown = '```js\nconsole.log("Hello, world!");\n```';
+      const html =
+        '<pre><code class="language-js"><span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">"</span>Hello, world!<span class="pl-pds">"</span></span>);\n</code></pre>';
+
+      assert.strictEqual(await markdownToHtml(markdown), html);
+    });
+
+    it('should convert code blocks with syntax highlighting - 2', async () => {
+      const markdown = '```md\n# Heading\n```';
+      const html =
+        '<pre><code class="language-md"><span class="pl-mh"># <span class="pl-en">Heading</span></span>\n</code></pre>';
+
+      assert.strictEqual(await markdownToHtml(markdown), html);
+    });
   });
 });

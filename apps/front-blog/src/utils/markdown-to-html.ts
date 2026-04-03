@@ -29,7 +29,7 @@ interface MarkdownToHtmlOptions {
   /**
    * Prepend an H1 heading generated from the provided title.
    */
-  title: string;
+  title?: string;
 }
 
 // --------------------------------------------------------------------------------
@@ -66,7 +66,7 @@ export async function markdownToHtml(
       searchValue: /^\/public/,
       replaceValue: '',
     })
-    .use(rehypeStarryNight) // TODO: Add tests for syntax highlighting
+    .use(rehypeStarryNight)
     .use(rehypeStringify, { allowDangerousHtml: true })
     .process(markdown);
 
