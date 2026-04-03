@@ -11,7 +11,7 @@ import { FaPen } from '@lumir/react-kit/svgs';
 import { categoryMeta } from '@/data/category';
 import {
   listNonEmptyCategoryKeys,
-  loadMarkdownCollection,
+  markdownCollectionCategory,
 } from '@/utils/markdown-collection';
 import styles from './categories.module.scss';
 
@@ -19,8 +19,7 @@ import styles from './categories.module.scss';
 // Helper
 // --------------------------------------------------------------------------------
 
-const { category } = await loadMarkdownCollection();
-const categoryKeys = listNonEmptyCategoryKeys(category);
+const categoryKeys = listNonEmptyCategoryKeys(markdownCollectionCategory);
 
 // --------------------------------------------------------------------------------
 // Export
@@ -44,7 +43,7 @@ export default async function Categories() {
                 <div className={styles['name-en']}>{en}</div>
                 <div className={styles['name-ko']}>{ko}</div>
                 <div className={styles['count-docs']}>
-                  <span>{category[categoryKey]?.length}</span>
+                  <span>{markdownCollectionCategory[categoryKey]?.length}</span>
                   <FaPen />
                 </div>
               </Link>

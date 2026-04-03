@@ -1,3 +1,6 @@
+/* use */
+@use 'sass:map';
+
 /* props */
 @mixin props-flex-center {
   display: flex;
@@ -68,11 +71,11 @@
 
   &:hover {
     background-color: var(--color-bg-neutral-muted);
-    border-radius: $size-border-radius;
+    border-radius: var(--size-border-radius);
   }
 }
 
-@mixin selector-scrollbar($width: $size-4, $axis: y) {
+@mixin selector-scrollbar($width: 0.25rem, $axis: y) {
   @if $axis == y {
     overflow: hidden scroll;
   } @else {
@@ -88,15 +91,23 @@
 
       &-thumb {
         background-color: var(--color-border-default);
-        border-radius: $size-border-radius;
+        border-radius: var(--size-border-radius);
       }
     }
   }
 }
 
 /* media */
+$screen-breakpoints: (
+  sm: 640px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1280px,
+  2xl: 1536px,
+);
+
 @mixin screen($breakpoint) {
-  @media (min-width: map-get($breakpoints, $breakpoint)) {
+  @media (min-width: map.get($screen-breakpoints, $breakpoint)) {
     @content;
   }
 }

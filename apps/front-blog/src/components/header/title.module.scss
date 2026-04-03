@@ -13,18 +13,18 @@
     > div {
       display: grid;
       grid-template-rows: 2fr 1fr;
-      padding-left: $size-16;
+      padding-left: var(--size-16);
 
       > .user-name {
-        padding: $size-8 0;
-        font-size: ($size-10 * 2); // 2fr
-        font-weight: $text-weight-semibold;
+        padding: var(--size-8) 0;
+        font-size: calc(var(--size-10) * 2); // 2fr
+        font-weight: var(--text-weight-semibold);
       }
 
       > .user-bio {
-        font-size: $size-10; // 1fr
+        font-size: var(--size-10); // 1fr
         color: var(--color-fg-muted);
-        letter-spacing: $size-letter-spacing-small;
+        letter-spacing: var(--size-letter-spacing-small);
       }
     }
   }

@@ -1,19 +1,19 @@
 .nav {
-  @include selector-scrollbar($size-2);
+  @include selector-scrollbar(0.125rem);
 
   position: sticky;
-  top: $size-header-height;
+  top: var(--size-header-height);
   box-sizing: border-box;
-  height: calc(100vh - $size-header-height);
-  padding: $size-article-padding-large $size-article-padding-small;
+  height: calc(100vh - var(--size-header-height));
+  padding: var(--size-article-padding-large) var(--size-article-padding-small);
   background-color: var(--color-bg-inset);
-  border-left: $border-default;
+  border-left: var(--border-default);
 
   > div {
     padding: 4px 8px;
     background-color: var(--color-bg-default);
-    border: $border-default;
-    border-radius: $size-border-radius;
+    border: var(--border-default);
+    border-radius: var(--size-border-radius);
   }
 
   @include screen(md) {
@@ -22,6 +22,7 @@
   }
 
   @include screen(lg) {
-    padding: $size-article-padding-large ($size-article-padding-small * 2) 0 0;
+    padding: var(--size-article-padding-large) calc(var(--size-article-padding-small) * 2)
+      0 0;
   }
 }

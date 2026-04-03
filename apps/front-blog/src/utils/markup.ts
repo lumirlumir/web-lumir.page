@@ -2,13 +2,28 @@
  * @fileoverview Defines markdown markup helpers.
  */
 
+/* eslint-disable import/prefer-default-export -- TODO */
+
 // --------------------------------------------------------------------------------
 // Import
 // --------------------------------------------------------------------------------
 
 import { rehypeImageLazyLoading, rehypeImageUrlReplace } from '@lumir/rehype-plugins';
+import { remarkHeadingFromTitle } from '@lumir/remark-plugins';
 import { rehype } from 'rehype';
+import { remark } from 'remark';
 import { GITHUB_REPO_FULL_NAME } from '@/constants';
+
+// --------------------------------------------------------------------------------
+// Typedef
+// --------------------------------------------------------------------------------
+
+interface MarkdownToHtmlOptions {
+  /**
+   * Prepend an H1 heading generated from the provided title.
+   */
+  title: string;
+}
 
 // --------------------------------------------------------------------------------
 // Export
@@ -17,7 +32,14 @@ import { GITHUB_REPO_FULL_NAME } from '@/constants';
 /**
  * Converts markdown content to HTML using GitHub's Markdown API.
  */ // TODO: Consolidate this with `./markdown-to-html.ts` and remove the GitHub API dependency.
-export async function markdownToHtml(markdown: string): Promise<string> {
+export async function markdownToHtml(
+  markdown: string,
+  options?: MarkdownToHtmlOptions,
+): Promise<string> {
+  const markdownFile = await remark()
+    .use(remarkHeadingFromTitle, options?.title)
+    .process(markdown);
+
   const response = await fetch('https://api.github.com/markdown', {
     method: 'POST',
     headers: {
@@ -27,7 +49,7 @@ export async function markdownToHtml(markdown: string): Promise<string> {
       'X-GitHub-Api-Version': '2022-11-28',
     },
     body: JSON.stringify({
-      text: String(markdown),
+      text: String(markdownFile),
       mode: 'gfm',
       context: GITHUB_REPO_FULL_NAME,
     }),
@@ -36,7 +58,7 @@ export async function markdownToHtml(markdown: string): Promise<string> {
 
   const html = await response.text();
 
-  const file = await rehype()
+  const htmlFile = await rehype()
     .data('settings', { fragment: true })
     .use(rehypeImageLazyLoading)
     .use(rehypeImageUrlReplace, {
@@ -45,12 +67,5 @@ export async function markdownToHtml(markdown: string): Promise<string> {
     })
     .process(html);
 
-  return String(file);
-}
-
-/**
- * Adds a title as a top-level heading to the given markdown content.
- */
-export function writeTitleIntoMarkdown(title: string, markdownContent: string) {
-  return `${title ? `# ${title}\n\n` : ''}${markdownContent}`;
+  return String(htmlFile);
 }

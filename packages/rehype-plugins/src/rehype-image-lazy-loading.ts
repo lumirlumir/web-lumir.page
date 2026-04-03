@@ -2,7 +2,7 @@
  * @fileoverview rehype-image-lazy-loading.
  */
 
-/* eslint-disable import/prefer-default-export */
+/* eslint-disable import/prefer-default-export -- TODO */
 
 // --------------------------------------------------------------------------------
 // Import

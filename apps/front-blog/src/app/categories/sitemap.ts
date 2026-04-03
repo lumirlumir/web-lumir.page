@@ -10,22 +10,15 @@ import { type MetadataRoute } from 'next';
 import { WEBSITE_URL } from '@/constants';
 import {
   listNonEmptyCategoryKeys,
-  loadMarkdownCollection,
+  markdownCollectionCategory,
 } from '@/utils/markdown-collection';
-
-// --------------------------------------------------------------------------------
-// Helper
-// --------------------------------------------------------------------------------
-
-const { category } = await loadMarkdownCollection();
-const categoryKeys = listNonEmptyCategoryKeys(category);
 
 // --------------------------------------------------------------------------------
 // Default Export
 // --------------------------------------------------------------------------------
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  return categoryKeys.map(categoryKey => ({
+  return listNonEmptyCategoryKeys(markdownCollectionCategory).map(categoryKey => ({
     url: `${WEBSITE_URL}/categories/${categoryKey}`,
     lastModified: new Date(),
     changeFrequency: 'weekly',

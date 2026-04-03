@@ -8,10 +8,11 @@
 
 import Link from 'next/link';
 import { type JSX, type PropsWithChildren } from 'react';
+import { cn } from '@lumir/utils';
 import { categoryMeta } from '@/data/category';
 import { frontmatterMeta } from '@/data/frontmatter';
-import { type VMarkdownFileMeta } from '@/data/v-markdown-file';
-import { markdownToHtml } from '@/utils';
+import { type VMarkdownFile } from '@/data/v-markdown-file';
+import { markdownToHtml } from '@/utils/markdown-to-html';
 import styles from './content.module.scss';
 
 // --------------------------------------------------------------------------------
@@ -36,23 +37,23 @@ function ContentBoxItem({ icon, text }: { icon: JSX.Element; text: string }) {
 // --------------------------------------------------------------------------------
 
 export default async function Content({
-  vMarkdownFileMeta: {
+  vMarkdownFile: {
     slug,
     data: { title, description, created, updated, categories },
   },
 }: {
-  vMarkdownFileMeta: VMarkdownFileMeta;
+  vMarkdownFile: VMarkdownFile;
 }) {
   return (
     <Link href={`/posts/${slug}`}>
       <div className={styles.content}>
         <div
-          className={`${styles.title} markdown-body`}
+          className={cn(styles.title, 'markdown-body')}
           dangerouslySetInnerHTML={{ __html: await markdownToHtml(title) }} // eslint-disable-line react/no-danger -- Safe because the title comes from the local file system and is controlled.
         />
 
         <div
-          className={`${styles.description} markdown-body`}
+          className={cn(styles.description, 'markdown-body')}
           dangerouslySetInnerHTML={{ __html: await markdownToHtml(description) }} // eslint-disable-line react/no-danger -- Safe because the description comes from the local file system and is controlled.
         />
 

@@ -2,6 +2,8 @@
  * @fileoverview frontmatter.
  */
 
+/* eslint-disable import/prefer-default-export -- TODO: Refactor to use named exports */
+
 // --------------------------------------------------------------------------------
 // Import
 // --------------------------------------------------------------------------------
@@ -17,7 +19,7 @@ import yaml from 'yaml';
  * Line endings can be CRLF (`\r\n`), CR (`\r`), or LF (`\n`) as per CommonMark specification.
  * @see https://spec.commonmark.org/0.31.2/#line-ending
  */
-export const frontmatterRegex =
+const frontmatterRegex =
   /^---(?:\r\n|[\r\n])(?:(?<yaml>[\s\S]*?)(?:\r\n|[\r\n]))?---(?:\r\n|[\r\n]|$)/;
 
 // --------------------------------------------------------------------------------

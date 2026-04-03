@@ -6,8 +6,7 @@
 // Import
 // --------------------------------------------------------------------------------
 
-import { strictEqual } from 'node:assert';
-import { describe, it } from 'vitest';
+import { assert, describe, it } from 'vitest';
 import { markdownToHtml } from './markdown-to-html.js';
 
 // --------------------------------------------------------------------------------
@@ -20,14 +19,14 @@ describe('markdown-to-html', () => {
       const markdown = '한글 유니코드(Unicode)';
       const html = '<p>한글 유니코드(Unicode)</p>';
 
-      strictEqual(await markdownToHtml(markdown), html);
+      assert.strictEqual(await markdownToHtml(markdown), html);
     });
 
     it('should convert plain text - 2', async () => {
       const markdown = "GitHub's classic branch protection rules";
       const html = "<p>GitHub's classic branch protection rules</p>";
 
-      strictEqual(await markdownToHtml(markdown), html);
+      assert.strictEqual(await markdownToHtml(markdown), html);
     });
 
     it('should convert plain text - 3', async () => {
@@ -36,7 +35,7 @@ describe('markdown-to-html', () => {
       const html =
         '<p>Next.js에서 File-based Metadata를 이용할 때, Favicon이 정상적으로 반영되지 않는 현상</p>';
 
-      strictEqual(await markdownToHtml(markdown), html);
+      assert.strictEqual(await markdownToHtml(markdown), html);
     });
 
     it('should convert Markdown `inlineCode` syntax - 1', async () => {
@@ -44,7 +43,7 @@ describe('markdown-to-html', () => {
       const html =
         '<p>HTML에서 공백을 다루는 방법: <code>&#x26;nbsp;</code>, <code>&#x26;ensp;</code>, <code>&#x26;emsp;</code></p>';
 
-      strictEqual(await markdownToHtml(markdown), html);
+      assert.strictEqual(await markdownToHtml(markdown), html);
     });
 
     it('should convert Markdown `inlineCode` syntax - 2', async () => {
@@ -53,7 +52,7 @@ describe('markdown-to-html', () => {
       const html =
         '<p>자바스크립트 CommonJS 및 ES 모듈 내보내기/불러오기 (<code>require</code> 및 <code>import</code>)</p>';
 
-      strictEqual(await markdownToHtml(markdown), html);
+      assert.strictEqual(await markdownToHtml(markdown), html);
     });
 
     it('should convert Markdown `inlineCode` syntax with HTML tags', async () => {
@@ -61,14 +60,14 @@ describe('markdown-to-html', () => {
       const html =
         '<p><code>&#x3C;b></code> <code>&#x3C;i></code> <em><strong>Tag</strong></em>와 <code>&#x3C;strong></code> <code>&#x3C;em></code> <em><strong>Tag</strong></em>의 차이점</p>';
 
-      strictEqual(await markdownToHtml(markdown), html);
+      assert.strictEqual(await markdownToHtml(markdown), html);
     });
 
     it('should convert Markdown `strong` and `emphasis` syntax', async () => {
       const markdown = '자바스크립트(***JavaScript***)의 구성';
       const html = '<p>자바스크립트(<em><strong>JavaScript</strong></em>)의 구성</p>';
 
-      strictEqual(await markdownToHtml(markdown), html);
+      assert.strictEqual(await markdownToHtml(markdown), html);
     });
   });
 
@@ -77,7 +76,7 @@ describe('markdown-to-html', () => {
       const markdown = '마크다운<sup>Markdown</sup>의 모든 것';
       const html = '<p>마크다운<sup>Markdown</sup>의 모든 것</p>';
 
-      strictEqual(await markdownToHtml(markdown), html);
+      assert.strictEqual(await markdownToHtml(markdown), html);
     });
 
     it('should add `loading="lazy"` to `<img>` tags', async () => {
@@ -85,14 +84,14 @@ describe('markdown-to-html', () => {
       const html =
         '<p><img src="https://example.com/image.png" alt="alt" loading="lazy"></p>';
 
-      strictEqual(await markdownToHtml(markdown), html);
+      assert.strictEqual(await markdownToHtml(markdown), html);
     });
 
     it('should replace image URLs starting with `/public`', async () => {
       const markdown = '![alt](/public/image.png)';
       const html = '<p><img src="/image.png" alt="alt" loading="lazy"></p>';
 
-      strictEqual(await markdownToHtml(markdown), html);
+      assert.strictEqual(await markdownToHtml(markdown), html);
     });
   });
 });

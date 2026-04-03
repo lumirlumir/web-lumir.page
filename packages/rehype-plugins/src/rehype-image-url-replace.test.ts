@@ -6,9 +6,8 @@
 // Import
 // --------------------------------------------------------------------------------
 
-import { strictEqual } from 'node:assert';
 import { rehype } from 'rehype';
-import { describe, it } from 'vitest';
+import { assert, describe, it } from 'vitest';
 import { rehypeImageUrlReplace } from './rehype-image-url-replace.js';
 
 // --------------------------------------------------------------------------------
@@ -26,7 +25,7 @@ describe('rehype-image-url-replace', () => {
         })
         .process('<img src="/public/images/example.png">');
 
-      strictEqual(file.value, '<img src="/images/example.png">');
+      assert.strictEqual(file.value, '<img src="/images/example.png">');
     });
 
     it('should replace all matching image URLs', async () => {
@@ -45,7 +44,7 @@ describe('rehype-image-url-replace', () => {
           ].join('\n'),
         );
 
-      strictEqual(
+      assert.strictEqual(
         file.value,
         [
           '<img src="/images/example-1.png">',
@@ -65,7 +64,7 @@ describe('rehype-image-url-replace', () => {
         })
         .process('<img src="/public/images/example.png">');
 
-      strictEqual(file.value, '<img src="/images/example.png">');
+      assert.strictEqual(file.value, '<img src="/images/example.png">');
     });
   });
 
@@ -79,7 +78,7 @@ describe('rehype-image-url-replace', () => {
         })
         .process('<img src="/assets/example.png">');
 
-      strictEqual(file.value, '<img src="/assets/example.png">');
+      assert.strictEqual(file.value, '<img src="/assets/example.png">');
     });
   });
 });

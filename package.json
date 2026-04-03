@@ -12,8 +12,12 @@
   ],
   "scripts": {
     "prepare": "husky",
-    "test": "vitest run --coverage --exclude=\"packages/react-kit/**\" && npm run test:pkg:rk",
+    "test": "vitest run --coverage",
+    "test:a:fb": "npm run test:unit -w apps/front-blog",
     "test:pkg:rk": "npm run test:unit -w packages/react-kit",
+    "test:pkg:rhp": "npm run test:unit -w packages/rehype-plugins",
+    "test:pkg:rmp": "npm run test:unit -w packages/remark-plugins",
+    "test:pkg:u": "npm run test:unit -w packages/utils",
     "dev": "npm-run-all -c -l -p dev:pkg:* dev:a:fb",
     "dev:a:fb": "npm run dev -w apps/front-blog",
     "dev:pkg:rk": "npm run dev -w packages/react-kit",
@@ -44,7 +48,7 @@
   "devDependencies": {
     "@types/node": "^20.19.30",
     "@vitest/coverage-v8": "^4.1.1",
-    "clang-format-git": "^3.0.0",
+    "clang-format-git": "^3.0.1",
     "editorconfig-checker": "^6.1.1",
     "eslint": "^9.39.4",
     "eslint-config-bananass": "^0.6.0",
@@ -55,8 +59,9 @@
     "npm-run-all2": "^8.0.4",
     "prettier": "^3.8.1",
     "stylelint": "^16.26.1",
-    "stylelint-config-recess-order": "^7.4.0",
+    "stylelint-config-recess-order": "^7.7.0",
     "stylelint-config-standard-scss": "^16.0.0",
-    "typescript": "^6.0.2"
+    "typescript": "^6.0.2",
+    "vitest": "^4.1.1"
   }
 }

@@ -10,19 +10,13 @@ import { Suspense } from 'react';
 import Content from '@/components/article/content';
 import Loading from '@/components/common/loading';
 import { type CategoryKey } from '@/data/category';
-import { type FrontmatterKeySortable } from '@/data/frontmatter';
+import { type SortableFrontmatterKey } from '@/data/frontmatter';
 import { type SortKey } from '@/data/sort';
-import { compareMarkdownDocument } from '@/utils/compare';
 import {
   listNonEmptyCategoryKeys,
-  loadMarkdownCollection,
+  markdownCollectionCategory,
 } from '@/utils/markdown-collection';
-
-// --------------------------------------------------------------------------------
-// Helper
-// --------------------------------------------------------------------------------
-
-const { category } = await loadMarkdownCollection();
+import { compareMarkdownDocument } from '@/utils/compare';
 
 // --------------------------------------------------------------------------------
 // Named Export
@@ -38,10 +32,10 @@ export const dynamicParams = false;
  * @see https://nextjs.org/docs/app/api-reference/functions/generate-static-params
  */
 export async function generateStaticParams(): Promise<
-  Awaited<PageProps<'/categories/[tag]'>['params']>[]
+  Awaited<PageProps<'/categories/[category]'>['params']>[]
 > {
-  return listNonEmptyCategoryKeys(category).map(categoryKey => ({
-    tag: categoryKey,
+  return listNonEmptyCategoryKeys(markdownCollectionCategory).map(category => ({
+    category,
   }));
 }
 
@@ -52,11 +46,11 @@ export async function generateStaticParams(): Promise<
 export default async function Page({
   params,
   searchParams,
-}: PageProps<'/categories/[tag]'>) {
-  const { tag } = await params;
+}: PageProps<'/categories/[category]'>) {
+  const { category } = await params;
   const { sort, order } = await searchParams; // TODO: Rename `sort` and `order`.
 
-  const normalizedSort: FrontmatterKeySortable =
+  const normalizedSort: SortableFrontmatterKey =
     sort === 'title' || sort === 'created' || sort === 'updated' ? sort : 'updated';
   const normalizedOrder: SortKey = order === 'asc' || order === 'desc' ? order : 'desc';
 
@@ -65,10 +59,10 @@ export default async function Page({
       key={normalizedSort + normalizedOrder}
       fallback={<Loading content="목록" />}
     >
-      {category[tag as CategoryKey]
+      {markdownCollectionCategory[category as CategoryKey]
         ?.toSorted(compareMarkdownDocument(normalizedSort, normalizedOrder))
-        .map(vMarkdownFileMeta => (
-          <Content key={vMarkdownFileMeta.slug} vMarkdownFileMeta={vMarkdownFileMeta} />
+        .map(vMarkdownFile => (
+          <Content key={vMarkdownFile.slug} vMarkdownFile={vMarkdownFile} />
         ))}
     </Suspense>
   );

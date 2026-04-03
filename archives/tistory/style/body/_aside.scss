@@ -1,5 +1,3 @@
-/* stylelint-disable */
-
 aside {
   /* Import */
   @include glb_flex($_flex: column, $_justify-content: flex-start, $_align-items: left);

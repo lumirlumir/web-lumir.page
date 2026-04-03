@@ -13,6 +13,7 @@
 // --------------------------------------------------------------------------------
 
 import { useContext } from 'react';
+import { cn } from '@lumir/utils';
 import { ThemeContext } from '@/components/common/theme-provider';
 
 import styles from './dark-mode-toggle.module.scss';
@@ -22,14 +23,14 @@ import styles from './dark-mode-toggle.module.scss';
 // --------------------------------------------------------------------------------
 
 export default function DarkModeToggle() {
-  const { theme, toggleTheme } = useContext(ThemeContext)!; // TODO: Create `useToggle` hook later.
+  const { theme, toggleTheme } = useContext(ThemeContext)!; // TODO: Refactor `ThemeContext` later.
 
   return (
     <div className={styles['dark-mode-toggle']}>
       {Boolean(theme) && (
         <button
           type="button"
-          className={`${styles['mode-switcher']} ${theme === 'dark' ? '' : styles.active}`}
+          className={cn(styles['mode-switcher'], theme !== 'dark' && styles.active)}
           onClick={toggleTheme}
         >
           <span className={styles['mode-switcher-main-body']} />
