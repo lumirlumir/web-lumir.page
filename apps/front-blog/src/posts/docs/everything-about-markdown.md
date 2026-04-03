@@ -2,7 +2,7 @@
 title: '마크다운<sup>Markdown</sup>의 모든 것'
 description: '마크다운<sup>Markdown</sup> 및 GFM<sup>GitHub Flavored Markdown</sup>에 대한 개념, 문법, 사용법, 활용법 총 정리.'
 created: '2024-05-25'
-updated: '2026-04-04'
+updated: '2026-04-03'
 categories:
   - 'markdown'
 ---
