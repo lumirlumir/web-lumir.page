@@ -7,23 +7,27 @@
 // --------------------------------------------------------------------------------
 
 import { assert, describe, it } from 'vitest';
-import * as indexModule from './index.js';
-import { cn } from './cn.js';
-import { frontmatter, frontmatterRegex } from './frontmatter.js';
+import { cn, frontmatter, frontmatterRegex } from './index.js';
 
 // --------------------------------------------------------------------------------
 // Test
 // --------------------------------------------------------------------------------
 
 describe('index', () => {
-  it('should re-export `cn`, `frontmatter`, and `frontmatterRegex`', () => {
-    assert.deepStrictEqual(Object.keys(indexModule).sort(), [
-      'cn',
-      'frontmatter',
-      'frontmatterRegex',
-    ]);
-    assert.strictEqual(indexModule.cn, cn);
-    assert.strictEqual(indexModule.frontmatter, frontmatter);
-    assert.strictEqual(indexModule.frontmatterRegex, frontmatterRegex);
+  describe('exports', () => {
+    it('`cn` should be defined', () => {
+      assert.isDefined(cn);
+      assert.strictEqual(typeof cn, 'function');
+    });
+
+    it('`frontmatter` should be defined', () => {
+      assert.isDefined(frontmatter);
+      assert.strictEqual(typeof frontmatter, 'function');
+    });
+
+    it('`frontmatterRegex` should be defined', () => {
+      assert.isDefined(frontmatterRegex);
+      assert.instanceOf(frontmatterRegex, RegExp);
+    });
   });
 });

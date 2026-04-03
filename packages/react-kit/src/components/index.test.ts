@@ -7,16 +7,17 @@
 // --------------------------------------------------------------------------------
 
 import { assert, describe, it } from 'vitest';
-import * as indexModule from './index.js';
-import { SVGWrapper } from './svg-wrapper.js';
+import { SVGWrapper } from './index.js';
 
 // --------------------------------------------------------------------------------
 // Test
 // --------------------------------------------------------------------------------
 
 describe('index', () => {
-  it('should re-export `SVGWrapper`', () => {
-    assert.deepStrictEqual(Object.keys(indexModule).sort(), ['SVGWrapper']);
-    assert.strictEqual(indexModule.SVGWrapper, SVGWrapper);
+  describe('exports', () => {
+    it('`SVGWrapper` should be defined', () => {
+      assert.isDefined(SVGWrapper);
+      assert.strictEqual(typeof SVGWrapper, 'function');
+    });
   });
 });

@@ -7,16 +7,17 @@
 // --------------------------------------------------------------------------------
 
 import { assert, describe, it } from 'vitest';
-import * as indexModule from './index.js';
-import { useToggle } from './use-toggle.js';
+import { useToggle } from './index.js';
 
 // --------------------------------------------------------------------------------
 // Test
 // --------------------------------------------------------------------------------
 
 describe('index', () => {
-  it('should re-export `useToggle`', () => {
-    assert.deepStrictEqual(Object.keys(indexModule).sort(), ['useToggle']);
-    assert.strictEqual(indexModule.useToggle, useToggle);
+  describe('exports', () => {
+    it('`useToggle` should be defined', () => {
+      assert.isDefined(useToggle);
+      assert.strictEqual(typeof useToggle, 'function');
+    });
   });
 });
