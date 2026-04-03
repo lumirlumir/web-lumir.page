@@ -13,7 +13,7 @@ import {
   markdownCollectionSlug,
 } from '@/utils/markdown-collection';
 import { markdownToText } from '@/utils/markdown-to-text';
-import { markdownToHtml, writeTitleIntoMarkdown } from '@/utils/markup';
+import { markdownToHtml } from '@/utils/markup';
 
 // --------------------------------------------------------------------------------
 // Named Export
@@ -66,7 +66,7 @@ export default async function Page({ params }: PageProps<'/posts/[markdown]'>) {
     <Katex
       className="markdown-body"
       dangerouslySetInnerHTML={{
-        __html: await markdownToHtml(writeTitleIntoMarkdown(title, content)),
+        __html: await markdownToHtml(content, { title }),
       }}
     />
   );
