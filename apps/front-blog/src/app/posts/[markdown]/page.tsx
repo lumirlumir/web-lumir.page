@@ -12,8 +12,8 @@ import {
   markdownCollectionAll,
   markdownCollectionSlug,
 } from '@/utils/markdown-collection';
+import { markdownToHtml } from '@/utils/markdown-to-html';
 import { markdownToText } from '@/utils/markdown-to-text';
-import { markdownToHtml } from '@/utils/markup';
 
 // --------------------------------------------------------------------------------
 // Named Export

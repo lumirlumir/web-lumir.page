@@ -38,6 +38,18 @@ interface MarkdownToHtmlOptions {
  * Converts markdown content to HTML asynchronously using `unified` with `remark` and `rehype`.
  * @param markdown The markdown content to convert.
  * @param options Optional settings for the conversion process.
+ * @example
+ * ```ts
+ * import { markdownToHtml } from '@/utils/markdown-to-html';
+ *
+ * const markdown = 'Foo Bar Baz';
+ * const html = await markdownToHtml(markdown, { title: 'Awesome Title' });
+ *
+ * console.log(html);
+ * // Output:
+ * // <h1>Awesome Title</h1>
+ * // <p>Foo Bar Baz</p>
+ * ```
  */
 export async function markdownToHtml(
   markdown: string,
