@@ -2,7 +2,7 @@
 title: '마크다운<sup>Markdown</sup> 치환자 구조를 만들어보자'
 description: '깃허브 마크다운 API와 치환자 구조를 활용해 MDX처럼 확장성 있는 정적 블로그 환경을 만들며, 치환자 구조와 정규표현식을 통한 마크다운 전처리로 커스텀 컴포넌트를 적용한다.'
 created: '2024-10-26'
-updated: '2024-10-26'
+updated: '2026-04-03'
 categories:
   - 'markdown'
   - 'javascript'
@@ -88,7 +88,7 @@ You can do this in two steps:
 The exact approach depends on your existing page setup, so let's walk through some details.
 ```
 
-아래 치환자를 통해 URI Fragment를 설정한다. (URI Fragment란, `https://www.example.com#fragment`에서 `#frament` 부분을 뜻한다.)
+아래 치환자를 통해 URI Fragment를 설정한다. (URI Fragment란, `https://www.example.com#fragment`에서 `#fragment` 부분을 뜻한다.)
 
 ```txt
 {/* ... */}
