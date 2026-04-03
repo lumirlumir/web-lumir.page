@@ -1,7 +1,10 @@
 /**
  * @fileoverview Defines the helper functions for converting markdown content to HTML.
+ * @see https://github.com/remarkjs/remark-gfm (`remark-gfm`)
+ * @see https://github.com/remarkjs/remark-math (`remark-math`)
  * @see https://github.com/remarkjs/remark/tree/main/packages/remark-parse#remark-parse (`remark-parse`)
  * @see https://github.com/remarkjs/remark-rehype#readme (`remark-rehype`)
+ * @see https://github.com/remarkjs/remark-math/tree/main/packages/rehype-katex#rehype-katex (`rehype-katex`)
  * @see https://github.com/rehypejs/rehype-starry-night (`rehype-starry-night`)
  * @see https://github.com/rehypejs/rehype/tree/main/packages/rehype-stringify#rehype-stringify (`rehype-stringify`)
  * @see https://github.com/unifiedjs/unified#readme (`unified`)
@@ -15,8 +18,11 @@
 
 import { rehypeImageLazyLoading, rehypeImageUrlReplace } from '@lumir/rehype-plugins';
 import { remarkHeadingFromTitle } from '@lumir/remark-plugins';
+import remarkGfm from 'remark-gfm';
+import remarkMath from 'remark-math';
 import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
+import rehypeKatex from 'rehype-katex';
 import rehypeStarryNight from 'rehype-starry-night';
 import rehypeStringify from 'rehype-stringify';
 import { unified } from 'unified';
@@ -59,14 +65,17 @@ export async function markdownToHtml(
 ): Promise<string> {
   const file = await unified()
     .use(remarkParse)
+    .use(remarkGfm) // TODO: add tests in https://github.com/remarkjs/remark-gfm?tab=readme-ov-file#use
+    .use(remarkMath) // TODO: add tests in https://github.com/remarkjs/remark-math
     .use(remarkHeadingFromTitle, options?.title)
     .use(remarkRehype, { allowDangerousHtml: true })
+    .use(rehypeStarryNight)
+    .use(rehypeKatex) // TODO: add tests
     .use(rehypeImageLazyLoading)
     .use(rehypeImageUrlReplace, {
       searchValue: /^\/public/,
       replaceValue: '',
     })
-    .use(rehypeStarryNight)
     .use(rehypeStringify, { allowDangerousHtml: true })
     .process(markdown);
 

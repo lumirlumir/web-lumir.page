@@ -1144,13 +1144,19 @@ Markdown style은 사이즈 조절 기능이 없기 때문에, HTML `<img src=""
 
   ```md
   **The Cauchy-Schwarz Inequality**
-  $$\left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)$$
+
+  $$
+  \left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)
+  $$
   ```
 
 - 출력
 
   **The Cauchy-Schwarz Inequality**
-  $$\left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)$$
+
+  $$
+  \left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)
+  $$
 
 ### 3-3. 알림 상자(경고)
 
