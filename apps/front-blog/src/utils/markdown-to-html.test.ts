@@ -69,6 +69,16 @@ describe('markdown-to-html', () => {
 
       assert.strictEqual(await markdownToHtml(markdown), html);
     });
+
+    it('should add an H1 heading when `title` option is provided', async () => {
+      const markdown = 'Foo Bar Baz';
+      const html = '<h1>Awesome Title</h1>\n<p>Foo Bar Baz</p>';
+
+      assert.strictEqual(
+        await markdownToHtml(markdown, { title: 'Awesome Title' }),
+        html,
+      );
+    });
   });
 
   describe('HTML', () => {
