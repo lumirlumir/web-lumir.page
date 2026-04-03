@@ -88,7 +88,7 @@ You can do this in two steps:
 The exact approach depends on your existing page setup, so let's walk through some details.
 ```
 
-아래 치환자를 통해 URI Fragment를 설정한다. (URI Fragment란, `https://www.example.com#fragment`에서 `#frament` 부분을 뜻한다.)
+아래 치환자를 통해 URI Fragment를 설정한다. (URI Fragment란, `https://www.example.com#fragment`에서 `#fragment` 부분을 뜻한다.)
 
 ```txt
 {/* ... */}
