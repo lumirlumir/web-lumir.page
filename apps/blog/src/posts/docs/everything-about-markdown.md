@@ -5,6 +5,17 @@ created: '2024-05-25'
 updated: '2026-04-04'
 categories:
   - 'markdown'
+references:
+  - 'https://www.heropy.dev/p/B74sNE'
+  - 'https://jaime-note.tistory.com/343'
+  - 'https://gist.github.com/ihoneymon/652be052a0727ad59601'
+  - 'https://inpa.tistory.com/entry/MarkDown-%F0%9F%93%9A-%EB%A7%88%ED%81%AC%EB%8B%A4%EC%9A%B4-%EB%AC%B8%EB%B2%95-%F0%9F%92%AF-%EC%A0%95%EB%A6%AC#table_%ED%85%8C%EC%9D%B4%EB%B8%94'
+  - 'https://github.com/DavidAnson/markdownlint/tree/v0.33.0?tab=readme-ov-file#readme'
+  - 'https://docs.github.com/ko/get-started/writing-on-github/working-with-advanced-formatting/writing-mathematical-expressions'
+  - 'https://github.github.com/gfm'
+  - 'https://github.github.com/gfm/#disallowed-raw-html-extension-'
+  - 'https://docs.github.com/ko/get-started/writing-on-github/working-with-advanced-formatting/autolinked-references-and-urls#urls'
+  - 'https://docs.github.com/ko/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax'
 ---
 
 <!-- markdownlint-disable MD003 MD004 MD024 MD029 MD033 MD035 MD046 MD049 MD050 MD055 MD060 -->
@@ -1394,16 +1405,3 @@ guidelines for this project](docs/CONTRIBUTING.md)
 또한, ***MS Word***에도 적용할 수 있다. 뷰<sup>View</sup> 영역의 항목을 그대로 붙여 넣거나, HTML 내보내기 등으로 생성한 파일을 불러오는 형태로 사용한다. 적용한 제목<sup>Heading</sup>을 ***MS Word***가 읽어 들이면서 목차에 적용하기 때문에, 목차를 손쉽게 만들 수 있다.
 
 그리고, 마크다운의 각 문법은 HTML로 변환되어 CSS와 함께 출력되기 때문에, 화면에 표시되는 모양은 사용하는 곳의 스타일 구성에 따라 달라진다. 따라서, 눈에 보이는 스타일이 아닌 각 문법의 의미에 맞게 사용해야 한다.
-
-## Reference
-
-- <https://www.heropy.dev/p/B74sNE>
-- <https://jaime-note.tistory.com/343>
-- <https://gist.github.com/ihoneymon/652be052a0727ad59601>
-- <https://inpa.tistory.com/entry/MarkDown-%F0%9F%93%9A-%EB%A7%88%ED%81%AC%EB%8B%A4%EC%9A%B4-%EB%AC%B8%EB%B2%95-%F0%9F%92%AF-%EC%A0%95%EB%A6%AC#table_%ED%85%8C%EC%9D%B4%EB%B8%94>
-- <https://github.com/DavidAnson/markdownlint/tree/v0.33.0?tab=readme-ov-file#readme>
-- <https://docs.github.com/ko/get-started/writing-on-github/working-with-advanced-formatting/writing-mathematical-expressions>
-- <https://github.github.com/gfm> (GFM)
-- <https://github.github.com/gfm/#disallowed-raw-html-extension-> (GFM)
-- <https://docs.github.com/ko/get-started/writing-on-github/working-with-advanced-formatting/autolinked-references-and-urls#urls> (GFM)
-- <https://docs.github.com/ko/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax> (GFM)

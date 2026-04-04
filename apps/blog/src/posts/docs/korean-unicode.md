@@ -6,6 +6,7 @@ updated: '2025-03-21'
 categories:
   - 'markdown'
   - 'cs'
+references: []
 ---
 
 <!-- markdownlint-disable MD028 -->

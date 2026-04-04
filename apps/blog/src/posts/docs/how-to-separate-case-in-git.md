@@ -5,6 +5,10 @@ created: '2024-08-09'
 updated: '2024-08-09'
 categories:
   - 'git'
+references:
+  - 'https://kangdanne.tistory.com/148'
+  - 'https://progyu.github.io/2019/11/02/191102-TIL-git-%ED%8F%B4%EB%8D%94%EB%AA%85-%EB%B3%80%EA%B2%BD%ED%95%98%EA%B8%B0/'
+  - 'https://papababo.tistory.com/entry/git-%EC%9D%80-%ED%8F%B4%EB%8D%94%ED%8C%8C%EC%9D%BC%EB%AA%85%EC%9D%98-%EB%8C%80%EC%86%8C%EB%AC%B8%EC%9E%90%EB%A5%BC-%EA%B0%9C%EB%AC%B4%EC%8B%9C%ED%95%9C%EB%8B%A4-%EA%B7%B8%EB%9F%BC-%EC%9A%B0%EC%A7%B8'
 ---
 
 파일 `myComponent.jsx`를 `MyComponent.jsx`로 변경하는 경우, 디렉토리 `Src`를 `src`로 변경하는 경우 등, '대ㆍ소문자만 변경된 파일 혹은 디렉토리'가 정상 추적되지 않는 경우가 존재한다.
@@ -49,9 +53,3 @@ git mv oldName newName
 git mv oldName temp
 git mv temp newName
 ```
-
-## Reference
-
-- <https://kangdanne.tistory.com/148>
-- <https://progyu.github.io/2019/11/02/191102-TIL-git-%ED%8F%B4%EB%8D%94%EB%AA%85-%EB%B3%80%EA%B2%BD%ED%95%98%EA%B8%B0/>
-- <https://papababo.tistory.com/entry/git-%EC%9D%80-%ED%8F%B4%EB%8D%94%ED%8C%8C%EC%9D%BC%EB%AA%85%EC%9D%98-%EB%8C%80%EC%86%8C%EB%AC%B8%EC%9E%90%EB%A5%BC-%EA%B0%9C%EB%AC%B4%EC%8B%9C%ED%95%9C%EB%8B%A4-%EA%B7%B8%EB%9F%BC-%EC%9A%B0%EC%A7%B8>

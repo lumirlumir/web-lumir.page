@@ -45,6 +45,11 @@ interface MarkdownToHtmlOptions {
    * Prepend an H1 heading generated from the provided title.
    */
   title?: string;
+
+  /**
+   * Append a reference section generated from the provided URLs.
+   */
+  references?: string[];
 }
 
 // --------------------------------------------------------------------------------
@@ -72,6 +77,7 @@ export async function markdownToHtml(
   markdown: string,
   options?: MarkdownToHtmlOptions,
 ): Promise<string> {
+  const markdownWithReferences = appendMarkdownReferences(markdown, options?.references);
   const file = await unified()
     .use(remarkParse)
     .use(remarkGfm)
@@ -91,9 +97,25 @@ export async function markdownToHtml(
       replaceValue: '',
     })
     .use(rehypeStringify, { allowDangerousHtml: true })
-    .process(markdown);
+    .process(markdownWithReferences);
 
   return String(file);
+}
+
+/**
+ * Appends a `Reference` section to markdown content when URLs are provided.
+ * @param markdown The markdown content to extend.
+ * @param references The reference URLs to append.
+ */
+export function appendMarkdownReferences(
+  markdown: string,
+  references?: string[],
+): string {
+  if (!references || references.length === 0) {
+    return markdown;
+  }
+
+  return `${markdown}\n\n## Reference\n\n${references.map(reference => `- <${reference}>`).join('\n')}`;
 }
 
 /**

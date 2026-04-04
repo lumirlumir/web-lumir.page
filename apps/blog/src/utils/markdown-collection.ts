@@ -31,6 +31,7 @@ import { type VMarkdownFile } from '@/data/v-markdown-file';
  *       created: '2024-01-01',
  *       updated: '2024-01-02',
  *       categories: ['tech', 'news'],
+ *       references: ['https://example.com'],
  *     },
  *     content: '# Example Post\n\nThis is the content of the example post.',
  *   },
@@ -54,6 +55,7 @@ export type MarkdownCollectionAll = readonly VMarkdownFile[];
  *       created: '2024-01-01',
  *       updated: '2024-01-02',
  *       categories: ['tech', 'news'],
+ *       references: ['https://example.com'],
  *     },
  *     content: '# Example Post\n\nThis is the content of the example post.',
  *   },
@@ -78,6 +80,7 @@ export type MarkdownCollectionSlug = Record<string, VMarkdownFile>;
  *         created: '2024-01-01',
  *         updated: '2024-01-02',
  *         categories: ['tech', 'news'],
+ *         references: ['https://example.com'],
  *       },
  *       content: '# Example Post\n\nThis is the content of the example post.',
  *     },
@@ -92,6 +95,7 @@ export type MarkdownCollectionSlug = Record<string, VMarkdownFile>;
  *         created: '2024-01-01',
  *         updated: '2024-01-02',
  *         categories: ['tech', 'news'],
+ *         references: ['https://example.com'],
  *       },
  *       content: '# Example Post\n\nThis is the content of the example post.',
  *     },
@@ -127,6 +131,7 @@ Expected frontmatter format:
   - \`created: string\`
   - \`updated: string\`
   - \`categories: CategoryKey[]\`
+  - \`references: string[]\`
 
 Received data: \`${JSON.stringify(data, null, 2)}\`
 `,
@@ -154,6 +159,7 @@ Received data: \`${JSON.stringify(data, null, 2)}\`
  *       created: '2024-01-01',
  *       updated: '2024-01-02',
  *       categories: ['tech', 'news'],
+ *       references: ['https://example.com'],
  *     },
  *     content: '# Example Post\n\nThis is the content of the example post.',
  *   },
@@ -177,6 +183,7 @@ const markdownCollectionAll: MarkdownCollectionAll = vMarkdownFiles;
  *       created: '2024-01-01',
  *       updated: '2024-01-02',
  *       categories: ['tech', 'news'],
+ *       references: ['https://example.com'],
  *     },
  *     content: '# Example Post\n\nThis is the content of the example post.',
  *   },
@@ -252,7 +259,11 @@ function isFrontmatter(data: unknown): data is Frontmatter {
     // check `categories`
     'categories' in data &&
     Array.isArray(data.categories) &&
-    data.categories.every(category => categoryKeys.includes(category))
+    data.categories.every(category => categoryKeys.includes(category)) &&
+    // check `references`
+    'references' in data &&
+    Array.isArray(data.references) &&
+    data.references.every(reference => typeof reference === 'string')
   );
 }
 

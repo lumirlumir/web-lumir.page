@@ -5,6 +5,7 @@ created: '2024-05-26'
 updated: '2024-05-26'
 categories:
   - 'vscode'
+references: []
 ---
 
 ***VScode***(Visual Studio Code)와 ***Visual Studio***의 차이점을 알아보자.

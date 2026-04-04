@@ -5,6 +5,9 @@ created: '2024-04-02'
 updated: '2024-07-22'
 categories:
   - 'nodejs'
+references:
+  - 'https://www.daleseo.com/js-module-require/#%EC%A3%BC%EC%9D%98-%EC%82%AC%ED%95%AD'
+  - 'https://www.daleseo.com/js-module-import/#%EB%8B%A8%EC%9D%BC-%EA%B0%9D%EC%B2%B4-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0'
 ---
 
 자바스크립트 개발을 하다보면 `require`나 `import` 키워드를 통해 외부 라이브러리를 불러오는 코드를 자주 보게 된다. `require`는 Node.js에서 예전부터 사용되고 있는 CommonJS의 키워드이고, `import`는 ES6(ES2015)에서 새롭게 도입되어 현재 자바스크립트 생태계에서 표준이 되어가고 있는 키워드이다. 두 개의 키워드 모두 하나의 파일에서 다른 파일의 코드를 불러온다는 동일한 목적을 가지고 있지만, 비슷한듯 약간씩 다른 문법 때문에 개발자들을 혼란스럽게 하기도 한다.
@@ -311,8 +314,3 @@ console.log(currency.usToCanadian(30));
 ## 3. 마치면서
 
 한 가지 주의할 점은 Babel 없이 순수하게 Node.js 최신 버전으로 ES 모듈을 사용하고 있다면, `import`를 사용할 때 `.js` 확장자를 붙여주어야 한다.
-
-## Reference
-
-- <https://www.daleseo.com/js-module-require/#%EC%A3%BC%EC%9D%98-%EC%82%AC%ED%95%AD>
-- <https://www.daleseo.com/js-module-import/#%EB%8B%A8%EC%9D%BC-%EA%B0%9D%EC%B2%B4-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0>

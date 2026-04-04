@@ -5,6 +5,11 @@ created: '2024-07-20'
 updated: '2024-07-22'
 categories:
   - 'nodejs'
+references:
+  - 'https://github.com/nvm-sh/nvm'
+  - 'https://chatgpt.com/share/10d12a70-cc6e-4770-9318-24b864d5d8d6'
+  - 'https://velog.io/@hyevvy/nvm%EA%B3%BC-nvmrc'
+  - 'https://univdev.page/posts/nvmrc/'
 ---
 
 Node.js 작업 간, 원활한 협업을 위해 사용하는 `nvm`과 `.nvmrc`에 대해 알아보자.
@@ -55,10 +60,3 @@ nvm install
 ```sh
 nvm use
 ```
-
-## Reference
-
-- <https://github.com/nvm-sh/nvm>
-- <https://chatgpt.com/share/10d12a70-cc6e-4770-9318-24b864d5d8d6>
-- <https://velog.io/@hyevvy/nvm%EA%B3%BC-nvmrc>
-- <https://univdev.page/posts/nvmrc/>

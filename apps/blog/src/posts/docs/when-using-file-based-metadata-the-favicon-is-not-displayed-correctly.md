@@ -5,6 +5,9 @@ created: '2024-09-18'
 updated: '2024-09-18'
 categories:
   - 'nextjs'
+references:
+  - 'https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons'
+  - 'https://nextjs.org/docs/app/building-your-application/optimizing/metadata#file-based-metadata'
 ---
 
 Next.js의 App Router에서는 [File-based Metadata](https://nextjs.org/docs/app/building-your-application/optimizing/metadata#file-based-metadata)를 이용하여, Favicon을 설정할 수 있다. 하지만, `app` 혹은 `src/app` 등 공식 문서에서 언급된 정상 경로에 Favicon 파일을 두었음에도, 해당 Favicon으로 변경되지 않는 문제가 발생한다.
@@ -31,8 +34,3 @@ Favicon은 브라우저가 강하게 캐싱하는 대표적인 파일이기에, 
 - 개발자 도구를 켠 상태로, 마우스 좌측 버튼을 길게 누르고 있는 경우.
 
     ![alt text](/apps/blog/public/images/posts/when-using-file-based-metadata-the-favicon-is-not-displayed-correctly/3.webp)
-
-## Reference
-
-- <https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons>
-- <https://nextjs.org/docs/app/building-your-application/optimizing/metadata#file-based-metadata>

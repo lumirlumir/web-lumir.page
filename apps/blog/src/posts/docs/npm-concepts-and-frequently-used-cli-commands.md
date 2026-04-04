@@ -5,6 +5,14 @@ created: '2024-08-01'
 updated: '2024-08-01'
 categories:
   - 'npm'
+references:
+  - 'https://docs.npmjs.com/cli/v10/commands/npm-install'
+  - 'https://carrotweb.tistory.com/107'
+  - 'https://binit.tistory.com/36'
+  - 'https://kdydesign.github.io/2017/07/15/nodejs-npm-tutorial/'
+  - 'https://hellominchan.tistory.com/10'
+  - 'https://velog.io/@me2designer/NPM-%EC%84%A4%EC%B9%98-%EB%B0%8F-%EC%84%A4%EC%A0%95'
+  - 'https://c17an.netlify.app/blog/node.js/npm-install-%EC%A0%95%EB%A6%AC/article/'
 ---
 
 Package(Module)는 프로그램의 구성요소 중 특정 기능을 수행할 수 있는 코드 집합을 의미한다. 유명 플랫폼들은 저마다의 Package Manager를 가지고 있다.
@@ -195,13 +203,3 @@ npm uninstall [<@scope>/]<pkg>...
 ```sh
 npm update [<pkg>...]
 ```
-
-## Reference
-
-- <https://docs.npmjs.com/cli/v10/commands/npm-install>
-- <https://carrotweb.tistory.com/107>
-- <https://binit.tistory.com/36>
-- <https://kdydesign.github.io/2017/07/15/nodejs-npm-tutorial/>
-- <https://hellominchan.tistory.com/10>
-- <https://velog.io/@me2designer/NPM-%EC%84%A4%EC%B9%98-%EB%B0%8F-%EC%84%A4%EC%A0%95>
-- <https://c17an.netlify.app/blog/node.js/npm-install-%EC%A0%95%EB%A6%AC/article/>

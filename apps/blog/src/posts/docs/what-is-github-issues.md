@@ -5,6 +5,8 @@ created: '2024-03-21'
 updated: '2024-07-21'
 categories:
   - 'git'
+references:
+  - 'https://docs.github.com/ko/issues'
 ---
 
 ***Issues***란, ***Issues Tracking***을 할 수 있도록 ***Github***에서 제공하는 도구이다. 자체 기능인 ***Issues***, ***Projects***, ***Insights*** 등의 다양한 시각화 도구들을 함께 제공한다.
@@ -99,7 +101,3 @@ categories:
 ## 5. ***Labels*** and ***Milestones***
 
 ***Repository***의 ***Issues*** 탭에 있는 ***Labels***와 ***Milestones***에 대해 설명한다. 크게 어려운 내용은 없으니 공식 문서를 잘 읽어보기 바란다.
-
-## Reference
-
-- <https://docs.github.com/ko/issues>

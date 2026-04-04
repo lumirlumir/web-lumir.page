@@ -5,6 +5,9 @@ created: '2024-04-04'
 updated: '2024-10-30'
 categories:
   - 'npm'
+references:
+  - 'https://www.daleseo.com/js-dotenv/#%EB%A7%88%EC%B9%98%EB%A9%B4%EC%84%9C'
+  - 'https://db2dev.tistory.com/entry/React-Webpack%EC%9C%BC%EB%A1%9C-%EA%B5%AC%EC%B6%95%ED%95%9C-React-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EC%97%90%EC%84%9C-%ED%99%98%EA%B2%BD-%EB%B3%80%EC%88%98env-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0'
 ---
 
 `dotenv`를 통해 환경 변수를 `.env` 파일로 관리하는 방법에 대해 알아보자.
@@ -489,8 +492,3 @@ DB_PASS: 0000
 뿐만 아니라, `.env.production`, `.env.staging`, `.env.qa`, `.env.development`, `.env.local`, `.env.test` 이런 식으로 각 배포(deploy) 환경 별로 환경 변수를 다른 파일에 저장해두고 사용하는 것도 심심치 않게 볼 수 있다. 이렇게 하면 위와 마찬가지 이유로 보안 이슈에 취약할 뿐만 아니라, 일반적으로 코드(code)와 설정(config)을 한 곳에서 관리하는 것은 좋지 않은 소프트웨어 개발 관행으로 여겨진다.
 
 따라서, `.env` 파일은 개발자가 로컬 환경에서 환경 변수를 설정해야할 때만 제한적으로 사용하는 것이 좋으며, 그 밖에 환경에서는 운영 체제 수준에서 제대로 환경 변수를 설정해줘야한다.
-
-## Reference
-
-- <https://www.daleseo.com/js-dotenv/#%EB%A7%88%EC%B9%98%EB%A9%B4%EC%84%9C>
-- <https://db2dev.tistory.com/entry/React-Webpack%EC%9C%BC%EB%A1%9C-%EA%B5%AC%EC%B6%95%ED%95%9C-React-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EC%97%90%EC%84%9C-%ED%99%98%EA%B2%BD-%EB%B3%80%EC%88%98env-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0>

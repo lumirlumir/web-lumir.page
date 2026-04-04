@@ -5,6 +5,10 @@ created: '2024-05-22'
 updated: '2024-05-26'
 categories:
   - 'html'
+references:
+  - 'https://jootc.com/p/201807161377'
+  - 'https://m.blog.naver.com/mathesis_time/222010525727'
+  - 'https://www.codeit.kr/community/questions/UXVlc3Rpb246NWUzNDUyMjU4MGU1MTMzNzNkOTYyNzYy'
 ---
 
 <!-- markdownlint-disable MD033 -->
@@ -61,9 +65,3 @@ categories:
 ## 3. 결론
 
 따라서, 단순히 굵게 혹은 기울어지게 보이도록 하려면 `<b>`, `<i>` ***Tag***를, 특정 텍스트에 대해 실제로도 강조하려 하는 경우 `<strong>`, `<em>` ***Tag***를 사용하면 된다.
-
-## Reference
-
-- <https://jootc.com/p/201807161377>
-- <https://m.blog.naver.com/mathesis_time/222010525727>
-- <https://www.codeit.kr/community/questions/UXVlc3Rpb246NWUzNDUyMjU4MGU1MTMzNzNkOTYyNzYy>

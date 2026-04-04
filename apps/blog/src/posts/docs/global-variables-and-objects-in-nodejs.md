@@ -5,6 +5,10 @@ created: '2024-04-02'
 updated: '2024-04-02'
 categories:
   - 'nodejs'
+references:
+  - 'https://leejabba.gitbooks.io/node-js/content/chapter1.html'
+  - 'https://kss7547.tistory.com/40'
+  - 'https://blog.naver.com/hj_kim97/222217313571'
 ---
 
 웹 브라우저에서 동작하는 JavaScript의 최상위 객체는 `window` 객체이다. 하지만, Node.js는 브라우저에서 동작하는 것이 아니므로 `window` 객체가 없는 대신, 전역 변수와 전역 함수를 가지고 있다.
@@ -64,9 +68,3 @@ Method | Explanation
 모듈을 생성할 때 사용하는 객체.
 
 > `exports`(`require`, `import`) 객체에 대한 자세한 내용은 다른 마크다운 문서 참조.
-
-## Reference
-
-- <https://leejabba.gitbooks.io/node-js/content/chapter1.html>
-- <https://kss7547.tistory.com/40>
-- <https://blog.naver.com/hj_kim97/222217313571>
