@@ -136,10 +136,10 @@ describe('markdown-to-html', () => {
       );
     });
 
-    it('should append a `Reference` section when `references` option is provided', async () => {
+    it('should append a `References` section when `references` option is provided', async () => {
       const markdown = 'Foo Bar Baz';
       const html =
-        '<p>Foo Bar Baz</p>\n<h2>Reference</h2>\n<ul>\n<li><a href="https://example.com">https://example.com</a></li>\n<li><a href="https://example.org">https://example.org</a></li>\n</ul>';
+        '<p>Foo Bar Baz</p>\n<h2>References</h2>\n<ul>\n<li><a href="https://example.com">https://example.com</a></li>\n<li><a href="https://example.org">https://example.org</a></li>\n</ul>';
 
       assert.strictEqual(
         await markdownToHtml(markdown, {
@@ -235,7 +235,7 @@ describe('markdown-to-html', () => {
       const markdown = 'Foo Bar Baz';
       const references = ['https://example.com', 'https://example.org'];
       const result =
-        'Foo Bar Baz\n\n## Reference\n\n- <https://example.com>\n- <https://example.org>';
+        'Foo Bar Baz\n\n## References\n\n- <https://example.com>\n- <https://example.org>';
 
       assert.strictEqual(appendMarkdownReferences(markdown, references), result);
     });

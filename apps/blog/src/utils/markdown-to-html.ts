@@ -103,7 +103,7 @@ export async function markdownToHtml(
 }
 
 /**
- * Appends a `Reference` section to markdown content when URLs are provided.
+ * Appends a `References` section to markdown content when URLs are provided.
  * @param markdown The markdown content to extend.
  * @param references The reference URLs to append.
  */
@@ -115,7 +115,7 @@ export function appendMarkdownReferences(
     return markdown;
   }
 
-  return `${markdown}\n\n## Reference\n\n${references.map(reference => `- <${reference}>`).join('\n')}`;
+  return `${markdown}\n\n## References\n\n${references.map(reference => `- <${reference}>`).join('\n')}`;
 }
 
 /**
