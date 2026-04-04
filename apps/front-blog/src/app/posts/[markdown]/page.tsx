@@ -7,13 +7,12 @@
 // --------------------------------------------------------------------------------
 
 import { type Metadata } from 'next';
-import Katex from '@/components/article/katex';
 import {
   markdownCollectionAll,
   markdownCollectionSlug,
 } from '@/utils/markdown-collection';
+import { markdownToHtml } from '@/utils/markdown-to-html';
 import { markdownToText } from '@/utils/markdown-to-text';
-import { markdownToHtml } from '@/utils/markup';
 
 // --------------------------------------------------------------------------------
 // Named Export
@@ -63,8 +62,9 @@ export default async function Page({ params }: PageProps<'/posts/[markdown]'>) {
   } = markdownCollectionSlug[markdown];
 
   return (
-    <Katex
+    <div
       className="markdown-body"
+      // eslint-disable-next-line react/no-danger -- Safe because the content comes from the local file and is controlled.
       dangerouslySetInnerHTML={{
         __html: await markdownToHtml(content, { title }),
       }}
