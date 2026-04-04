@@ -81,6 +81,7 @@
   --color-bg-neutral-muted: #656c7633;
   --color-bg-attention-muted: #bb800926;
   --color-border-default: #3d444d;
+  --color-border-subtle: rgb(240 246 252 / 10%); /* custom color: `rehype-github-color` */
   --color-border-muted: #3d444db3;
   --color-border-neutral-muted: #3d444db3;
   --color-border-accent-emphasis: #1f6feb;
@@ -134,6 +135,7 @@
   --color-fg-done: #8250df;
   --color-bg-inset: #fff; /* custom color */
   --color-bg-default: #fff;
+  --color-border-subtle: rgb(240 246 252 / 10%); /* custom color: `rehype-github-color` */
   --color-bg-muted: #f6f8fa;
   --color-bg-neutral-muted: #818b981f;
   --color-bg-attention-muted: #fff8c5;
