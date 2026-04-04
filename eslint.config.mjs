@@ -69,7 +69,7 @@ export default defineConfig([
       'md/allow-image-url': [
         'error',
         {
-          allowUrls: [/^\/public\/images\//],
+          allowUrls: [/^\/apps\/front-blog\/public\/images\//],
         },
       ],
     },

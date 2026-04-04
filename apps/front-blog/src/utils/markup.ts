@@ -62,7 +62,7 @@ export async function markdownToHtml(
     .data('settings', { fragment: true })
     .use(rehypeImageLazyLoading)
     .use(rehypeImageUrlReplace, {
-      searchValue: /^\/public/,
+      searchValue: /^\/apps\/front-blog\/public/,
       replaceValue: '',
     })
     .process(html);
