@@ -173,16 +173,16 @@ describe('markdown-to-html', () => {
       assert.strictEqual(await markdownToHtml(markdown), html);
     });
 
-    it('should replace image URLs starting with `/apps/front-blog/public` - 1', async () => {
-      const markdown = '![alt](/apps/front-blog/public/image.png)';
+    it('should replace image URLs starting with `/apps/blog/public` - 1', async () => {
+      const markdown = '![alt](/apps/blog/public/image.png)';
       const html = '<p><img src="/image.png" alt="alt" loading="lazy"></p>';
 
       assert.strictEqual(await markdownToHtml(markdown), html);
     });
 
-    it('should replace image URLs starting with `/apps/front-blog/public` - 2', async () => {
+    it('should replace image URLs starting with `/apps/blog/public` - 2', async () => {
       const markdown =
-        '<img src="/apps/front-blog/public/images/posts/everything-about-markdown/1.webp?raw=true" width="450px" height="300px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img>';
+        '<img src="/apps/blog/public/images/posts/everything-about-markdown/1.webp?raw=true" width="450px" height="300px" title="px(픽셀) 크기 설정" alt="RubberDuck"></img>';
       const html =
         '<p><img src="/images/posts/everything-about-markdown/1.webp?raw=true" width="450px" height="300px" title="px(픽셀) 크기 설정" alt="RubberDuck" loading="lazy"></p>';
 

@@ -28,7 +28,7 @@ Run from repo root:
 
 - `npm run test`
 - `npm run build:pkg`
-- `npm run build:a:fb` when the change affects `apps/front-blog/` runtime or production output
+- `npm run build:a:blog` when the change affects `apps/blog/` runtime or production output
 - `npm run lint`
 
 Sandbox note:
@@ -62,7 +62,7 @@ Use this guide when preparing any PR in this repository.
 #### `scope` rules
 
 - The workflow extracts allowed scopes from every `package.json` `name` field in the repo.
-- Use an existing package/application name such as `front-blog`, `@lumir/utils`, `@lumir/react-kit`, `@lumir/rehype-plugins`, or `@lumir/remark-plugins`.
+- Use an existing package/application name such as `blog`, `@lumir/utils`, `@lumir/react-kit`, `@lumir/rehype-plugins`, or `@lumir/remark-plugins`.
 - Use `*` for repo-wide/docs/tooling changes when a single package scope is not appropriate.
 - Additional allowed scopes are `deps`, `deps-dev`, `release`, `sync-server`, and `sync-client`.
 - `deps` and `deps-dev` are intended for `chore` changes that update dependencies.
@@ -76,7 +76,7 @@ Use this guide when preparing any PR in this repository.
 #### Title examples
 
 - feat(@lumir/react-kit): add `icon-size` prop
-- fix(front-blog): handle missing auth state
+- fix(blog): handle missing auth state
 - docs(*): update `AGENTS.md`
 
 ### 2. PR Description (required)
