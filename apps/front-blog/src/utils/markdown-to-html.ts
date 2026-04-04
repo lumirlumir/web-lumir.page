@@ -5,6 +5,7 @@
  * @see https://github.com/remarkjs/remark-math#readme (`remark-math`)
  * @see https://github.com/remarkjs/remark/tree/main/packages/remark-parse#remark-parse (`remark-parse`)
  * @see https://github.com/remarkjs/remark-rehype#readme (`remark-rehype`)
+ * @see https://github.com/rehypejs/rehype-raw#readme (`rehype-raw`)
  * @see https://github.com/rehypejs/rehype-github/tree/main/packages/alert#rehype-github-alert (`rehype-github-alert`)
  * @see https://github.com/rehypejs/rehype-github/tree/main/packages/color#rehype-github-color (`rehype-github-color`)
  * @see https://github.com/rehypejs/rehype-github/tree/main/packages/emoji#rehype-github-emoji (`rehype-github-emoji`)
@@ -25,6 +26,7 @@ import remarkGitHub from 'remark-github';
 import remarkMath from 'remark-math';
 import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
+import rehypeRaw from 'rehype-raw';
 import rehypeGitHubAlert from 'rehype-github-alert';
 import rehypeGitHubColor from 'rehype-github-color';
 import rehypeGitHubEmoji from 'rehype-github-emoji';
@@ -77,6 +79,7 @@ export async function markdownToHtml(
     .use(remarkMath)
     .use(remarkHeadingFromTitle, options?.title)
     .use(remarkRehype, { allowDangerousHtml: true })
+    .use(rehypeRaw)
     .use(rehypeGitHubAlert)
     .use(rehypeGitHubColor)
     .use(rehypeGitHubEmoji)
