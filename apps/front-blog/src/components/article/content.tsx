@@ -49,12 +49,14 @@ export default async function Content({
       <div className={styles.content}>
         <div
           className={cn(styles.title, 'markdown-body')}
-          dangerouslySetInnerHTML={{ __html: await markdownToHtmlLite(title) }} // eslint-disable-line react/no-danger -- Safe because the title comes from the local file system and is controlled.
+          // eslint-disable-next-line react/no-danger -- Safe because the title comes from the local file and is controlled.
+          dangerouslySetInnerHTML={{ __html: await markdownToHtmlLite(title) }}
         />
 
         <div
           className={cn(styles.description, 'markdown-body')}
-          dangerouslySetInnerHTML={{ __html: await markdownToHtmlLite(description) }} // eslint-disable-line react/no-danger -- Safe because the description comes from the local file system and is controlled.
+          // eslint-disable-next-line react/no-danger -- Safe because the description comes from the local file and is controlled.
+          dangerouslySetInnerHTML={{ __html: await markdownToHtmlLite(description) }}
         />
 
         <ContentBoxContainer>

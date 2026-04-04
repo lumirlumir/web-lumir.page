@@ -64,6 +64,7 @@ export default async function Page({ params }: PageProps<'/posts/[markdown]'>) {
   return (
     <div
       className="markdown-body"
+      // eslint-disable-next-line react/no-danger -- Safe because the content comes from the local file and is controlled.
       dangerouslySetInnerHTML={{
         __html: await markdownToHtml(content, { title }),
       }}
