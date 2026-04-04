@@ -106,7 +106,7 @@ describe('markdown-to-html', () => {
       assert.strictEqual(await markdownToHtml(markdown), html);
     });
 
-    it('should convert GitHub `@metion` syntax', async () => {
+    it('should convert GitHub `@mention` syntax', async () => {
       const markdown = 'Hello @octocat';
       const html =
         '<p>Hello <a href="https://github.com/octocat"><strong>@octocat</strong></a></p>';
