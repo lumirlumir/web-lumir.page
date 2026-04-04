@@ -97,8 +97,8 @@ describe('markdown-to-html', () => {
       assert.strictEqual(await markdownToHtml(markdown), html);
     });
 
-    it('should replace image URLs starting with `/public`', async () => {
-      const markdown = '![alt](/public/image.png)';
+    it('should replace image URLs starting with `/apps/front-blog/public`', async () => {
+      const markdown = '![alt](/apps/front-blog/public/image.png)';
       const html = '<p><img src="/image.png" alt="alt" loading="lazy"></p>';
 
       assert.strictEqual(await markdownToHtml(markdown), html);
