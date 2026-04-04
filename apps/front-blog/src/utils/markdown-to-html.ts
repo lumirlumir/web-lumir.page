@@ -5,6 +5,7 @@
  * @see https://github.com/remarkjs/remark/tree/main/packages/remark-parse#remark-parse (`remark-parse`)
  * @see https://github.com/remarkjs/remark-rehype#readme (`remark-rehype`)
  * @see https://github.com/rehypejs/rehype-github/tree/main/packages/alert#rehype-github-alert (`rehype-github-alert`)
+ * @see https://github.com/rehypejs/rehype-github/tree/main/packages/color#rehype-github-color (`rehype-github-color`)
  * @see https://github.com/rehypejs/rehype-github/tree/main/packages/emoji#rehype-github-emoji (`rehype-github-emoji`)
  * @see https://github.com/remarkjs/remark-math/tree/main/packages/rehype-katex#rehype-katex (`rehype-katex`)
  * @see https://github.com/rehypejs/rehype-starry-night (`rehype-starry-night`)
@@ -23,6 +24,7 @@ import remarkMath from 'remark-math';
 import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
 import rehypeGitHubAlert from 'rehype-github-alert';
+import rehypeGitHubColor from 'rehype-github-color';
 import rehypeGitHubEmoji from 'rehype-github-emoji';
 import rehypeKatex from 'rehype-katex';
 import rehypeStarryNight from 'rehype-starry-night';
@@ -72,6 +74,7 @@ export async function markdownToHtml(
     .use(remarkHeadingFromTitle, options?.title)
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeGitHubAlert) // TODO: add tests
+    .use(rehypeGitHubColor) // TODO: add tests
     .use(rehypeGitHubEmoji) // TODO: add tests
     .use(rehypeKatex) // TODO: add tests
     .use(rehypeStarryNight)
