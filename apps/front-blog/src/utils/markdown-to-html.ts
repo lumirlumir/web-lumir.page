@@ -107,7 +107,7 @@ export async function markdownToHtml(
  * // Output:
  * // <p>Foo Bar Baz</p>
  * ```
- */ // TODO: Add tests
+ */
 export async function markdownToHtmlLite(markdown: string): Promise<string> {
   const file = await unified()
     .use(remarkParse)
