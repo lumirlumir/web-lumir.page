@@ -1,7 +1,8 @@
 /**
  * @fileoverview Defines the helper functions for converting markdown content to HTML.
- * @see https://github.com/remarkjs/remark-gfm (`remark-gfm`)
- * @see https://github.com/remarkjs/remark-math (`remark-math`)
+ * @see https://github.com/remarkjs/remark-gfm#readme (`remark-gfm`)
+ * @see https://github.com/remarkjs/remark-github#readme (`remark-github`)
+ * @see https://github.com/remarkjs/remark-math#readme (`remark-math`)
  * @see https://github.com/remarkjs/remark/tree/main/packages/remark-parse#remark-parse (`remark-parse`)
  * @see https://github.com/remarkjs/remark-rehype#readme (`remark-rehype`)
  * @see https://github.com/rehypejs/rehype-github/tree/main/packages/alert#rehype-github-alert (`rehype-github-alert`)
@@ -20,6 +21,7 @@
 import { rehypeImageLazyLoading, rehypeImageUrlReplace } from '@lumir/rehype-plugins';
 import { remarkHeadingFromTitle } from '@lumir/remark-plugins';
 import remarkGfm from 'remark-gfm';
+import remarkGitHub from 'remark-github';
 import remarkMath from 'remark-math';
 import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
@@ -70,6 +72,7 @@ export async function markdownToHtml(
   const file = await unified()
     .use(remarkParse)
     .use(remarkGfm) // TODO: add tests in https://github.com/remarkjs/remark-gfm?tab=readme-ov-file#use
+    .use(remarkGitHub, { repository: 'lumirlumir/web-lumir.page' }) // TODO: add tests
     .use(remarkMath) // TODO: add tests in https://github.com/remarkjs/remark-math
     .use(remarkHeadingFromTitle, options?.title)
     .use(remarkRehype, { allowDangerousHtml: true })
