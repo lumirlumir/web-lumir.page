@@ -7,7 +7,7 @@
 // --------------------------------------------------------------------------------
 
 import { assert, describe, it } from 'vitest';
-import { markdownToHtml } from './markdown-to-html.js';
+import { markdownToHtml, markdownToHtmlLite } from './markdown-to-html.js';
 
 // --------------------------------------------------------------------------------
 // Test
@@ -20,6 +20,7 @@ describe('markdown-to-html', () => {
       const html = '<p>한글 유니코드(Unicode)</p>';
 
       assert.strictEqual(await markdownToHtml(markdown), html);
+      assert.strictEqual(await markdownToHtmlLite(markdown), html);
     });
 
     it('should convert plain text - 2', async () => {
@@ -27,6 +28,7 @@ describe('markdown-to-html', () => {
       const html = "<p>GitHub's classic branch protection rules</p>";
 
       assert.strictEqual(await markdownToHtml(markdown), html);
+      assert.strictEqual(await markdownToHtmlLite(markdown), html);
     });
 
     it('should convert plain text - 3', async () => {
@@ -36,6 +38,7 @@ describe('markdown-to-html', () => {
         '<p>Next.js에서 File-based Metadata를 이용할 때, Favicon이 정상적으로 반영되지 않는 현상</p>';
 
       assert.strictEqual(await markdownToHtml(markdown), html);
+      assert.strictEqual(await markdownToHtmlLite(markdown), html);
     });
 
     it('should convert Markdown `inlineCode` syntax - 1', async () => {
@@ -44,6 +47,7 @@ describe('markdown-to-html', () => {
         '<p>HTML에서 공백을 다루는 방법: <code>&#x26;nbsp;</code>, <code>&#x26;ensp;</code>, <code>&#x26;emsp;</code></p>';
 
       assert.strictEqual(await markdownToHtml(markdown), html);
+      assert.strictEqual(await markdownToHtmlLite(markdown), html);
     });
 
     it('should convert Markdown `inlineCode` syntax - 2', async () => {
@@ -53,6 +57,7 @@ describe('markdown-to-html', () => {
         '<p>자바스크립트 CommonJS 및 ES 모듈 내보내기/불러오기 (<code>require</code> 및 <code>import</code>)</p>';
 
       assert.strictEqual(await markdownToHtml(markdown), html);
+      assert.strictEqual(await markdownToHtmlLite(markdown), html);
     });
 
     it('should convert Markdown `inlineCode` syntax with HTML tags', async () => {
@@ -61,6 +66,7 @@ describe('markdown-to-html', () => {
         '<p><code>&#x3C;b></code> <code>&#x3C;i></code> <em><strong>Tag</strong></em>와 <code>&#x3C;strong></code> <code>&#x3C;em></code> <em><strong>Tag</strong></em>의 차이점</p>';
 
       assert.strictEqual(await markdownToHtml(markdown), html);
+      assert.strictEqual(await markdownToHtmlLite(markdown), html);
     });
 
     it('should convert Markdown `strong` and `emphasis` syntax', async () => {
@@ -68,6 +74,7 @@ describe('markdown-to-html', () => {
       const html = '<p>자바스크립트(<em><strong>JavaScript</strong></em>)의 구성</p>';
 
       assert.strictEqual(await markdownToHtml(markdown), html);
+      assert.strictEqual(await markdownToHtmlLite(markdown), html);
     });
 
     it('should convert Markdown `delete` syntax - 1', async () => {
@@ -132,6 +139,7 @@ describe('markdown-to-html', () => {
       const html = '<p>마크다운<sup>Markdown</sup>의 모든 것</p>';
 
       assert.strictEqual(await markdownToHtml(markdown), html);
+      assert.strictEqual(await markdownToHtmlLite(markdown), html);
     });
 
     it('should convert GitHub Alert syntax to GitHub Alert HTML', async () => {
