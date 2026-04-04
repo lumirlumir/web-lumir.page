@@ -32,6 +32,7 @@ import rehypeKatex from 'rehype-katex';
 import rehypeStarryNight from 'rehype-starry-night';
 import rehypeStringify from 'rehype-stringify';
 import { unified } from 'unified';
+import { GITHUB_REPO_FULL_NAME } from '@/constants';
 
 // --------------------------------------------------------------------------------
 // Typedef
@@ -71,15 +72,15 @@ export async function markdownToHtml(
 ): Promise<string> {
   const file = await unified()
     .use(remarkParse)
-    .use(remarkGfm) // TODO: add tests in https://github.com/remarkjs/remark-gfm?tab=readme-ov-file#use
-    .use(remarkGitHub, { repository: 'lumirlumir/web-lumir.page' }) // TODO: add tests
-    .use(remarkMath) // TODO: add tests in https://github.com/remarkjs/remark-math
+    .use(remarkGfm)
+    .use(remarkGitHub, { repository: GITHUB_REPO_FULL_NAME })
+    .use(remarkMath)
     .use(remarkHeadingFromTitle, options?.title)
     .use(remarkRehype, { allowDangerousHtml: true })
-    .use(rehypeGitHubAlert) // TODO: add tests
-    .use(rehypeGitHubColor) // TODO: add tests
-    .use(rehypeGitHubEmoji) // TODO: add tests
-    .use(rehypeKatex) // TODO: add tests
+    .use(rehypeGitHubAlert)
+    .use(rehypeGitHubColor)
+    .use(rehypeGitHubEmoji)
+    .use(rehypeKatex)
     .use(rehypeStarryNight)
     .use(rehypeImageLazyLoading)
     .use(rehypeImageUrlReplace, {
