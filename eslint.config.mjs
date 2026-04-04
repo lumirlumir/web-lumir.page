@@ -30,16 +30,16 @@ export default defineConfig([
   md.configs.stylistic,
 
   {
-    name: 'global/apps/front-blog',
+    name: 'global/apps/blog',
     settings: {
       next: {
-        rootDir: fileURLToPath(new URL('./apps/front-blog', import.meta.url)),
+        rootDir: fileURLToPath(new URL('./apps/blog', import.meta.url)),
       },
       node: {
         resolverConfig: {
           // `eslint-plugin-n` uses webpack's `enhanced-resolve` under the hood.
           alias: {
-            '@': fileURLToPath(new URL('./apps/front-blog/src', import.meta.url)),
+            '@': fileURLToPath(new URL('./apps/blog/src', import.meta.url)),
           },
         },
       },
@@ -64,12 +64,12 @@ export default defineConfig([
   },
   {
     name: 'md/posts/docs',
-    files: ['apps/front-blog/src/posts/docs/**/*.md'],
+    files: ['apps/blog/src/posts/docs/**/*.md'],
     rules: {
       'md/allow-image-url': [
         'error',
         {
-          allowUrls: [/^\/apps\/front-blog\/public\/images\//],
+          allowUrls: [/^\/apps\/blog\/public\/images\//],
         },
       ],
     },

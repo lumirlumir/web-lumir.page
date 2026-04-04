@@ -87,7 +87,7 @@ export async function markdownToHtml(
     .use(rehypeStarryNight)
     .use(rehypeImageLazyLoading)
     .use(rehypeImageUrlReplace, {
-      searchValue: /^\/apps\/front-blog\/public/,
+      searchValue: /^\/apps\/blog\/public/,
       replaceValue: '',
     })
     .use(rehypeStringify, { allowDangerousHtml: true })

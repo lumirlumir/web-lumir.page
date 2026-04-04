@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "front-blog",
+  "name": "blog",
   "type": "module",
   "engines": {
     "node": "^20.19.6"
