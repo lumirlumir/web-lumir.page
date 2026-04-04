@@ -87,9 +87,18 @@ describe('markdown-to-html', () => {
       assert.strictEqual(await markdownToHtml(markdown), html);
     });
 
-    it('should replace image URLs starting with `/public`', async () => {
-      const markdown = '![alt](/public/image.png)';
-      const html = '<p><img src="/image.png" alt="alt" loading="lazy"></p>';
+    it('should replace image URLs starting with `/public/images/`', async () => {
+      const markdown = '![alt](/public/images/image.png)';
+      const html =
+        '<p><img src="/apps/front-blog/public/images/image.png" alt="alt" loading="lazy"></p>';
+
+      assert.strictEqual(await markdownToHtml(markdown), html);
+    });
+
+    it('should keep image URLs starting with `/apps/front-blog/public/images/`', async () => {
+      const markdown = '![alt](/apps/front-blog/public/images/image.png)';
+      const html =
+        '<p><img src="/apps/front-blog/public/images/image.png" alt="alt" loading="lazy"></p>';
 
       assert.strictEqual(await markdownToHtml(markdown), html);
     });

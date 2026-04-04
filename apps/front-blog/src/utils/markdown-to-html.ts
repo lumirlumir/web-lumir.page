@@ -27,8 +27,8 @@ const processor = unified()
   .use(remarkRehype, { allowDangerousHtml: true })
   .use(rehypeImageLazyLoading)
   .use(rehypeImageUrlReplace, {
-    searchValue: /^\/public/,
-    replaceValue: '',
+    searchValue: /^\/public\/images\//,
+    replaceValue: '/apps/front-blog/public/images/',
   })
   .use(rehypeStringify, { allowDangerousHtml: true });
 
