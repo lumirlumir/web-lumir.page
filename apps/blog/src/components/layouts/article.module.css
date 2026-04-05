@@ -6,7 +6,8 @@
   padding: var(--size-article-padding-large) var(--size-article-padding-small);
   margin: 0 auto;
 
-  @include screen(lg) {
+  /* breakpoint-lg */
+  @media (width >= 1024px) {
     padding: var(--size-article-padding-large);
   }
 }
