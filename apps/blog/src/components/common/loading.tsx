@@ -8,7 +8,7 @@
 
 import Image from 'next/image';
 import { cn } from '@lumir/utils';
-import styles from './loading.module.scss';
+import styles from './loading.module.css';
 
 // --------------------------------------------------------------------------------
 // Export

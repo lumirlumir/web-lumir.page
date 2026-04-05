@@ -9,7 +9,7 @@
 /**
  * Helper type for CSS module classes.
  */
-type CSSModuleClasses = Readonly<Record<string, string>>;
+type CSSModuleClasses = Readonly<Record<string, string>>; // TODO: Refactor
 
 // --------------------------------------------------------------------------------
 // Module Declaration
@@ -34,6 +34,8 @@ declare module '*.module.css' {
   const classes: CSSModuleClasses;
   export default classes;
 }
+
+// TODO: Remove SCSS
 
 /**
  * Global type declarations for SCSS files.
