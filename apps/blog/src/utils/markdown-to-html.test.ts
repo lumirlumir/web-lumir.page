@@ -7,11 +7,7 @@
 // --------------------------------------------------------------------------------
 
 import { assert, describe, it } from 'vitest';
-import {
-  appendMarkdownReferences,
-  markdownToHtml,
-  markdownToHtmlLite,
-} from './markdown-to-html.js';
+import { markdownToHtml, markdownToHtmlLite } from './markdown-to-html.js';
 
 // --------------------------------------------------------------------------------
 // Test
@@ -135,19 +131,6 @@ describe('markdown-to-html', () => {
         html,
       );
     });
-
-    it('should append a `References` section when `references` option is provided', async () => {
-      const markdown = 'Foo Bar Baz';
-      const html =
-        '<p>Foo Bar Baz</p>\n<h2>References</h2>\n<ul>\n<li><a href="https://example.com">https://example.com</a></li>\n<li><a href="https://example.org">https://example.org</a></li>\n</ul>';
-
-      assert.strictEqual(
-        await markdownToHtml(markdown, {
-          references: ['https://example.com', 'https://example.org'],
-        }),
-        html,
-      );
-    });
   });
 
   describe('HTML', () => {
@@ -220,24 +203,6 @@ describe('markdown-to-html', () => {
         '<pre><code class="language-md"><span class="pl-mh"># <span class="pl-en">Heading</span></span>\n</code></pre>';
 
       assert.strictEqual(await markdownToHtml(markdown), html);
-    });
-  });
-
-  describe('appendMarkdownReferences', () => {
-    it('should return the original markdown when no references are provided', () => {
-      const markdown = 'Foo Bar Baz';
-
-      assert.strictEqual(appendMarkdownReferences(markdown), markdown);
-      assert.strictEqual(appendMarkdownReferences(markdown, []), markdown);
-    });
-
-    it('should append only normalized reference links to the markdown content', () => {
-      const markdown = 'Foo Bar Baz';
-      const references = ['https://example.com', 'https://example.org'];
-      const result =
-        'Foo Bar Baz\n\n## References\n\n- <https://example.com>\n- <https://example.org>';
-
-      assert.strictEqual(appendMarkdownReferences(markdown, references), result);
     });
   });
 });

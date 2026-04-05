@@ -120,6 +120,6 @@ export const frontmatterMeta = {
       en: 'References',
       ko: '참고 링크',
     },
-    reactIcons: <FaBook />,
+    reactIcons: <div />, // Currently, there is no suitable icon for references, so we use an empty div as a placeholder.
   },
 } as const satisfies Record<FrontmatterKey, Meta>;
