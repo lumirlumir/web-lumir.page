@@ -14,12 +14,6 @@
   margin: var(--size-4) 0;
   cursor: pointer;
 
-  &:hover {
-    > div.react-icons {
-      @include props-animation-shake;
-    }
-  }
-
   > div.react-icons {
     @include props-flex-center;
 
@@ -28,6 +22,12 @@
     > svg {
       width: var(--size-24);
       height: var(--size-24);
+    }
+  }
+
+  &:hover {
+    > div.react-icons {
+      animation: var(--animation-shake);
     }
   }
 

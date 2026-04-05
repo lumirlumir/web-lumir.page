@@ -2,7 +2,7 @@
   @include props-flex-center;
 
   &:hover {
-    @include props-animation-shake;
+    animation: var(--animation-shake);
   }
 
   .mode-switcher {
