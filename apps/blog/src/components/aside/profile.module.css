@@ -1,20 +1,18 @@
 .profile {
-  @include props-flex-center;
-
   flex-direction: column;
   margin: var(--size-16);
 
-  > img {
+  & > img {
     border-radius: 50%;
   }
 
-  > .user-name {
+  & > .user-name {
     padding: var(--size-16) 0;
     font-size: var(--size-20);
     font-weight: var(--text-weight-semibold);
   }
 
-  > .user-bio {
+  & > .user-bio {
     font-size: var(--size-12);
     color: var(--color-fg-muted);
     letter-spacing: var(--size-letter-spacing-small);

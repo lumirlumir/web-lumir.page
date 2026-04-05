@@ -107,6 +107,7 @@ $screen-breakpoints: (
 );
 
 @mixin screen($breakpoint) {
+  // stylelint-disable-next-line
   @media (min-width: map.get($screen-breakpoints, $breakpoint)) {
     @content;
   }
