@@ -1,9 +1,5 @@
 .loading {
-  @include props-flex-center;
-
   > div {
-    @include props-flex-center;
-
     flex-direction: column;
 
     > div {

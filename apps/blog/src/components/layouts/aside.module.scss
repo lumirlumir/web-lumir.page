@@ -26,8 +26,6 @@ $transition: transform 0.75s ease-in-out;
 }
 
 .div {
-  @include props-flex-center;
-
   position: fixed;
   top: var(--size-header-height);
   z-index: 1;

@@ -15,8 +15,6 @@
   cursor: pointer;
 
   > div.react-icons {
-    @include props-flex-center;
-
     grid-area: 1 / 1 / 3 / 2;
 
     > svg {
@@ -46,8 +44,6 @@
   }
 
   > div.order {
-    @include props-flex-center;
-
     grid-area: 1 / 3 / 3 / 4;
 
     > svg {

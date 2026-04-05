@@ -13,7 +13,7 @@
 // --------------------------------------------------------------------------------
 
 import { DocSearch as DocSearchOriginal } from '@docsearch/react';
-
+import { cn } from '@lumir/utils';
 import styles from './doc-search.module.scss';
 import '@docsearch/css';
 import './doc-search.scss';
@@ -24,7 +24,7 @@ import './doc-search.scss';
 
 export default function DocSearch() {
   return (
-    <div className={styles['doc-search']}>
+    <div className={cn(styles['doc-search'], 'custom-flex-center')}>
       <DocSearchOriginal
         // required
         appId="TDWHMEE0BV"

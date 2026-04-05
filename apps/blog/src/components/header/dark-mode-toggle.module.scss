@@ -1,6 +1,4 @@
 .dark-mode-toggle {
-  @include props-flex-center;
-
   &:hover {
     animation: var(--animation-shake);
   }

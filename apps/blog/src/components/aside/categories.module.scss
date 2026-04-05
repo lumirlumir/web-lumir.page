@@ -20,8 +20,6 @@
     margin: var(--size-4) var(--size-8);
 
     > div.react-icons {
-      @include props-flex-center;
-
       grid-area: 1 / 1 / 3 / 2;
 
       > svg {
@@ -50,13 +48,9 @@
     }
 
     > div.count-docs {
-      @include props-flex-center;
-
       grid-area: 1 / 3 / 3 / 4;
 
       > span {
-        @include props-flex-center;
-
         width: var(--size-20);
         height: var(--size-20);
         font-size: var(--size-12);

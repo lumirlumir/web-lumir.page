@@ -1,6 +1,4 @@
 .doc-search {
-  @include props-flex-center;
-
   margin: var(--size-10) var(--size-8) var(--size-10) 0;
 
   @include screen(md) {

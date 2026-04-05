@@ -2,12 +2,6 @@
 @use 'sass:map';
 
 /* props */
-@mixin props-flex-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 @mixin props-line-clamp($line: 1) {
   -webkit-line-clamp: $line;
   line-clamp: $line;
