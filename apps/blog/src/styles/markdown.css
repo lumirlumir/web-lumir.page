@@ -1,19 +1,5 @@
 /* stylelint-disable */
 
-/* custom */
-.markdown-body ruby rp,
-.markdown-body ruby rt {
-  opacity: 0.25;
-  transition: all 0.2s ease-in-out;
-}
-
-.markdown-body ruby:hover rp,
-.markdown-body ruby:hover rt {
-  opacity: 1;
-  color: var(--color-fg-default);
-}
-
-/* default */
 .markdown-body {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
