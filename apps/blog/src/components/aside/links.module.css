@@ -1,28 +1,26 @@
 .links {
   padding: var(--size-8) 0 var(--size-16);
 
-  > li > a {
-    @include selector-hover-default;
-
+  & > li > a {
     flex-direction: column;
     padding: var(--size-6);
 
-    > * {
+    & > * {
       margin: var(--size-2);
     }
 
-    > svg {
+    & > svg {
       width: var(--size-24);
       height: var(--size-24);
     }
 
     &:hover {
-      > svg {
+      & > svg {
         animation: var(--animation-shake);
       }
     }
 
-    > span {
+    & > span {
       width: var(--size-40);
       color: var(--color-fg-muted);
       letter-spacing: var(--size-letter-spacing-medium);

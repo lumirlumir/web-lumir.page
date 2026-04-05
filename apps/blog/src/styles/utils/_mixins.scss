@@ -30,15 +30,6 @@
 }
 
 /* selector */
-@mixin selector-hover-default {
-  transition: all 0.3s ease-in-out;
-
-  &:hover {
-    background-color: var(--color-bg-neutral-muted);
-    border-radius: var(--size-border-radius);
-  }
-}
-
 @mixin selector-scrollbar($width: 0.25rem, $axis: y) {
   @if $axis == y {
     overflow: hidden scroll;

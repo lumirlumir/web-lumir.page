@@ -19,7 +19,7 @@ import { FaAngleDown, FaAngleUp, GrSort } from '@lumir/react-kit/svgs';
 import { cn } from '@lumir/utils';
 import { frontmatterMeta, type SortableFrontmatterKey } from '@/data/frontmatter';
 import { sortMeta, type SortKey } from '@/data/sort';
-import styles from './sort.module.scss';
+import styles from './sort.module.css';
 
 // --------------------------------------------------------------------------------
 // Helper
@@ -30,7 +30,10 @@ function SortContainer({ children }: PropsWithChildren) {
 
   return (
     <div>
-      <div className={styles['sort-item']} onClick={toggleIsOpen}>
+      <div
+        className={cn(styles['sort-item'], 'custom-hover-effect')}
+        onClick={toggleIsOpen}
+      >
         <div className={cn(styles['react-icons'], 'custom-flex-center')}>
           <GrSort />
         </div>
@@ -61,7 +64,10 @@ function SortItem({ sort, order }: { sort: SortableFrontmatterKey; order: SortKe
   }
 
   return (
-    <li className={styles['sort-item']} onClick={() => onClick(sort, order)}>
+    <li
+      className={cn(styles['sort-item'], 'custom-hover-effect')}
+      onClick={() => onClick(sort, order)}
+    >
       <div className={cn(styles['react-icons'], 'custom-flex-center')}>
         {frontmatterMeta[sort].reactIcons}
       </div>

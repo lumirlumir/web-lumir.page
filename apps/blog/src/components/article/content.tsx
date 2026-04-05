@@ -46,7 +46,7 @@ export default async function Content({
 }) {
   return (
     <Link href={`/posts/${slug}`}>
-      <div className={styles.content}>
+      <div className={cn(styles.content, 'custom-hover-effect')}>
         <div
           className={cn(styles.title, 'markdown-body')}
           // eslint-disable-next-line react/no-danger -- Safe because the title comes from the local file and is controlled.

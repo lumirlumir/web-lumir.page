@@ -10,7 +10,7 @@ import Link from 'next/link';
 import { FaGithub, FaHouseChimney } from '@lumir/react-kit/svgs';
 import { cn } from '@lumir/utils';
 import { getGithubUsers } from '@/utils/fetch';
-import styles from './links.module.scss';
+import styles from './links.module.css';
 
 // --------------------------------------------------------------------------------
 // Export
@@ -22,13 +22,13 @@ export default async function Links() {
   return (
     <ul className={cn(styles.links, 'custom-flex-center')}>
       <li>
-        <Link className="custom-flex-center" href="/">
+        <Link className={cn('custom-flex-center', 'custom-hover-effect')} href="/">
           <FaHouseChimney />
           <span>Home</span>
         </Link>
       </li>
       <li>
-        <Link className="custom-flex-center" href={htmlUrl}>
+        <Link className={cn('custom-flex-center', 'custom-hover-effect')} href={htmlUrl}>
           <FaGithub />
           <span className="custom-flex-center">GitHub</span>
         </Link>

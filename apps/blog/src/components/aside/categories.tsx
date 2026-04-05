@@ -14,7 +14,7 @@ import {
   listNonEmptyCategoryKeys,
   markdownCollectionCategory,
 } from '@/utils/markdown-collection';
-import styles from './categories.module.scss';
+import styles from './categories.module.css';
 
 // --------------------------------------------------------------------------------
 // Helper
@@ -39,7 +39,7 @@ export default async function Categories() {
 
           return (
             <li key={categoryKey}>
-              <Link href={`/categories/${categoryKey}`}>
+              <Link className="custom-hover-effect" href={`/categories/${categoryKey}`}>
                 <div className={cn(styles['react-icons'], 'custom-flex-center')}>
                   {reactIcons}
                 </div>
