@@ -5,6 +5,11 @@ created: '2024-06-30'
 updated: '2024-06-30'
 categories:
   - 'git'
+references:
+  - 'https://docs.github.com/ko/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches'
+  - 'https://yejipro.tistory.com/entry/Github-Branch-Protection-Rule-%EC%A0%81%EC%9A%A9%ED%95%98%EA%B8%B0'
+  - 'https://velog.io/@honey8951/github-branch-protection-rule'
+  - 'https://kotlinworld.com/292#google_vignette'
 ---
 
 Branch 보호 규칙(Branch Protection Rules)을 설정하는 것은 중요한 일이다. 협업에 규칙이 없다면, 각자 자신의 방식대로 일을 진행하기에 프로젝트는 엉망이 될 것이다. 인원이 적다면 큰 문제는 아니겠지만, 실무에서 적게는 2명 많게는 수십 수백명이 하나의 저장소를 관리하기에 규칙은 필수적이다. 특히 Git의 Branch는 협업을 위한 기본 토대이기에, 규칙을 정해야만 협업 시의 혼란을 방지할 수 있다.
@@ -164,10 +169,3 @@ Branch를 Push가 불가능한 읽기 전용으로 만든다.
 > Allow users with push access to delete matching branches.
 
 Push 권한을 가진 사용자들이 Branch를 삭제할 수 있도록 허용한다. Push는 쓰기 명령어로, 사용자의 삭제 명령을 가능하게 한다. 되도록 사용하지 않는 것을 권장한다.
-
-## Reference
-
-- <https://docs.github.com/ko/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches>
-- <https://yejipro.tistory.com/entry/Github-Branch-Protection-Rule-%EC%A0%81%EC%9A%A9%ED%95%98%EA%B8%B0>
-- <https://velog.io/@honey8951/github-branch-protection-rule>
-- <https://kotlinworld.com/292#google_vignette>

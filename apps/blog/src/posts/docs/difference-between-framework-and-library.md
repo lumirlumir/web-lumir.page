@@ -5,6 +5,12 @@ created: '2024-05-06'
 updated: '2024-05-08'
 categories:
   - 'cs'
+references:
+  - 'https://webclub.tistory.com/458'
+  - 'https://sharonprogress.tistory.com/169'
+  - 'https://cocoon1787.tistory.com/745'
+  - 'https://canoe726.tistory.com/23'
+  - 'https://www.miraeweb.com/single-post/%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC%EC%99%80-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC%EB%8A%94-%EC%96%B4%EB%96%BB%EA%B2%8C-%EB%8B%A4%EB%A5%B8%EA%B0%80'
 ---
 
 프레임워크(Framework)와 라이브러리(Library)의 차이점은 무엇일까? 많은 사람들이 이 둘을 혼동하며, 심지어 같은 의미로 사용하기도 한다. 둘 다 미리 만들어 놓은 재사용 가능한 코드 집합이라는 공통점이 있지만, 둘 사이에는 분명한 차이점이 존재한다. 프레임워크는 단지 미리 만들어 둔 반제품이나 확장 가능한 추상 라이브러리 집합이 아니다. 프레임워크가 무엇인지 이해하려면 라이브러리와 어떻게 다른지 그 차이를 알아야 한다. 먼저 프레임워크와 라이브러리의 개념에 대해 살펴보자.
@@ -114,11 +120,3 @@ Library | Framework
 다른 라이브러리로 쉽게 대체 가능. | 프레임워크를 바꾸는 것은 쉽지 않다.
 기존 프로그램에 특정 기능을 구현하기 위해서 단순하게 라이브러리를 연결하는 것이 가능하다. | 기존 프로그램에 프레임워크를 새로 적용하는 것은 상당히 많은 노력이 필요하다.
 라이브러리 제작에는 상대적으로 적은 코드가 필요하며, 성능이 좋고 빠른 로딩 타임을 보장한다. | 프레임워크 제작에는 상대적으로 많은 코드가 필요하며, 성능과 로딩타임에 조금의 손해를 보게된다.
-
-## Reference
-
-- <https://webclub.tistory.com/458>
-- <https://sharonprogress.tistory.com/169>
-- <https://cocoon1787.tistory.com/745>
-- <https://canoe726.tistory.com/23>
-- <https://www.miraeweb.com/single-post/%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC%EC%99%80-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC%EB%8A%94-%EC%96%B4%EB%96%BB%EA%B2%8C-%EB%8B%A4%EB%A5%B8%EA%B0%80>

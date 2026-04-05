@@ -6,6 +6,12 @@ updated: '2024-06-11'
 categories:
   - 'convention'
   - 'git'
+references:
+  - 'https://velog.io/@chojs28/Git-%EC%BB%A4%EB%B0%8B-%EB%A9%94%EC%8B%9C%EC%A7%80-%EA%B7%9C%EC%B9%99'
+  - 'https://jane-aeiou.tistory.com/93'
+  - 'https://richone.tistory.com/26'
+  - 'https://guuumi.tistory.com/128'
+  - 'https://webisfree.com/2017-02-18/git-%EC%BB%A4%EB%B0%8B-%EB%AA%85%EB%A0%B9%EC%8B%9C-%EC%97%AC%EB%9F%AC%EC%A4%84%EC%9D%84-%EC%9E%85%EB%A0%A5%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95'
 ---
 
 팀원과의 소통, 편리한 과거 기록의 추적을 위해 규칙에 맞는 Commit Message를 작성하는 것이 중요하다.
@@ -109,11 +115,3 @@ $ git commit -m "fix: Safari에서 모달을 띄웠을 때 스크롤 이슈 수�
 
 ![Ailbaba Fusion commit](/apps/blog/public/images/posts/convention-of-git-commit-message/1.webp?raw=true "Ailbaba Fusion commit")
 ![NHN tui.calendar commit](/apps/blog/public/images/posts/convention-of-git-commit-message/2.webp?raw=true "NHN tui.calendar commit")
-
-## Reference
-
-- <https://velog.io/@chojs28/Git-%EC%BB%A4%EB%B0%8B-%EB%A9%94%EC%8B%9C%EC%A7%80-%EA%B7%9C%EC%B9%99>
-- <https://jane-aeiou.tistory.com/93>
-- <https://richone.tistory.com/26>
-- <https://guuumi.tistory.com/128>
-- <https://webisfree.com/2017-02-18/git-%EC%BB%A4%EB%B0%8B-%EB%AA%85%EB%A0%B9%EC%8B%9C-%EC%97%AC%EB%9F%AC%EC%A4%84%EC%9D%84-%EC%9E%85%EB%A0%A5%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95>

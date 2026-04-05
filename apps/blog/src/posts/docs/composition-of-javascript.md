@@ -5,6 +5,14 @@ created: '2024-05-08'
 updated: '2024-06-12'
 categories:
   - 'javascript'
+references:
+  - 'https://developer.mozilla.org/ko/'
+  - 'https://boycoding.tistory.com/2'
+  - 'https://velog.io/@imok-_/JavaScript-DOM-BOM-%EC%9D%B4%EB%9E%80'
+  - 'https://idlecomputer.tistory.com/40'
+  - 'https://postlude.github.io/2020/02/16/javascript-object/'
+  - 'https://bigtop.tistory.com/48'
+  - 'https://cbw1030.tistory.com/46'
 ---
 
 웹 브라우저(클라이언트) 환경에서의 ***JavaScript***는, `window`***<sup>1</sup>*** 란 최상위 객체와, ***코어(JavaScript, ECMAScript)<sup>2</sup>***, ***문서 객체 모델(Document Object Model, DOM)<sup>3</sup>***, ***브라우저 객체 모델(Browser Object Model)<sup>4</sup>*** 이란 3가지 하위 객체 요소들로 구성된다.
@@ -140,13 +148,3 @@ Returns the `window` itself, which is an ***array-like object***, listing the di
 ### 4-6. `XMLHttpRequest`
 
 `XMLHttpRequest`(***XHR***) 객체는 서버와 상호작용할 때 사용한다. ***XHR***을 사용하면 페이지의 새로고침 없이도 ***URL***에서 데이터를 가져올 수 있다. 이를 활용하면 사용자의 작업을 방해하지 않고 페이지의 일부를 업데이트할 수 있다.
-
-## Reference
-
-- <https://developer.mozilla.org/ko/>
-- <https://boycoding.tistory.com/2>
-- <https://velog.io/@imok-_/JavaScript-DOM-BOM-%EC%9D%B4%EB%9E%80>
-- <https://idlecomputer.tistory.com/40>
-- <https://postlude.github.io/2020/02/16/javascript-object/>
-- <https://bigtop.tistory.com/48>
-- <https://cbw1030.tistory.com/46>

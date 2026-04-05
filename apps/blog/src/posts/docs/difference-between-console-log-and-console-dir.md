@@ -5,6 +5,10 @@ created: '2024-04-02'
 updated: '2024-05-26'
 categories:
   - 'javascript'
+references:
+  - 'https://my-t-space.tistory.com/119'
+  - 'https://velog.io/@jeongda/console.log-%EC%99%80-console.dir-%EC%9D%98-%EC%B0%A8%EC%9D%B4'
+  - 'https://velog.io/@irish/JS-console.log-and-console.dir'
 ---
 
 ## 1. `console.log()`
@@ -90,9 +94,3 @@ categories:
 - 만약, `console.log(a());` 및 `console.dir(a());`를 사용할 경우, `()`로 인해 함수를 실행하는 것이 되므로, 둘 다 `true`가 출력된다.
 
   ![console.log() vs console.dir()](/apps/blog/public/images/posts/difference-between-console-log-and-console-dir/5.webp?raw=true)
-
-## Reference
-
-- <https://my-t-space.tistory.com/119>
-- <https://velog.io/@jeongda/console.log-%EC%99%80-console.dir-%EC%9D%98-%EC%B0%A8%EC%9D%B4>
-- <https://velog.io/@irish/JS-console.log-and-console.dir>

@@ -5,6 +5,12 @@ created: '2024-07-18'
 updated: '2024-07-18'
 categories:
   - 'convention'
+references:
+  - 'https://en.wikipedia.org/wiki/Camel_case'
+  - 'https://ccomccomhan.tistory.com/185'
+  - 'https://etloveguitar.tistory.com/104'
+  - 'https://blog.naver.com/ege1001/220466932974'
+  - 'https://namu.wiki/w/%EC%BD%94%EB%94%A9%20%EC%8A%A4%ED%83%80%EC%9D%BC#s-3.2'
 ---
 
 개발을 하다보면, 프로그래밍 언어마다 식별자 이름 규칙이 서로 다르다는 것을 알 수 있다. 변수, 함수, 클래스 등의 식별자 이름을 지을 때 사용하는 이름 명명 규칙(Naming Convention)을 알아보자.
@@ -132,11 +138,3 @@ kebab-case
 1. HTML: [특성(Attribute)](https://developer.mozilla.org/ko/docs/Web/HTML/Attributes) 이름에 사용된다.
 1. CSS: [속성(Property)](https://developer.mozilla.org/ko/docs/Web/CSS/Reference) 이름에 사용된다.
 1. URI Parameter.
-
-## Reference
-
-- <https://en.wikipedia.org/wiki/Camel_case>
-- <https://ccomccomhan.tistory.com/185>
-- <https://etloveguitar.tistory.com/104>
-- <https://blog.naver.com/ege1001/220466932974>
-- <https://namu.wiki/w/%EC%BD%94%EB%94%A9%20%EC%8A%A4%ED%83%80%EC%9D%BC#s-3.2>

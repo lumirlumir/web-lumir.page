@@ -6,6 +6,7 @@ updated: '2026-04-03'
 categories:
   - 'markdown'
   - 'javascript'
+references: []
 ---
 
 현재 블로그는 깃허브에서 사용하는 '깃허브 마크다운 문법<sup>GFM, GitHub Flavored Markdown</sup>'을 블로그 포스팅을 위한 마크다운 문서에 그대로 사용할 수 있도록 설계하였다.
@@ -152,7 +153,3 @@ console.log(exampleProcessed); // 'make this sentence lower case'
 ### 3. 마치며
 
 간단한 예시와 함께 마크다운 치환자를 어떻게 만들고 활용할지에 대해 살펴보았다. 위 내용들은 일종의 마크다운 전처리<sup>Preprocessing</sup> 과정이라 할 수도 있을 것이다. 이는 라이브러리 혹은 프레임워크의 사용 방법 혹은 특정 세팅이 아닌, 개발자가 직접 설계하고 흐름을 만들어나가야 하는 부분에 대한 설명으로, "이런 방법도 있구나!" 하는 참고용으로 활용해주면 좋겠다.
-
-## Reference
-
-- 직접 작성한 글

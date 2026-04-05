@@ -5,6 +5,9 @@ created: '2024-04-05'
 updated: '2024-10-30'
 categories:
   - 'npm'
+references:
+  - 'https://react.dev/'
+  - 'https://medium.com/programming-sage/react-vs-react-dom-a0ed3aea9745'
 ---
 
 React 개발의 필수 요소인 `react`, `react-dom`에 대해 알아보자.
@@ -34,8 +37,3 @@ DOM에서 `react`를 사용하기 위한 라이브러리이다. 웹 인터페이
 ## 4. 정리
 
 ![react react-dom](/apps/blog/public/images/posts/npm-package-react/1.webp?raw=true)
-
-## Reference
-
-- <https://react.dev/>
-- <https://medium.com/programming-sage/react-vs-react-dom-a0ed3aea9745>

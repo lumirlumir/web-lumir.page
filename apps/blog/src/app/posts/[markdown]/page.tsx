@@ -58,16 +58,31 @@ export default async function Page({ params }: PageProps<'/posts/[markdown]'>) {
   const { markdown } = await params;
   const {
     content,
-    data: { title },
+    data: { title, references },
   } = markdownCollectionSlug[markdown];
 
   return (
-    <div
-      className="markdown-body"
-      // eslint-disable-next-line react/no-danger -- Safe because the content comes from the local file and is controlled.
-      dangerouslySetInnerHTML={{
-        __html: await markdownToHtml(content, { title }),
-      }}
-    />
+    <>
+      <div
+        className="markdown-body"
+        // eslint-disable-next-line react/no-danger -- Safe because the content comes from the local file and is controlled.
+        dangerouslySetInnerHTML={{
+          __html: await markdownToHtml(content, { title }),
+        }}
+      />
+      {references.length > 0 && ( // TODO: Make a dedicated component for this after we decide on the design.
+        <div className="markdown-body">
+          <br />
+          <h2>Reference</h2>
+          <ul>
+            {references.map(reference => (
+              <li key={reference}>
+                <a href={reference}>{reference}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </>
   );
 }

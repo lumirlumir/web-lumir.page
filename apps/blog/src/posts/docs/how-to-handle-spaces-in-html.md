@@ -5,6 +5,10 @@ created: '2024-07-16'
 updated: '2024-07-16'
 categories:
   - 'html'
+references:
+  - 'https://developer.mozilla.org/ko/docs/Glossary/Entity'
+  - 'https://grandj.tistory.com/143'
+  - 'https://ziszini.tistory.com/34'
 ---
 
 HTML의 경우 연속된 공백을 하나의 공백으로 처리하는 성질이 있기에, 공백 특수문자, 정확히는 [HTML 엔터티(Entity)](https://developer.mozilla.org/ko/docs/Glossary/Entity)를 이용하여 연속된 공백을 처리할 수 있다.
@@ -97,9 +101,3 @@ HTML의 경우 연속된 공백을 하나의 공백으로 처리하는 성질이
   left|&ensp;|right
 
   left|&emsp;|right
-
-## Reference
-
-- <https://developer.mozilla.org/ko/docs/Glossary/Entity>
-- <https://grandj.tistory.com/143>
-- <https://ziszini.tistory.com/34>

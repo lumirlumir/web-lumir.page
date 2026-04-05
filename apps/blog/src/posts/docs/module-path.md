@@ -5,6 +5,9 @@ created: '2024-04-02'
 updated: '2024-10-08'
 categories:
   - 'nodejs'
+references:
+  - 'https://nodejs.org/api/path.html'
+  - 'https://defineall.tistory.com/655'
 ---
 
 `path`란, Node.js의 기본 내장 모듈이다.
@@ -182,8 +185,3 @@ console.log(myPath);
   name: 'file'
 }
 ```
-
-## Reference
-
-- <https://nodejs.org/api/path.html>
-- <https://defineall.tistory.com/655>

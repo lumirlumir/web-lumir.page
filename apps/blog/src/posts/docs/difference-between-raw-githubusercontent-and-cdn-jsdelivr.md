@@ -5,6 +5,13 @@ created: '2024-08-02'
 updated: '2024-08-02'
 categories:
   - 'git'
+references:
+  - 'https://www.jsdelivr.com/'
+  - 'https://dreamcoding.tistory.com/43'
+  - 'https://computer-science-student.tistory.com/297'
+  - 'https://kyulee.tistory.com/entry/CDN-Github-jsdelivr'
+  - 'https://tesseractjh.tistory.com/209'
+  - 'https://korband.tistory.com/6'
 ---
 
 GitHub에서 제공하는 `raw.githubusercontent.com`과 대표적인 GitHub CDN(Content Delivery Network) 서비스인 `cdn.jsdelivr.net`의 차이점은 그들의 목적, 동작, 그리고 제공하는 서비스의 방식에서 비롯된다.
@@ -85,12 +92,3 @@ https://cdn.jsdelivr.net/gh/{owner}/{repo}@{branch}/{file_path}
 
     - `raw.githubusercontent.com`는 주로 개발자가 특정 파일의 원본 내용에 접근할 때 사용.
     - `cdn.jsdelivr.net`(CDN)은 웹 콘텐츠, 미디어 파일, 소프트웨어 배포 등의 고속 전송이 필요한 다양한 경우에 사용.
-
-## Reference
-
-- <https://www.jsdelivr.com/>
-- <https://dreamcoding.tistory.com/43>
-- <https://computer-science-student.tistory.com/297>
-- <https://kyulee.tistory.com/entry/CDN-Github-jsdelivr>
-- <https://tesseractjh.tistory.com/209>
-- <https://korband.tistory.com/6>

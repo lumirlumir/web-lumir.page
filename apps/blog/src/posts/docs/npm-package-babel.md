@@ -5,6 +5,9 @@ created: '2024-04-03'
 updated: '2024-10-30'
 categories:
   - 'npm'
+references:
+  - 'https://babel.dev/docs/'
+  - 'https://www.daleseo.com/js-babel/'
 ---
 
 개발자들이 실행 환경에 구애받지 않고 항상 최신 문법의 자바스크립트로 코딩할 수 있도록 도와주는 유용한 도구인 바벨(Babel)에 대해 알아보자. 아래 내용들은 Babel 7 기반의 설명들이다.
@@ -195,8 +198,3 @@ Successfully compiled 2 files with Babel.
 - `@babel/preset-env`: 가장 범용적으로 사용되는 preset이다. ES6 이상(ES2015+)의 문법으로 작성된 코드를 ES5 문법의 코드로 변환해주는 모든 규칙을 정의하고 있다.
 - `@babel/preset-react`: React를 위한 preset이다. 기본적으로 JSX 문법과 React 컴포넌트를 정의할 때 사용되는 표현식을 JavaScript로 변환하는 데 필요한 모든 규칙을 정의하고 있다.
 - `babel-loader`: Babel과 Webpack을 연동시켜준다.
-
-## Reference
-
-- <https://babel.dev/docs/>
-- <https://www.daleseo.com/js-babel/>

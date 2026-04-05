@@ -5,6 +5,10 @@ created: '2024-09-14'
 updated: '2024-09-14'
 categories:
   - 'nextjs'
+references:
+  - 'https://vercel.com/guides/loading-static-file-nextjs-api-route'
+  - 'https://nodejs.org/api/process.html#processcwd'
+  - 'https://nodejs.org/docs/latest/api/globals.html#__dirname'
 ---
 
 **Vercel**(**Next.js**)의 공식 가이드 [How to Load Data from a File in Next.js](https://vercel.com/guides/loading-static-file-nextjs-api-route)를 읽다 문득 궁금한 점이 생겼다.
@@ -99,9 +103,3 @@ __dirname: /.next/server/app
 ### 2-3. 결론
 
 Next.js 프로젝트에서 파일 경로를 찾을 때는 `process.cwd()`를 사용하는 것이 훨씬 안정적이다. `process.cwd()`는 항상 프로젝트의 루트 디렉토리를 가리키기 때문에, 파일 경로를 지정할 때 더 일관성 있게 사용할 수 있다. **따라서, Next.js 환경에서는 `__dirname`보다는 `process.cwd()`의 사용을 권장한다.**
-
-## Reference
-
-- <https://vercel.com/guides/loading-static-file-nextjs-api-route>
-- <https://nodejs.org/api/process.html#processcwd>
-- <https://nodejs.org/docs/latest/api/globals.html#__dirname>

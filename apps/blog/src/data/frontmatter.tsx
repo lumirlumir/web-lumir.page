@@ -22,7 +22,7 @@ import { type Meta } from './meta';
 
 /**
  * Represents the frontmatter of a Markdown document,
- * containing metadata such as `title`, `description`, `created` date, `updated` date, and `categories`.
+ * containing metadata such as `title`, `description`, `created` date, `updated` date, `categories`, and `references`.
  */
 export interface Frontmatter {
   /**
@@ -51,6 +51,11 @@ export interface Frontmatter {
    * The categories of the Markdown document, representing the categories associated with the content.
    */
   readonly categories: CategoryKey[];
+
+  /**
+   * The reference URLs of the Markdown document.
+   */
+  readonly references: string[];
 }
 
 /**
@@ -63,7 +68,7 @@ export type FrontmatterKey = keyof Frontmatter;
  */
 export type SortableFrontmatterKey = Exclude<
   FrontmatterKey,
-  'description' | 'categories'
+  'description' | 'categories' | 'references'
 >;
 
 // --------------------------------------------------------------------------------
@@ -109,5 +114,12 @@ export const frontmatterMeta = {
       ko: '카테고리',
     },
     reactIcons: <FaTag />,
+  },
+  references: {
+    name: {
+      en: 'References',
+      ko: '참고 링크',
+    },
+    reactIcons: <span aria-hidden="true" />, // Currently, there is no suitable icon for references, so we use an inline placeholder.
   },
 } as const satisfies Record<FrontmatterKey, Meta>;
