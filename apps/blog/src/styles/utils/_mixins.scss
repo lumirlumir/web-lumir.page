@@ -15,20 +15,6 @@
   -webkit-box-orient: vertical;
 }
 
-@mixin props-animation-fade-in {
-  animation: fade-in 0.6s ease-in-out;
-
-  @keyframes fade-in {
-    0% {
-      opacity: 0;
-    }
-
-    100% {
-      opacity: 1;
-    }
-  }
-}
-
 /* selector */
 @mixin selector-scrollbar($width: 0.25rem, $axis: y) {
   @if $axis == y {
