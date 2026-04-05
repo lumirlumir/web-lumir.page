@@ -117,10 +117,10 @@
     quotes: none;
   }
 
-  blockquote::before:not(.markdown-body *),
-  blockquote::after:not(.markdown-body *),
-  q::before:not(.markdown-body *),
-  q::after:not(.markdown-body *) {
+  blockquote:not(.markdown-body *)::before,
+  blockquote:not(.markdown-body *)::after,
+  q:not(.markdown-body *)::before,
+  q:not(.markdown-body *)::after {
     content: '';
     content: none;
   }
