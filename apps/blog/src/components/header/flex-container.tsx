@@ -7,7 +7,7 @@
 // --------------------------------------------------------------------------------
 
 import { type PropsWithChildren } from 'react';
-import styles from './flex-container.module.scss';
+import styles from './flex-container.module.css';
 
 // --------------------------------------------------------------------------------
 // Export
