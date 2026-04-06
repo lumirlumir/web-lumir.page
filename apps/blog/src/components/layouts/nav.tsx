@@ -8,7 +8,7 @@
 
 import { type PropsWithChildren } from 'react';
 import { cn } from '@lumir/utils';
-import styles from './nav.module.scss';
+import styles from './nav.module.css';
 
 // --------------------------------------------------------------------------------
 // Export

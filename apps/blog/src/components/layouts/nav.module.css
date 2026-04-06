@@ -7,7 +7,7 @@
   background-color: var(--color-bg-inset);
   border-left: var(--border-default);
 
-  > div {
+  & > div {
     padding: 4px 8px;
     background-color: var(--color-bg-default);
     border: var(--border-default);

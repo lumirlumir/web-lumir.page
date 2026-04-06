@@ -11,7 +11,7 @@
   border: var(--border-default);
   border-radius: var(--size-border-radius);
 
-  > .react-icons {
+  & > .react-icons {
     padding-right: var(--size-4);
   }
 
@@ -29,18 +29,18 @@
   border: var(--border-default);
   border-radius: var(--size-border-radius);
 
-  > div {
+  & > div {
     margin-bottom: var(--size-8);
   }
 
-  .title,
-  .description {
+  & .title,
+  & .description {
     display: -webkit-box;
     overflow: hidden;
     -webkit-box-orient: vertical;
   }
 
-  .title {
+  & .title {
     -webkit-line-clamp: 3;
     line-clamp: 3;
     font-size: var(--size-24);
@@ -48,7 +48,7 @@
     letter-spacing: var(--size-letter-spacing-medium);
   }
 
-  .description {
+  & .description {
     -webkit-line-clamp: 4;
     line-clamp: 4;
     font-size: var(--size-14);
@@ -57,21 +57,21 @@
   }
 
   &:hover {
-    .title,
-    .description {
+    & .title,
+    & .description {
       -webkit-line-clamp: 10;
       line-clamp: 10;
     }
   }
 
   @media (width >= 640px) {
-    .title {
+    & .title {
       -webkit-line-clamp: 1;
       line-clamp: 1;
       font-size: var(--size-28);
     }
 
-    .description {
+    & .description {
       -webkit-line-clamp: 2;
       line-clamp: 2;
       font-size: var(--size-16);

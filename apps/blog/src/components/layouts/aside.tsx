@@ -16,7 +16,7 @@ import { type PropsWithChildren } from 'react';
 import { useToggle } from '@lumir/react-kit/hooks';
 import { HiOutlineMenuAlt2 } from '@lumir/react-kit/svgs';
 import { cn } from '@lumir/utils';
-import styles from './aside.module.scss';
+import styles from './aside.module.css';
 
 // --------------------------------------------------------------------------------
 // Export
