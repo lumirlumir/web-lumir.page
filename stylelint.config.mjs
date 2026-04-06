@@ -12,7 +12,13 @@ export default {
       width: ['px'],
     },
     'media-feature-name-value-allowed-list': {
-      width: ['640px', '768px', '1024px', '1280px', '1536px'],
+      width: [
+        '640px', // sm
+        '768px', // md
+        '1024px', // lg
+        '1280px', // xl
+        '1536px', // 2xl
+      ],
     },
   },
 };

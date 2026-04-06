@@ -28,13 +28,6 @@
   --size-letter-spacing-medium: -1px;
   --size-letter-spacing-small: -0.5px;
 
-  /* breakpoints */
-  --breakpoint-sm: 640px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 1024px;
-  --breakpoint-xl: 1280px;
-  --breakpoint-2xl: 1536px;
-
   /* text-weight */
   --text-weight-normal: 400;
   --text-weight-medium: 500;

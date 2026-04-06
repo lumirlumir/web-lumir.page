@@ -8,12 +8,12 @@
   background-color: inherit;
   border-bottom: var(--border-default);
 
-  @include screen(lg) {
+  @media (width >= 1024px) {
     padding: 0 calc(var(--size-article-padding-small) * 2) 0
       var(--size-article-padding-large);
   }
 
-  @include screen(xl) {
+  @media (width >= 1280px) {
     display: grid;
     grid-template-columns: var(--size-sidebar-width) 1fr min-content;
     padding: 0 calc(var(--size-article-padding-small) * 2) 0 0;

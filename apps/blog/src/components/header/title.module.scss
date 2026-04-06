@@ -7,7 +7,7 @@
     display: none;
   }
 
-  @include screen(sm) {
+  @media (width >= 640px) {
     > div {
       display: grid;
       grid-template-rows: 2fr 1fr;

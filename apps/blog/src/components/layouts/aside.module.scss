@@ -20,7 +20,7 @@ $transition: transform 0.75s ease-in-out;
     border-bottom: var(--border-default);
   }
 
-  @include screen(xl) {
+  @media (width >= 1280px) {
     transform: translateX(0);
   }
 }
@@ -48,7 +48,7 @@ $transition: transform 0.75s ease-in-out;
     margin: var(--size-4);
   }
 
-  @include screen(xl) {
+  @media (width >= 1280px) {
     opacity: 0;
     transform: translateX(var(--size-sidebar-width));
   }

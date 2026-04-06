@@ -12,7 +12,7 @@
     transform: translateX(100%); // TODO: Move to `Nav` component.
   }
 
-  @include screen(md) {
+  @media (width >= 768px) {
     > article {
       grid-area: 1 / 1 / 2 / 2;
     }

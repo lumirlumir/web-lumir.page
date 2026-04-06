@@ -17,7 +17,7 @@
     padding-right: var(--size-4);
   }
 
-  @include screen(sm) {
+  @media (width >= 640px) {
     font-size: var(--size-14);
   }
 }
@@ -58,7 +58,7 @@
     }
   }
 
-  @include screen(sm) {
+  @media (width >= 640px) {
     .title {
       @include props-line-clamp(1);
 
