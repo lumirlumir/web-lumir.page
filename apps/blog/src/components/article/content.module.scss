@@ -35,17 +35,24 @@
     margin-bottom: var(--size-8);
   }
 
-  .title {
-    @include props-ellipsis(3);
+  .title,
+  .description {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+  }
 
+  .title {
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
     font-size: var(--size-24);
     font-weight: var(--text-weight-semibold);
     letter-spacing: var(--size-letter-spacing-medium);
   }
 
   .description {
-    @include props-ellipsis(4);
-
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
     font-size: var(--size-14);
     color: var(--color-fg-muted);
     letter-spacing: var(--size-letter-spacing-small);
@@ -54,20 +61,21 @@
   &:hover {
     .title,
     .description {
-      @include props-line-clamp(10);
+      -webkit-line-clamp: 10;
+      line-clamp: 10;
     }
   }
 
   @media (width >= 640px) {
     .title {
-      @include props-line-clamp(1);
-
+      -webkit-line-clamp: 1;
+      line-clamp: 1;
       font-size: var(--size-28);
     }
 
     .description {
-      @include props-line-clamp(2);
-
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
       font-size: var(--size-16);
     }
   }

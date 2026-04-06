@@ -1,17 +1,3 @@
-/* props */
-@mixin props-line-clamp($line: 1) {
-  -webkit-line-clamp: $line;
-  line-clamp: $line;
-}
-
-@mixin props-ellipsis($line: 1) {
-  @include props-line-clamp($line);
-
-  display: -webkit-box;
-  overflow: hidden;
-  -webkit-box-orient: vertical;
-}
-
 /* selector */
 @mixin selector-scrollbar($width: 0.25rem, $axis: y) {
   @if $axis == y {
