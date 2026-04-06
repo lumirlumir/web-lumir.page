@@ -3,7 +3,7 @@
     animation: var(--animation-shake);
   }
 
-  .mode-switcher {
+  & .mode-switcher {
     /* variables */
     --light-color: var(--color-fg-default);
     --dark-color: var(--color-bg-inset);
@@ -30,7 +30,7 @@
     animation: var(--animation-fade-in);
 
     /* selectors */
-    &-main-body {
+    & .mode-switcher-main-body {
       display: block;
       width: 80%;
       height: 80%;
@@ -39,7 +39,7 @@
       transition: all var(--duration) var(--timing);
     }
 
-    &-shadow-shape {
+    & .mode-switcher-shadow-shape {
       position: absolute;
       top: -5%;
       right: 0;
@@ -55,7 +55,7 @@
         background-color 0s;
     }
 
-    &-sunray {
+    & .mode-switcher-sunray {
       position: absolute;
       top: 50%;
       left: 50%;
@@ -83,38 +83,38 @@
       &::after {
         bottom: 0;
       }
+    }
 
-      &-sunray-1 {
-        transform: translate(-50%, -50%);
-      }
+    & .mode-switcher-sunray-sunray-1 {
+      transform: translate(-50%, -50%);
+    }
 
-      &-sunray-2 {
-        transform: translate(-50%, -50%) rotate(45deg);
-      }
+    & .mode-switcher-sunray-sunray-2 {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
 
-      &-sunray-3 {
-        transform: translate(-50%, -50%) rotate(90deg);
-      }
+    & .mode-switcher-sunray-sunray-3 {
+      transform: translate(-50%, -50%) rotate(90deg);
+    }
 
-      &-sunray-4 {
-        transform: translate(-50%, -50%) rotate(135deg);
-      }
+    & .mode-switcher-sunray-sunray-4 {
+      transform: translate(-50%, -50%) rotate(135deg);
     }
 
     &.active {
       transform: rotate(45deg);
 
-      .mode-switcher-main-body {
+      & .mode-switcher-main-body {
         width: 50%;
         height: 50%;
         background-color: var(--sun-color);
       }
 
-      .mode-switcher-shadow-shape {
+      & .mode-switcher-shadow-shape {
         transform: rotate(90deg);
       }
 
-      .mode-switcher-sunray {
+      & .mode-switcher-sunray {
         height: 90%;
         opacity: 1;
       }

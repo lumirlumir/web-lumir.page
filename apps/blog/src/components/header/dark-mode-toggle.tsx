@@ -15,7 +15,7 @@
 import { useContext } from 'react';
 import { cn } from '@lumir/utils';
 import { ThemeContext } from '@/components/common/theme-provider';
-import styles from './dark-mode-toggle.module.scss';
+import styles from './dark-mode-toggle.module.css';
 
 // --------------------------------------------------------------------------------
 // Export
