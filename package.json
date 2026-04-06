@@ -33,13 +33,13 @@
     "start:a:blog": "npm run start -w apps/blog",
     "fix": "npm-run-all -c -l -p fix:*",
     "fix:eslint": "npx eslint --fix",
-    "fix:stylelint": "npx stylelint --fix **/*.{css,scss}",
+    "fix:stylelint": "npx stylelint --fix **/*.css",
     "fix:prettier": "npx prettier . --write --ignore-unknown",
     "fix:markdownlint": "npx markdownlint **/*.md --fix --disable MD060",
     "fix:clangformat": "find . -name '*.h' -o -name '*.c' -o -name '*.cpp' -print0 | xargs -0 npx clang-format -i",
     "lint": "npm-run-all -c -l -p lint:*",
     "lint:eslint": "npx eslint",
-    "lint:stylelint": "npx stylelint **/*.{css,scss}",
+    "lint:stylelint": "npx stylelint **/*.css",
     "lint:prettier": "npx prettier . --check --ignore-unknown",
     "lint:editorconfig": "npx editorconfig-checker -config .editorconfig-checker.json",
     "lint:markdownlint": "npx markdownlint **/*.md --disable MD060",
@@ -60,7 +60,6 @@
     "prettier": "^3.8.1",
     "stylelint": "^16.26.1",
     "stylelint-config-recess-order": "^7.7.0",
-    "stylelint-config-standard-scss": "^16.0.0",
     "typescript": "^6.0.2",
     "vitest": "^4.1.1"
   }
