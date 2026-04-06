@@ -10,7 +10,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { cn } from '@lumir/utils';
 import { getGithubUsers } from '@/utils/fetch';
-import styles from './title.module.scss';
+import styles from './title.module.css';
 
 // --------------------------------------------------------------------------------
 // Export
