@@ -27,7 +27,15 @@ export default function Aside({ children }: PropsWithChildren) {
 
   return (
     <>
-      <aside className={cn(styles.aside, visible && styles.visible)}>{children}</aside>
+      <aside
+        className={cn(
+          styles.aside,
+          visible && styles.visible,
+          'custom-scrollbar-y-regular',
+        )}
+      >
+        {children}
+      </aside>
       <div
         className={cn(styles.div, visible && styles.visible, 'custom-flex-center')}
         onClick={toggleVisible}

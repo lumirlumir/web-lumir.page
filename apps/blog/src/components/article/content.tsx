@@ -20,7 +20,11 @@ import styles from './content.module.scss';
 // --------------------------------------------------------------------------------
 
 function ContentBoxContainer({ children }: PropsWithChildren) {
-  return <div className={styles['content-box-container']}>{children}</div>;
+  return (
+    <div className={cn(styles['content-box-container'], 'custom-scrollbar-x')}>
+      {children}
+    </div>
+  );
 }
 
 function ContentBoxItem({ icon, text }: { icon: JSX.Element; text: string }) {

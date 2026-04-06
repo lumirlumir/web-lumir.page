@@ -7,6 +7,7 @@
 // --------------------------------------------------------------------------------
 
 import { type PropsWithChildren } from 'react';
+import { cn } from '@lumir/utils';
 import styles from './body.module.scss';
 
 // --------------------------------------------------------------------------------
@@ -14,5 +15,5 @@ import styles from './body.module.scss';
 // --------------------------------------------------------------------------------
 
 export default function Body({ children }: PropsWithChildren) {
-  return <body className={styles.body}>{children}</body>;
+  return <body className={cn(styles.body, 'custom-scrollbar-y-bold')}>{children}</body>;
 }

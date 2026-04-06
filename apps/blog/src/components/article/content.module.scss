@@ -1,6 +1,4 @@
 .content-box-container {
-  @include selector-scrollbar(0, x);
-
   display: flex;
   white-space: nowrap;
 }

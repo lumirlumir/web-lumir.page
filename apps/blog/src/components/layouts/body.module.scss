@@ -1,6 +1,4 @@
 .body {
-  @include selector-scrollbar(0.25rem);
-
   display: grid;
   grid-template-rows: var(--size-header-height) 1fr;
   grid-template-columns: var(--size-sidebar-width) 1fr;
