@@ -24,7 +24,7 @@ export default async function Links() {
       <li>
         <Link className={cn('custom-flex-center', 'custom-hover-effect')} href="/">
           <FaHouseChimney />
-          <span>Home</span>
+          <span className="custom-flex-center">Home</span>
         </Link>
       </li>
       <li>
