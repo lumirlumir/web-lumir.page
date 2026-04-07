@@ -13,14 +13,18 @@ import { categoryMeta } from '@/data/category';
 import { frontmatterMeta } from '@/data/frontmatter';
 import { type VMarkdownFile } from '@/data/v-markdown-file';
 import { markdownToHtmlLite } from '@/utils/markdown-to-html';
-import styles from './content.module.scss';
+import styles from './content.module.css';
 
 // --------------------------------------------------------------------------------
 // Helper
 // --------------------------------------------------------------------------------
 
 function ContentBoxContainer({ children }: PropsWithChildren) {
-  return <div className={styles['content-box-container']}>{children}</div>;
+  return (
+    <div className={cn(styles['content-box-container'], 'custom-scrollbar-x')}>
+      {children}
+    </div>
+  );
 }
 
 function ContentBoxItem({ icon, text }: { icon: JSX.Element; text: string }) {
@@ -46,7 +50,7 @@ export default async function Content({
 }) {
   return (
     <Link href={`/posts/${slug}`}>
-      <div className={styles.content}>
+      <div className={cn(styles.content, 'custom-hover-effect')}>
         <div
           className={cn(styles.title, 'markdown-body')}
           // eslint-disable-next-line react/no-danger -- Safe because the title comes from the local file and is controlled.

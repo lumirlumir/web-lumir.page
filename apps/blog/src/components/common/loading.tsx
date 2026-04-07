@@ -7,7 +7,8 @@
 // --------------------------------------------------------------------------------
 
 import Image from 'next/image';
-import styles from './loading.module.scss';
+import { cn } from '@lumir/utils';
+import styles from './loading.module.css';
 
 // --------------------------------------------------------------------------------
 // Export
@@ -15,8 +16,8 @@ import styles from './loading.module.scss';
 
 export default function Loading({ content }: { content: string }) {
   return (
-    <div className={styles.loading}>
-      <div>
+    <div className={cn(styles.loading, 'custom-flex-center')}>
+      <div className="custom-flex-center">
         <div>
           <Image
             src="/images/loading.gif"

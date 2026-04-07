@@ -8,10 +8,9 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-
+import { cn } from '@lumir/utils';
 import { getGithubUsers } from '@/utils/fetch';
-
-import styles from './profile.module.scss';
+import styles from './profile.module.css';
 
 // --------------------------------------------------------------------------------
 // Export
@@ -21,7 +20,7 @@ export default async function Profile() {
   const { avatar_url: avatarUrl, bio, name } = await getGithubUsers();
 
   return (
-    <div className={styles.profile}>
+    <div className={cn(styles.profile, 'custom-flex-center')}>
       <Image
         src={avatarUrl}
         width={96}

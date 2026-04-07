@@ -1,0 +1,48 @@
+.custom-flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-hover-effect {
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background-color: var(--color-bg-neutral-muted);
+    border-radius: var(--size-border-radius);
+  }
+}
+
+.custom-scrollbar-x {
+  overflow: scroll hidden;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.custom-scrollbar-y-regular {
+  overflow: hidden scroll;
+
+  &::-webkit-scrollbar {
+    width: 0.125rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--color-border-default);
+    border-radius: var(--size-border-radius);
+  }
+}
+
+.custom-scrollbar-y-bold {
+  overflow: hidden scroll;
+
+  &::-webkit-scrollbar {
+    width: 0.25rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--color-border-default);
+    border-radius: var(--size-border-radius);
+  }
+}

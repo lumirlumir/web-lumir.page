@@ -1,28 +1,26 @@
 .title {
-  @include props-flex-center;
-
-  > a > img {
+  & > a > img {
     border-radius: 50%;
   }
 
-  > div {
+  & > div {
     display: none;
   }
 
-  @include screen(sm) {
-    > div {
+  @media (width >= 640px) {
+    & > div {
       display: grid;
       grid-template-rows: 2fr 1fr;
       padding-left: var(--size-16);
 
-      > .user-name {
+      & > .user-name {
         padding: var(--size-8) 0;
-        font-size: calc(var(--size-10) * 2); // 2fr
+        font-size: calc(var(--size-10) * 2); /* 2fr */
         font-weight: var(--text-weight-semibold);
       }
 
-      > .user-bio {
-        font-size: var(--size-10); // 1fr
+      & > .user-bio {
+        font-size: var(--size-10); /* 1fr */
         color: var(--color-fg-muted);
         letter-spacing: var(--size-letter-spacing-small);
       }

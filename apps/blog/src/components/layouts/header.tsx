@@ -7,7 +7,7 @@
 // --------------------------------------------------------------------------------
 
 import { type PropsWithChildren } from 'react';
-import styles from './header.module.scss';
+import styles from './header.module.css';
 
 // --------------------------------------------------------------------------------
 // Export

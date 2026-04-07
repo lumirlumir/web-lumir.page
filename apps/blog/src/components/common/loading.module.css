@@ -1,16 +1,12 @@
 .loading {
-  @include props-flex-center;
-
-  > div {
-    @include props-flex-center;
-
+  & > div {
     flex-direction: column;
 
-    > div {
+    & > div {
       padding: 8px 0;
     }
 
-    > .content {
+    & > .content {
       color: var(--color-fg-muted);
     }
   }

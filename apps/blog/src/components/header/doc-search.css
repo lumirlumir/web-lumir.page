@@ -28,14 +28,14 @@
 }
 
 .DocSearch-Button {
-  @include selector-hover-default;
-
   width: 100%;
   height: 100%;
   margin: 0;
   border-radius: var(--size-border-radius);
+  transition: all 0.3s ease-in-out;
 
   &:hover {
+    background-color: var(--color-bg-neutral-muted);
     border-radius: var(--size-border-radius);
     box-shadow: none;
   }
@@ -61,8 +61,8 @@
 }
 
 .DocSearch-Logo {
-  .cls-1,
-  .cls-2 {
+  & .cls-1,
+  & .cls-2 {
     fill: var(--color-fg-default);
   }
 }

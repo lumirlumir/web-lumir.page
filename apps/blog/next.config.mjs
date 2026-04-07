@@ -3,12 +3,6 @@
  */
 
 // --------------------------------------------------------------------------------
-// Import
-// --------------------------------------------------------------------------------
-
-import { fileURLToPath } from 'node:url';
-
-// --------------------------------------------------------------------------------
 // Helpers
 // --------------------------------------------------------------------------------
 
@@ -23,10 +17,6 @@ const nextConfig = {
         hostname: 'avatars.githubusercontent.com', // Allow GitHub profile image.
       },
     ],
-  },
-  sassOptions: {
-    loadPaths: [fileURLToPath(new URL('./src/styles', import.meta.url))],
-    additionalData: "@use 'utils/mixins' as *;",
   },
   reactCompiler: true,
   // Remove `console.*` output except `console.warn` and `console.error` only in production.

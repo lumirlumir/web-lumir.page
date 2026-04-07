@@ -1,33 +1,27 @@
-$transition: transform 0.75s ease-in-out;
-
 .aside {
-  @include selector-scrollbar(0.125rem);
-
   position: sticky;
   top: var(--size-header-height);
   height: calc(100vh - var(--size-header-height));
   background-color: var(--color-bg-default);
   border-right: var(--border-default);
   transform: translateX(-100%);
-  transition: $transition;
+  transition: transform 0.75s ease-in-out;
 
   &.visible {
     transform: translateX(0);
   }
 
-  > ul:not(:last-child) {
+  & > ul:not(:last-child) {
     margin: 16px 0;
     border-bottom: var(--border-default);
   }
 
-  @include screen(xl) {
+  @media (width >= 1280px) {
     transform: translateX(0);
   }
 }
 
 .div {
-  @include props-flex-center;
-
   position: fixed;
   top: var(--size-header-height);
   z-index: 1;
@@ -38,19 +32,19 @@ $transition: transform 0.75s ease-in-out;
   border-bottom: var(--border-default);
   border-bottom-right-radius: var(--size-border-radius);
   transform: translateX(0);
-  transition: $transition;
+  transition: transform 0.75s ease-in-out;
 
   &.visible {
     transform: translateX(var(--size-sidebar-width));
   }
 
-  > svg {
+  & > svg {
     width: 100%;
     height: 100%;
     margin: var(--size-4);
   }
 
-  @include screen(xl) {
+  @media (width >= 1280px) {
     opacity: 0;
     transform: translateX(var(--size-sidebar-width));
   }

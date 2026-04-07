@@ -1,33 +1,26 @@
 .links {
-  @include props-flex-center;
-
   padding: var(--size-8) 0 var(--size-16);
 
-  > li > a {
-    @include props-flex-center;
-    @include selector-hover-default;
-
+  & > li > a {
     flex-direction: column;
     padding: var(--size-6);
 
-    &:hover {
-      > svg {
-        @include props-animation-shake;
-      }
-    }
-
-    > * {
+    & > * {
       margin: var(--size-2);
     }
 
-    > svg {
+    & > svg {
       width: var(--size-24);
       height: var(--size-24);
     }
 
-    > span {
-      @include props-flex-center;
+    &:hover {
+      & > svg {
+        animation: var(--animation-shake);
+      }
+    }
 
+    & > span {
       width: var(--size-40);
       color: var(--color-fg-muted);
       letter-spacing: var(--size-letter-spacing-medium);

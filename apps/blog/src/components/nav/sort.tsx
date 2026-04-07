@@ -16,9 +16,10 @@ import { usePathname, useSearchParams, useRouter } from 'next/navigation';
 import { type PropsWithChildren } from 'react';
 import { useToggle } from '@lumir/react-kit/hooks';
 import { FaAngleDown, FaAngleUp, GrSort } from '@lumir/react-kit/svgs';
+import { cn } from '@lumir/utils';
 import { frontmatterMeta, type SortableFrontmatterKey } from '@/data/frontmatter';
 import { sortMeta, type SortKey } from '@/data/sort';
-import styles from './sort.module.scss';
+import styles from './sort.module.css';
 
 // --------------------------------------------------------------------------------
 // Helper
@@ -29,13 +30,18 @@ function SortContainer({ children }: PropsWithChildren) {
 
   return (
     <div>
-      <div className={styles['sort-item']} onClick={toggleIsOpen}>
-        <div className={styles['react-icons']}>
+      <div
+        className={cn(styles['sort-item'], 'custom-hover-effect')}
+        onClick={toggleIsOpen}
+      >
+        <div className={cn(styles['react-icons'], 'custom-flex-center')}>
           <GrSort />
         </div>
         <div className={styles['name-en']}>Sort</div>
         <div className={styles['name-ko']}>정렬</div>
-        <div className={styles.order}>{isOpen ? <FaAngleUp /> : <FaAngleDown />}</div>
+        <div className={cn(styles.order, 'custom-flex-center')}>
+          {isOpen ? <FaAngleUp /> : <FaAngleDown />}
+        </div>
       </div>
       {isOpen ? <ul>{children}</ul> : null}
     </div>
@@ -58,15 +64,22 @@ function SortItem({ sort, order }: { sort: SortableFrontmatterKey; order: SortKe
   }
 
   return (
-    <li className={styles['sort-item']} onClick={() => onClick(sort, order)}>
-      <div className={styles['react-icons']}>{frontmatterMeta[sort].reactIcons}</div>
+    <li
+      className={cn(styles['sort-item'], 'custom-hover-effect')}
+      onClick={() => onClick(sort, order)}
+    >
+      <div className={cn(styles['react-icons'], 'custom-flex-center')}>
+        {frontmatterMeta[sort].reactIcons}
+      </div>
       <div
         className={styles['name-en']}
       >{`${frontmatterMeta[sort].name.en} / ${sortMeta[order].name.en}`}</div>
       <div
         className={styles['name-ko']}
       >{`${frontmatterMeta[sort].name.ko} / ${sortMeta[order].name.ko}`}</div>
-      <div className={styles.order}>{sortMeta[order].reactIcons}</div>
+      <div className={cn(styles.order, 'custom-flex-center')}>
+        {sortMeta[order].reactIcons}
+      </div>
     </li>
   );
 }

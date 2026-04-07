@@ -1,6 +1,4 @@
 .nav {
-  @include selector-scrollbar(0.125rem);
-
   position: sticky;
   top: var(--size-header-height);
   box-sizing: border-box;
@@ -9,19 +7,19 @@
   background-color: var(--color-bg-inset);
   border-left: var(--border-default);
 
-  > div {
+  & > div {
     padding: 4px 8px;
     background-color: var(--color-bg-default);
     border: var(--border-default);
     border-radius: var(--size-border-radius);
   }
 
-  @include screen(md) {
+  @media (width >= 768px) {
     background-color: inherit;
     border-left: none;
   }
 
-  @include screen(lg) {
+  @media (width >= 1024px) {
     padding: var(--size-article-padding-large) calc(var(--size-article-padding-small) * 2)
       0 0;
   }

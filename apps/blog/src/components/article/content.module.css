@@ -1,6 +1,4 @@
 .content-box-container {
-  @include selector-scrollbar(0, x);
-
   display: flex;
   white-space: nowrap;
 }
@@ -13,18 +11,16 @@
   border: var(--border-default);
   border-radius: var(--size-border-radius);
 
-  > .react-icons {
+  & > .react-icons {
     padding-right: var(--size-4);
   }
 
-  @include screen(sm) {
+  @media (width >= 640px) {
     font-size: var(--size-14);
   }
 }
 
 .content {
-  @include selector-hover-default;
-
   display: flex;
   flex-direction: column;
   padding: var(--size-16) var(--size-24);
@@ -33,43 +29,51 @@
   border: var(--border-default);
   border-radius: var(--size-border-radius);
 
-  > div {
+  & > div {
     margin-bottom: var(--size-8);
   }
 
-  .title {
-    @include props-ellipsis(3);
+  & .title,
+  & .description {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+  }
 
+  & .title {
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
     font-size: var(--size-24);
     font-weight: var(--text-weight-semibold);
     letter-spacing: var(--size-letter-spacing-medium);
   }
 
-  .description {
-    @include props-ellipsis(4);
-
+  & .description {
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
     font-size: var(--size-14);
     color: var(--color-fg-muted);
     letter-spacing: var(--size-letter-spacing-small);
   }
 
   &:hover {
-    .title,
-    .description {
-      @include props-line-clamp(10);
+    & .title,
+    & .description {
+      -webkit-line-clamp: 10;
+      line-clamp: 10;
     }
   }
 
-  @include screen(sm) {
-    .title {
-      @include props-line-clamp(1);
-
+  @media (width >= 640px) {
+    & .title {
+      -webkit-line-clamp: 1;
+      line-clamp: 1;
       font-size: var(--size-28);
     }
 
-    .description {
-      @include props-line-clamp(2);
-
+    & .description {
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
       font-size: var(--size-16);
     }
   }

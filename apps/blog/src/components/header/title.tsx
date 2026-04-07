@@ -8,10 +8,9 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-
+import { cn } from '@lumir/utils';
 import { getGithubUsers } from '@/utils/fetch';
-
-import styles from './title.module.scss';
+import styles from './title.module.css';
 
 // --------------------------------------------------------------------------------
 // Export
@@ -21,7 +20,7 @@ export default async function Title() {
   const { avatar_url: avatarUrl, bio, name } = await getGithubUsers();
 
   return (
-    <div className={styles.title}>
+    <div className={cn(styles.title, 'custom-flex-center')}>
       <Link href="/">
         <Image
           src={avatarUrl}

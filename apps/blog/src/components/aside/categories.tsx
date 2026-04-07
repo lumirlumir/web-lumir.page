@@ -8,12 +8,13 @@
 
 import Link from 'next/link';
 import { FaPen } from '@lumir/react-kit/svgs';
+import { cn } from '@lumir/utils';
 import { categoryMeta } from '@/data/category';
 import {
   listNonEmptyCategoryKeys,
   markdownCollectionCategory,
 } from '@/utils/markdown-collection';
-import styles from './categories.module.scss';
+import styles from './categories.module.css';
 
 // --------------------------------------------------------------------------------
 // Helper
@@ -38,12 +39,16 @@ export default async function Categories() {
 
           return (
             <li key={categoryKey}>
-              <Link href={`/categories/${categoryKey}`}>
-                <div className={styles['react-icons']}>{reactIcons}</div>
+              <Link className="custom-hover-effect" href={`/categories/${categoryKey}`}>
+                <div className={cn(styles['react-icons'], 'custom-flex-center')}>
+                  {reactIcons}
+                </div>
                 <div className={styles['name-en']}>{en}</div>
                 <div className={styles['name-ko']}>{ko}</div>
-                <div className={styles['count-docs']}>
-                  <span>{markdownCollectionCategory[categoryKey]?.length}</span>
+                <div className={cn(styles['count-docs'], 'custom-flex-center')}>
+                  <span className="custom-flex-center">
+                    {markdownCollectionCategory[categoryKey]?.length}
+                  </span>
                   <FaPen />
                 </div>
               </Link>
