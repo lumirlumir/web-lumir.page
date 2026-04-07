@@ -1,7 +1,7 @@
 /** @type {import('stylelint').Config} */
 export default {
   extends: ['stylelint-config-standard', 'stylelint-config-recess-order'],
-  ignoreFiles: ['archives/**', '**/coverage/**'],
+  ignoreFiles: ['archives/**', 'coverage/**'],
   rules: {
     'import-notation': 'string',
     // Enforce specific media feature breakpoints for consistency
