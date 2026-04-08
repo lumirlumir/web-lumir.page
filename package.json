@@ -58,9 +58,10 @@
     "markdownlint-cli": "^0.48.0",
     "npm-run-all2": "^8.0.4",
     "prettier": "^3.8.1",
-    "stylelint": "^16.26.1",
+    "stylelint": "^17.6.0",
     "stylelint-config-recess-order": "^7.7.0",
     "stylelint-config-standard": "^40.0.0",
+    "stylelint-order": "^8.1.1",
     "typescript": "^6.0.2",
     "vitest": "^4.1.2"
   }
