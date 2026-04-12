@@ -1,0 +1,26 @@
+{
+  "private": true,
+  "name": "@lumir/types",
+  "version": "0.0.0",
+  "type": "module",
+  "exports": {
+    "./global": {
+      "types": "./src/global.d.ts",
+      "default": "./build/global.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "typesVersions": {
+    "*": {
+      "./global": [
+        "./src/global.d.ts"
+      ]
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "npm run test:types",
+    "test:types": "tsc --noEmit"
+  }
+}

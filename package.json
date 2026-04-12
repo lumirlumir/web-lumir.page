@@ -23,12 +23,14 @@
     "dev:pkg:rk": "npm run dev -w packages/react-kit",
     "dev:pkg:rhp": "npm run dev -w packages/rehype-plugins",
     "dev:pkg:rmp": "npm run dev -w packages/remark-plugins",
+    "dev:pkg:t": "npm run dev -w packages/types",
     "dev:pkg:u": "npm run dev -w packages/utils",
     "build:a:blog": "npm-run-all -c -l -p build:pkg:* && npm run build -w apps/blog",
     "build:pkg": "npm-run-all -c -l -p build:pkg:*",
     "build:pkg:rk": "npm run build -w packages/react-kit",
     "build:pkg:rhp": "npm run build -w packages/rehype-plugins",
     "build:pkg:rmp": "npm run build -w packages/remark-plugins",
+    "build:pkg:t": "npm run build -w packages/types",
     "build:pkg:u": "npm run build -w packages/utils",
     "start:a:blog": "npm run start -w apps/blog",
     "fix": "npm-run-all -c -l -p fix:*",
@@ -43,7 +45,8 @@
     "lint:prettier": "npx prettier . --check --ignore-unknown",
     "lint:editorconfig": "npx editorconfig-checker -config .editorconfig-checker.json",
     "lint:markdownlint": "npx markdownlint **/*.md",
-    "lint:clangformat": "find . -name '*.h' -o -name '*.c' -o -name '*.cpp' -print0 | xargs -0 npx clang-format -n -Werror"
+    "lint:clangformat": "find . -name '*.h' -o -name '*.c' -o -name '*.cpp' -print0 | xargs -0 npx clang-format -n -Werror",
+    "test:pkg:t": "npm run test -w packages/types"
   },
   "devDependencies": {
     "@types/node": "^20.19.39",

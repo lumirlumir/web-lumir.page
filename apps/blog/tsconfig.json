@@ -9,7 +9,6 @@
     "src/**/*.mts",
     "src/**/*.cts",
     "src/**/*.tsx",
-    "types/**/*.ts",
     ".next/types/**/*.ts"
   ],
   "exclude": [
@@ -28,11 +27,11 @@
     "module": "esnext",
     "moduleResolution": "bundler",
     "paths": {
-      "@/*": ["./src/*"] // Map the '@' alias to the 'src' directory.
+      "@/*": ["./src/*"]
     },
     "resolveJsonModule": true,
     "rootDirs": ["./src", "./.next/types"],
-    "types": ["node", "react", "react-dom", "webpack-env"],
+    "types": ["node", "react", "react-dom", "webpack-env", "@lumir/types/global"],
 
     /* Emit */
     "noEmit": true,

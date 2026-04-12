@@ -1,0 +1,34 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "include": [
+    "src/**/*.js",
+    "src/**/*.mjs",
+    "src/**/*.cjs",
+    "src/**/*.jsx",
+    "src/**/*.ts",
+    "src/**/*.mts",
+    "src/**/*.cts",
+    "src/**/*.tsx",
+    "src/**/*.d.ts"
+  ],
+  "exclude": [
+    "src/**/*.test.js",
+    "src/**/*.test.mjs",
+    "src/**/*.test.cjs",
+    "src/**/*.test.jsx",
+    "src/**/*.test.ts",
+    "src/**/*.test.mts",
+    "src/**/*.test.cts",
+    "src/**/*.test.tsx",
+    "**/fixtures/**"
+  ],
+  "compilerOptions": {
+    /* Modules */
+    "rootDir": "./src",
+    "types": [],
+
+    /* Emit */
+    "emitDeclarationOnly": false,
+    "outDir": "build"
+  }
+}
