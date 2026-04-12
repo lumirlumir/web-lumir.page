@@ -27,11 +27,11 @@
     "module": "esnext",
     "moduleResolution": "bundler",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"] // Map the '@' alias to the 'src' directory.
     },
     "resolveJsonModule": true,
     "rootDirs": ["./src", "./.next/types"],
-    "types": ["node", "react", "react-dom", "webpack-env", "@lumir/types/global"],
+    "types": ["@lumir/types/global", "node", "react", "react-dom", "webpack-env"],
 
     /* Emit */
     "noEmit": true,
