@@ -37,7 +37,7 @@ Run from repo root:
 
 - `npm run test`
 - `npm run build:pkg`
-- `npm run build:a:blog` when the change affects `apps/blog/` runtime or production output
+- `npm run build:a:b` when the change affects `apps/blog/` runtime or production output
 - `npm run lint`
 
 Sandbox note:
