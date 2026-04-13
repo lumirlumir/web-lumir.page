@@ -6,15 +6,11 @@ lumirlumir/lumirlumir-configs:
     dest: ./configs/.github/workflows/pull-request.yml
   - source: ./.github/workflows/sync-client.yml
     dest: ./configs/.github/workflows/sync-client.yml
-  - source: ./.github/workflows/version-multirepo.yml
-    dest: ./configs/.github/workflows/version-multirepo.yml
   # ./.github
   - source: ./.github/CODEOWNERS
     dest: ./configs/.github/CODEOWNERS
   - source: ./.github/dependabot.yml
     dest: ./configs/.github/dependabot.yml
-  - source: ./.github/release.yml
-    dest: ./configs/.github/release.yml
   # ./.husky
   - source: ./.husky/pre-commit
     dest: ./configs/.husky/pre-commit
