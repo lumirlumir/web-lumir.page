@@ -34,8 +34,7 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
-    "test": "npm run test:unit",
-    "test:unit": "vitest run --coverage"
+    "test": "vitest run"
   },
   "peerDependencies": {
     "@types/react": "^19.0.0",
