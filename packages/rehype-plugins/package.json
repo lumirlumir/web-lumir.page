@@ -20,9 +20,7 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
-    "test": "npm run test:types && npm run test:unit",
-    "test:types": "tsc --noEmit",
-    "test:unit": "vitest run"
+    "test": "vitest run"
   },
   "dependencies": {
     "unist-util-visit": "^5.1.0"
