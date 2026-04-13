@@ -8,8 +8,7 @@
     "src/**/*.ts",
     "src/**/*.mts",
     "src/**/*.cts",
-    "src/**/*.tsx",
-    "src/**/*.d.ts"
+    "src/**/*.tsx"
   ],
   "exclude": [
     "src/**/*.test.js",
@@ -28,7 +27,6 @@
     "types": [],
 
     /* Emit */
-    "emitDeclarationOnly": false,
-    "outDir": "build"
+    "noEmit": true
   }
 }

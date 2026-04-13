@@ -23,7 +23,6 @@
     "dev:pkg:rk": "npm run dev -w packages/react-kit",
     "dev:pkg:rhp": "npm run dev -w packages/rehype-plugins",
     "dev:pkg:rmp": "npm run dev -w packages/remark-plugins",
-    "dev:pkg:t": "npm run dev -w packages/types",
     "dev:pkg:u": "npm run dev -w packages/utils",
     "build:a:b": "npm-run-all -c -l -p build:pkg:* && npm run build -w apps/blog",
     "build:pkg": "npm-run-all -c -l -p build:pkg:*",
@@ -45,8 +44,7 @@
     "lint:prettier": "npx prettier . --check --ignore-unknown",
     "lint:editorconfig": "npx editorconfig-checker -config .editorconfig-checker.json",
     "lint:markdownlint": "npx markdownlint **/*.md",
-    "lint:clangformat": "find . -name '*.h' -o -name '*.c' -o -name '*.cpp' -print0 | xargs -0 npx clang-format -n -Werror",
-    "test:pkg:t": "npm run test -w packages/types"
+    "lint:clangformat": "find . -name '*.h' -o -name '*.c' -o -name '*.cpp' -print0 | xargs -0 npx clang-format -n -Werror"
   },
   "devDependencies": {
     "@types/node": "^20.19.39",

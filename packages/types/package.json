@@ -5,8 +5,7 @@
   "type": "module",
   "exports": {
     "./global": {
-      "types": "./src/global.d.ts",
-      "default": "./build/global.js"
+      "types": "./src/global.d.ts"
     },
     "./package.json": "./package.json"
   },
@@ -18,9 +17,6 @@
     }
   },
   "scripts": {
-    "build": "tsc",
-    "dev": "tsc --watch",
-    "test": "npm run test:types",
-    "test:types": "tsc --noEmit"
+    "build": "tsc"
   }
 }
