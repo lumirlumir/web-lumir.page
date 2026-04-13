@@ -9,7 +9,6 @@
     "src/**/*.mts",
     "src/**/*.cts",
     "src/**/*.tsx",
-    "types/**/*.ts",
     ".next/types/**/*.ts"
   ],
   "exclude": [
@@ -32,7 +31,7 @@
     },
     "resolveJsonModule": true,
     "rootDirs": ["./src", "./.next/types"],
-    "types": ["node", "react", "react-dom", "webpack-env"],
+    "types": ["@lumir/types/global", "node", "react", "react-dom", "webpack-env"],
 
     /* Emit */
     "noEmit": true,
