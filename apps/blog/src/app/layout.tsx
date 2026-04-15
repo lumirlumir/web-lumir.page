@@ -33,8 +33,8 @@ import Title from '@/components/header/title';
 import { GOOGLE_GA_ID } from '@/constants';
 import { getGithubUsers } from '@/utils/fetch';
 
+import '@/styles/index.css';
 import 'katex/dist/katex.min.css'; // Import KaTeX CSS globally
-import '../styles/index.css';
 
 // --------------------------------------------------------------------------------
 // Named Export
