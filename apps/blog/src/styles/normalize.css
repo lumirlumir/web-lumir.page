@@ -10,7 +10,6 @@ Document
 1. Improve consistency of default fonts in all browsers. (https://github.com/sindresorhus/modern-normalize/issues/3)
 2. Correct the line height in all browsers.
 3. Prevent adjustments of font size after orientation changes in iOS.
-4. Use a more readable tab size (opinionated).
 */
 
 html {
@@ -19,7 +18,6 @@ html {
     'Segoe UI Emoji'; /* 1 */
   line-height: 1.15; /* 2 */
   -webkit-text-size-adjust: 100%; /* 3 */
-  tab-size: 4; /* 4 */
 }
 
 /*
