@@ -1,137 +1,225 @@
-@layer base {
-  html:not(.markdown-body *),
-  body:not(.markdown-body *),
-  div:not(.markdown-body *),
-  span:not(.markdown-body *),
-  applet:not(.markdown-body *),
-  object:not(.markdown-body *),
-  iframe:not(.markdown-body *),
-  h1:not(.markdown-body *),
-  h2:not(.markdown-body *),
-  h3:not(.markdown-body *),
-  h4:not(.markdown-body *),
-  h5:not(.markdown-body *),
-  h6:not(.markdown-body *),
-  p:not(.markdown-body *),
-  blockquote:not(.markdown-body *),
-  pre:not(.markdown-body *),
-  a:not(.markdown-body *),
-  abbr:not(.markdown-body *),
-  acronym:not(.markdown-body *),
-  address:not(.markdown-body *),
-  big:not(.markdown-body *),
-  cite:not(.markdown-body *),
-  code:not(.markdown-body *),
-  del:not(.markdown-body *),
-  dfn:not(.markdown-body *),
-  em:not(.markdown-body *),
-  img:not(.markdown-body *),
-  ins:not(.markdown-body *),
-  kbd:not(.markdown-body *),
-  q:not(.markdown-body *),
-  s:not(.markdown-body *),
-  samp:not(.markdown-body *),
-  small:not(.markdown-body *),
-  strike:not(.markdown-body *),
-  strong:not(.markdown-body *),
-  sub:not(.markdown-body *),
-  sup:not(.markdown-body *),
-  tt:not(.markdown-body *),
-  var:not(.markdown-body *),
-  b:not(.markdown-body *),
-  u:not(.markdown-body *),
-  i:not(.markdown-body *),
-  center:not(.markdown-body *),
-  dl:not(.markdown-body *),
-  dt:not(.markdown-body *),
-  dd:not(.markdown-body *),
-  ol:not(.markdown-body *),
-  ul:not(.markdown-body *),
-  li:not(.markdown-body *),
-  fieldset:not(.markdown-body *),
-  form:not(.markdown-body *),
-  label:not(.markdown-body *),
-  legend:not(.markdown-body *),
-  table:not(.markdown-body *),
-  caption:not(.markdown-body *),
-  tbody:not(.markdown-body *),
-  tfoot:not(.markdown-body *),
-  thead:not(.markdown-body *),
-  tr:not(.markdown-body *),
-  th:not(.markdown-body *),
-  td:not(.markdown-body *),
-  article:not(.markdown-body *),
-  aside:not(.markdown-body *),
-  canvas:not(.markdown-body *),
-  details:not(.markdown-body *),
-  embed:not(.markdown-body *),
-  figure:not(.markdown-body *),
-  figcaption:not(.markdown-body *),
-  footer:not(.markdown-body *),
-  header:not(.markdown-body *),
-  hgroup:not(.markdown-body *),
-  menu:not(.markdown-body *),
-  nav:not(.markdown-body *),
-  output:not(.markdown-body *),
-  ruby:not(.markdown-body *),
-  section:not(.markdown-body *),
-  summary:not(.markdown-body *),
-  time:not(.markdown-body *),
-  mark:not(.markdown-body *),
-  audio:not(.markdown-body *),
-  video:not(.markdown-body *) {
-    padding: 0;
-    margin: 0;
-    font: inherit;
-    font-size: 100%;
-    vertical-align: baseline;
-    border: 0;
-  }
+/* stylelint-disable */
+/*! modern-normalize v3.0.1 | MIT License | https://github.com/sindresorhus/modern-normalize */
 
-  /* HTML5 display-role reset for older browsers */
-  article:not(.markdown-body *),
-  aside:not(.markdown-body *),
-  details:not(.markdown-body *),
-  figcaption:not(.markdown-body *),
-  figure:not(.markdown-body *),
-  footer:not(.markdown-body *),
-  header:not(.markdown-body *),
-  hgroup:not(.markdown-body *),
-  menu:not(.markdown-body *),
-  nav:not(.markdown-body *),
-  section:not(.markdown-body *) {
-    display: block;
-  }
+/*
+Document
+========
+*/
 
-  body:not(.markdown-body *) {
-    line-height: 1;
-  }
+/**
+Use a better box model (opinionated).
+*/
 
-  ol:not(.markdown-body *),
-  ul:not(.markdown-body *) {
-    list-style: none;
-  }
+/*
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+*/
 
-  blockquote:not(.markdown-body *),
-  q:not(.markdown-body *) {
-    quotes: none;
-  }
+/**
+1. Improve consistency of default fonts in all browsers. (https://github.com/sindresorhus/modern-normalize/issues/3)
+2. Correct the line height in all browsers.
+3. Prevent adjustments of font size after orientation changes in iOS.
+4. Use a more readable tab size (opinionated).
+*/
 
-  blockquote:not(.markdown-body *)::before,
-  blockquote:not(.markdown-body *)::after,
-  q:not(.markdown-body *)::before,
-  q:not(.markdown-body *)::after {
-    content: '';
-    content: none;
-  }
+html {
+  font-family:
+    system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji'; /* 1 */
+  line-height: 1.15; /* 2 */
+  -webkit-text-size-adjust: 100%; /* 3 */
+  tab-size: 4; /* 4 */
+}
 
-  table:not(.markdown-body *) {
-    border-spacing: 0;
-    border-collapse: collapse;
-  }
+/*
+Sections
+========
+*/
 
-  a:not(.markdown-body *) {
-    color: inherit;
-    text-decoration: none;
-  }
+/**
+Remove the margin in all browsers.
+*/
+
+body {
+  margin: 0;
+}
+
+/*
+Text-level semantics
+====================
+*/
+
+/**
+Add the correct font weight in Chrome and Safari.
+*/
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+1. Improve consistency of default fonts in all browsers. (https://github.com/sindresorhus/modern-normalize/issues/3)
+2. Correct the odd 'em' font sizing in all browsers.
+*/
+
+code,
+kbd,
+samp,
+pre {
+  font-family:
+    ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/**
+Add the correct font size in all browsers.
+*/
+
+small {
+  font-size: 80%;
+}
+
+/**
+Prevent 'sub' and 'sup' elements from affecting the line height in all browsers.
+*/
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/*
+Tabular data
+============
+*/
+
+/**
+Correct table border color inheritance in Chrome and Safari. (https://issues.chromium.org/issues/40615503, https://bugs.webkit.org/show_bug.cgi?id=195016)
+*/
+
+table {
+  border-color: currentcolor;
+}
+
+/*
+Forms
+=====
+*/
+
+/**
+1. Change the font styles in all browsers.
+2. Remove the margin in Firefox and Safari.
+*/
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+  margin: 0; /* 2 */
+}
+
+/**
+Correct the inability to style clickable types in iOS and Safari.
+*/
+
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+  -webkit-appearance: button;
+}
+
+/**
+Remove the padding so developers are not caught out when they zero out 'fieldset' elements in all browsers.
+*/
+
+legend {
+  padding: 0;
+}
+
+/**
+Add the correct vertical alignment in Chrome and Firefox.
+*/
+
+progress {
+  vertical-align: baseline;
+}
+
+/**
+Correct the cursor style of increment and decrement buttons in Safari.
+*/
+
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+1. Correct the odd appearance in Chrome and Safari.
+2. Correct the outline style in Safari.
+*/
+
+[type='search'] {
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+
+/**
+Remove the inner padding in Chrome and Safari on macOS.
+*/
+
+::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Change font properties to 'inherit' in Safari.
+*/
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/*
+Interactive
+===========
+*/
+
+/*
+Add the correct display in Chrome and Safari.
+*/
+
+summary {
+  display: list-item;
+}
+
+/*
+App base
+========
+*/
+
+a {
+  color: inherit;
+  text-decoration: none;
 }

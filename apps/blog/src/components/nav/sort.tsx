@@ -43,7 +43,7 @@ function SortContainer({ children }: PropsWithChildren) {
           {isOpen ? <FaAngleUp /> : <FaAngleDown />}
         </div>
       </div>
-      {isOpen ? <ul>{children}</ul> : null}
+      {isOpen ? <ul className={styles.list}>{children}</ul> : null}
     </div>
   );
 }

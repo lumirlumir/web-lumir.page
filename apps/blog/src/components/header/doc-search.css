@@ -31,6 +31,9 @@
   width: 100%;
   height: 100%;
   margin: 0;
+  font-family: arial, helvetica, sans-serif;
+  font-size: 13.3333px;
+  line-height: normal;
   border-radius: var(--size-border-radius);
   transition: all 0.3s ease-in-out;
 
@@ -43,6 +46,7 @@
 
 .DocSearch-Button-Placeholder {
   font-size: var(--size-14);
+  line-height: normal;
   letter-spacing: var(--size-letter-spacing-medium);
 }
 

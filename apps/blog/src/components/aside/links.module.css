@@ -1,5 +1,7 @@
 .links {
   padding: var(--size-8) 0 var(--size-16);
+  margin: 0;
+  list-style: none;
 
   & > li > a {
     flex-direction: column;
