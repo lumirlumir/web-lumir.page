@@ -7,18 +7,6 @@ Document
 */
 
 /**
-Use a better box model (opinionated).
-*/
-
-/*
-*,
-::before,
-::after {
-  box-sizing: border-box;
-}
-*/
-
-/**
 1. Improve consistency of default fonts in all browsers. (https://github.com/sindresorhus/modern-normalize/issues/3)
 2. Correct the line height in all browsers.
 3. Prevent adjustments of font size after orientation changes in iOS.
