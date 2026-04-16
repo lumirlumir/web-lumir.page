@@ -1004,14 +1004,6 @@
     vertical-align: middle;
   }
 
-  & ul:dir(rtl) .task-list-item-checkbox {
-    margin: 0 -1.6em 0.25em 0.2em;
-  }
-
-  & ol:dir(rtl) .task-list-item-checkbox {
-    margin: 0 -1.6em 0.25em 0.2em;
-  }
-
   & .contains-task-list:hover .task-list-item-convert-container,
   & .contains-task-list:focus-within .task-list-item-convert-container {
     display: block;
