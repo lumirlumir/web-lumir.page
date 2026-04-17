@@ -8,7 +8,6 @@
   },
   "workspaces": [
     "apps/*",
-    "!apps/moing",
     "packages/*"
   ],
   "scripts": {
