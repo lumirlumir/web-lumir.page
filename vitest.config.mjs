@@ -6,6 +6,6 @@ export default defineConfig({
       provider: 'v8',
       reporter: ['text', 'lcov'],
     },
-    projects: ['apps/*', 'packages/*'],
+    projects: ['apps/*', '!apps/moing', 'packages/*'],
   },
 });

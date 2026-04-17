@@ -17,7 +17,14 @@ import md from 'eslint-markdown';
 
 export default defineConfig([
   globalIgnores(
-    ['**/build/', '**/coverage/', '**/.next/', '**/archives/', '**/next-env.d.ts'],
+    [
+      'apps/moing/',
+      '**/build/',
+      '**/coverage/',
+      '**/.next/',
+      '**/archives/',
+      '**/next-env.d.ts',
+    ],
     'global/ignores',
   ),
 
