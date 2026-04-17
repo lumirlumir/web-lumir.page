@@ -6,12 +6,13 @@
 // Import
 // --------------------------------------------------------------------------------
 
+import { cn } from '@lumir/utils';
+
 import NeonButton from '@/components/neon-button';
 import NeonFont from '@/components/neon-font';
 import useConfig from '@/hooks/use-config';
 import useScenario from '@/hooks/use-scenario';
 import useInterview from '@/hooks/use-interview';
-import { cn } from '@/utils';
 
 import './main-button.css';
 

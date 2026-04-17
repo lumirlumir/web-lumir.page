@@ -6,10 +6,11 @@
 // Import
 // --------------------------------------------------------------------------------
 
+import { cn } from '@lumir/utils';
+
 import NeonFont from '@/components/neon-font';
 import useScenario from '@/hooks/use-scenario';
 import useTimer from '@/hooks/use-timer';
-import { cn } from '@/utils';
 
 // --------------------------------------------------------------------------------
 // Typedef

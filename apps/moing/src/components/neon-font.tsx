@@ -7,7 +7,7 @@
 // --------------------------------------------------------------------------------
 
 import { type HTMLAttributes, type PropsWithChildren } from 'react';
-import { cn } from '@/utils';
+import { cn } from '@lumir/utils';
 import './neon-font.css';
 
 // --------------------------------------------------------------------------------

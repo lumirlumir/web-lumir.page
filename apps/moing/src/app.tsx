@@ -7,6 +7,7 @@
 // --------------------------------------------------------------------------------
 
 import { useEffect } from 'react';
+import { cn } from '@lumir/utils';
 
 import Button from '@/components/button';
 import MainButton from '@/components/main-button';
@@ -27,8 +28,6 @@ import useConfig from '@/hooks/use-config';
 import useInterview from '@/hooks/use-interview';
 import useTimer from '@/hooks/use-timer';
 import useScroll from '@/hooks/use-scroll';
-
-import { cn } from '@/utils';
 
 import './app.css';
 

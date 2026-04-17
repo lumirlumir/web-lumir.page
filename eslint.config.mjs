@@ -36,8 +36,10 @@ export default defineConfig([
   md.configs.recommended,
   md.configs.stylistic,
 
+  // js
   {
-    name: 'global/apps/blog',
+    name: 'js/apps/blog',
+    files: ['apps/blog/**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx}'],
     settings: {
       next: {
         rootDir: fileURLToPath(new URL('./apps/blog', import.meta.url)),
@@ -58,6 +60,22 @@ export default defineConfig([
     },
   },
   {
+    name: 'js/apps/moing',
+    files: ['apps/moing/**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx}'],
+    settings: {
+      node: {
+        resolverConfig: {
+          // `eslint-plugin-n` uses webpack's `enhanced-resolve` under the hood.
+          alias: {
+            '@': fileURLToPath(new URL('./apps/moing/src', import.meta.url)),
+          },
+        },
+      },
+    },
+  },
+
+  // md
+  {
     name: 'md/global',
     files: ['**/*.md'],
     rules: {
@@ -70,7 +88,7 @@ export default defineConfig([
     },
   },
   {
-    name: 'md/posts/docs',
+    name: 'md/apps/blog',
     files: ['apps/blog/src/posts/docs/**/*.md'],
     rules: {
       'md/allow-image-url': [
