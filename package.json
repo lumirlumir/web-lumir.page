@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "web-lumir.page",
+  "name": "lumir.page",
   "type": "module",
   "packageManager": "npm@11.11.0",
   "engines": {

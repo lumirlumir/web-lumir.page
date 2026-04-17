@@ -1,6 +1,6 @@
 lumirlumir/lumirlumir-configs:
   - source: ./.github/sync-client.yml
-    dest: ./clients/web-lumir.page.yml
+    dest: ./clients/lumir.page.yml
   # ./.github/workflows
   - source: ./.github/workflows/pull-request.yml
     dest: ./configs/.github/workflows/pull-request.yml
