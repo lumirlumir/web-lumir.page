@@ -22,7 +22,14 @@ if (paths.length === 0) {
   process.exit(0);
 }
 
-const { status } = spawnSync(clangFormatPath, [...args, ...paths], { stdio: 'inherit' });
+const { error, status } = spawnSync(clangFormatPath, [...args, ...paths], {
+  stdio: 'inherit',
+});
+
+if (error) {
+  console.error('Failed to run clang-format:', error); // eslint-disable-line no-console -- logging
+  process.exit(1);
+}
 
 if (status !== 0) {
   console.error('clang-format failed with status code', status); // eslint-disable-line no-console -- logging
