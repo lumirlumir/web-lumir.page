@@ -18,7 +18,7 @@ const paths = [...appsPaths, ...archivesPaths].filter(path =>
 );
 
 if (paths.length === 0) {
-  console.log('No files found to format'); // eslint-disable-line no-console -- logging
+  console.log('No files found to format');
   process.exit(0);
 }
 
@@ -27,11 +27,11 @@ const { error, status } = spawnSync(clangFormatPath, [...args, ...paths], {
 });
 
 if (error) {
-  console.error('Failed to run clang-format:', error); // eslint-disable-line no-console -- logging
+  console.error('Failed to run clang-format:', error);
   process.exit(1);
 }
 
 if (status !== 0) {
-  console.error('clang-format failed with status code', status); // eslint-disable-line no-console -- logging
+  console.error('clang-format failed with status code', status);
   process.exit(status);
 }
