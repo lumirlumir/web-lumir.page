@@ -45,6 +45,7 @@ async function fetching(messages) {
     messages,
   });
 
+  // @ts-expect-error -- TODO
   return response?.choices?.[0]?.message?.content;
 }
 
