@@ -58,6 +58,19 @@ export default defineConfig([
     },
   },
   {
+    name: 'global/apps/moing',
+    settings: {
+      node: {
+        resolverConfig: {
+          // `eslint-plugin-n` uses webpack's `enhanced-resolve` under the hood.
+          alias: {
+            '@': fileURLToPath(new URL('./apps/moing/src', import.meta.url)),
+          },
+        },
+      },
+    },
+  },
+  {
     name: 'md/global',
     files: ['**/*.md'],
     rules: {
