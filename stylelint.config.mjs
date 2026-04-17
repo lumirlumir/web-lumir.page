@@ -4,7 +4,6 @@ export default {
   ignoreFiles: ['archives/**', 'coverage/**'],
   rules: {
     'declaration-empty-line-before': null,
-    'property-no-vendor-prefix': null,
     'import-notation': 'string',
     // Enforce specific media feature breakpoints for consistency
     'media-feature-range-notation': 'context',
@@ -22,4 +21,12 @@ export default {
       ],
     },
   },
+  overrides: [
+    {
+      files: ['**/markdown.css', '**/normalize.css'],
+      rules: {
+        'property-no-vendor-prefix': null,
+      },
+    },
+  ],
 };
