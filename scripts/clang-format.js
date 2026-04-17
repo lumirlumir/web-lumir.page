@@ -17,4 +17,9 @@ const paths = [...appsPaths, ...archivesPaths].filter(path =>
   /\.(?:c|cpp|h)$/i.test(path),
 );
 
-spawnSync(clangFormatPath, [...args, ...paths], { stdio: 'inherit' });
+const { status } = spawnSync(clangFormatPath, [...args, ...paths], { stdio: 'inherit' });
+
+if (status !== 0) {
+  console.error('clang-format failed with status code', status); // eslint-disable-line no-console -- log error
+  process.exit(status);
+}
