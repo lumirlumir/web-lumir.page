@@ -39,7 +39,7 @@
     },
     "module": "esnext",
     "moduleResolution": "bundler",
-    // "types": ["node", "react", "react-dom", "vite/client"],
+    "types": ["node", "react", "react-dom", "vite/client"],
 
     /* Emit */
     "declaration": true,
