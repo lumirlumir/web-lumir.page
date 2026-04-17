@@ -1,0 +1,16 @@
+{
+  "private": true,
+  "name": "api",
+  "type": "module",
+  "engines": {
+    "node": "^20.19.6"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "node --env-file=.env --watch ./src/server.js",
+    "test": "tsc"
+  },
+  "dependencies": {
+    "openai": "^6.34.0"
+  }
+}
