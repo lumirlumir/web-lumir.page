@@ -1,10 +1,10 @@
 export default {
   '*': [
-    'npx prettier --write --ignore-unknown',
-    'npx editorconfig-checker -config .editorconfig-checker.json',
+    'prettier --write --ignore-unknown',
+    'editorconfig-checker -config .editorconfig-checker.json',
   ],
-  '*.{js,mjs,cjs,jsx,ts,mts,cts,tsx,md}': 'npx eslint --fix',
-  '*.css': 'npx stylelint --fix',
-  '*.md': 'npx markdownlint --fix',
-  '*.{h,c,cpp}': 'npx clang-format -i',
+  '*.{js,mjs,cjs,jsx,ts,mts,cts,tsx,md}': 'eslint --fix',
+  '*.css': 'stylelint --fix',
+  '*.md': 'markdownlint --fix',
+  '*.{h,c,cpp}': 'clang-format -i',
 };
