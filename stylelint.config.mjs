@@ -3,6 +3,8 @@ export default {
   extends: ['stylelint-config-standard', 'stylelint-config-recess-order'],
   ignoreFiles: ['archives/**', 'coverage/**'],
   rules: {
+    'declaration-empty-line-before': null,
+    'property-no-vendor-prefix': null,
     'import-notation': 'string',
     // Enforce specific media feature breakpoints for consistency
     'media-feature-range-notation': 'context',
