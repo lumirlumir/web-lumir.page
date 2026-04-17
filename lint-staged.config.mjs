@@ -4,7 +4,7 @@ export default {
     'npx editorconfig-checker -config .editorconfig-checker.json',
   ],
   '*.{js,mjs,cjs,jsx,ts,mts,cts,tsx,md}': 'npx eslint --fix',
-  '*.css': 'npx stylelint',
+  '*.css': 'npx stylelint --fix',
   '*.md': 'npx markdownlint --fix',
-  '*.{h,c,cpp}': 'npx clang-format -n -Werror',
+  '*.{h,c,cpp}': 'npx clang-format -i',
 };

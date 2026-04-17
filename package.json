@@ -37,19 +37,19 @@
     "fix:stylelint": "npx stylelint --fix **/*.css",
     "fix:prettier": "npx prettier . --write --ignore-unknown",
     "fix:markdownlint": "npx markdownlint **/*.md --fix",
-    "fix:clangformat": "find . -name '*.h' -o -name '*.c' -o -name '*.cpp' -print0 | xargs -0 npx clang-format -i",
+    "fix:clangformat": "node scripts/clang-format.js --fix",
     "lint": "npm-run-all -c -l -p lint:*",
     "lint:eslint": "npx eslint",
     "lint:stylelint": "npx stylelint **/*.css",
     "lint:prettier": "npx prettier . --check --ignore-unknown",
     "lint:editorconfig": "npx editorconfig-checker -config .editorconfig-checker.json",
     "lint:markdownlint": "npx markdownlint **/*.md",
-    "lint:clangformat": "find . -name '*.h' -o -name '*.c' -o -name '*.cpp' -print0 | xargs -0 npx clang-format -n -Werror"
+    "lint:clangformat": "node scripts/clang-format.js"
   },
   "devDependencies": {
     "@types/node": "^20.19.39",
     "@vitest/coverage-v8": "^4.1.2",
-    "clang-format-git": "^3.0.2",
+    "clang-format-node": "^3.0.2",
     "editorconfig-checker": "^6.1.1",
     "eslint": "^9.39.4",
     "eslint-config-bananass": "^0.6.1",
