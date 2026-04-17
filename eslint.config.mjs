@@ -36,8 +36,9 @@ export default defineConfig([
   md.configs.recommended,
   md.configs.stylistic,
 
+  // js
   {
-    name: 'global/apps/blog',
+    name: 'js/apps/blog',
     files: ['apps/blog/**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx}'],
     settings: {
       next: {
@@ -59,7 +60,7 @@ export default defineConfig([
     },
   },
   {
-    name: 'global/apps/moing',
+    name: 'js/apps/moing',
     files: ['apps/moing/**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx}'],
     settings: {
       node: {
@@ -72,6 +73,8 @@ export default defineConfig([
       },
     },
   },
+
+  // md
   {
     name: 'md/global',
     files: ['**/*.md'],
@@ -85,7 +88,7 @@ export default defineConfig([
     },
   },
   {
-    name: 'md/posts/docs',
+    name: 'md/apps/blog',
     files: ['apps/blog/src/posts/docs/**/*.md'],
     rules: {
       'md/allow-image-url': [
