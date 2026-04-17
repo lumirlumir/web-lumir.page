@@ -4,6 +4,7 @@ on:
   push:
     branches: [main]
     paths:
+      - '.github/workflows/deploy.yml'
       - 'apps/moing/**'
       - 'packages/**'
       - 'package-lock.json'
@@ -12,17 +13,22 @@ on:
   pull_request:
     branches: [main]
     paths:
+      - '.github/workflows/deploy.yml'
       - 'apps/moing/**'
       - 'packages/**'
       - 'package-lock.json'
       - 'package.json'
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
+
+    env:
+      BACKEND_PORT: ${{ secrets.BACKEND_PORT }}
+      BACKEND_IP: ${{ secrets.BACKEND_IP }}
 
     steps:
       - name: Set up checkout
@@ -37,17 +43,31 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Set up environment variables
-        run: |
-          echo "BACKEND_PORT=${{ secrets.BACKEND_PORT }}" >> apps/moing/.env
-          echo "BACKEND_IP=${{ secrets.BACKEND_IP }}" >> apps/moing/.env
-
       - name: Build
         run: npm run build:m
 
-      - name: Deployment
+      - name: Upload static files as artifact
         if: github.ref == 'refs/heads/main'
-        uses: peaceiris/actions-gh-pages@v4
+        uses: actions/upload-pages-artifact@v5
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./apps/moing/build
+          path: ./apps/moing/build
+
+  deploy:
+    runs-on: ubuntu-latest
+
+    needs: build
+
+    if: github.ref == 'refs/heads/main'
+
+    permissions:
+      id-token: write
+      pages: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
