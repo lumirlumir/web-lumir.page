@@ -9,12 +9,7 @@
   word-wrap: break-word;
   scroll-behavior: auto !important;
 
-  & h1:hover .anchor .octicon-link:before,
-  & h2:hover .anchor .octicon-link:before,
-  & h3:hover .anchor .octicon-link:before,
-  & h4:hover .anchor .octicon-link:before,
-  & h5:hover .anchor .octicon-link:before,
-  & h6:hover .anchor .octicon-link:before {
+  & :is(h1, h2, h3, h4, h5, h6):hover .anchor .octicon-link:before {
     width: 16px;
     height: 16px;
     content: ' ';
@@ -315,15 +310,11 @@
     padding-left: 2em;
   }
 
-  & ol ol,
-  & ul ol {
+  & :is(ul, ol) ol {
     list-style-type: lower-roman;
   }
 
-  & ul ul ol,
-  & ul ol ol,
-  & ol ul ol,
-  & ol ol ol {
+  & :is(ul, ol) :is(ul, ol) ol {
     list-style-type: lower-alpha;
   }
 
@@ -423,77 +414,39 @@
     margin-bottom: 0;
   }
 
-  & h1 .octicon-link,
-  & h2 .octicon-link,
-  & h3 .octicon-link,
-  & h4 .octicon-link,
-  & h5 .octicon-link,
-  & h6 .octicon-link {
+  & :is(h1, h2, h3, h4, h5, h6) .octicon-link {
     color: var(--color-fg-default);
     vertical-align: middle;
     visibility: hidden;
   }
 
-  & h1:hover .anchor,
-  & h2:hover .anchor,
-  & h3:hover .anchor,
-  & h4:hover .anchor,
-  & h5:hover .anchor,
-  & h6:hover .anchor {
+  & :is(h1, h2, h3, h4, h5, h6):hover .anchor {
     text-decoration: none;
   }
 
-  & h1:hover .anchor .octicon-link,
-  & h2:hover .anchor .octicon-link,
-  & h3:hover .anchor .octicon-link,
-  & h4:hover .anchor .octicon-link,
-  & h5:hover .anchor .octicon-link,
-  & h6:hover .anchor .octicon-link {
+  & :is(h1, h2, h3, h4, h5, h6):hover .anchor .octicon-link {
     visibility: visible;
   }
 
-  & h1 tt,
-  & h1 code,
-  & h2 tt,
-  & h2 code,
-  & h3 tt,
-  & h3 code,
-  & h4 tt,
-  & h4 code,
-  & h5 tt,
-  & h5 code,
-  & h6 tt,
-  & h6 code {
+  & :is(h1, h2, h3, h4, h5, h6) :is(tt, code) {
     padding: 0 0.2em;
     font-size: inherit;
   }
 
-  & summary h1,
-  & summary h2,
-  & summary h3,
-  & summary h4,
-  & summary h5,
-  & summary h6 {
+  & summary :is(h1, h2, h3, h4, h5, h6) {
     display: inline-block;
   }
 
-  & summary h1 .anchor,
-  & summary h2 .anchor,
-  & summary h3 .anchor,
-  & summary h4 .anchor,
-  & summary h5 .anchor,
-  & summary h6 .anchor {
+  & summary :is(h1, h2, h3, h4, h5, h6) .anchor {
     margin-left: -40px;
   }
 
-  & summary h1,
-  & summary h2 {
+  & summary :is(h1, h2) {
     padding-bottom: 0;
     border-bottom: 0;
   }
 
-  & ul.no-list,
-  & ol.no-list {
+  & :is(ul, ol).no-list {
     padding: 0;
     list-style-type: none;
   }
@@ -522,10 +475,7 @@
     list-style-type: decimal;
   }
 
-  & ul ul,
-  & ul ol,
-  & ol ol,
-  & ol ul {
+  & :is(ul, ol) :is(ul, ol) {
     margin-top: 0;
     margin-bottom: 0;
   }
@@ -559,8 +509,7 @@
     font-weight: var(--text-weight-semibold);
   }
 
-  & table th,
-  & table td {
+  & table :is(th, td) {
     padding: 6px 13px;
     border: 1px solid var(--color-border-default);
   }
@@ -694,8 +643,7 @@
     border-radius: 6px;
   }
 
-  & code br,
-  & tt br {
+  & :is(code, tt) br {
     display: none;
   }
 
@@ -740,8 +688,7 @@
     border-radius: var(--size-border-radius);
   }
 
-  & pre code,
-  & pre tt {
+  & pre :is(code, tt) {
     display: inline;
     max-width: auto;
     padding: 0;
@@ -753,8 +700,7 @@
     border: 0;
   }
 
-  & .csv-data td,
-  & .csv-data th {
+  & .csv-data :is(td, th) {
     padding: 5px;
     overflow: hidden;
     font-size: 12px;
@@ -859,9 +805,7 @@
   & .pl-pds,
   & .pl-s .pl-pse .pl-s1,
   & .pl-sr,
-  & .pl-sr .pl-cce,
-  & .pl-sr .pl-sre,
-  & .pl-sr .pl-sra {
+  & .pl-sr :is(.pl-cce, .pl-sre, .pl-sra) {
     color: var(--color-syntax-string);
   }
 
@@ -1003,8 +947,7 @@
     vertical-align: middle;
   }
 
-  & .contains-task-list:hover .task-list-item-convert-container,
-  & .contains-task-list:focus-within .task-list-item-convert-container {
+  & .contains-task-list:is(:hover, :focus-within) .task-list-item-convert-container {
     display: block;
     width: auto;
     height: 24px;
