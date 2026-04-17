@@ -1,17 +1,27 @@
-name: deployment
+name: deploy
 
 on:
   push:
     branches: [main]
+    paths:
+      - 'apps/moing/**'
+      - 'packages/**'
+      - 'package-lock.json'
+      - 'package.json'
 
   pull_request:
     branches: [main]
+    paths:
+      - 'apps/moing/**'
+      - 'packages/**'
+      - 'package-lock.json'
+      - 'package.json'
 
 permissions:
   contents: write
 
 jobs:
-  deployment:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,28 +32,22 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version-file: .nvmrc
-          cache: npm
+          cache: npm # https://github.com/actions/setup-node#caching-global-packages-data
 
-      - name: Set up cache
-        uses: actions/cache@v5
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-
-      - name: Set up node_modules
+      - name: Install dependencies
         run: npm ci
 
       - name: Set up environment variables
         run: |
-          echo "BACKEND_PORT=${{ secrets.BACKEND_PORT }}" >> .env
-          echo "BACKEND_IP=${{ secrets.BACKEND_IP }}" >> .env
+          echo "BACKEND_PORT=${{ secrets.BACKEND_PORT }}" >> apps/moing/.env
+          echo "BACKEND_IP=${{ secrets.BACKEND_IP }}" >> apps/moing/.env
 
       - name: Build
-        run: npm run build
+        run: npm run build:m
 
       - name: Deployment
         if: github.ref == 'refs/heads/main'
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
+          publish_dir: ./apps/moing/build

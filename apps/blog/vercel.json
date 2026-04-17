@@ -1,7 +1,7 @@
 {
-  "buildCommand": "npm run count-docs && npm run build:a:b --prefix ../..",
+  "buildCommand": "npm run count-docs && npm run build:b --prefix ../..",
   "framework": "nextjs",
-  "installCommand": "npm install --prefix ../..",
+  "installCommand": "npm ci --prefix ../..",
   "outputDirectory": ".next",
   "regions": ["icn1"]
 }
