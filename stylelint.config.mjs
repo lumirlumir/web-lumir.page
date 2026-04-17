@@ -20,4 +20,13 @@ export default {
       ],
     },
   },
+  overrides: [
+    {
+      files: ['**/markdown.css', '**/normalize.css'],
+      rules: {
+        'declaration-empty-line-before': null,
+        'property-no-vendor-prefix': null,
+      },
+    },
+  ],
 };
