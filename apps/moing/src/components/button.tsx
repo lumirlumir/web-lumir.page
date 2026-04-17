@@ -34,7 +34,13 @@ interface Props {
 // Export
 // --------------------------------------------------------------------------------
 
-export default function Button({ type, icon, scenario, onClick, hoverEffect }: Props) {
+export default function Button({
+  type,
+  icon,
+  scenario,
+  onClick,
+  hoverEffect = false,
+}: Props) {
   const { visibility, clickability } = scenario.getSectionObj()[type];
 
   return (
