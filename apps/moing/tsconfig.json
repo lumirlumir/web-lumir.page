@@ -1,4 +1,5 @@
 {
+  "extends": "../../tsconfig.base.json",
   "include": [
     "src/**/*.js",
     "src/**/*.mjs",
@@ -9,55 +10,35 @@
     "src/**/*.cts",
     "src/**/*.tsx"
   ],
-  "exclude": ["src/**/*.test.js", "src/**/*.test.ts"],
+  "exclude": [
+    "src/**/*.test.js",
+    "src/**/*.test.mjs",
+    "src/**/*.test.cjs",
+    "src/**/*.test.jsx",
+    "src/**/*.test.ts",
+    "src/**/*.test.mts",
+    "src/**/*.test.cts",
+    "src/**/*.test.tsx",
+    "**/fixtures/**"
+  ],
   "compilerOptions": {
     /* Type Checking */
-    "allowUnreachableCode": false,
-    "allowUnusedLabels": false,
-    "alwaysStrict": true,
-    // "exactOptionalPropertyTypes": true,
-    "noFallthroughCasesInSwitch": true,
-    // "noImplicitAny": true,
-    "noImplicitOverride": true,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "noPropertyAccessFromIndexSignature": false, // Off: Prefer ESLint rule
-    "noUncheckedIndexedAccess": false, // Off: Too tight
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    // "strict": true,
-    "strictBindCallApply": true,
-    "strictBuiltinIteratorReturn": true,
-    "strictFunctionTypes": true,
-    "strictNullChecks": true,
-    // "strictPropertyInitialization": true,
-    "useUnknownInCatchVariables": true,
+    "noImplicitAny": false, // TODO: Enable this in the future for better type safety.
 
     /* Modules */
+    "module": "esnext",
+    "moduleResolution": "bundler",
     "paths": {
       "@/*": ["./src/*"] // Map the '@' alias to the 'src' directory.
     },
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "types": ["node", "react", "react-dom", "vite/client"],
+    "types": ["@lumir/types/global", "node", "react", "react-dom", "vite/client"],
 
     /* Emit */
-    "declaration": true,
-    "emitDeclarationOnly": true,
     "noEmit": true,
-    "outDir": "build",
-
-    /* JavaScript Support */
-    "allowJs": true,
-    "checkJs": true,
-
-    /* Interop Constraints */
-    "allowSyntheticDefaultImports": true,
 
     /* Language and Environment */
     "jsx": "react-jsx",
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "target": "ESNext",
+    "lib": ["dom", "dom.iterable", "esnext"],
 
     /* Completeness */
     "skipLibCheck": true
