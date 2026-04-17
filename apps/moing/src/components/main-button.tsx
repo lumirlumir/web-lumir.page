@@ -1,0 +1,78 @@
+/**
+ * @fileoverview main-button.
+ */
+
+// --------------------------------------------------------------------------------
+// Import
+// --------------------------------------------------------------------------------
+
+import NeonButton from '@/components/neon-button';
+import NeonFont from '@/components/neon-font';
+import useConfig from '@/hooks/use-config';
+import useScenario from '@/hooks/use-scenario';
+import useInterview from '@/hooks/use-interview';
+import { cn } from '@/utils';
+
+import './main-button.css';
+
+// --------------------------------------------------------------------------------
+// Typedef
+// --------------------------------------------------------------------------------
+
+interface Props {
+  scenario: ReturnType<typeof useScenario>;
+  config: ReturnType<typeof useConfig>;
+  interview: ReturnType<typeof useInterview>;
+}
+
+// --------------------------------------------------------------------------------
+// Export
+// --------------------------------------------------------------------------------
+
+export default function ButtonMain({ scenario, config, interview }: Props) {
+  const { getSectionObj, toNextSection, toLastSection, isLastSection } = scenario;
+  const { content, visibility } = getSectionObj()['main-button'];
+  const { configState, handleConfigState, isConfigDone } = config;
+  const { initInterview } = interview;
+
+  const onClick = e => {
+    if (content === 'PRESS') {
+      toNextSection();
+    }
+    if (content === 'START') {
+      if (e.ctrlKey) {
+        toLastSection();
+        return;
+      }
+      if (isConfigDone()) {
+        handleConfigState({ visibility: false });
+        initInterview(configState);
+      }
+      toNextSection();
+    }
+  };
+
+  return (
+    <div
+      className={cn(
+        'main-button',
+        'custom-flex-center',
+        'custom-main-others',
+        'transition',
+        (isLastSection() && isConfigDone()) || visibility
+          ? ''
+          : 'pointer-events-none opacity-0',
+      )}
+    >
+      <NeonButton style={{ padding: '20px 30px' }} onClick={e => onClick(e)}>
+        <NeonFont
+          neonColor="white"
+          neonSize="s"
+          style={{ fontFamily: 'Audiowide', fontSize: '40px' }}
+        >
+          {content}
+        </NeonFont>
+      </NeonButton>
+    </div>
+  );
+}

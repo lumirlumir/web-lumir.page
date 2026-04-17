@@ -1,0 +1,65 @@
+{
+  "include": [
+    "src/**/*.js",
+    "src/**/*.mjs",
+    "src/**/*.cjs",
+    "src/**/*.jsx",
+    "src/**/*.ts",
+    "src/**/*.mts",
+    "src/**/*.cts",
+    "src/**/*.tsx"
+  ],
+  "exclude": ["src/**/*.test.js", "src/**/*.test.ts"],
+  "compilerOptions": {
+    /* Type Checking */
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "alwaysStrict": true,
+    // "exactOptionalPropertyTypes": true,
+    "noFallthroughCasesInSwitch": true,
+    // "noImplicitAny": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noPropertyAccessFromIndexSignature": false, // Off: Prefer ESLint rule
+    "noUncheckedIndexedAccess": false, // Off: Too tight
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    // "strict": true,
+    "strictBindCallApply": true,
+    "strictBuiltinIteratorReturn": true,
+    "strictFunctionTypes": true,
+    "strictNullChecks": true,
+    // "strictPropertyInitialization": true,
+    "useUnknownInCatchVariables": true,
+
+    /* Modules */
+    "paths": {
+      "@/*": ["./src/*"] // Map the '@' alias to the 'src' directory.
+    },
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    // "types": ["node", "react", "react-dom", "vite/client"],
+
+    /* Emit */
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "noEmit": true,
+    "outDir": "build",
+
+    /* JavaScript Support */
+    "allowJs": true,
+    "checkJs": true,
+
+    /* Interop Constraints */
+    "allowSyntheticDefaultImports": true,
+
+    /* Language and Environment */
+    "jsx": "react-jsx",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "target": "ESNext",
+
+    /* Completeness */
+    "skipLibCheck": true
+  }
+}

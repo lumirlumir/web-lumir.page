@@ -1,0 +1,46 @@
+lumirlumir/lumirlumir-configs:
+  - source: ./.github/sync-client.yml
+    dest: ./clients/web-moing.lumir.page.yml
+  # ./.github/workflows
+  - source: ./.github/workflows/lint.yml
+    dest: ./configs/.github/workflows/lint.yml
+  - source: ./.github/workflows/pull-request.yml
+    dest: ./configs/.github/workflows/pull-request.yml
+  - source: ./.github/workflows/sync-client.yml
+    dest: ./configs/.github/workflows/sync-client.yml
+  - source: ./.github/workflows/test.yml
+    dest: ./configs/.github/workflows/test.yml
+  # ./.github
+  - source: ./.github/CODEOWNERS
+    dest: ./configs/.github/CODEOWNERS
+  - source: ./.github/dependabot.yml
+    dest: ./configs/.github/dependabot.yml
+  - source: ./.github/release.yml
+    dest: ./configs/.github/release.yml
+  # ./.husky
+  - source: ./.husky/pre-commit
+    dest: ./configs/.husky/pre-commit
+  # ./.vscode
+  - source: ./.vscode/extensions.json
+    dest: ./configs/.vscode/extensions.json
+  - source: ./.vscode/settings.json
+    dest: ./configs/.vscode/settings.json
+  # ./
+  - source: ./.editorconfig
+    dest: ./configs/.editorconfig
+  - source: ./.gitattributes
+    dest: ./configs/.gitattributes
+  - source: ./.gitignore
+    dest: ./configs/.gitignore
+  - source: ./.markdownlint.json
+    dest: ./configs/.markdownlint.json
+  - source: ./.markdownlintignore
+    dest: ./configs/.markdownlintignore
+  - source: ./.nvmrc
+    dest: ./configs/.nvmrc
+  - source: ./.prettierignore
+    dest: ./configs/.prettierignore
+  - source: ./VScode.code-workspace
+    dest: ./configs/VScode.code-workspace
+  - source: ./prettier.config.mjs
+    dest: ./configs/prettier.config.mjs

@@ -1,0 +1,61 @@
+version: 2
+updates:
+  # Maintain dependencies for npm.
+  - package-ecosystem: 'npm'
+    assignees:
+      - 'lumirlumir'
+    commit-message:
+      prefix: 'chore'
+      include: 'scope'
+    # Specify all directories from the current layer and below recursively, using globstar, for locations of manifest files.
+    directories:
+      - '**/*'
+    groups:
+      babel:
+        patterns:
+          - '@babel/*'
+      react:
+        patterns:
+          - 'react'
+          - 'react-dom'
+          - '@types/react'
+          - '@types/react-dom'
+      next:
+        patterns:
+          - 'next'
+          - '@next/*'
+      shikijs:
+        patterns:
+          - '@shikijs/*'
+      typescript-eslint:
+        patterns:
+          - '@typescript-eslint/*'
+      types:
+        patterns:
+          - '@types/*'
+    open-pull-requests-limit: 2
+    schedule:
+      interval: 'daily'
+      time: '10:00'
+      timezone: 'Asia/Seoul'
+    pull-request-branch-name:
+      separator: '-'
+    versioning-strategy: 'increase'
+
+  # Maintain dependencies for GitHub Actions.
+  - package-ecosystem: 'github-actions'
+    assignees:
+      - 'lumirlumir'
+    commit-message:
+      prefix: 'chore'
+      include: 'scope'
+    # Workflow files stored in the default location of `.github/workflows`. (You don't need to specify `/.github/workflows` for `directory`. You can use `directory: "/"`.)
+    directory: '/'
+    open-pull-requests-limit: 2
+    schedule:
+      interval: 'weekly'
+      day: 'monday'
+      time: '10:00'
+      timezone: 'Asia/Seoul'
+    pull-request-branch-name:
+      separator: '-'
