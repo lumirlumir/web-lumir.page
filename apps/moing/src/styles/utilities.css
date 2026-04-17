@@ -1,0 +1,63 @@
+.custom-flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.custom-scrollbar {
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.custom-main-others {
+  width: var(--main-section-width);
+  margin: 20px auto;
+}
+
+.custom-main-section {
+  width: var(--main-section-width);
+  margin: 40px auto;
+  padding: var(--main-section-padding);
+  line-height: 1.5;
+}
+
+.custom-main-section-bash {
+  background-color: var(--color-background-dark);
+  font-family: var(--font-ngc);
+  white-space: pre-line;
+}
+
+.custom-invisible-section {
+  pointer-events: none;
+  opacity: 0;
+  height: 0;
+  margin: 0 auto;
+  padding: 0 var(--main-section-padding);
+  border-width: 0 !important;
+}
+
+/* Filters: https://tailwindcss.com/docs/opacity */
+.opacity-0 {
+  opacity: 0;
+}
+
+/* Transitions & Animation: https://tailwindcss.com/docs/transition-property */
+.transition {
+  transition: all 2s ease-in-out;
+}
+
+/* Interactivity: https://tailwindcss.com/docs/pointer-events */
+.pointer-events-none {
+  pointer-events: none;
+}
+
+/* Interactivity: https://tailwindcss.com/docs/user-select */
+.select-none {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
