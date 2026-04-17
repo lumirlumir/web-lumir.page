@@ -7,6 +7,7 @@ on:
       - 'apps/moing/**'
       - 'packages/**'
       - 'package-lock.json'
+      - 'package.json'
 
   pull_request:
     branches: [main]
@@ -14,6 +15,7 @@ on:
       - 'apps/moing/**'
       - 'packages/**'
       - 'package-lock.json'
+      - 'package.json'
 
 permissions:
   contents: write
@@ -37,8 +39,8 @@ jobs:
 
       - name: Set up environment variables
         run: |
-          echo "BACKEND_PORT=${{ secrets.BACKEND_PORT }}" >> .env
-          echo "BACKEND_IP=${{ secrets.BACKEND_IP }}" >> .env
+          echo "BACKEND_PORT=${{ secrets.BACKEND_PORT }}" >> apps/moing/.env
+          echo "BACKEND_IP=${{ secrets.BACKEND_IP }}" >> apps/moing/.env
 
       - name: Build
         run: npm run build:m
