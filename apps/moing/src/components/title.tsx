@@ -6,9 +6,10 @@
 // Import
 // --------------------------------------------------------------------------------
 
+import { cn } from '@lumir/utils';
+
 import NeonFont from '@/components/neon-font';
 import useScenario from '@/hooks/use-scenario';
-import { cn } from '@lumir/utils';
 
 import './title.css';
 
