@@ -3,7 +3,6 @@ export default {
   extends: ['stylelint-config-standard', 'stylelint-config-recess-order'],
   ignoreFiles: ['archives/**', 'coverage/**'],
   rules: {
-    'declaration-empty-line-before': null,
     'import-notation': 'string',
     // Enforce specific media feature breakpoints for consistency
     'media-feature-range-notation': 'context',
@@ -25,6 +24,7 @@ export default {
     {
       files: ['**/markdown.css', '**/normalize.css'],
       rules: {
+        'declaration-empty-line-before': null,
         'property-no-vendor-prefix': null,
       },
     },
