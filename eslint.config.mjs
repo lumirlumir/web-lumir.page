@@ -38,6 +38,7 @@ export default defineConfig([
 
   {
     name: 'global/apps/blog',
+    files: ['apps/blog/**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx}'],
     settings: {
       next: {
         rootDir: fileURLToPath(new URL('./apps/blog', import.meta.url)),
@@ -59,6 +60,7 @@ export default defineConfig([
   },
   {
     name: 'global/apps/moing',
+    files: ['apps/moing/**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx}'],
     settings: {
       node: {
         resolverConfig: {
