@@ -26,10 +26,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    env:
-      BACKEND_PORT: ${{ secrets.BACKEND_PORT }}
-      BACKEND_IP: ${{ secrets.BACKEND_IP }}
-
     steps:
       - name: Set up checkout
         uses: actions/checkout@v6
@@ -45,6 +41,9 @@ jobs:
 
       - name: Build
         run: npm run build:m
+        env:
+          BACKEND_PORT: ${{ vars.BACKEND_PORT }}
+          BACKEND_IP: ${{ vars.BACKEND_IP }}
 
       - name: Upload static files as artifact
         if: github.ref == 'refs/heads/main'
