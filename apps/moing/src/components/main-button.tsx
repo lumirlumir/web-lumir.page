@@ -11,7 +11,7 @@ import NeonFont from '@/components/neon-font';
 import useConfig from '@/hooks/use-config';
 import useScenario from '@/hooks/use-scenario';
 import useInterview from '@/hooks/use-interview';
-import { cn } from '@/utils';
+import { cn } from '@lumir/utils';
 
 import './main-button.css';
 

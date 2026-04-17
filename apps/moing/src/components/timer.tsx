@@ -9,7 +9,7 @@
 import NeonFont from '@/components/neon-font';
 import useScenario from '@/hooks/use-scenario';
 import useTimer from '@/hooks/use-timer';
-import { cn } from '@/utils';
+import { cn } from '@lumir/utils';
 
 // --------------------------------------------------------------------------------
 // Typedef

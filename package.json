@@ -20,6 +20,7 @@
     "test:pkg:u": "npm run test -w packages/utils",
     "dev": "npm-run-all -c -l -p dev:pkg:* dev:a:b",
     "dev:a:b": "npm run dev -w apps/blog",
+    "dev:a:m": "npm run dev -w apps/moing",
     "dev:pkg:rk": "npm run dev -w packages/react-kit",
     "dev:pkg:rhp": "npm run dev -w packages/rehype-plugins",
     "dev:pkg:rmp": "npm run dev -w packages/remark-plugins",

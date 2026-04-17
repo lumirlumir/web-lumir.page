@@ -11,7 +11,7 @@ import React from 'react';
 import NeonButton from '@/components/neon-button';
 import NeonFont from '@/components/neon-font';
 import useScenario from '@/hooks/use-scenario';
-import { cn } from '@/utils';
+import { cn } from '@lumir/utils';
 
 // --------------------------------------------------------------------------------
 // Typedef

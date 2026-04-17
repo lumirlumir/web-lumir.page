@@ -9,7 +9,7 @@
 import NeonDiv from '@/components/neon-div';
 import NeonFont from '@/components/neon-font';
 import useConfig, { questionTypes } from '@/hooks/use-config';
-import { cn } from '@/utils';
+import { cn } from '@lumir/utils';
 
 import './section-config.css';
 

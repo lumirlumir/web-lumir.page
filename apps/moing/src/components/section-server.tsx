@@ -16,7 +16,7 @@ import useInterview from '@/hooks/use-interview';
 import useTimer from '@/hooks/use-timer';
 import useScroll from '@/hooks/use-scroll';
 import useHistoryState from '@/hooks/use-history-state';
-import { cn } from '@/utils';
+import { cn } from '@lumir/utils';
 
 import './section-server.css';
 
