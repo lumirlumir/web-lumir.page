@@ -1,5 +1,7 @@
 # ChatGPT를 활용한 인터뷰 서비스 개발
 
+> Moing💬 - Mock interview service using ChatGPT / 모잉💬 - ChatGPT를 활용한 모의 인터뷰 서비스
+
 이 문서는 '전북대학교' '산학실전캡스톤2(2분반)' '김용현 김영수 김영아' 팀의 'ChatGPT를 활용한 인터뷰 서비스 개발' 프로젝트에 관한 문서입니다. 해당 프로젝트에 대한 모든 내용들은 [***GitHub Repository***](https://github.com/lumirlumir/lumir.page/tree/main/apps/moing)를 통해 관리합니다.
 
 ## 0. Index
