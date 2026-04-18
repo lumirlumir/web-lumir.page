@@ -74,6 +74,20 @@ export default defineConfig([
     },
   },
   {
+    name: 'js/playground',
+    files: ['playground/**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx}'],
+    settings: {
+      node: {
+        resolverConfig: {
+          // `eslint-plugin-n` uses webpack's `enhanced-resolve` under the hood.
+          alias: {
+            '@': fileURLToPath(new URL('./playground/src', import.meta.url)),
+          },
+        },
+      },
+    },
+  },
+  {
     name: 'js/scripts',
     files: ['scripts/**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx}'],
     rules: {
