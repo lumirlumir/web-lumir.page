@@ -8,7 +8,8 @@
   },
   "workspaces": [
     "apps/*",
-    "packages/*"
+    "packages/*",
+    "playground"
   ],
   "scripts": {
     "prepare": "husky",
@@ -26,6 +27,7 @@
     "dev:pkg:rhp": "npm run dev -w packages/rehype-plugins",
     "dev:pkg:rmp": "npm run dev -w packages/remark-plugins",
     "dev:pkg:u": "npm run dev -w packages/utils",
+    "dev:pg": "npm run dev -w playground",
     "build:b": "npm-run-all -c -l -p build:pkg:* && npm run build -w apps/blog",
     "build:m": "npm-run-all -c -l -p build:pkg:* && npm run build -w apps/moing",
     "build:a:b": "npm run build -w apps/blog",
