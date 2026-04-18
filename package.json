@@ -54,7 +54,7 @@
   },
   "devDependencies": {
     "@types/node": "^20.19.39",
-    "@vitest/coverage-v8": "^4.1.2",
+    "@vitest/coverage-v8": "^4.1.4",
     "clang-format-node": "^3.0.2",
     "editorconfig-checker": "^6.1.1",
     "eslint": "^9.39.4",
@@ -65,11 +65,11 @@
     "markdownlint-cli": "^0.48.0",
     "npm-run-all2": "^8.0.4",
     "prettier": "^3.8.3",
-    "stylelint": "^17.6.0",
+    "stylelint": "^17.8.0",
     "stylelint-config-recess-order": "^7.7.0",
     "stylelint-config-standard": "^40.0.0",
     "stylelint-order": "^8.1.1",
     "typescript": "^6.0.3",
-    "vitest": "^4.1.2"
+    "vitest": "^4.1.4"
   }
 }
