@@ -15,8 +15,6 @@ lumirlumir/lumirlumir-configs:
   - source: ./.husky/pre-commit
     dest: ./configs/.husky/pre-commit
   # ./.vscode
-  - source: ./.vscode/extensions.json
-    dest: ./configs/.vscode/web-extensions.json
   - source: ./.vscode/settings.json
     dest: ./configs/.vscode/settings.json
   # ./
@@ -34,7 +32,7 @@ lumirlumir/lumirlumir-configs:
     dest: ./configs/.prettierignore
   - source: ./VScode.code-workspace
     dest: ./configs/VScode.code-workspace
-  - source: ./prettier.config.mjs
-    dest: ./configs/prettier.config.mjs
+  - source: ./prettier.config.js
+    dest: ./configs/prettier.config.js
   - source: ./tsconfig.base.json
     dest: ./configs/tsconfig.base.json
