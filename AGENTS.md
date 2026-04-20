@@ -116,6 +116,10 @@ Follow the repository PR template exactly and keep content concise.
 - Avoid speculative refactors and broad formatting churn.
 - Call out any assumptions when code context is incomplete.
 - Prefer explicit file references in explanations (for example: `apps/...`, `packages/...`, `.github/workflows/pull-request.yml`).
+
+### CODEX-only Review Priority Guide
+
+- The priority labels below apply **only** to CODEX-generated reviews and follow-up comments.
 - Use review priorities where P0 is highest urgency and P1 is high priority.
 - Flag security regressions as P0.
 - Treat typos and grammar issues in docs as P1.
