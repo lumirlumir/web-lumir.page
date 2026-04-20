@@ -11,6 +11,8 @@ import { createRoot } from 'react-dom/client';
 
 import TestPage from '@/test-page';
 
+import '@lumir/styles/normalize.css';
+
 // --------------------------------------------------------------------------------
 // Render
 // --------------------------------------------------------------------------------
