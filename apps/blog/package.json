@@ -21,6 +21,7 @@
     "@lumir/react-kit": "^0.0.0",
     "@lumir/rehype-plugins": "^0.0.0",
     "@lumir/remark-plugins": "^0.0.0",
+    "@lumir/styles": "^0.0.0",
     "@lumir/utils": "^0.0.0",
     "@next/third-parties": "^16.2.4",
     "@vercel/analytics": "^2.0.1",
