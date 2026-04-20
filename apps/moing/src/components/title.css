@@ -6,6 +6,11 @@
   /* ui */
   pointer-events: none;
 
+  h1 {
+    margin: 0;
+    font: inherit;
+  }
+
   /* Selector */
   & > .mock {
     /* box */
