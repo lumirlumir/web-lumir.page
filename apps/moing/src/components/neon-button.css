@@ -32,6 +32,7 @@
     border: none;
     background-color: transparent;
     cursor: pointer;
+    line-height: normal;
     /* box */
     padding: 10px;
     /* text */

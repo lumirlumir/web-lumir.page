@@ -1,4 +1,7 @@
-@import './reset.css';
+/* External */
+@import '@lumir/styles/normalize.css';
+
+/* Internal */
 @import './typography.css';
 @import './utilities.css';
 @import './variables.css';
