@@ -36,6 +36,7 @@
     "build:pkg:rk": "npm run build -w packages/react-kit",
     "build:pkg:rhp": "npm run build -w packages/rehype-plugins",
     "build:pkg:rmp": "npm run build -w packages/remark-plugins",
+    "build:pkg:s": "npm run build -w packages/styles",
     "build:pkg:t": "npm run build -w packages/types",
     "build:pkg:u": "npm run build -w packages/utils",
     "start:a:b": "npm run start -w apps/blog",
