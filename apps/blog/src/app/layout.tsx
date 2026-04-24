@@ -57,11 +57,12 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
-    <html lang="ko" data-theme="dark">
-      <ThemeProvider>
-        <Body>
-          <ThemeScript />
-
+    // Use `suppressHydrationWarning` because the initial theme can differ between server render and client hydration.
+    // https://react.dev/reference/react-dom/client/hydrateRoot#suppressing-unavoidable-hydration-mismatch-errors
+    <html lang="ko" data-theme="dark" suppressHydrationWarning>
+      <Body>
+        <ThemeScript />
+        <ThemeProvider>
           <Header>
             <Title />
             <FlexContainer>
@@ -79,8 +80,8 @@ export default function RootLayout({ children }: PropsWithChildren) {
           <Analytics />
           <SpeedInsights />
           <GoogleAnalytics gaId={GOOGLE_GA_ID} />
-        </Body>
-      </ThemeProvider>
+        </ThemeProvider>
+      </Body>
     </html>
   );
 }
