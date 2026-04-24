@@ -17,11 +17,11 @@ import SectionServer from '@/components/section-server';
 import Timer from '@/components/timer';
 import Title from '@/components/title';
 import {
-  GoGear,
   CiMicrophoneOn,
+  GoGear,
   GrPowerReset,
   IoIosCheckmarkCircleOutline,
-} from '@/components/svg';
+} from '@lumir/react-kit/svgs';
 
 import useScenario from '@/hooks/use-scenario';
 import useConfig from '@/hooks/use-config';

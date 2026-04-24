@@ -14,6 +14,7 @@
     "test:unit": "node --test"
   },
   "dependencies": {
+    "@lumir/react-kit": "*",
     "@lumir/styles": "*",
     "@lumir/utils": "*",
     "react": "^19.2.5",
