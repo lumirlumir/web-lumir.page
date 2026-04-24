@@ -87,40 +87,6 @@ export type MarkdownCollectionCategory = Record<CategoryKey, VMarkdownFile[]>;
 // Helper
 // --------------------------------------------------------------------------------
 
-const context = import.meta.webpackContext('../posts/docs', {
-  recursive: false,
-  regExp: /\.md$/,
-  mode: 'sync',
-});
-
-const vMarkdownFiles: VMarkdownFile[] = context.keys().map(key => {
-  const { data, content } = frontmatter(context(key));
-
-  if (!isFrontmatter(data)) {
-    throw new Error(
-      `
-Invalid frontmatter in Markdown file: \`${key}\`
-
-Expected frontmatter format:
-  - \`title: string\`
-  - \`description: string\`
-  - \`created: string\`
-  - \`updated: string\`
-  - \`categories: CategoryKey[]\`
-  - \`references: string[]\`
-
-Received data: \`${JSON.stringify(data, null, 2)}\`
-`,
-    );
-  }
-
-  return {
-    slug: key.replace(/^\.\//, '').replace(/\.md$/, ''),
-    data,
-    content,
-  };
-});
-
 /**
  * A record mapping each slug to its corresponding metadata.
  *
@@ -191,14 +157,43 @@ const markdownCollectionCategory: MarkdownCollectionCategory = Object.fromEntrie
 // Load and Organize Markdown Files
 // --------------------------------------------------------------------------------
 
-vMarkdownFiles.forEach(vMarkdownFile => {
-  const { categories } = vMarkdownFile.data;
+const context = import.meta.webpackContext('../posts/docs', {
+  recursive: false,
+  regExp: /\.md$/,
+  mode: 'sync',
+});
+
+context.keys().forEach(key => {
+  const { data, content } = frontmatter(context(key));
+
+  if (!isFrontmatter(data)) {
+    throw new Error(
+      `
+Invalid frontmatter in Markdown file: \`${key}\`
+
+Expected frontmatter format:
+  - \`title: string\`
+  - \`description: string\`
+  - \`created: string\`
+  - \`updated: string\`
+  - \`categories: CategoryKey[]\`
+  - \`references: string[]\`
+
+Received data: \`${JSON.stringify(data, null, 2)}\`
+`,
+    );
+  }
+
+  const vMarkdownFile: VMarkdownFile = {
+    slug: key.replace(/^\.\//, '').replace(/\.md$/, ''),
+    data,
+    content,
+  };
 
   // `markdownCollectionSlug`
   markdownCollectionSlug[vMarkdownFile.slug] = vMarkdownFile;
   // `markdownCollectionCategory`
-  categories.forEach(category => {
-    markdownCollectionCategory[category] ??= [];
+  data.categories.forEach(category => {
     markdownCollectionCategory[category].push(vMarkdownFile);
   });
 });
