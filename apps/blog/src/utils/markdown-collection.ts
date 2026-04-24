@@ -1,5 +1,5 @@
 /**
- * @fileoverview Defines a structured collection of Markdown files organized by `all`, `slug`, and `category`.
+ * @fileoverview Defines a structured collection of Markdown files organized by `slug` and `category`.
  * @see https://webpack.js.org/guides/dependency-management/#importmetawebpackcontext
  * @see https://webpack.js.org/api/module-variables/#importmetawebpackcontext
  */
@@ -10,36 +10,12 @@
 
 import { frontmatter } from '@lumir/utils';
 import { categoryKeys, type CategoryKey } from '@/data/category';
-import { type Frontmatter } from '@/data/frontmatter';
 import { type VMarkdownFile } from '@/data/v-markdown-file';
+import { isFrontmatter } from '@/utils/is-frontmatter';
 
 // --------------------------------------------------------------------------------
 // Typedef
 // --------------------------------------------------------------------------------
-
-/**
- * An array containing the metadata of all Markdown files in the collection.
- *
- * @example
- * ```ts
- * [
- *   {
- *     slug: 'example-post',
- *     data: {
- *       title: 'Example Post',
- *       description: 'This is an example post.',
- *       created: '2024-01-01',
- *       updated: '2024-01-02',
- *       categories: ['tech', 'news'],
- *       references: ['https://example.com'],
- *     },
- *     content: '# Example Post\n\nThis is the content of the example post.',
- *   },
- *   // ...more
- * ]
- * ```
- */
-export type MarkdownCollectionAll = readonly VMarkdownFile[];
 
 /**
  * A record mapping each slug to its corresponding metadata.
@@ -146,30 +122,6 @@ Received data: \`${JSON.stringify(data, null, 2)}\`
 });
 
 /**
- * An array containing the metadata of all Markdown files in the collection.
- *
- * @example
- * ```ts
- * [
- *   {
- *     slug: 'example-post',
- *     data: {
- *       title: 'Example Post',
- *       description: 'This is an example post.',
- *       created: '2024-01-01',
- *       updated: '2024-01-02',
- *       categories: ['tech', 'news'],
- *       references: ['https://example.com'],
- *     },
- *     content: '# Example Post\n\nThis is the content of the example post.',
- *   },
- *   // ...more
- * ]
- * ```
- */
-const markdownCollectionAll: MarkdownCollectionAll = vMarkdownFiles;
-
-/**
  * A record mapping each slug to its corresponding metadata.
  *
  * @example
@@ -235,38 +187,6 @@ const markdownCollectionCategory: MarkdownCollectionCategory = Object.fromEntrie
   categoryKeys.map(categoryKey => [categoryKey, [] as VMarkdownFile[]]),
 ) as MarkdownCollectionCategory;
 
-/**
- * Type guard to check if the given data conforms to the `Frontmatter` interface.
- * @param data The data to check for conformity to the `Frontmatter` interface.
- */
-function isFrontmatter(data: unknown): data is Frontmatter {
-  return (
-    // check `object`
-    typeof data === 'object' &&
-    data !== null &&
-    // check `title`
-    'title' in data &&
-    typeof data.title === 'string' &&
-    // check `description`
-    'description' in data &&
-    typeof data.description === 'string' &&
-    // check `created`
-    'created' in data &&
-    typeof data.created === 'string' &&
-    // check `updated`
-    'updated' in data &&
-    typeof data.updated === 'string' &&
-    // check `categories`
-    'categories' in data &&
-    Array.isArray(data.categories) &&
-    data.categories.every(category => categoryKeys.includes(category)) &&
-    // check `references`
-    'references' in data &&
-    Array.isArray(data.references) &&
-    data.references.every(reference => typeof reference === 'string')
-  );
-}
-
 // --------------------------------------------------------------------------------
 // Load and Organize Markdown Files
 // --------------------------------------------------------------------------------
@@ -287,7 +207,7 @@ vMarkdownFiles.forEach(vMarkdownFile => {
 // Export
 // --------------------------------------------------------------------------------
 
-export { markdownCollectionAll, markdownCollectionSlug, markdownCollectionCategory };
+export { markdownCollectionSlug, markdownCollectionCategory };
 
 /**
  * Returns a list of category keys that have at least one associated Markdown file in the collection.
