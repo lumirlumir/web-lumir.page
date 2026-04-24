@@ -12,10 +12,9 @@
 // Import
 // --------------------------------------------------------------------------------
 
-import { useContext } from 'react';
 import GiscusOriginal from '@giscus/react';
 
-import { ThemeContext } from '@/components/common/theme-provider';
+import { useThemeContext } from '@/components/common/theme-provider';
 import { GITHUB_REPO_FULL_NAME } from '@/constants';
 
 // --------------------------------------------------------------------------------
@@ -23,7 +22,7 @@ import { GITHUB_REPO_FULL_NAME } from '@/constants';
 // --------------------------------------------------------------------------------
 
 export default function Giscus() {
-  const { theme } = useContext(ThemeContext)!;
+  const [theme] = useThemeContext();
 
   return (
     <GiscusOriginal
@@ -36,7 +35,7 @@ export default function Giscus() {
       reactionsEnabled="1"
       emitMetadata="0"
       inputPosition="top"
-      theme={theme!}
+      theme={theme}
       lang="ko"
       loading="lazy"
     />

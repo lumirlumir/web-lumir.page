@@ -12,9 +12,8 @@
 // Import
 // --------------------------------------------------------------------------------
 
-import { useContext } from 'react';
 import { cn } from '@lumir/utils';
-import { ThemeContext } from '@/components/common/theme-provider';
+import { useThemeContext } from '@/components/common/theme-provider';
 import styles from './dark-mode-toggle.module.css';
 
 // --------------------------------------------------------------------------------
@@ -22,32 +21,18 @@ import styles from './dark-mode-toggle.module.css';
 // --------------------------------------------------------------------------------
 
 export default function DarkModeToggle() {
-  const { theme, toggleTheme } = useContext(ThemeContext)!; // TODO: Refactor `ThemeContext` later.
+  const [, toggleTheme] = useThemeContext();
 
   return (
     <div className={cn(styles['dark-mode-toggle'], 'custom-flex-center')}>
-      {Boolean(theme) && (
-        <button
-          type="button"
-          className={cn(styles['mode-switcher'], theme !== 'dark' && styles.active)}
-          onClick={toggleTheme}
-        >
-          <span className={styles['mode-switcher-main-body']} />
-          <span className={styles['mode-switcher-shadow-shape']} />
-          <span
-            className={`${styles['mode-switcher-sunray']} ${styles['mode-switcher-sunray-sunray-1']}`}
-          />
-          <span
-            className={`${styles['mode-switcher-sunray']} ${styles['mode-switcher-sunray-sunray-2']}`}
-          />
-          <span
-            className={`${styles['mode-switcher-sunray']} ${styles['mode-switcher-sunray-sunray-3']}`}
-          />
-          <span
-            className={`${styles['mode-switcher-sunray']} ${styles['mode-switcher-sunray-sunray-4']}`}
-          />
-        </button>
-      )}
+      <button type="button" className={styles.switcher} onClick={toggleTheme}>
+        <span className={styles['main-body']} />
+        <span className={styles['shadow-shape']} />
+        <span className={cn(styles.sunray, styles.sunray1)} />
+        <span className={cn(styles.sunray, styles.sunray2)} />
+        <span className={cn(styles.sunray, styles.sunray3)} />
+        <span className={cn(styles.sunray, styles.sunray4)} />
+      </button>
     </div>
   );
 }
