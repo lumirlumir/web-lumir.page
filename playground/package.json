@@ -6,12 +6,12 @@
     "dev": "vite dev"
   },
   "dependencies": {
-    "@lumir/styles": "^0.0.0",
+    "@lumir/styles": "*",
     "react": "^19.2.5",
     "react-dom": "^19.2.5"
   },
   "devDependencies": {
-    "@lumir/types": "^0.0.0",
+    "@lumir/types": "*",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.2.0",
