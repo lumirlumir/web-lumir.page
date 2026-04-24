@@ -7,10 +7,7 @@
 // --------------------------------------------------------------------------------
 
 import { type Metadata } from 'next';
-import {
-  markdownCollectionAll,
-  markdownCollectionSlug,
-} from '@/utils/markdown-collection';
+import { markdownCollectionSlug } from '@/utils/markdown-collection';
 import { markdownToHtml } from '@/utils/markdown-to-html';
 import { markdownToText } from '@/utils/markdown-to-text';
 
@@ -30,7 +27,7 @@ export const dynamicParams = false;
 export async function generateStaticParams(): Promise<
   Awaited<PageProps<'/posts/[markdown]'>['params']>[]
 > {
-  return markdownCollectionAll.map(({ slug }) => ({
+  return Object.values(markdownCollectionSlug).map(({ slug }) => ({
     markdown: slug,
   }));
 }

@@ -1,5 +1,5 @@
 /**
- * @fileoverview Defines a structured collection of Markdown files organized by `all`, `slug`, and `category`.
+ * @fileoverview Defines a structured collection of Markdown files organized by `slug` and `category`.
  * @see https://webpack.js.org/guides/dependency-management/#importmetawebpackcontext
  * @see https://webpack.js.org/api/module-variables/#importmetawebpackcontext
  */
@@ -16,30 +16,6 @@ import { type VMarkdownFile } from '@/data/v-markdown-file';
 // --------------------------------------------------------------------------------
 // Typedef
 // --------------------------------------------------------------------------------
-
-/**
- * An array containing the metadata of all Markdown files in the collection.
- *
- * @example
- * ```ts
- * [
- *   {
- *     slug: 'example-post',
- *     data: {
- *       title: 'Example Post',
- *       description: 'This is an example post.',
- *       created: '2024-01-01',
- *       updated: '2024-01-02',
- *       categories: ['tech', 'news'],
- *       references: ['https://example.com'],
- *     },
- *     content: '# Example Post\n\nThis is the content of the example post.',
- *   },
- *   // ...more
- * ]
- * ```
- */
-export type MarkdownCollectionAll = readonly VMarkdownFile[];
 
 /**
  * A record mapping each slug to its corresponding metadata.
@@ -144,30 +120,6 @@ Received data: \`${JSON.stringify(data, null, 2)}\`
     content,
   };
 });
-
-/**
- * An array containing the metadata of all Markdown files in the collection.
- *
- * @example
- * ```ts
- * [
- *   {
- *     slug: 'example-post',
- *     data: {
- *       title: 'Example Post',
- *       description: 'This is an example post.',
- *       created: '2024-01-01',
- *       updated: '2024-01-02',
- *       categories: ['tech', 'news'],
- *       references: ['https://example.com'],
- *     },
- *     content: '# Example Post\n\nThis is the content of the example post.',
- *   },
- *   // ...more
- * ]
- * ```
- */
-const markdownCollectionAll: MarkdownCollectionAll = vMarkdownFiles;
 
 /**
  * A record mapping each slug to its corresponding metadata.
@@ -287,7 +239,7 @@ vMarkdownFiles.forEach(vMarkdownFile => {
 // Export
 // --------------------------------------------------------------------------------
 
-export { markdownCollectionAll, markdownCollectionSlug, markdownCollectionCategory };
+export { markdownCollectionSlug, markdownCollectionCategory };
 
 /**
  * Returns a list of category keys that have at least one associated Markdown file in the collection.
