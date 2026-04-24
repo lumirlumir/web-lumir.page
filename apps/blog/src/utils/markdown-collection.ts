@@ -10,8 +10,8 @@
 
 import { frontmatter } from '@lumir/utils';
 import { categoryKeys, type CategoryKey } from '@/data/category';
-import { type Frontmatter } from '@/data/frontmatter';
 import { type VMarkdownFile } from '@/data/v-markdown-file';
+import { isFrontmatter } from '@/utils/is-frontmatter';
 
 // --------------------------------------------------------------------------------
 // Typedef
@@ -186,38 +186,6 @@ const markdownCollectionSlug: MarkdownCollectionSlug = {};
 const markdownCollectionCategory: MarkdownCollectionCategory = Object.fromEntries(
   categoryKeys.map(categoryKey => [categoryKey, [] as VMarkdownFile[]]),
 ) as MarkdownCollectionCategory;
-
-/**
- * Type guard to check if the given data conforms to the `Frontmatter` interface.
- * @param data The data to check for conformity to the `Frontmatter` interface.
- */
-function isFrontmatter(data: unknown): data is Frontmatter {
-  return (
-    // check `object`
-    typeof data === 'object' &&
-    data !== null &&
-    // check `title`
-    'title' in data &&
-    typeof data.title === 'string' &&
-    // check `description`
-    'description' in data &&
-    typeof data.description === 'string' &&
-    // check `created`
-    'created' in data &&
-    typeof data.created === 'string' &&
-    // check `updated`
-    'updated' in data &&
-    typeof data.updated === 'string' &&
-    // check `categories`
-    'categories' in data &&
-    Array.isArray(data.categories) &&
-    data.categories.every(category => categoryKeys.includes(category)) &&
-    // check `references`
-    'references' in data &&
-    Array.isArray(data.references) &&
-    data.references.every(reference => typeof reference === 'string')
-  );
-}
 
 // --------------------------------------------------------------------------------
 // Load and Organize Markdown Files
