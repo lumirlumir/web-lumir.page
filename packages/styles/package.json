@@ -1,6 +1,7 @@
 {
   "private": true,
   "name": "@lumir/styles",
+  "version": "0.0.0-private",
   "type": "module",
   "exports": {
     "./normalize.css": "./src/normalize.css",
