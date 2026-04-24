@@ -1,7 +1,6 @@
 {
   "private": true,
   "name": "@lumir/types",
-  "version": "0.0.0",
   "type": "module",
   "exports": {
     "./global": {

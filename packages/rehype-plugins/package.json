@@ -1,7 +1,6 @@
 {
   "private": true,
   "name": "@lumir/rehype-plugins",
-  "version": "0.0.0",
   "type": "module",
   "exports": {
     ".": {
