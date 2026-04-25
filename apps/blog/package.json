@@ -10,7 +10,7 @@
     "build": "next build --webpack",
     "start": "next start",
     "test": "npm run test:types && npm run test:unit",
-    "test:types": "next typegen && tsc",
+    "test:types": "next typegen && tsgo",
     "test:unit": "vitest run",
     "count-docs": "ls -R src/posts/docs | grep .md | wc -l"
   },
