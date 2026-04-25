@@ -10,7 +10,7 @@
     "build": "npm run test:types && vite build",
     "start": "vite preview",
     "test": "npm run test:types && npm run test:unit",
-    "test:types": "tsc",
+    "test:types": "tsgo",
     "test:unit": "node --test"
   },
   "dependencies": {

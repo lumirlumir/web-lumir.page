@@ -6,9 +6,9 @@
     "node": "^20.19.6"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsgo",
     "dev": "node --env-file=.env --watch ./src/server.js",
-    "test": "tsc"
+    "test": "tsgo"
   },
   "dependencies": {
     "openai": "^6.34.0"
