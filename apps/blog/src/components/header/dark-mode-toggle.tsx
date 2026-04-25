@@ -12,9 +12,8 @@
 // Import
 // --------------------------------------------------------------------------------
 
-import { useContext } from 'react';
 import { cn } from '@lumir/utils';
-import { ThemeContext } from '@/components/common/theme-provider';
+import { useThemeContext } from '@/components/common/theme-context';
 import styles from './dark-mode-toggle.module.css';
 
 // --------------------------------------------------------------------------------
@@ -22,32 +21,25 @@ import styles from './dark-mode-toggle.module.css';
 // --------------------------------------------------------------------------------
 
 export default function DarkModeToggle() {
-  const { theme, toggleTheme } = useContext(ThemeContext)!; // TODO: Refactor `ThemeContext` later.
+  const [theme, toggleTheme] = useThemeContext();
 
   return (
     <div className={cn(styles['dark-mode-toggle'], 'custom-flex-center')}>
-      {Boolean(theme) && (
-        <button
-          type="button"
-          className={cn(styles['mode-switcher'], theme !== 'dark' && styles.active)}
-          onClick={toggleTheme}
-        >
-          <span className={styles['mode-switcher-main-body']} />
-          <span className={styles['mode-switcher-shadow-shape']} />
-          <span
-            className={`${styles['mode-switcher-sunray']} ${styles['mode-switcher-sunray-sunray-1']}`}
-          />
-          <span
-            className={`${styles['mode-switcher-sunray']} ${styles['mode-switcher-sunray-sunray-2']}`}
-          />
-          <span
-            className={`${styles['mode-switcher-sunray']} ${styles['mode-switcher-sunray-sunray-3']}`}
-          />
-          <span
-            className={`${styles['mode-switcher-sunray']} ${styles['mode-switcher-sunray-sunray-4']}`}
-          />
-        </button>
-      )}
+      <button
+        type="button"
+        className={styles.switch}
+        onClick={toggleTheme}
+        aria-label={theme === 'dark' ? 'Dark mode' : 'Light mode'}
+        aria-pressed={theme === 'dark'}
+        suppressHydrationWarning // TODO: Remove it later.
+      >
+        <span className={styles.orb} aria-hidden="true" />
+        <span className={styles.shadow} aria-hidden="true" />
+        <span className={cn(styles.sunray, styles.sunray1)} aria-hidden="true" />
+        <span className={cn(styles.sunray, styles.sunray2)} aria-hidden="true" />
+        <span className={cn(styles.sunray, styles.sunray3)} aria-hidden="true" />
+        <span className={cn(styles.sunray, styles.sunray4)} aria-hidden="true" />
+      </button>
     </div>
   );
 }
