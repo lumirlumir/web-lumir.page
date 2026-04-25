@@ -13,7 +13,7 @@ import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { GoogleAnalytics } from '@next/third-parties/google';
 
-import { ThemeProvider, defaultTheme } from '@/components/common/theme-context';
+import { ThemeProvider } from '@/components/common/theme-context';
 import ThemeScript from '@/components/common/theme-script';
 
 import Aside from '@/components/layouts/aside';
@@ -57,9 +57,9 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
-    // Use `suppressHydrationWarning` because the initial `data-theme` can differ between server render and client hydration.
+    // Use `suppressHydrationWarning` because `ThemeScript` may change the initial `data-theme`.
     // https://react.dev/reference/react-dom/client/hydrateRoot#suppressing-unavoidable-hydration-mismatch-errors
-    <html lang="ko" data-theme={defaultTheme} suppressHydrationWarning>
+    <html lang="ko" suppressHydrationWarning>
       <Body>
         <ThemeScript />
         <ThemeProvider>
