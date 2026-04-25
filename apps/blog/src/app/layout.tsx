@@ -13,7 +13,7 @@ import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { GoogleAnalytics } from '@next/third-parties/google';
 
-import { ThemeProvider } from '@/components/common/theme-context';
+import { ThemeProvider, defaultTheme } from '@/components/common/theme-context';
 import ThemeScript from '@/components/common/theme-script';
 
 import Aside from '@/components/layouts/aside';
@@ -59,7 +59,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
   return (
     // Use `suppressHydrationWarning` because the initial theme can differ between server render and client hydration.
     // https://react.dev/reference/react-dom/client/hydrateRoot#suppressing-unavoidable-hydration-mismatch-errors
-    <html lang="ko" data-theme="dark" suppressHydrationWarning>
+    <html lang="ko" data-theme={defaultTheme} suppressHydrationWarning>
       <Body>
         <ThemeScript />
         <ThemeProvider>

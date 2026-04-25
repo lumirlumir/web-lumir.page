@@ -42,13 +42,17 @@ export type ThemeContextValue = readonly [theme: Theme, toggleTheme: () => void]
 // Helper
 // --------------------------------------------------------------------------------
 
-const defaultTheme = 'dark' satisfies Theme;
 const themeKey = 'data-theme';
 const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
 
 // --------------------------------------------------------------------------------
 // Export
 // --------------------------------------------------------------------------------
+
+/**
+ * The default theme.
+ */
+export const defaultTheme = 'dark' satisfies Theme;
 
 /**
  * Returns the current theme context value.
