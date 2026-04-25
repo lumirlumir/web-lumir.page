@@ -1,5 +1,5 @@
 /**
- * @fileoverview theme-provider.
+ * @fileoverview theme-context.
  */
 
 // --------------------------------------------------------------------------------
@@ -14,6 +14,7 @@
 
 import {
   createContext,
+  useCallback,
   useContext,
   useEffect,
   useState,
@@ -35,32 +36,19 @@ export type Theme = 'dark' | 'light';
  * Defines the shape of the context value provided by the `ThemeContext`,
  * including the current theme and a function to toggle between themes.
  */
-export type ThemeContextValue = [theme: Theme, toggleTheme: () => void];
+export type ThemeContextValue = readonly [theme: Theme, toggleTheme: () => void];
+
+// --------------------------------------------------------------------------------
+// Helper
+// --------------------------------------------------------------------------------
+
+const defaultTheme = 'dark' satisfies Theme;
+const themeKey = 'data-theme';
+const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
 
 // --------------------------------------------------------------------------------
 // Export
 // --------------------------------------------------------------------------------
-
-/**
- * The fallback theme used when no theme can be resolved from the document or storage.
- */
-export const defaultTheme = 'dark' satisfies Theme;
-
-/**
- * React context that stores the current theme and the function used to toggle it.
- *
- * Prefer consuming this context through `useThemeContext()` instead of calling `useContext(ThemeContext)` directly.
- *
- * @example
- * ```tsx
- * function ThemeLabel() {
- *   const [theme] = useThemeContext();
- *
- *   return <span>Current theme: {theme}</span>;
- * }
- * ```
- */
-export const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
 
 /**
  * Returns the current theme context value.
@@ -119,24 +107,26 @@ export function useThemeContext(): ThemeContextValue {
 export function ThemeProvider({ children }: PropsWithChildren) {
   const [theme, setTheme] = useState<Theme>(() => {
     // During server-side rendering, `document` is not available, so we return the default theme.
-    if (typeof document === 'undefined') return defaultTheme;
+    if (typeof document === 'undefined') {
+      return defaultTheme;
+    }
 
-    return document.documentElement.getAttribute('data-theme') === 'light'
-      ? 'light'
-      : 'dark';
+    return (document.documentElement.getAttribute(themeKey) as Theme) ?? defaultTheme;
   });
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme);
+    // 1. Update the `data-theme` attribute on the root document element to apply the theme globally.
+    document.documentElement.setAttribute(themeKey, theme);
 
+    // 2. Persist the current theme in `localStorage` to remember the user's preference across sessions.
     // `localStorage` is scoped per origin, so this key will not conflict across different domains,
     // protocols, or ports. It can only collide with other apps running on the same origin.
-    localStorage.setItem('data-theme', theme);
+    localStorage.setItem(themeKey, theme);
   }, [theme]);
 
-  const toggleTheme = () => {
+  const toggleTheme = useCallback(() => {
     setTheme(previousTheme => (previousTheme === 'dark' ? 'light' : 'dark'));
-  };
+  }, []);
 
   // eslint-disable-next-line react/jsx-no-constructed-context-values -- React Compiler automatically optimizes context values.
   return <ThemeContext value={[theme, toggleTheme]}>{children}</ThemeContext>;

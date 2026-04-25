@@ -13,7 +13,7 @@
 // --------------------------------------------------------------------------------
 
 import { cn } from '@lumir/utils';
-import { useThemeContext } from '@/components/common/theme-provider';
+import { useThemeContext } from '@/components/common/theme-context';
 import styles from './dark-mode-toggle.module.css';
 
 // --------------------------------------------------------------------------------

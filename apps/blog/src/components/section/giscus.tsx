@@ -13,8 +13,7 @@
 // --------------------------------------------------------------------------------
 
 import GiscusOriginal from '@giscus/react';
-
-import { useThemeContext } from '@/components/common/theme-provider';
+import { useThemeContext } from '@/components/common/theme-context';
 import { GITHUB_REPO_FULL_NAME } from '@/constants';
 
 // --------------------------------------------------------------------------------
