@@ -32,8 +32,8 @@
     }
   },
   "scripts": {
-    "build": "tsc",
-    "dev": "tsc --watch",
+    "build": "tsgo",
+    "dev": "tsgo --watch",
     "test": "vitest run"
   },
   "peerDependencies": {

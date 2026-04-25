@@ -37,6 +37,7 @@
     "dev:pg": "npm run dev -w playground",
     "build:b": "npm-run-all -c -l -p build:pkg:* && npm run build -w apps/blog",
     "build:m": "npm-run-all -c -l -p build:pkg:* && npm run build -w apps/moing",
+    "build:a:a": "npm run build -w apps/api",
     "build:a:b": "npm run build -w apps/blog",
     "build:a:m": "npm run build -w apps/moing",
     "build:pkg": "npm-run-all -c -l -p build:pkg:*",
@@ -63,6 +64,7 @@
   },
   "devDependencies": {
     "@types/node": "^20.19.39",
+    "@typescript/native-preview": "^7.0.0-dev.20260424.2",
     "@vitest/coverage-v8": "^4.1.4",
     "clang-format-node": "^3.0.3",
     "editorconfig-checker": "^6.1.1",
