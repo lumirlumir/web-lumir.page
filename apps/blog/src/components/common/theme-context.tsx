@@ -115,7 +115,7 @@ export function ThemeProvider({ children }: PropsWithChildren) {
       return defaultTheme;
     }
 
-    return (document.documentElement.getAttribute(themeKey) as Theme) ?? defaultTheme;
+    return (document.documentElement.getAttribute(themeKey) ?? defaultTheme) as Theme;
   });
 
   useEffect(() => {
