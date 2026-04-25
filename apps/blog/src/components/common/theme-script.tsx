@@ -7,7 +7,11 @@
 // --------------------------------------------------------------------------------
 
 export default function ThemeScript() {
-  const themeScript = `
+  return (
+    <script
+      // eslint-disable-next-line react/no-danger -- Safe because the script is hardcoded and does not include any user input.
+      dangerouslySetInnerHTML={{
+        __html: `
 function getTheme() {
   const themeLocalStorage = localStorage.getItem('data-theme');
 
@@ -17,12 +21,7 @@ function getTheme() {
 };
 
 document.documentElement.setAttribute('data-theme', getTheme());
-`;
-
-  return (
-    <script
-      dangerouslySetInnerHTML={{
-        __html: themeScript,
+`.trim(),
       }}
     />
   );
