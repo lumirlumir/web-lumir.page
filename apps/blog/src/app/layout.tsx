@@ -57,7 +57,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
-    // Use `suppressHydrationWarning` because the initial theme can differ between server render and client hydration.
+    // Use `suppressHydrationWarning` because the initial `data-theme` can differ between server render and client hydration.
     // https://react.dev/reference/react-dom/client/hydrateRoot#suppressing-unavoidable-hydration-mismatch-errors
     <html lang="ko" data-theme={defaultTheme} suppressHydrationWarning>
       <Body>
