@@ -3,7 +3,7 @@
     animation: var(--animation-shake);
   }
 
-  & .switcher {
+  & .switch {
     /* variables */
     --light-color: var(--color-fg-default);
     --dark-color: var(--color-bg-inset);
@@ -29,7 +29,7 @@
     transition: all var(--duration) var(--timing);
 
     /* selectors */
-    & .main-body {
+    & .orb {
       display: block;
       width: 80%;
       height: 80%;
@@ -38,7 +38,7 @@
       transition: all var(--duration) var(--timing);
     }
 
-    & .shadow-shape {
+    & .shadow {
       position: absolute;
       top: -5%;
       right: 0;
@@ -103,13 +103,13 @@
     html[data-theme='light'] & {
       transform: rotate(45deg);
 
-      & .main-body {
+      & .orb {
         width: 50%;
         height: 50%;
         background-color: var(--sun-color);
       }
 
-      & .shadow-shape {
+      & .shadow {
         transform: rotate(90deg);
       }
 

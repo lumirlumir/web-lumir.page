@@ -25,9 +25,9 @@ export default function DarkModeToggle() {
 
   return (
     <div className={cn(styles['dark-mode-toggle'], 'custom-flex-center')}>
-      <button type="button" className={styles.switcher} onClick={toggleTheme}>
-        <span className={styles['main-body']} />
-        <span className={styles['shadow-shape']} />
+      <button type="button" className={styles.switch} onClick={toggleTheme}>
+        <span className={styles.orb} />
+        <span className={styles.shadow} />
         <span className={cn(styles.sunray, styles.sunray1)} />
         <span className={cn(styles.sunray, styles.sunray2)} />
         <span className={cn(styles.sunray, styles.sunray3)} />
