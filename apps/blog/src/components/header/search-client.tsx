@@ -34,15 +34,54 @@ import styles from './search.module.css';
 // --------------------------------------------------------------------------------
 
 export interface SearchDocument {
+  /**
+   * Stable identifier used by MiniSearch and result lookup.
+   */
   readonly id: string;
+
+  /**
+   * Post slug used to build the result href.
+   */
   readonly slug: string;
+
+  /**
+   * Searchable post title.
+   */
   readonly title: string;
+
+  /**
+   * Searchable post description.
+   */
   readonly description: string;
+
+  /**
+   * Post creation date.
+   */
   readonly created: string;
+
+  /**
+   * Post update date.
+   */
   readonly updated: string;
+
+  /**
+   * Post categories shown in the search result metadata.
+   */
   readonly categories: string[];
+
+  /**
+   * Post references used by the search index.
+   */
   readonly references: string[];
+
+  /**
+   * Searchable categories joined into a single string.
+   */
   readonly categoriesText: string;
+
+  /**
+   * Searchable references joined into a single string.
+   */
   readonly referencesText: string;
 }
 
@@ -70,6 +109,13 @@ export interface SearchClientProps {
    * @default 10
    */
   readonly maxResults?: number;
+
+  /**
+   * The placeholder for the search input.
+   *
+   * @default "Search"
+   */
+  readonly placeholder?: string;
 
   /**
    * Translations for the search UI.
@@ -105,12 +151,108 @@ export interface SearchClientProps {
        */
       readonly dialogAriaLabel?: string;
 
+      /**
+       * Translations for the search box controls.
+       */
       readonly searchBox?: {
+        /**
+         * The text to display on the reset button.
+         *
+         * @default "Clear"
+         */
+        readonly resetButtonText?: string;
+
+        /**
+         * The title for the reset button.
+         *
+         * @default "Clear the query"
+         */
         readonly resetButtonTitle?: string;
+
+        /**
+         * The aria-label for the reset button.
+         *
+         * @default "Clear the query"
+         */
         readonly resetButtonAriaLabel?: string;
+
+        /**
+         * The text to display on the cancel button.
+         *
+         * @default "Cancel"
+         */
         readonly cancelButtonText?: string;
+
+        /**
+         * The aria-label for the cancel button.
+         *
+         * @default "Cancel"
+         */
         readonly cancelButtonAriaLabel?: string;
+
+        /**
+         * The aria-label for the search input.
+         *
+         * @default "Search"
+         */
         readonly searchInputLabel?: string;
+      };
+
+      /**
+       * Translations for the initial empty search screen.
+       */
+      readonly startScreen?: {
+        /**
+         * The title to display before the user enters a query.
+         *
+         * @default "Search docs metadata"
+         */
+        readonly titleText?: string;
+
+        /**
+         * The help text to display before the user enters a query.
+         *
+         * @default "Titles, descriptions, dates, categories, references, and slugs are indexed first. Body search can be added later."
+         */
+        readonly helpText?: string;
+      };
+
+      /**
+       * Translations for the no-results screen.
+       */
+      readonly noResultsScreen?: {
+        /**
+         * The text to display when no results match the query.
+         *
+         * @default "No results for"
+         */
+        readonly noResultsText?: string;
+      };
+
+      /**
+       * Translations for the results screen.
+       */
+      readonly resultsScreen?: {
+        /**
+         * The source label to display above search results.
+         *
+         * @default "Posts"
+         */
+        readonly sourceText?: string;
+
+        /**
+         * The path prefix to display before each result slug.
+         *
+         * @default "blog / posts"
+         */
+        readonly pathPrefix?: string;
+
+        /**
+         * The label to display before each result update date.
+         *
+         * @default "Updated"
+         */
+        readonly updatedText?: string;
       };
 
       /**
@@ -169,7 +311,9 @@ export interface SearchClientProps {
     };
   };
 
-  // TODO: From here
+  /**
+   * Search documents to index on the client.
+   */
   readonly documents: SearchDocument[];
 }
 
@@ -191,7 +335,16 @@ function Key({
   ariaLabel,
   children,
 }: {
+  /**
+   * The aria-label for the keycap.
+   *
+   * @default undefined
+   */
   readonly ariaLabel?: string;
+
+  /**
+   * The visible keycap text.
+   */
   readonly children: string;
 }) {
   return (
@@ -209,10 +362,29 @@ export default function SearchClient({
   buttonIcon = undefined,
   dialogIcon = undefined,
   maxResults = 10,
+  placeholder = 'Search',
   translations: {
     button: { buttonAriaLabel = 'Open search dialog', buttonText = 'Search' } = {},
     dialog: {
       dialogAriaLabel = 'Search',
+      searchBox: {
+        resetButtonText = 'Clear',
+        resetButtonTitle = 'Clear the query',
+        resetButtonAriaLabel = 'Clear the query',
+        cancelButtonText = 'Cancel',
+        cancelButtonAriaLabel = 'Cancel',
+        searchInputLabel = 'Search',
+      } = {},
+      startScreen: {
+        titleText = 'Search docs metadata',
+        helpText = 'Titles, descriptions, dates, categories, references, and slugs are indexed first. Body search can be added later.',
+      } = {},
+      noResultsScreen: { noResultsText = 'No results for' } = {},
+      resultsScreen: {
+        sourceText = 'Posts',
+        pathPrefix = 'blog / posts',
+        updatedText = 'Updated',
+      } = {},
       footer: {
         selectText = 'Select',
         selectKeyAriaLabel = 'Enter',
@@ -396,8 +568,8 @@ export default function SearchClient({
                 value={query}
                 onChange={onQueryChange}
                 onKeyDown={onInputKeyDown}
-                placeholder="Search / 검색"
-                aria-label="Search / 검색"
+                placeholder={placeholder}
+                aria-label={searchInputLabel}
                 aria-controls={resultsId}
               />
               {query.length > 0 ? (
@@ -405,9 +577,10 @@ export default function SearchClient({
                   type="button"
                   className={styles['reset-button']}
                   onClick={resetSearch}
-                  aria-label="Clear the query / 검색 창 지우기"
+                  title={resetButtonTitle}
+                  aria-label={resetButtonAriaLabel}
                 >
-                  Clear
+                  {resetButtonText}
                 </button>
               ) : null}
             </div>
@@ -415,30 +588,23 @@ export default function SearchClient({
               type="button"
               className={styles['cancel-button']}
               onClick={closeDialog}
-              aria-label="Cancel / 취소"
+              aria-label={cancelButtonAriaLabel}
             >
-              Cancel
+              {cancelButtonText}
             </button>
           </div>
 
           <div className={cn(styles.body, 'custom-scrollbar-y-bold')}>
             {normalizedQuery.length === 0 ? (
               <section className={styles.empty}>
-                <h3 className={styles['empty-title']}>
-                  Search docs metadata / 문서 메타데이터 검색
-                </h3>
-                <p className={styles['empty-description']}>
-                  Titles, descriptions, dates, categories, references, and slugs are
-                  indexed first. Body search can be added later.
-                </p>
+                <h3 className={styles['empty-title']}>{titleText}</h3>
+                <p className={styles['empty-description']}>{helpText}</p>
               </section>
             ) : null}
 
             {normalizedQuery.length > 0 && results.length === 0 ? (
               <section className={styles.empty}>
-                <h3 className={styles['empty-title']}>
-                  No results for / 검색 결과가 없습니다
-                </h3>
+                <h3 className={styles['empty-title']}>{noResultsText}</h3>
                 <p className={styles['empty-description']}>
                   &quot;{normalizedQuery}&quot;
                 </p>
@@ -447,7 +613,7 @@ export default function SearchClient({
 
             {results.length > 0 ? (
               <section>
-                <div className={styles.source}>Posts / 문서</div>
+                <div className={styles.source}>{sourceText}</div>
                 <ul id={resultsId} className={styles.list}>
                   {results.map((document, index) => (
                     <li key={document.id} className={styles.item}>
@@ -460,7 +626,7 @@ export default function SearchClient({
                         <span className={styles['hit-content']}>
                           <span className={styles['hit-title']}>{document.title}</span>
                           <span className={styles['hit-path']}>
-                            blog / posts / {document.slug}
+                            {pathPrefix} / {document.slug}
                           </span>
                           <span className={styles['hit-description']}>
                             {document.description}
@@ -468,7 +634,7 @@ export default function SearchClient({
                           <span className={styles.meta}>
                             <span className={styles.badge}>{document.created}</span>
                             <span className={styles.badge}>
-                              Updated {document.updated}
+                              {updatedText} {document.updated}
                             </span>
                             {document.categories.map(category => (
                               <span key={category} className={styles.badge}>

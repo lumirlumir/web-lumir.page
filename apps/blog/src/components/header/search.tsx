@@ -54,6 +54,27 @@ const koTranslations = {
   },
   dialog: {
     dialogAriaLabel: '검색',
+    searchBox: {
+      resetButtonText: '지우기',
+      resetButtonTitle: '검색어 지우기',
+      resetButtonAriaLabel: '검색어 지우기',
+      cancelButtonText: '취소',
+      cancelButtonAriaLabel: '취소',
+      searchInputLabel: '검색',
+    },
+    startScreen: {
+      titleText: '문서 메타데이터 검색',
+      helpText:
+        '제목, 설명, 날짜, 카테고리, 참조, 슬러그를 먼저 검색합니다. 본문 검색은 나중에 추가할 수 있습니다.',
+    },
+    noResultsScreen: {
+      noResultsText: '검색 결과가 없습니다',
+    },
+    resultsScreen: {
+      sourceText: '문서',
+      pathPrefix: 'blog / posts',
+      updatedText: '수정',
+    },
     footer: {
       selectText: '선택',
       selectKeyAriaLabel: '엔터',
@@ -70,7 +91,7 @@ const koTranslations = {
 // Export
 // --------------------------------------------------------------------------------
 
-export default async function DocSearch({ lang = 'ko' }: { lang: 'en' | 'ko' }) {
+export default async function DocSearch({ lang = 'ko' }: { lang?: 'en' | 'ko' } = {}) {
   const documents = await createDocSearchDocuments(Object.values(markdownCollectionSlug));
 
   return (
@@ -82,6 +103,7 @@ export default async function DocSearch({ lang = 'ko' }: { lang: 'en' | 'ko' }) 
         <LmSearch aria-hidden="true" color="white" size={28} strokeWidth="1.5" />
       }
       maxResults={10}
+      placeholder={lang === 'ko' ? '검색' : 'Search'}
       translations={lang === 'ko' ? koTranslations : {}}
       documents={documents}
     />
