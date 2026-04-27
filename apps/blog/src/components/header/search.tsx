@@ -53,14 +53,19 @@ export default async function DocSearch() {
 
   return (
     <SearchClient
-      buttonIcon={
-        <LmSearch aria-hidden="true" color="white" size={28} strokeWidth="1.5" />
-      }
       maxResults={10}
       translations={{
         button: {
           buttonAriaLabel: 'Open search dialog / 검색 창 열기',
+          buttonIcon: (
+            <LmSearch aria-hidden="true" color="white" size={28} strokeWidth="1.5" />
+          ),
           buttonText: 'Search / 검색',
+        },
+        dialog: {
+          dialogIcon: (
+            <LmSearch aria-hidden="true" color="white" size={28} strokeWidth="1.5" />
+          ),
         },
       }}
       documents={documents}

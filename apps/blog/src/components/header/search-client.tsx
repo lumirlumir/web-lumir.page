@@ -51,13 +51,6 @@ export interface SearchDocument {
  */
 export interface SearchClientProps {
   /**
-   * The icon to display on the search button.
-   *
-   * @default undefined
-   */
-  readonly buttonIcon?: ReactNode;
-
-  /**
    * The maximum number of search results to display.
    *
    * @default 10
@@ -80,11 +73,34 @@ export interface SearchClientProps {
       readonly buttonAriaLabel?: string;
 
       /**
+       * The icon to display on the search button.
+       *
+       * @default undefined
+       */
+      readonly buttonIcon?: ReactNode;
+
+      /**
        * The text to display on the search button.
        *
        * @default "Search"
        */
       readonly buttonText?: string;
+    };
+
+    readonly dialog?: {
+      /**
+       * The aria-label for the search dialog.
+       *
+       * @default "Search"
+       */
+      readonly dialogAriaLabel?: string;
+
+      /**
+       * The icon to display in the search dialog.
+       *
+       * @default undefined
+       */
+      readonly dialogIcon?: ReactNode;
     };
   };
 
@@ -115,11 +131,17 @@ function Key({ children }: { children: string }) {
 // --------------------------------------------------------------------------------
 
 export default function SearchClient({
-  buttonIcon = undefined,
   maxResults = 10,
   translations: {
-    button: { buttonAriaLabel = 'Open search dialog', buttonText = 'Search' } = {},
+    button: {
+      buttonIcon = undefined,
+      buttonAriaLabel = 'Open search dialog',
+      buttonText = 'Search',
+    } = {},
+    dialog: { dialogAriaLabel = 'Search', dialogIcon = undefined } = {},
   } = {},
+
+  // TODO: From here
   documents,
 }: SearchClientProps) {
   const dialogRef = useRef<HTMLDialogElement | null>(null);
@@ -273,7 +295,7 @@ export default function SearchClient({
       <dialog
         className={styles.dialog}
         ref={dialogRef}
-        aria-label="Search / 검색"
+        aria-label={dialogAriaLabel}
         onClose={onDialogClose}
         // Specifies the types of user actions that can be used to close the `<dialog>` element.
         // https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/dialog#closedby
@@ -282,7 +304,7 @@ export default function SearchClient({
         <div className={styles.modal}>
           <form className={styles.form} onSubmit={event => event.preventDefault()}>
             <div className={styles['search-box']}>
-              <span>{buttonIcon}</span>
+              <span>{dialogIcon}</span>
               <input
                 ref={inputRef}
                 className={styles.input}
