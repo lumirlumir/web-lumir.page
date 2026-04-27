@@ -26,7 +26,6 @@ import {
   type KeyboardEvent,
   type ReactNode,
 } from 'react';
-import { cn } from '@lumir/utils';
 import styles from './search.module.css';
 
 // --------------------------------------------------------------------------------
@@ -340,11 +339,7 @@ function Key({
    */
   readonly children: string;
 }) {
-  return (
-    <kbd className={styles.key} aria-label={ariaLabel}>
-      {children}
-    </kbd>
-  );
+  return <kbd aria-label={ariaLabel}>{children}</kbd>;
 }
 
 // --------------------------------------------------------------------------------
@@ -525,11 +520,11 @@ export default function SearchClient({
   return (
     <div className={styles.localsearch}>
       <button type="button" aria-label={buttonAriaLabel} onClick={openDialog}>
-        <span className={styles.label}>
+        <span data-trigger-label>
           <span>{icon}</span>
-          <span className={styles.placeholder}>{buttonText}</span>
+          <span data-trigger-text>{buttonText}</span>
         </span>
-        <span className={styles.keys} aria-hidden="true">
+        <span data-trigger-keys aria-hidden="true">
           <Key>Ctrl</Key>
           <Key>K</Key>
         </span>
@@ -543,13 +538,12 @@ export default function SearchClient({
         // https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/dialog#closedby
         closedby="any"
       >
-        <div className={styles.modal}>
-          <div className={styles.form}>
-            <div className={styles['search-box']}>
+        <div data-panel>
+          <div data-search-header>
+            <div data-search-box>
               <span>{icon}</span>
               <input
                 ref={inputRef}
-                className={styles.input}
                 type="search"
                 value={query}
                 onChange={onQueryChange}
@@ -558,21 +552,21 @@ export default function SearchClient({
                 aria-label={searchInputLabel}
                 aria-controls={resultsId}
               />
-              {query.length > 0 ? (
+              {query.length > 0 && (
                 <button
                   type="button"
-                  className={styles['reset-button']}
+                  data-reset-button
                   onClick={resetSearch}
                   title={resetButtonTitle}
                   aria-label={resetButtonAriaLabel}
                 >
                   {resetButtonText}
                 </button>
-              ) : null}
+              )}
             </div>
             <button
               type="button"
-              className={styles['cancel-button']}
+              data-cancel-button
               onClick={closeDialog}
               aria-label={cancelButtonAriaLabel}
             >
@@ -580,52 +574,45 @@ export default function SearchClient({
             </button>
           </div>
 
-          <div className={cn(styles.body, 'custom-scrollbar-y-bold')}>
+          <div data-search-body className="custom-scrollbar-y-bold">
             {normalizedQuery.length === 0 ? (
-              <section className={styles.empty}>
-                <h3 className={styles['empty-title']}>{titleText}</h3>
-                <p className={styles['empty-description']}>{helpText}</p>
+              <section data-empty>
+                <h3>{titleText}</h3>
+                <p>{helpText}</p>
               </section>
             ) : null}
 
             {normalizedQuery.length > 0 && results.length === 0 ? (
-              <section className={styles.empty}>
-                <h3 className={styles['empty-title']}>{noResultsText}</h3>
-                <p className={styles['empty-description']}>
-                  &quot;{normalizedQuery}&quot;
-                </p>
+              <section data-empty>
+                <h3>{noResultsText}</h3>
+                <p>&quot;{normalizedQuery}&quot;</p>
               </section>
             ) : null}
 
             {results.length > 0 ? (
               <section>
-                <div className={styles.source}>{sourceText}</div>
-                <ul id={resultsId} className={styles.list}>
+                <div data-source>{sourceText}</div>
+                <ul id={resultsId}>
                   {results.map((document, index) => (
-                    <li key={document.id} className={styles.item}>
+                    <li key={document.id}>
                       <button
                         type="button"
-                        className={styles.hit}
                         data-active={index === activeIndex}
                         onClick={() => navigateToResult(document)}
                       >
-                        <span className={styles['hit-content']}>
-                          <span className={styles['hit-title']}>{document.title}</span>
-                          <span className={styles['hit-path']}>
+                        <span data-hit-content>
+                          <span data-hit-title>{document.title}</span>
+                          <span data-hit-path>
                             {pathPrefix} / {document.slug}
                           </span>
-                          <span className={styles['hit-description']}>
-                            {document.description}
-                          </span>
-                          <span className={styles.meta}>
-                            <span className={styles.badge}>{document.created}</span>
-                            <span className={styles.badge}>
+                          <span data-hit-description>{document.description}</span>
+                          <span data-meta>
+                            <span>{document.created}</span>
+                            <span>
                               {updatedText} {document.updated}
                             </span>
                             {document.categories.map(category => (
-                              <span key={category} className={styles.badge}>
-                                {category}
-                              </span>
+                              <span key={category}>{category}</span>
                             ))}
                           </span>
                         </span>
@@ -637,17 +624,17 @@ export default function SearchClient({
             ) : null}
           </div>
 
-          <footer className={styles.footer}>
-            <span className={styles.command}>
+          <footer>
+            <span data-command>
               <Key ariaLabel={selectKeyAriaLabel}>Enter</Key>
               <span>{selectText}</span>
             </span>
-            <span className={styles.command}>
+            <span data-command>
               <Key ariaLabel={navigateUpKeyAriaLabel}>↑</Key>
               <Key ariaLabel={navigateDownKeyAriaLabel}>↓</Key>
               <span>{navigateText}</span>
             </span>
-            <span className={styles.command}>
+            <span data-command>
               <Key ariaLabel={closeKeyAriaLabel}>Esc</Key>
               <span>{closeText}</span>
             </span>
