@@ -105,6 +105,14 @@ export interface SearchClientProps {
        */
       readonly dialogAriaLabel?: string;
 
+      readonly searchBox?: {
+        readonly resetButtonTitle?: string;
+        readonly resetButtonAriaLabel?: string;
+        readonly cancelButtonText?: string;
+        readonly cancelButtonAriaLabel?: string;
+        readonly searchInputLabel?: string;
+      };
+
       /**
        * Translations for the search dialog footer.
        */
