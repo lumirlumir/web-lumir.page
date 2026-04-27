@@ -30,7 +30,7 @@ import { isFrontmatter } from '@/utils/is-frontmatter';
  *       description: 'This is an example post.',
  *       created: '2024-01-01',
  *       updated: '2024-01-02',
- *       categories: ['tech', 'news'],
+ *       categories: ['javascript', 'markdown'],
  *       references: ['https://example.com'],
  *     },
  *     content: '# Example Post\n\nThis is the content of the example post.',
@@ -47,7 +47,7 @@ export type MarkdownCollectionSlug = Record<string, VMarkdownFile>;
  * @example
  * ```ts
  * {
- *   tech: [
+ *   javascript: [
  *     {
  *       slug: 'example-post',
  *       data: {
@@ -55,14 +55,14 @@ export type MarkdownCollectionSlug = Record<string, VMarkdownFile>;
  *         description: 'This is an example post.',
  *         created: '2024-01-01',
  *         updated: '2024-01-02',
- *         categories: ['tech', 'news'],
+ *         categories: ['javascript', 'markdown'],
  *         references: ['https://example.com'],
  *       },
  *       content: '# Example Post\n\nThis is the content of the example post.',
  *     },
  *     // ...more
  *   ],
- *   news: [
+ *   markdown: [
  *     {
  *       slug: 'example-post',
  *       data: {
@@ -70,7 +70,7 @@ export type MarkdownCollectionSlug = Record<string, VMarkdownFile>;
  *         description: 'This is an example post.',
  *         created: '2024-01-01',
  *         updated: '2024-01-02',
- *         categories: ['tech', 'news'],
+ *         categories: ['javascript', 'markdown'],
  *         references: ['https://example.com'],
  *       },
  *       content: '# Example Post\n\nThis is the content of the example post.',
@@ -100,7 +100,7 @@ export type MarkdownCollectionCategory = Record<CategoryKey, VMarkdownFile[]>;
  *       description: 'This is an example post.',
  *       created: '2024-01-01',
  *       updated: '2024-01-02',
- *       categories: ['tech', 'news'],
+ *       categories: ['javascript', 'markdown'],
  *       references: ['https://example.com'],
  *     },
  *     content: '# Example Post\n\nThis is the content of the example post.',
@@ -117,7 +117,7 @@ const markdownCollectionSlug: MarkdownCollectionSlug = {};
  * @example
  * ```ts
  * {
- *   tech: [
+ *   javascript: [
  *     {
  *       slug: 'example-post',
  *       data: {
@@ -125,13 +125,13 @@ const markdownCollectionSlug: MarkdownCollectionSlug = {};
  *         description: 'This is an example post.',
  *         created: '2024-01-01',
  *         updated: '2024-01-02',
- *         categories: ['tech', 'news'],
+ *         categories: ['javascript', 'markdown'],
  *       },
  *       content: '# Example Post\n\nThis is the content of the example post.',
  *     },
  *     // ...more
  *   ],
- *   news: [
+ *   markdown: [
  *     {
  *       slug: 'example-post',
  *       data: {
@@ -139,7 +139,7 @@ const markdownCollectionSlug: MarkdownCollectionSlug = {};
  *         description: 'This is an example post.',
  *         created: '2024-01-01',
  *         updated: '2024-01-02',
- *         categories: ['tech', 'news'],
+ *         categories: ['javascript', 'markdown'],
  *       },
  *       content: '# Example Post\n\nThis is the content of the example post.',
  *     },
@@ -207,6 +207,13 @@ export { markdownCollectionSlug, markdownCollectionCategory };
 /**
  * Returns a list of category keys that have at least one associated Markdown file in the collection.
  * @param category The `MarkdownCollectionCategory` to check for non-empty categories.
+ * @example
+ * ```ts
+ * import { listNonEmptyCategoryKeys } from '@/utils/markdown-collection';
+ *
+ * const nonEmptyCategories = listNonEmptyCategoryKeys(markdownCollectionCategory);
+ * console.log(nonEmptyCategories); // Output: ['javascript', 'markdown']
+ * ```
  */
 export function listNonEmptyCategoryKeys(
   category: MarkdownCollectionCategory,
