@@ -58,6 +58,9 @@ export default defineConfig([
         PageProps: false, // Next.js
       },
     },
+    rules: {
+      'react/no-unknown-property': 'off', // TypeScript handles this. TODO: Remove this in shared config.
+    },
   },
   {
     name: 'js/apps/moing',

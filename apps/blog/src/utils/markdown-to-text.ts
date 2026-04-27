@@ -28,6 +28,14 @@ const processor = unified().use(remarkParse).use(stripMarkdown);
 /**
  * Converts markdown content to plain text asynchronously using `unified` with `remark`.
  * @param markdown The markdown content to convert.
+ * @example
+ * ```ts
+ * import { markdownToText } from '@/utils/markdown-to-text';
+ *
+ * const markdown = '# Hello World. This is a **markdown** document.';
+ * const text = await markdownToText(markdown);
+ * console.log(text); // Output: "Hello World. This is a markdown document."
+ * ```
  */
 export async function markdownToText(markdown: string): Promise<string> {
   const tree = await processor.run(processor.parse(markdown));
@@ -38,6 +46,14 @@ export async function markdownToText(markdown: string): Promise<string> {
 /**
  * Converts markdown content to plain text synchronously using `unified` with `remark`.
  * @param markdown The markdown content to convert.
+ * @example
+ * ```ts
+ * import { markdownToTextSync } from '@/utils/markdown-to-text';
+ *
+ * const markdown = '# Hello World. This is a **markdown** document.';
+ * const text = markdownToTextSync(markdown);
+ * console.log(text); // Output: "Hello World. This is a markdown document."
+ * ```
  */
 export function markdownToTextSync(markdown: string): string {
   const tree = processor.runSync(processor.parse(markdown));
