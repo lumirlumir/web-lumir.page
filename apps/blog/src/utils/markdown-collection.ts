@@ -209,7 +209,7 @@ export { markdownCollectionSlug, markdownCollectionCategory };
  * @param category The `MarkdownCollectionCategory` to check for non-empty categories.
  * @example
  * ```ts
- * import { listNonEmptyCategoryKeys } from '@/utils/markdown-collection';
+ * import { listNonEmptyCategoryKeys, markdownCollectionCategory } from '@/utils/markdown-collection';
  *
  * const nonEmptyCategories = listNonEmptyCategoryKeys(markdownCollectionCategory);
  * console.log(nonEmptyCategories); // Output: ['javascript', 'markdown']
