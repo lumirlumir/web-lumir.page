@@ -1,5 +1,5 @@
 /**
- * @fileoverview Client-side search dialog powered by MiniSearch.
+ * @fileoverview React search component using `minisearch`.
  */
 
 // --------------------------------------------------------------------------------
@@ -90,18 +90,11 @@ export interface SearchDocument {
  */
 export interface SearchClientProps {
   /**
-   * The icon to display on the search button.
+   * The icon to display.
    *
    * @default undefined
    */
-  readonly buttonIcon?: ReactNode;
-
-  /**
-   * The icon to display on the search dialog.
-   *
-   * @default undefined
-   */
-  readonly dialogIcon?: ReactNode;
+  readonly icon?: ReactNode;
 
   /**
    * The maximum number of search results to display.
@@ -359,8 +352,7 @@ function Key({
 // --------------------------------------------------------------------------------
 
 export default function SearchClient({
-  buttonIcon = undefined,
-  dialogIcon = undefined,
+  icon = undefined,
   maxResults = 10,
   placeholder = 'Search',
   translations: {
@@ -531,15 +523,10 @@ export default function SearchClient({
   }
 
   return (
-    <div className={cn(styles.search, 'custom-flex-center')}>
-      <button
-        type="button"
-        className={styles.button}
-        aria-label={buttonAriaLabel}
-        onClick={openDialog}
-      >
-        <span className={styles['button-label']}>
-          <span>{buttonIcon}</span>
+    <div className={styles.localsearch}>
+      <button type="button" aria-label={buttonAriaLabel} onClick={openDialog}>
+        <span className={styles.label}>
+          <span>{icon}</span>
           <span className={styles.placeholder}>{buttonText}</span>
         </span>
         <span className={styles.keys} aria-hidden="true">
@@ -549,7 +536,6 @@ export default function SearchClient({
       </button>
 
       <dialog
-        className={styles.dialog}
         ref={dialogRef}
         aria-label={dialogAriaLabel}
         onClose={onDialogClose}
@@ -560,7 +546,7 @@ export default function SearchClient({
         <div className={styles.modal}>
           <div className={styles.form}>
             <div className={styles['search-box']}>
-              <span>{dialogIcon}</span>
+              <span>{icon}</span>
               <input
                 ref={inputRef}
                 className={styles.input}

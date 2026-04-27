@@ -1,4 +1,7 @@
-.search {
+.localsearch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: var(--size-10) var(--size-8) var(--size-10) 0;
 
   @media (width >= 768px) {
@@ -7,7 +10,7 @@
     border-radius: var(--size-border-radius);
   }
 
-  & .button {
+  & > button {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -28,37 +31,67 @@
       background-color: var(--color-bg-neutral-muted);
       box-shadow: none;
     }
+
+    & > .label {
+      display: flex;
+      align-items: center;
+      min-width: 0;
+
+      & > .placeholder {
+        display: none;
+
+        @media (width >= 768px) {
+          display: inline;
+          padding: 0 var(--size-12) 0 var(--size-6);
+          overflow: hidden;
+          text-overflow: ellipsis;
+          font-size: var(--size-14);
+          letter-spacing: var(--size-letter-spacing-medium);
+          white-space: nowrap;
+        }
+      }
+    }
+
+    & > .keys {
+      display: none;
+
+      @media (width >= 768px) {
+        display: flex;
+        gap: var(--size-4);
+        align-items: center;
+        min-width: calc(var(--size-40) + 0.8em);
+      }
+    }
   }
-}
 
-.button-label {
-  display: flex;
-  align-items: center;
-  min-width: 0;
-}
+  & > dialog {
+    width: min(75vw, 960px);
+    max-width: calc(100vw - var(--size-24));
+    height: min(75vh, 720px);
+    max-height: calc(100vh - var(--size-24));
+    padding: 0;
+    color: var(--color-fg-default);
+    background-color: var(--color-bg-inset);
+    border: var(--border-default);
+    border-radius: calc(var(--size-border-radius) * 2);
+    box-shadow: 0 24px 72px rgb(0 0 0 / 35%);
 
-.placeholder {
-  display: none;
+    &::backdrop {
+      background-color: rgb(1 4 9 / 65%);
+      backdrop-filter: blur(2px);
+    }
 
-  @media (width >= 768px) {
-    display: inline;
-    padding: 0 var(--size-12) 0 var(--size-6);
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-size: var(--size-14);
-    letter-spacing: var(--size-letter-spacing-medium);
-    white-space: nowrap;
-  }
-}
+    @media (width < 768px) {
+      width: calc(100vw - var(--size-24));
+      height: min(82vh, 720px);
+    }
 
-.keys {
-  display: none;
-
-  @media (width >= 768px) {
-    display: flex;
-    gap: var(--size-4);
-    align-items: center;
-    min-width: calc(var(--size-40) + 0.8em);
+    & > div {
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      height: 100%;
+      overflow: hidden;
+    }
   }
 }
 
@@ -74,36 +107,6 @@
   border: solid 1px var(--color-border-neutral-muted);
   border-radius: var(--size-border-radius);
   box-shadow: inset 0 -1px 0 var(--color-border-neutral-muted);
-}
-
-.dialog {
-  width: min(75vw, 960px);
-  max-width: calc(100vw - var(--size-24));
-  height: min(75vh, 720px);
-  max-height: calc(100vh - var(--size-24));
-  padding: 0;
-  color: var(--color-fg-default);
-  background-color: var(--color-bg-inset);
-  border: var(--border-default);
-  border-radius: calc(var(--size-border-radius) * 2);
-  box-shadow: 0 24px 72px rgb(0 0 0 / 35%);
-
-  &::backdrop {
-    background-color: rgb(1 4 9 / 65%);
-    backdrop-filter: blur(2px);
-  }
-
-  @media (width < 768px) {
-    width: calc(100vw - var(--size-24));
-    height: min(82vh, 720px);
-  }
-}
-
-.modal {
-  display: grid;
-  grid-template-rows: auto minmax(0, 1fr) auto;
-  height: 100%;
-  overflow: hidden;
 }
 
 .form {

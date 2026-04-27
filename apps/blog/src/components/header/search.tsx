@@ -10,10 +10,7 @@ import { LmSearch } from '@lumir/react-kit/svgs';
 import { type VMarkdownFile } from '@/data/v-markdown-file';
 import { markdownCollectionSlug } from '@/utils/markdown-collection';
 import { markdownToText } from '@/utils/markdown-to-text';
-import SearchClient, {
-  type SearchClientProps,
-  type SearchDocument,
-} from './search-client';
+import SearchClient, { type SearchClientProps, type SearchDocument } from './localsearch';
 
 // --------------------------------------------------------------------------------
 // Helper
@@ -96,12 +93,7 @@ export default async function DocSearch({ lang = 'ko' }: { lang?: 'en' | 'ko' } 
 
   return (
     <SearchClient
-      buttonIcon={
-        <LmSearch aria-hidden="true" color="white" size={28} strokeWidth="1.5" />
-      }
-      dialogIcon={
-        <LmSearch aria-hidden="true" color="white" size={28} strokeWidth="1.5" />
-      }
+      icon={<LmSearch aria-hidden="true" color="white" size={28} strokeWidth="1.5" />}
       maxResults={10}
       placeholder={lang === 'ko' ? '검색' : 'Search'}
       translations={lang === 'ko' ? koTranslations : {}}
