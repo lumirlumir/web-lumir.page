@@ -10,7 +10,10 @@ import { LmSearch } from '@lumir/react-kit/svgs';
 import { type VMarkdownFile } from '@/data/v-markdown-file';
 import { markdownCollectionSlug } from '@/utils/markdown-collection';
 import { markdownToText } from '@/utils/markdown-to-text';
-import SearchClient, { type SearchDocument } from './search-client';
+import SearchClient, {
+  type SearchClientProps,
+  type SearchDocument,
+} from './search-client';
 
 // --------------------------------------------------------------------------------
 // Helper
@@ -44,11 +47,30 @@ async function createDocSearchDocuments(
   );
 }
 
+const koTranslations = {
+  button: {
+    buttonAriaLabel: '검색 창 열기',
+    buttonText: '검색',
+  },
+  dialog: {
+    dialogAriaLabel: '검색',
+    footer: {
+      selectText: '선택',
+      selectKeyAriaLabel: '엔터',
+      navigateText: '이동',
+      navigateUpKeyAriaLabel: '위쪽 화살표',
+      navigateDownKeyAriaLabel: '아래쪽 화살표',
+      closeText: '닫기',
+      closeKeyAriaLabel: '닫기',
+    },
+  },
+} as const satisfies SearchClientProps['translations'];
+
 // --------------------------------------------------------------------------------
 // Export
 // --------------------------------------------------------------------------------
 
-export default async function DocSearch() {
+export default async function DocSearch({ lang = 'ko' }: { lang: 'en' | 'ko' }) {
   const documents = await createDocSearchDocuments(Object.values(markdownCollectionSlug));
 
   return (
@@ -60,24 +82,7 @@ export default async function DocSearch() {
         <LmSearch aria-hidden="true" color="white" size={28} strokeWidth="1.5" />
       }
       maxResults={10}
-      translations={{
-        button: {
-          buttonAriaLabel: 'Open search dialog / 검색 창 열기',
-          buttonText: 'Search / 검색',
-        },
-        dialog: {
-          dialogAriaLabel: 'Search / 검색',
-          footer: {
-            selectText: 'Select / 선택',
-            selectKeyAriaLabel: 'Enter / 엔터',
-            navigateText: 'Navigate / 이동',
-            navigateUpKeyAriaLabel: 'Arrow up / 위쪽 화살표',
-            navigateDownKeyAriaLabel: 'Arrow down / 아래쪽 화살표',
-            closeText: 'Close / 닫기',
-            closeKeyAriaLabel: 'Escape / 닫기',
-          },
-        },
-      }}
+      translations={lang === 'ko' ? koTranslations : {}}
       documents={documents}
     />
   );

@@ -58,7 +58,7 @@ export interface SearchClientProps {
   readonly buttonIcon?: ReactNode;
 
   /**
-   * The icon to display in the search dialog.
+   * The icon to display on the search dialog.
    *
    * @default undefined
    */
@@ -378,7 +378,7 @@ export default function SearchClient({
         closedby="any"
       >
         <div className={styles.modal}>
-          <form className={styles.form} onSubmit={event => event.preventDefault()}>
+          <div className={styles.form}>
             <div className={styles['search-box']}>
               <span>{dialogIcon}</span>
               <input
@@ -411,7 +411,7 @@ export default function SearchClient({
             >
               Cancel
             </button>
-          </form>
+          </div>
 
           <div className={cn(styles.body, 'custom-scrollbar-y-bold')}>
             {normalizedQuery.length === 0 ? (
