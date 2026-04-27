@@ -51,6 +51,20 @@ export interface SearchDocument {
  */
 export interface SearchClientProps {
   /**
+   * The icon to display on the search button.
+   *
+   * @default undefined
+   */
+  readonly buttonIcon?: ReactNode;
+
+  /**
+   * The icon to display in the search dialog.
+   *
+   * @default undefined
+   */
+  readonly dialogIcon?: ReactNode;
+
+  /**
    * The maximum number of search results to display.
    *
    * @default 10
@@ -73,13 +87,6 @@ export interface SearchClientProps {
       readonly buttonAriaLabel?: string;
 
       /**
-       * The icon to display on the search button.
-       *
-       * @default undefined
-       */
-      readonly buttonIcon?: ReactNode;
-
-      /**
        * The text to display on the search button.
        *
        * @default "Search"
@@ -87,6 +94,9 @@ export interface SearchClientProps {
       readonly buttonText?: string;
     };
 
+    /**
+     * Translations for the search dialog.
+     */
     readonly dialog?: {
       /**
        * The aria-label for the search dialog.
@@ -96,11 +106,58 @@ export interface SearchClientProps {
       readonly dialogAriaLabel?: string;
 
       /**
-       * The icon to display in the search dialog.
-       *
-       * @default undefined
+       * Translations for the search dialog footer.
        */
-      readonly dialogIcon?: ReactNode;
+      readonly footer?: {
+        /**
+         * The text that explains the select command.
+         *
+         * @default "Select"
+         */
+        readonly selectText?: string;
+
+        /**
+         * The aria-label for the select keycap.
+         *
+         * @default "Enter"
+         */
+        readonly selectKeyAriaLabel?: string;
+
+        /**
+         * The text that explains the navigate command.
+         *
+         * @default "Navigate"
+         */
+        readonly navigateText?: string;
+
+        /**
+         * The aria-label for the navigate-up keycap.
+         *
+         * @default "Arrow up"
+         */
+        readonly navigateUpKeyAriaLabel?: string;
+
+        /**
+         * The aria-label for the navigate-down keycap.
+         *
+         * @default "Arrow down"
+         */
+        readonly navigateDownKeyAriaLabel?: string;
+
+        /**
+         * The text that explains the close command.
+         *
+         * @default "Close"
+         */
+        readonly closeText?: string;
+
+        /**
+         * The aria-label for the close keycap.
+         *
+         * @default "Escape"
+         */
+        readonly closeKeyAriaLabel?: string;
+      };
     };
   };
 
@@ -122,8 +179,18 @@ function isSearchDocument(
   return document !== undefined;
 }
 
-function Key({ children }: { children: string }) {
-  return <kbd className={styles.key}>{children}</kbd>;
+function Key({
+  ariaLabel,
+  children,
+}: {
+  readonly ariaLabel?: string;
+  readonly children: string;
+}) {
+  return (
+    <kbd className={styles.key} aria-label={ariaLabel}>
+      {children}
+    </kbd>
+  );
 }
 
 // --------------------------------------------------------------------------------
@@ -131,14 +198,23 @@ function Key({ children }: { children: string }) {
 // --------------------------------------------------------------------------------
 
 export default function SearchClient({
+  buttonIcon = undefined,
+  dialogIcon = undefined,
   maxResults = 10,
   translations: {
-    button: {
-      buttonIcon = undefined,
-      buttonAriaLabel = 'Open search dialog',
-      buttonText = 'Search',
+    button: { buttonAriaLabel = 'Open search dialog', buttonText = 'Search' } = {},
+    dialog: {
+      dialogAriaLabel = 'Search',
+      footer: {
+        selectText = 'Select',
+        selectKeyAriaLabel = 'Enter',
+        navigateText = 'Navigate',
+        navigateUpKeyAriaLabel = 'Arrow up',
+        navigateDownKeyAriaLabel = 'Arrow down',
+        closeText = 'Close',
+        closeKeyAriaLabel = 'Escape',
+      } = {},
     } = {},
-    dialog: { dialogAriaLabel = 'Search', dialogIcon = undefined } = {},
   } = {},
 
   // TODO: From here
@@ -403,17 +479,17 @@ export default function SearchClient({
 
           <footer className={styles.footer}>
             <span className={styles.command}>
-              <Key>Enter</Key>
-              <span>Select / 선택</span>
+              <Key ariaLabel={selectKeyAriaLabel}>Enter</Key>
+              <span>{selectText}</span>
             </span>
             <span className={styles.command}>
-              <Key>↑</Key>
-              <Key>↓</Key>
-              <span>Navigate / 이동</span>
+              <Key ariaLabel={navigateUpKeyAriaLabel}>↑</Key>
+              <Key ariaLabel={navigateDownKeyAriaLabel}>↓</Key>
+              <span>{navigateText}</span>
             </span>
             <span className={styles.command}>
-              <Key>Esc</Key>
-              <span>Close / 닫기</span>
+              <Key ariaLabel={closeKeyAriaLabel}>Esc</Key>
+              <span>{closeText}</span>
             </span>
           </footer>
         </div>
