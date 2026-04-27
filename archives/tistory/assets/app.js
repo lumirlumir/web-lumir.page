@@ -1,26 +1,5 @@
-import ReactDOM from 'react-dom';
-
-import { FaArrowUp } from 'react-icons/fa6';
-import {
-  AiOutlineMenu,
-  AiOutlineLink,
-  AiOutlineGithub,
-  AiOutlineInstagram,
-  AiOutlineYoutube,
-} from 'react-icons/ai';
-import { GrSoundcloud } from 'react-icons/gr';
-
-import ScrollBar from './ScrollBar';
-import ProgBar from './ProgBar';
-import ButtonSingle from './ButtonSingle';
-import ButtonMulti from './components/ButtonMulti';
-
 ReactDOM.render(
   <>
-    <ScrollBar />
-
-    <ProgBar />
-
     <ButtonSingle
       click={() => {
         window.scrollTo({
@@ -62,44 +41,6 @@ ReactDOM.render(
       >
         <AiOutlineGithub color="gray" size={18} />
       </ButtonSingle>
-
-      <ButtonSingle
-        click={() => {
-          window.open('https://www.instagram.com/');
-        }}
-        title="Instagram"
-        position="fixed"
-        right="120px"
-        bottom="120px"
-      >
-        <AiOutlineInstagram color="gray" size={19} />
-      </ButtonSingle>
-
-      <ButtonSingle
-        click={() => {
-          window.open('https://soundcloud.com/');
-        }}
-        title="Soundcloud"
-        position="fixed"
-        right="120px"
-        bottom="160px"
-      >
-        <GrSoundcloud color="gray" size={17} />
-      </ButtonSingle>
-
-      <ButtonSingle
-        click={() => {
-          window.open('https://www.youtube.com/');
-        }}
-        title="Youtube"
-        position="fixed"
-        right="120px"
-        bottom="200px"
-      >
-        <AiOutlineYoutube color="gray" size={18} />
-      </ButtonSingle>
     </ButtonMulti>
   </>,
-
-  document.getElementById('React'),
 );
