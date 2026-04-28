@@ -24,7 +24,7 @@
   "compilerOptions": {
     /* Modules */
     "rootDir": "./src",
-    "types": ["hast"],
+    "types": [],
 
     /* Emit */
     "emitDeclarationOnly": false,

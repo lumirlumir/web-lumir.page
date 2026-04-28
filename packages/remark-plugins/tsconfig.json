@@ -24,7 +24,7 @@
   "compilerOptions": {
     /* Modules */
     "rootDir": "./src",
-    "types": ["mdast"],
+    "types": [],
 
     /* Emit */
     "emitDeclarationOnly": false,
