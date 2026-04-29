@@ -4,6 +4,8 @@
  * @see https://webpack.js.org/api/module-variables/#importmetawebpackcontext
  */
 
+// TODO: HMR 잘 되는듯?
+
 // --------------------------------------------------------------------------------
 // Import
 // --------------------------------------------------------------------------------
@@ -17,8 +19,9 @@ import { isFrontmatter } from '@/utils/is-frontmatter';
 // Typedef
 // --------------------------------------------------------------------------------
 
-type MarkdownCollectionCategory = Record<CategoryKey, VMarkdownFile[]>;
+type MarkdownCollectionMap = Map<string, VMarkdownFile>;
 type MarkdownCollectionSlug = Record<string, VMarkdownFile>;
+type MarkdownCollectionCategory = Record<CategoryKey, VMarkdownFile[]>;
 
 // --------------------------------------------------------------------------------
 // Class
@@ -32,9 +35,12 @@ class MarkdownCollection {
   // Private Property
   // ------------------------------------------------------------------------------
 
-  #vMarkdownFiles: VMarkdownFile[] | null = null;
-  #category: MarkdownCollectionCategory | null = null;
+  /** Source of truth: used as a cache */
+  #map: MarkdownCollectionMap = new Map();
+  /** View: using `#map` as source of truth */
   #slug: MarkdownCollectionSlug | null = null;
+  /** View: using `#map` as source of truth */
+  #category: MarkdownCollectionCategory | null = null;
 
   // ------------------------------------------------------------------------------
   // Private Method
@@ -46,22 +52,27 @@ class MarkdownCollection {
    * Performance Optimization:
    * - The method uses lazy loading to defer the loading and processing of Markdown files until they are actually needed.
    *   This can improve the initial load time of the application, especially if there are many Markdown files.
-   * - Once the Markdown files are loaded and processed, they are cached in the `#vMarkdownFiles` property.
+   * - Once the Markdown files are loaded and processed, they are cached in the `#slug` property.
    *   Subsequent calls to this method will return the cached data, avoiding redundant processing.
    */
-  #ensureVMarkdownFiles(): VMarkdownFile[] {
-    // If the Markdown files have already been loaded, skip the loading process.
-    if (this.#vMarkdownFiles) {
-      return this.#vMarkdownFiles;
-    }
-
+  #ensureMap(): Map<string, VMarkdownFile> {
     const context = import.meta.webpackContext('../posts/docs', {
       recursive: false,
       regExp: /\.md$/,
       mode: 'sync',
     });
 
-    const vMarkdownFiles: VMarkdownFile[] = context.keys().map(key => {
+    for (const key of context.keys()) {
+      const slug = key.replace(/^\.\//, '').replace(/\.md$/, '');
+
+      // If the Markdown file has already been processed and cached, skip the loading and processing steps.
+      const cached = this.#map.get(slug);
+
+      if (cached) {
+        continue;
+      }
+
+      // If the Markdown file has not been processed, load and process it, then cache the result.
       const { data, content } = frontmatter(context(key));
 
       if (!isFrontmatter(data)) {
@@ -82,16 +93,28 @@ Received data: \`${JSON.stringify(data, null, 2)}\`
         );
       }
 
-      return {
-        slug: key.replace(/^\.\//, '').replace(/\.md$/, ''),
-        data,
-        content,
-      };
-    });
+      this.#map.set(slug, { slug, data, content });
+    }
 
-    this.#vMarkdownFiles = vMarkdownFiles;
+    return this.#map;
+  }
 
-    return vMarkdownFiles;
+  /**
+   * Lazily creates a mapping of slugs to their corresponding Markdown file metadata.
+   */
+  #ensureSlug(): MarkdownCollectionSlug {
+    // If the slug mapping has already been created, skip the creation process.
+    if (this.#slug) {
+      return this.#slug;
+    }
+
+    const markdownCollectionSlug = Object.fromEntries(
+      this.#ensureMap(),
+    ) as MarkdownCollectionSlug;
+
+    this.#slug = markdownCollectionSlug;
+
+    return markdownCollectionSlug;
   }
 
   /**
@@ -107,7 +130,7 @@ Received data: \`${JSON.stringify(data, null, 2)}\`
       categoryKeys.map(categoryKey => [categoryKey, [] as VMarkdownFile[]]),
     ) as MarkdownCollectionCategory;
 
-    this.#ensureVMarkdownFiles().forEach(vMarkdownFile => {
+    this.#ensureMap().forEach(vMarkdownFile => {
       vMarkdownFile.data.categories.forEach(category => {
         markdownCollectionCategory[category].push(vMarkdownFile);
       });
@@ -118,24 +141,45 @@ Received data: \`${JSON.stringify(data, null, 2)}\`
     return markdownCollectionCategory;
   }
 
-  /**
-   * Lazily creates a mapping of slugs to their corresponding Markdown file metadata.
-   */
-  #ensureSlug(): MarkdownCollectionSlug {
-    // If the slug mapping has already been created, skip the creation process.
-    if (this.#slug) {
-      return this.#slug;
+  // ------------------------------------------------------------------------------
+  // Public Method
+  // ------------------------------------------------------------------------------
+
+  async loadVMarkdownFile(slug: string): Promise<VMarkdownFile> {
+    const cached = this.#map.get(slug);
+
+    if (cached) {
+      return cached;
     }
 
-    const markdownCollectionSlug: MarkdownCollectionSlug = {};
+    const { data, content } = frontmatter(
+      // Markdown files are imported as raw strings because of a setting in `next.config.js`.
+      (await import(`../posts/docs/${slug}.md`)) as string,
+    );
 
-    this.#ensureVMarkdownFiles().forEach(vMarkdownFile => {
-      markdownCollectionSlug[vMarkdownFile.slug] = vMarkdownFile;
-    });
+    if (!isFrontmatter(data)) {
+      throw new Error(
+        `
+Invalid frontmatter in Markdown file: \`${slug}\`
 
-    this.#slug = markdownCollectionSlug;
+Expected frontmatter format:
+  - \`title: string\`
+  - \`description: string\`
+  - \`created: string\`
+  - \`updated: string\`
+  - \`categories: CategoryKey[]\`
+  - \`references: string[]\`
 
-    return markdownCollectionSlug;
+Received data: \`${JSON.stringify(data, null, 2)}\`
+`,
+      );
+    }
+
+    const vMarkdownFile: VMarkdownFile = { slug, data, content };
+
+    this.#map.set(slug, vMarkdownFile);
+
+    return vMarkdownFile;
   }
 
   // ------------------------------------------------------------------------------
@@ -251,38 +295,3 @@ export default function createMarkdownCollection() {
 
   return markdownCollection;
 }
-
-// --------------------------------------------------------------------------------
-// TODO
-// --------------------------------------------------------------------------------
-
-/*
-export async function loadMarkdownFile(slug: string): Promise<VMarkdownFile> {
-  const markdownFile = (await import(`../posts/docs/${slug}.md`)) as string;
-  const { data, content } = frontmatter(markdownFile);
-
-  if (!isFrontmatter(data)) {
-    throw new Error(
-      `
-Invalid frontmatter in Markdown file: \`${slug}.md\`
-
-Expected frontmatter format:
-  - \`title: string\`
-  - \`description: string\`
-  - \`created: string\`
-  - \`updated: string\`
-  - \`categories: CategoryKey[]\`
-  - \`references: string[]\`
-
-Received data: \`${JSON.stringify(data, null, 2)}\`
-`,
-    );
-  }
-
-  return {
-    slug,
-    data,
-    content,
-  };
-}
-*/ // TODO

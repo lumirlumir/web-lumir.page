@@ -33,7 +33,7 @@ export const dynamicParams = false;
 export async function generateStaticParams(): Promise<
   Awaited<PageProps<'/posts/[markdown]'>['params']>[]
 > {
-  return Object.values(markdownCollection.slug).map(({ slug }) => ({
+  return Object.keys(markdownCollection.slug).map(slug => ({
     markdown: slug,
   }));
 }
@@ -45,7 +45,9 @@ export async function generateMetadata({
   params,
 }: PageProps<'/posts/[markdown]'>): Promise<Metadata> {
   const { markdown } = await params;
-  const { title, description } = markdownCollection.slug[markdown].data;
+  const {
+    data: { title, description },
+  } = await markdownCollection.loadVMarkdownFile(markdown);
 
   return {
     title: await markdownToText(title),
@@ -62,7 +64,7 @@ export default async function Page({ params }: PageProps<'/posts/[markdown]'>) {
   const {
     content,
     data: { title, references },
-  } = markdownCollection.slug[markdown];
+  } = await markdownCollection.loadVMarkdownFile(markdown);
 
   return (
     <>
