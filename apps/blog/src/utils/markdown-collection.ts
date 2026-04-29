@@ -8,7 +8,7 @@
 // Import
 // --------------------------------------------------------------------------------
 
-import { frontmatter } from '@lumir/utils';
+import { frontmatter, frontmatterData } from '@lumir/utils';
 import { categoryKeys, type CategoryKey } from '@/data/category';
 import { type Frontmatter } from '@/data/frontmatter';
 import { type VMarkdownFileMeta, type VMarkdownFile } from '@/data/v-markdown-file';
@@ -101,7 +101,7 @@ class MarkdownCollection {
       }
 
       // If the Markdown file has not been processed, load and process it, then cache the result.
-      const { data } = frontmatter(context(key));
+      const { data } = frontmatterData(context(key));
       const sanitizedData = assertFrontmatter(data, slug);
 
       this.#map.set(slug, {
@@ -169,7 +169,7 @@ class MarkdownCollection {
       return cached;
     }
 
-    const { data } = frontmatter(
+    const { data } = frontmatterData(
       // Markdown files are imported as raw strings because of a setting in `next.config.js`.
       (await import(`../posts/docs/${slug}.md`)).default as string,
     );
