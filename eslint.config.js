@@ -56,6 +56,7 @@ export default defineConfig([
     languageOptions: {
       globals: {
         PageProps: false, // Next.js
+        __WebpackModuleApi: false, // Webpack
       },
     },
     rules: {

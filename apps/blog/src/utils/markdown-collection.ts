@@ -63,6 +63,8 @@ class MarkdownCollection {
   // Private Property
   // ------------------------------------------------------------------------------
 
+  /** Webpack context for loading Markdown files */
+  #context: __WebpackModuleApi.RequireContext | null = null;
   /** Source of truth: used as a cache */
   #map: MarkdownCollectionMap = new Map();
   /** View: using `#map` as source of truth */
@@ -75,6 +77,25 @@ class MarkdownCollection {
   // ------------------------------------------------------------------------------
 
   /**
+   * Lazily creates a Webpack context for loading Markdown files.
+   */
+  #ensureContext(): __WebpackModuleApi.RequireContext {
+    if (this.#context) {
+      return this.#context;
+    }
+
+    const context = import.meta.webpackContext('../posts/docs', {
+      recursive: false,
+      regExp: /\.md$/,
+      mode: 'sync',
+    });
+
+    this.#context = context;
+
+    return context;
+  }
+
+  /**
    * Lazily loads and processes Markdown files from the specified directory, extracting their frontmatter.
    *
    * Performance Optimization:
@@ -84,11 +105,7 @@ class MarkdownCollection {
    *   Subsequent calls to this method will return the cached data, avoiding redundant processing.
    */
   #ensureMap(): Map<string, VMarkdownFileMeta> {
-    const context = import.meta.webpackContext('../posts/docs', {
-      recursive: false,
-      regExp: /\.md$/,
-      mode: 'sync',
-    });
+    const context = this.#ensureContext();
 
     for (const key of context.keys()) {
       const slug = key.replace(/^\.\//, '').replace(/\.md$/, '');
