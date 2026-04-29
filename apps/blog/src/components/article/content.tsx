@@ -11,7 +11,7 @@ import { type JSX, type PropsWithChildren } from 'react';
 import { cn } from '@lumir/utils';
 import { categoryMeta } from '@/data/category';
 import { frontmatterMeta } from '@/data/frontmatter';
-import { type VMarkdownFile } from '@/data/v-markdown-file';
+import { type VMarkdownFileMeta } from '@/data/v-markdown-file';
 import { markdownToHtmlLite } from '@/utils/markdown-to-html';
 import styles from './content.module.css';
 
@@ -41,12 +41,12 @@ function ContentBoxItem({ icon, text }: { icon: JSX.Element; text: string }) {
 // --------------------------------------------------------------------------------
 
 export default async function Content({
-  vMarkdownFile: {
+  vMarkdownFileMeta: {
     slug,
     data: { title, description, created, updated, categories },
   },
 }: {
-  vMarkdownFile: VMarkdownFile;
+  vMarkdownFileMeta: VMarkdownFileMeta;
 }) {
   return (
     <Link href={`/posts/${slug}`}>

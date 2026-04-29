@@ -8,168 +8,35 @@
 // Import
 // --------------------------------------------------------------------------------
 
-import { frontmatter } from '@lumir/utils';
+import { frontmatter, frontmatterData } from '@lumir/utils';
 import { categoryKeys, type CategoryKey } from '@/data/category';
-import { type VMarkdownFile } from '@/data/v-markdown-file';
+import { type Frontmatter } from '@/data/frontmatter';
+import { type VMarkdownFileMeta, type VMarkdownFile } from '@/data/v-markdown-file';
 import { isFrontmatter } from '@/utils/is-frontmatter';
 
 // --------------------------------------------------------------------------------
 // Typedef
 // --------------------------------------------------------------------------------
 
-/**
- * A record mapping each slug to its corresponding metadata.
- *
- * @example
- * ```ts
- * {
- *   'example-post': {
- *     slug: 'example-post',
- *     data: {
- *       title: 'Example Post',
- *       description: 'This is an example post.',
- *       created: '2024-01-01',
- *       updated: '2024-01-02',
- *       categories: ['javascript', 'markdown'],
- *       references: ['https://example.com'],
- *     },
- *     content: '# Example Post\n\nThis is the content of the example post.',
- *   },
- *   // ...more
- * }
- * ```
- */
-export type MarkdownCollectionSlug = Record<string, VMarkdownFile>;
-
-/**
- * A record mapping each category key to an array of metadata for Markdown files that belong to that category.
- *
- * @example
- * ```ts
- * {
- *   javascript: [
- *     {
- *       slug: 'example-post',
- *       data: {
- *         title: 'Example Post',
- *         description: 'This is an example post.',
- *         created: '2024-01-01',
- *         updated: '2024-01-02',
- *         categories: ['javascript', 'markdown'],
- *         references: ['https://example.com'],
- *       },
- *       content: '# Example Post\n\nThis is the content of the example post.',
- *     },
- *     // ...more
- *   ],
- *   markdown: [
- *     {
- *       slug: 'example-post',
- *       data: {
- *         title: 'Example Post',
- *         description: 'This is an example post.',
- *         created: '2024-01-01',
- *         updated: '2024-01-02',
- *         categories: ['javascript', 'markdown'],
- *         references: ['https://example.com'],
- *       },
- *       content: '# Example Post\n\nThis is the content of the example post.',
- *     },
- *     // ...more
- *   ],
- *   // ...more
- * }
- * ```
- */
-export type MarkdownCollectionCategory = Record<CategoryKey, VMarkdownFile[]>;
+type MarkdownCollectionMap = Map<string, VMarkdownFileMeta>;
+type MarkdownCollectionSlug = Record<string, VMarkdownFileMeta>;
+type MarkdownCollectionCategory = Record<CategoryKey, VMarkdownFileMeta[]>;
 
 // --------------------------------------------------------------------------------
 // Helper
 // --------------------------------------------------------------------------------
 
 /**
- * A record mapping each slug to its corresponding metadata.
- *
- * @example
- * ```ts
- * {
- *   'example-post': {
- *     slug: 'example-post',
- *     data: {
- *       title: 'Example Post',
- *       description: 'This is an example post.',
- *       created: '2024-01-01',
- *       updated: '2024-01-02',
- *       categories: ['javascript', 'markdown'],
- *       references: ['https://example.com'],
- *     },
- *     content: '# Example Post\n\nThis is the content of the example post.',
- *   },
- *   // ...more
- * }
- * ```
+ * Asserts that the provided data conforms to the expected `Frontmatter` structure.
  */
-const markdownCollectionSlug: MarkdownCollectionSlug = {};
+function assertFrontmatter(data: unknown, slug: string): Frontmatter {
+  if (isFrontmatter(data)) {
+    return data;
+  }
 
-/**
- * A record mapping each category key to an array of metadata for Markdown files that belong to that category.
- *
- * @example
- * ```ts
- * {
- *   javascript: [
- *     {
- *       slug: 'example-post',
- *       data: {
- *         title: 'Example Post',
- *         description: 'This is an example post.',
- *         created: '2024-01-01',
- *         updated: '2024-01-02',
- *         categories: ['javascript', 'markdown'],
- *       },
- *       content: '# Example Post\n\nThis is the content of the example post.',
- *     },
- *     // ...more
- *   ],
- *   markdown: [
- *     {
- *       slug: 'example-post',
- *       data: {
- *         title: 'Example Post',
- *         description: 'This is an example post.',
- *         created: '2024-01-01',
- *         updated: '2024-01-02',
- *         categories: ['javascript', 'markdown'],
- *       },
- *       content: '# Example Post\n\nThis is the content of the example post.',
- *     },
- *     // ...more
- *   ],
- *   // ...more
- * }
- * ```
- */
-const markdownCollectionCategory: MarkdownCollectionCategory = Object.fromEntries(
-  categoryKeys.map(categoryKey => [categoryKey, [] as VMarkdownFile[]]),
-) as MarkdownCollectionCategory;
-
-// --------------------------------------------------------------------------------
-// Load and Organize Markdown Files
-// --------------------------------------------------------------------------------
-
-const context = import.meta.webpackContext('../posts/docs', {
-  recursive: false,
-  regExp: /\.md$/,
-  mode: 'sync',
-});
-
-context.keys().forEach(key => {
-  const { data, content } = frontmatter(context(key));
-
-  if (!isFrontmatter(data)) {
-    throw new Error(
-      `
-Invalid frontmatter in Markdown file: \`${key}\`
+  throw new Error(
+    `
+Invalid frontmatter in Markdown file: \`${slug}\`
 
 Expected frontmatter format:
   - \`title: string\`
@@ -181,42 +48,294 @@ Expected frontmatter format:
 
 Received data: \`${JSON.stringify(data, null, 2)}\`
 `,
-    );
+  );
+}
+
+// --------------------------------------------------------------------------------
+// Class
+// --------------------------------------------------------------------------------
+
+/**
+ * A class that represents a collection of Markdown files, organized by `slug` and `category`.
+ */
+class MarkdownCollection {
+  // ------------------------------------------------------------------------------
+  // Private Property
+  // ------------------------------------------------------------------------------
+
+  /** Webpack context for loading Markdown files */
+  #context: __WebpackModuleApi.RequireContext | null = null;
+  /** Source of truth: used as a cache */
+  #map: MarkdownCollectionMap = new Map();
+  /** View: using `#map` as source of truth */
+  #slug: MarkdownCollectionSlug | null = null;
+  /** View: using `#map` as source of truth */
+  #category: MarkdownCollectionCategory | null = null;
+
+  // ------------------------------------------------------------------------------
+  // Private Method
+  // ------------------------------------------------------------------------------
+
+  /**
+   * Lazily creates a Webpack context for loading Markdown files.
+   */
+  #ensureContext(): __WebpackModuleApi.RequireContext {
+    if (this.#context) {
+      return this.#context;
+    }
+
+    const context = import.meta.webpackContext('../posts/docs', {
+      recursive: false,
+      regExp: /\.md$/,
+      mode: 'sync',
+    });
+
+    this.#context = context;
+
+    return context;
   }
 
-  const vMarkdownFile: VMarkdownFile = {
-    slug: key.replace(/^\.\//, '').replace(/\.md$/, ''),
-    data,
-    content,
-  };
+  /**
+   * Lazily loads and processes Markdown files from the specified directory, extracting their frontmatter.
+   *
+   * Performance Optimization:
+   * - The method uses lazy loading to defer the loading and processing of Markdown files until they are actually needed.
+   *   This can improve the initial load time of the application, especially if there are many Markdown files.
+   * - Once the Markdown files are loaded and processed, they are cached in the `#map` property.
+   *   Subsequent calls to this method will return the cached data, avoiding redundant processing.
+   */
+  #ensureMap(): Map<string, VMarkdownFileMeta> {
+    const context = this.#ensureContext();
 
-  // `markdownCollectionSlug`
-  markdownCollectionSlug[vMarkdownFile.slug] = vMarkdownFile;
-  // `markdownCollectionCategory`
-  data.categories.forEach(category => {
-    markdownCollectionCategory[category].push(vMarkdownFile);
-  });
-});
+    for (const key of context.keys()) {
+      const slug = key.replace(/^\.\//, '').replace(/\.md$/, '');
+
+      // If the Markdown file has already been processed and cached, skip the loading and processing steps.
+      const cached = this.#map.get(slug);
+
+      if (cached) {
+        continue;
+      }
+
+      // If the Markdown file has not been processed, load and process it, then cache the result.
+      const { data } = frontmatterData(context(key));
+      const sanitizedData = assertFrontmatter(data, slug);
+
+      this.#map.set(slug, {
+        slug,
+        data: sanitizedData,
+      });
+    }
+
+    return this.#map;
+  }
+
+  /**
+   * Lazily creates a mapping of slugs to their corresponding Markdown file metadata.
+   */
+  #ensureSlug(): MarkdownCollectionSlug {
+    // If the slug mapping has already been created, skip the creation process.
+    if (this.#slug) {
+      return this.#slug;
+    }
+
+    const markdownCollectionSlug = Object.fromEntries(
+      this.#ensureMap(),
+    ) as MarkdownCollectionSlug;
+
+    this.#slug = markdownCollectionSlug;
+
+    return markdownCollectionSlug;
+  }
+
+  /**
+   * Lazily creates a mapping of category keys to arrays of Markdown file metadata.
+   */
+  #ensureCategory(): MarkdownCollectionCategory {
+    // If the category mapping has already been created, skip the creation process.
+    if (this.#category) {
+      return this.#category;
+    }
+
+    const markdownCollectionCategory = Object.fromEntries(
+      categoryKeys.map(categoryKey => [categoryKey, [] as VMarkdownFileMeta[]]),
+    ) as MarkdownCollectionCategory;
+
+    this.#ensureMap().forEach(vMarkdownFile => {
+      vMarkdownFile.data.categories.forEach(category => {
+        markdownCollectionCategory[category].push(vMarkdownFile);
+      });
+    });
+
+    this.#category = markdownCollectionCategory;
+
+    return markdownCollectionCategory;
+  }
+
+  // ------------------------------------------------------------------------------
+  // Public Method
+  // ------------------------------------------------------------------------------
+
+  /**
+   * Asynchronously loads the metadata of a Markdown file by its slug, without loading its content.
+   */
+  async loadVMarkdownFileMeta(slug: string): Promise<VMarkdownFileMeta> {
+    const cached = this.#map.get(slug);
+
+    if (cached) {
+      return cached;
+    }
+
+    const { data } = frontmatterData(
+      // Markdown files are imported as raw strings because of a setting in `next.config.js`.
+      (await import(`../posts/docs/${slug}.md`)).default as string,
+    );
+    const sanitizedData = assertFrontmatter(data, slug);
+
+    const vMarkdownFileMeta: VMarkdownFileMeta = {
+      slug,
+      data: sanitizedData,
+    };
+
+    // Cache the metadata in `#map` for future reference.
+    this.#map.set(slug, vMarkdownFileMeta);
+
+    return vMarkdownFileMeta;
+  }
+
+  /**
+   * Asynchronously loads a Markdown file by its slug, extracting its content and frontmatter metadata.
+   */
+  async loadVMarkdownFile(slug: string): Promise<VMarkdownFile> {
+    const { data, content } = frontmatter(
+      // Markdown files are imported as raw strings because of a setting in `next.config.js`.
+      (await import(`../posts/docs/${slug}.md`)).default as string,
+    );
+    const sanitizedData = assertFrontmatter(data, slug);
+
+    // Get a chance to cache the metadata in `#map` if it hasn't been cached already.
+    if (!this.#map.has(slug)) {
+      this.#map.set(slug, {
+        slug,
+        data: sanitizedData,
+      });
+    }
+
+    return {
+      slug,
+      data: sanitizedData,
+      content,
+    };
+  }
+
+  // ------------------------------------------------------------------------------
+  // Getter and Setter
+  // ------------------------------------------------------------------------------
+
+  /**
+   * A record mapping each category key to an array of metadata for Markdown files that belong to that category.
+   *
+   * @example
+   * ```ts
+   * {
+   *   javascript: [
+   *     {
+   *       slug: 'example-post',
+   *       data: {
+   *         title: 'Example Post',
+   *         description: 'This is an example post.',
+   *         created: '2024-01-01',
+   *         updated: '2024-01-02',
+   *         categories: ['javascript', 'markdown'],
+   *       },
+   *     },
+   *     // ...more
+   *   ],
+   *   markdown: [
+   *     {
+   *       slug: 'example-post',
+   *       data: {
+   *         title: 'Example Post',
+   *         description: 'This is an example post.',
+   *         created: '2024-01-01',
+   *         updated: '2024-01-02',
+   *         categories: ['javascript', 'markdown'],
+   *       },
+   *     },
+   *     // ...more
+   *   ],
+   *   // ...more
+   * }
+   * ```
+   */
+  get category(): MarkdownCollectionCategory {
+    return this.#ensureCategory();
+  }
+
+  /**
+   * Returns a list of category keys that have at least one associated Markdown file in the collection.
+   *
+   * @example
+   * ```ts
+   * import createMarkdownCollection from '@/utils/markdown-collection';
+   *
+   * const markdownCollection = createMarkdownCollection();
+   * const nonEmptyCategories = markdownCollection.nonEmptyCategoryKeys;
+   * console.log(nonEmptyCategories); // Output: ['javascript', 'markdown']
+   * ```
+   */
+  get nonEmptyCategoryKeys(): CategoryKey[] {
+    return categoryKeys.filter(categoryKey => this.category[categoryKey].length > 0);
+  }
+
+  /**
+   * A record mapping each slug to its corresponding metadata.
+   *
+   * @example
+   * ```ts
+   * {
+   *   'example-post': {
+   *     slug: 'example-post',
+   *     data: {
+   *       title: 'Example Post',
+   *       description: 'This is an example post.',
+   *       created: '2024-01-01',
+   *       updated: '2024-01-02',
+   *       categories: ['javascript', 'markdown'],
+   *       references: ['https://example.com'],
+   *     },
+   *   },
+   *   // ...more
+   * }
+   * ```
+   */
+  get slug(): MarkdownCollectionSlug {
+    return this.#ensureSlug();
+  }
+}
 
 // --------------------------------------------------------------------------------
 // Export
 // --------------------------------------------------------------------------------
 
-export { markdownCollectionSlug, markdownCollectionCategory };
+/**
+ * A singleton instance of the `MarkdownCollection` class.
+ */
+let markdownCollection: MarkdownCollection | null = null;
 
 /**
- * Returns a list of category keys that have at least one associated Markdown file in the collection.
- * @param category The `MarkdownCollectionCategory` to check for non-empty categories.
+ * Creates and returns a singleton instance of the `MarkdownCollection` class
+ * that represents a collection of Markdown files, organized by `slug` and `category`.
+ *
  * @example
  * ```ts
- * import { listNonEmptyCategoryKeys, markdownCollectionCategory } from '@/utils/markdown-collection';
+ * import createMarkdownCollection from '@/utils/markdown-collection';
  *
- * const nonEmptyCategories = listNonEmptyCategoryKeys(markdownCollectionCategory);
- * console.log(nonEmptyCategories); // Output: ['javascript', 'markdown']
+ * const markdownCollection = createMarkdownCollection();
  * ```
  */
-export function listNonEmptyCategoryKeys(
-  category: MarkdownCollectionCategory,
-): CategoryKey[] {
-  return categoryKeys.filter(categoryKey => category[categoryKey].length > 0);
+export default function createMarkdownCollection() {
+  markdownCollection ??= new MarkdownCollection();
+
+  return markdownCollection;
 }

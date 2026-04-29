@@ -12,11 +12,14 @@ import Loading from '@/components/common/loading';
 import { type CategoryKey } from '@/data/category';
 import { type SortableFrontmatterKey } from '@/data/frontmatter';
 import { type SortKey } from '@/data/sort';
-import {
-  listNonEmptyCategoryKeys,
-  markdownCollectionCategory,
-} from '@/utils/markdown-collection';
+import createMarkdownCollection from '@/utils/markdown-collection';
 import { compareMarkdownDocument } from '@/utils/compare';
+
+// --------------------------------------------------------------------------------
+// Helper
+// --------------------------------------------------------------------------------
+
+const markdownCollection = createMarkdownCollection();
 
 // --------------------------------------------------------------------------------
 // Named Export
@@ -34,7 +37,7 @@ export const dynamicParams = false;
 export async function generateStaticParams(): Promise<
   Awaited<PageProps<'/categories/[category]'>['params']>[]
 > {
-  return listNonEmptyCategoryKeys(markdownCollectionCategory).map(category => ({
+  return markdownCollection.nonEmptyCategoryKeys.map(category => ({
     category,
   }));
 }
@@ -59,10 +62,10 @@ export default async function Page({
       key={normalizedSort + normalizedOrder}
       fallback={<Loading content="목록" />}
     >
-      {markdownCollectionCategory[category as CategoryKey]
+      {markdownCollection.category[category as CategoryKey]
         ?.toSorted(compareMarkdownDocument(normalizedSort, normalizedOrder))
-        .map(vMarkdownFile => (
-          <Content key={vMarkdownFile.slug} vMarkdownFile={vMarkdownFile} />
+        .map(vMarkdownFileMeta => (
+          <Content key={vMarkdownFileMeta.slug} vMarkdownFileMeta={vMarkdownFileMeta} />
         ))}
     </Suspense>
   );
