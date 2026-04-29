@@ -175,7 +175,7 @@ class MarkdownCollection {
     );
     const sanitizedData = assertFrontmatter(data, slug);
 
-    const vMarkdownFileMeta = {
+    const vMarkdownFileMeta: VMarkdownFileMeta = {
       slug,
       data: sanitizedData,
     };
