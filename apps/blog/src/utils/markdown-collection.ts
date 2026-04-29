@@ -171,7 +171,7 @@ class MarkdownCollection {
 
     const { data } = frontmatter(
       // Markdown files are imported as raw strings because of a setting in `next.config.js`.
-      (await import(`../posts/docs/${slug}.md`)) as string,
+      (await import(`../posts/docs/${slug}.md`)).default as string,
     );
     const sanitizedData = assertFrontmatter(data, slug);
 
@@ -192,7 +192,7 @@ class MarkdownCollection {
   async loadVMarkdownFile(slug: string): Promise<VMarkdownFile> {
     const { data, content } = frontmatter(
       // Markdown files are imported as raw strings because of a setting in `next.config.js`.
-      (await import(`../posts/docs/${slug}.md`)) as string,
+      (await import(`../posts/docs/${slug}.md`)).default as string,
     );
     const sanitizedData = assertFrontmatter(data, slug);
 
