@@ -10,7 +10,7 @@
 
 import { type SortableFrontmatterKey } from '@/data/frontmatter';
 import { type SortKey } from '@/data/sort';
-import { type VMarkdownFile } from '@/data/v-markdown-file';
+import { type VMarkdownFileMeta } from '@/data/v-markdown-file';
 import { markdownToTextSync } from './markdown-to-text';
 
 // --------------------------------------------------------------------------------
@@ -23,7 +23,7 @@ import { markdownToTextSync } from './markdown-to-text';
 export function compareMarkdownDocument(sort: SortableFrontmatterKey, order: SortKey) {
   switch (sort) {
     case 'title': {
-      return (a: VMarkdownFile, b: VMarkdownFile) => {
+      return (a: VMarkdownFileMeta, b: VMarkdownFileMeta) => {
         const titleA = markdownToTextSync(a.data.title.toLowerCase()); // Case insensitive.
         const titleB = markdownToTextSync(b.data.title.toLowerCase()); // Case insensitive.
 
@@ -34,7 +34,7 @@ export function compareMarkdownDocument(sort: SortableFrontmatterKey, order: Sor
     }
     case 'created':
     case 'updated': {
-      return (a: VMarkdownFile, b: VMarkdownFile) => {
+      return (a: VMarkdownFileMeta, b: VMarkdownFileMeta) => {
         const dateA = new Date(a.data[sort]);
         const dateB = new Date(b.data[sort]);
 

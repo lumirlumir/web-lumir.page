@@ -2,8 +2,6 @@
  * @fileoverview frontmatter.
  */
 
-/* eslint-disable import/prefer-default-export -- TODO: Refactor to use named exports */
-
 // --------------------------------------------------------------------------------
 // Import
 // --------------------------------------------------------------------------------
@@ -61,6 +59,39 @@ export function frontmatter(input: string): {
 
   return {
     content: input.slice(match[0].length),
+    data: yaml.parse(match.groups?.yaml ?? ''),
+  };
+}
+
+/**
+ * Parses the front matter from a string and returns only the parsed data.
+ * If no front matter is found, it returns `null` data.
+ * @example
+ *
+ * ```ts
+ * import { frontmatterData } from '@lumir/utils';
+ *
+ * const result = frontmatterData(`---\ntitle: Title\nauthor: Author\n---\nHello, world!`);
+ *
+ * console.log(result);
+ * // {
+ * //   data: {
+ * //     title: 'Title',
+ * //     author: 'Author',
+ * //   },
+ * // }
+ * ```
+ */
+export function frontmatterData(input: string): { data: unknown } {
+  const match = input.match(frontmatterRegex);
+
+  if (!match) {
+    return {
+      data: null,
+    };
+  }
+
+  return {
     data: yaml.parse(match.groups?.yaml ?? ''),
   };
 }

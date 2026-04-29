@@ -10,17 +10,14 @@ import Link from 'next/link';
 import { FaPen } from '@lumir/react-kit/svgs';
 import { cn } from '@lumir/utils';
 import { categoryMeta } from '@/data/category';
-import {
-  listNonEmptyCategoryKeys,
-  markdownCollectionCategory,
-} from '@/utils/markdown-collection';
+import createMarkdownCollection from '@/utils/markdown-collection';
 import styles from './categories.module.css';
 
 // --------------------------------------------------------------------------------
 // Helper
 // --------------------------------------------------------------------------------
 
-const categoryKeys = listNonEmptyCategoryKeys(markdownCollectionCategory);
+const markdownCollection = createMarkdownCollection();
 
 // --------------------------------------------------------------------------------
 // Export
@@ -29,7 +26,7 @@ const categoryKeys = listNonEmptyCategoryKeys(markdownCollectionCategory);
 export default async function Categories() {
   return (
     <ul className={styles.categories}>
-      {categoryKeys
+      {markdownCollection.nonEmptyCategoryKeys
         .sort((a, b) => categoryMeta[a].order - categoryMeta[b].order) // Ascending.
         .map(categoryKey => {
           const {
@@ -47,7 +44,7 @@ export default async function Categories() {
                 <div className={styles['name-ko']}>{ko}</div>
                 <div className={cn(styles['count-docs'], 'custom-flex-center')}>
                   <span className="custom-flex-center">
-                    {markdownCollectionCategory[categoryKey]?.length}
+                    {markdownCollection.category[categoryKey]?.length}
                   </span>
                   <FaPen />
                 </div>
