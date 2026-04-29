@@ -7,9 +7,15 @@
 // --------------------------------------------------------------------------------
 
 import { type Metadata } from 'next';
-import { markdownCollectionSlug } from '@/utils/markdown-collection';
+import createMarkdownCollection from '@/utils/markdown-collection';
 import { markdownToHtml } from '@/utils/markdown-to-html';
 import { markdownToText } from '@/utils/markdown-to-text';
+
+// --------------------------------------------------------------------------------
+// Helper
+// --------------------------------------------------------------------------------
+
+const markdownCollection = createMarkdownCollection();
 
 // --------------------------------------------------------------------------------
 // Named Export
@@ -27,7 +33,7 @@ export const dynamicParams = false;
 export async function generateStaticParams(): Promise<
   Awaited<PageProps<'/posts/[markdown]'>['params']>[]
 > {
-  return Object.values(markdownCollectionSlug).map(({ slug }) => ({
+  return Object.values(markdownCollection.slug).map(({ slug }) => ({
     markdown: slug,
   }));
 }
@@ -39,7 +45,7 @@ export async function generateMetadata({
   params,
 }: PageProps<'/posts/[markdown]'>): Promise<Metadata> {
   const { markdown } = await params;
-  const { title, description } = markdownCollectionSlug[markdown].data;
+  const { title, description } = markdownCollection.slug[markdown].data;
 
   return {
     title: await markdownToText(title),
@@ -56,7 +62,7 @@ export default async function Page({ params }: PageProps<'/posts/[markdown]'>) {
   const {
     content,
     data: { title, references },
-  } = markdownCollectionSlug[markdown];
+  } = markdownCollection.slug[markdown];
 
   return (
     <>
