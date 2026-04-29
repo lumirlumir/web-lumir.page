@@ -64,8 +64,8 @@ export default async function Page({
     >
       {markdownCollection.category[category as CategoryKey]
         ?.toSorted(compareMarkdownDocument(normalizedSort, normalizedOrder))
-        .map(vMarkdownFile => (
-          <Content key={vMarkdownFile.slug} vMarkdownFile={vMarkdownFile} />
+        .map(vMarkdownFileMeta => (
+          <Content key={vMarkdownFileMeta.slug} vMarkdownFileMeta={vMarkdownFileMeta} />
         ))}
     </Suspense>
   );

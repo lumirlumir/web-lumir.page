@@ -47,7 +47,7 @@ export async function generateMetadata({
   const { markdown } = await params;
   const {
     data: { title, description },
-  } = await markdownCollection.loadVMarkdownFile(markdown);
+  } = await markdownCollection.loadVMarkdownFileMeta(markdown);
 
   return {
     title: await markdownToText(title),
