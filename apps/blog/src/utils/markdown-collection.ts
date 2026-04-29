@@ -307,7 +307,8 @@ class MarkdownCollection {
 let markdownCollection: MarkdownCollection | null = null;
 
 /**
- * Creates a class that represents a collection of Markdown files, organized by `slug` and `category`.
+ * Creates and returns a singleton instance of the `MarkdownCollection` class
+ * that represents a collection of Markdown files, organized by `slug` and `category`.
  *
  * @example
  * ```ts
