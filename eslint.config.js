@@ -38,6 +38,12 @@ export default defineConfig([
 
   // js
   {
+    name: 'js/global',
+    rules: {
+      'import/no-cycle': 'off', // Too computationally expensive. TODO: Remove this in shared config.
+    },
+  },
+  {
     name: 'js/apps/blog',
     files: ['apps/blog/**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx}'],
     settings: {
