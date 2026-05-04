@@ -12,6 +12,9 @@ import { useEffect, useRef, useState } from 'react';
 // Typedef
 // --------------------------------------------------------------------------------
 
+/**
+ * Options for the `useTypewriter` hook.
+ */
 export interface UseTypewriterOptions {
   /**
    * Text to type out.
@@ -70,13 +73,13 @@ export interface UseTypewriterOptions {
    * Callback function that is called when writing is complete.
    * @default undefined
    */
-  onWriteComplete?: (() => void) | undefined;
+  onWriteComplete?: () => void;
 
   /**
    * Callback function that is called when erasing is complete.
    * @default undefined
    */
-  onEraseComplete?: (() => void) | undefined;
+  onEraseComplete?: () => void;
 }
 
 // --------------------------------------------------------------------------------
@@ -88,12 +91,22 @@ export interface UseTypewriterOptions {
  *
  * @example
  * ```tsx
- * import { useTypewriter } from '@lumir/react-kit/hooks';
+ * import { useTypewriter, type UseTypewriterOptions } from '@lumir/react-kit/hooks';
  *
  * function Component() {
  *   const [currentText] = useTypewriter({
+ *     // Default Options
  *     text: 'Hello, World!',
- *     writeSpeed: 50,
+ *     writeSpeed={50}
+ *     eraseSpeed={50}
+ *     writePreDelay={0}
+ *     writePostDelay={1500}
+ *     erasePreDelay={0}
+ *     erasePostDelay={1500}
+ *     loop={false}
+ *     pause={false}
+ *     onWriteComplete={undefined}
+ *     onEraseComplete={undefined}
  *   });
  *
  *   return <span>{currentText}</span>;
