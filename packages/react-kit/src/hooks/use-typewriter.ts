@@ -1,5 +1,5 @@
 /**
- * @fileoverview typewriter hook.
+ * @fileoverview Typewriter hook.
  */
 
 // --------------------------------------------------------------------------------
@@ -11,8 +11,6 @@ import { useEffect, useRef, useState } from 'react';
 // --------------------------------------------------------------------------------
 // Typedef
 // --------------------------------------------------------------------------------
-
-type Mode = 'write' | 'erase';
 
 export interface UseTypewriterOptions {
   /**
@@ -81,8 +79,6 @@ export interface UseTypewriterOptions {
   onEraseComplete?: (() => void) | undefined;
 }
 
-export type UseTypewriterReturn = readonly [currentText: string];
-
 // --------------------------------------------------------------------------------
 // Export
 // --------------------------------------------------------------------------------
@@ -116,9 +112,9 @@ export function useTypewriter({
   pause = false,
   onWriteComplete = undefined,
   onEraseComplete = undefined,
-}: UseTypewriterOptions): UseTypewriterReturn {
+}: UseTypewriterOptions): readonly [currentText: string] {
   const [currentText, setCurrentText] = useState<string>('');
-  const [mode, setMode] = useState<Mode>('write');
+  const [mode, setMode] = useState<'write' | 'erase'>('write');
 
   const rafRef = useRef<number | null>(null);
 
