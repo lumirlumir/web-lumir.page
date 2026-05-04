@@ -2,6 +2,8 @@
  * @fileoverview Typewriter hook.
  */
 
+/* eslint-disable import/prefer-default-export -- TODO */
+
 // --------------------------------------------------------------------------------
 // Import
 // --------------------------------------------------------------------------------
@@ -15,7 +17,7 @@ import { useEffect, useRef, useState } from 'react';
 /**
  * Options for the `useTypewriter` hook.
  */
-export interface UseTypewriterOptions {
+interface UseTypewriterOptions {
   /**
    * Text to type out.
    */
@@ -40,16 +42,16 @@ export interface UseTypewriterOptions {
   writePreDelay?: number;
 
   /**
-   * Delay after finishing to write (milliseconds).
-   * @default 1500
-   */
-  writePostDelay?: number;
-
-  /**
    * Delay before starting to erase (milliseconds).
    * @default 0
    */
   erasePreDelay?: number;
+
+  /**
+   * Delay after finishing to write (milliseconds).
+   * @default 1500
+   */
+  writePostDelay?: number;
 
   /**
    * Delay after finishing to erase (milliseconds).
@@ -91,7 +93,7 @@ export interface UseTypewriterOptions {
  *
  * @example
  * ```tsx
- * import { useTypewriter, type UseTypewriterOptions } from '@lumir/react-kit/hooks';
+ * import { useTypewriter } from '@lumir/react-kit/hooks';
  *
  * function Component() {
  *   const [currentText] = useTypewriter({
@@ -100,8 +102,8 @@ export interface UseTypewriterOptions {
  *     writeSpeed={50}
  *     eraseSpeed={50}
  *     writePreDelay={0}
- *     writePostDelay={1500}
  *     erasePreDelay={0}
+ *     writePostDelay={1500}
  *     erasePostDelay={1500}
  *     loop={false}
  *     pause={false}
