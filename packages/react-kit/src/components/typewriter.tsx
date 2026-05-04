@@ -13,6 +13,9 @@ import { useTypewriter, type UseTypewriterOptions } from '../hooks/use-typewrite
 // Typedef
 // --------------------------------------------------------------------------------
 
+/**
+ * Props for the `Typewriter` component.
+ */
 export interface TypewriterProps
   extends HTMLAttributes<HTMLSpanElement>, UseTypewriterOptions {
   /**
