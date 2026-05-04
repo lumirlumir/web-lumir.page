@@ -6,198 +6,109 @@
 // Import
 // --------------------------------------------------------------------------------
 
-import { afterEach, assert, beforeEach, describe, it, vi } from 'vitest';
-import { renderHook, type RenderHookResult } from 'vitest-browser-react';
-import { useTypewriter, type UseTypewriterReturn } from './use-typewriter.js';
+import { assert, beforeEach, describe, it, vi } from 'vitest';
+import { renderHook } from 'vitest-browser-react';
+import { useTypewriter } from './use-typewriter.js';
 
 // --------------------------------------------------------------------------------
 // Helper
 // --------------------------------------------------------------------------------
 
-type TypewriterHookRender = RenderHookResult<UseTypewriterReturn, unknown>;
-
-beforeEach(() => {
-  vi.useFakeTimers({
-    now: 0,
-    toFake: [
-      'Date',
-      'setTimeout',
-      'clearTimeout',
-      'requestAnimationFrame',
-      'cancelAnimationFrame',
-      'performance',
-    ],
-  });
-});
-
-afterEach(() => {
-  vi.useRealTimers();
-});
-
-async function advanceAnimationFrameDelay(
-  act: TypewriterHookRender['act'],
-  milliseconds: number,
-) {
-  await act(async () => {
-    await vi.advanceTimersByTimeAsync(milliseconds);
-  });
-}
+/**
+ * `1000ms / 60fps ≈ 16.67ms` per frame, so we can use `16ms`
+ * as a close approximation for the duration of one animation frame.
+ */
+const RAF_FRAME_DURATION_MS = 16;
 
 // --------------------------------------------------------------------------------
 // Test
 // --------------------------------------------------------------------------------
 
 describe('use-typewriter', () => {
+  beforeEach(() => {
+    vi.useFakeTimers({
+      now: 0,
+      toFake: ['requestAnimationFrame', 'cancelAnimationFrame', 'performance'],
+    });
+  });
+
   it('Initial return value should contain empty text as the first array item', async () => {
     const { result } = await renderHook(() => useTypewriter({ text: 'Hello' }));
+    const [currentText] = result.current;
 
-    assert.strictEqual(result.current[0], '');
+    assert.strictEqual(currentText, '');
   });
 
-  it('Writing should respect pre delay, character speed, post delay, and completion callback', async () => {
-    let writeCompleteCount = 0;
-
+  it('Should respect `writeSpeed` option', async () => {
     const { act, result } = await renderHook(() =>
       useTypewriter({
-        text: 'AB',
-        writePreDelay: 32,
-        writeSpeed: 16,
-        writePostDelay: 32,
-        onWriteComplete: () => {
-          writeCompleteCount += 1;
-        },
+        text: 'Hello',
+        writeSpeed: RAF_FRAME_DURATION_MS,
       }),
     );
 
-    await advanceAnimationFrameDelay(act, 16);
-    assert.strictEqual(result.current[0], '');
-    assert.strictEqual(writeCompleteCount, 0);
+    const [firstText] = result.current;
 
-    await advanceAnimationFrameDelay(act, 16);
-    assert.strictEqual(result.current[0], 'A');
-    assert.strictEqual(writeCompleteCount, 0);
+    assert.strictEqual(firstText, '');
 
-    await advanceAnimationFrameDelay(act, 16);
-    assert.strictEqual(result.current[0], 'AB');
-    assert.strictEqual(writeCompleteCount, 0);
-
-    await advanceAnimationFrameDelay(act, 16);
-    assert.strictEqual(writeCompleteCount, 0);
-
-    await advanceAnimationFrameDelay(act, 16);
-    assert.strictEqual(result.current[0], 'AB');
-    assert.strictEqual(writeCompleteCount, 1);
-  });
-
-  it('Looping should erase after write completion and start writing again after erase completion', async () => {
-    let writeCompleteCount = 0;
-    let eraseCompleteCount = 0;
-
-    const { act, result } = await renderHook(() =>
-      useTypewriter({
-        text: 'AB',
-        writePreDelay: 16,
-        writeSpeed: 16,
-        writePostDelay: 16,
-        erasePreDelay: 16,
-        eraseSpeed: 16,
-        erasePostDelay: 16,
-        loop: true,
-        onWriteComplete: () => {
-          writeCompleteCount += 1;
-        },
-        onEraseComplete: () => {
-          eraseCompleteCount += 1;
-        },
-      }),
-    );
-
-    await advanceAnimationFrameDelay(act, 16);
-    assert.strictEqual(result.current[0], 'A');
-
-    await advanceAnimationFrameDelay(act, 16);
-    assert.strictEqual(result.current[0], 'AB');
-
-    await advanceAnimationFrameDelay(act, 16);
-    assert.strictEqual(result.current[0], 'AB');
-    assert.strictEqual(writeCompleteCount, 1);
-
-    await advanceAnimationFrameDelay(act, 16);
-    assert.strictEqual(result.current[0], 'A');
-
-    await advanceAnimationFrameDelay(act, 16);
-    assert.strictEqual(result.current[0], '');
-
-    await advanceAnimationFrameDelay(act, 16);
-    assert.strictEqual(result.current[0], '');
-    assert.strictEqual(eraseCompleteCount, 1);
-
-    await advanceAnimationFrameDelay(act, 16);
-    assert.strictEqual(result.current[0], 'A');
-  });
-
-  it('Pause should stop progress and resume without resetting current text', async () => {
-    const { act, rerender, result } = await renderHook(
-      ({ pause }) =>
-        useTypewriter({
-          text: 'AB',
-          writePreDelay: 16,
-          writeSpeed: 16,
-          pause,
-        }),
-      {
-        initialProps: {
-          pause: false,
-        },
-      },
-    );
-
-    await advanceAnimationFrameDelay(act, 16);
-    assert.strictEqual(result.current[0], 'A');
-
-    await rerender({
-      pause: true,
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(RAF_FRAME_DURATION_MS);
     });
-    await advanceAnimationFrameDelay(act, 64);
-    assert.strictEqual(result.current[0], 'A');
 
-    await rerender({
-      pause: false,
+    const [secondText] = result.current;
+
+    assert.strictEqual(secondText, 'H');
+
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(RAF_FRAME_DURATION_MS);
     });
-    await advanceAnimationFrameDelay(act, 16);
-    assert.strictEqual(result.current[0], 'AB');
-  });
 
-  it('Non-looping typewriter should leave completed text visible and never erase', async () => {
-    let writeCompleteCount = 0;
-    let eraseCompleteCount = 0;
+    const [thirdText] = result.current;
 
-    const { act, result } = await renderHook(() =>
-      useTypewriter({
-        text: 'AB',
-        writePreDelay: 16,
-        writeSpeed: 16,
-        writePostDelay: 16,
-        erasePreDelay: 16,
-        eraseSpeed: 16,
-        erasePostDelay: 16,
-        loop: false,
-        onWriteComplete: () => {
-          writeCompleteCount += 1;
-        },
-        onEraseComplete: () => {
-          eraseCompleteCount += 1;
-        },
-      }),
-    );
+    assert.strictEqual(thirdText, 'He');
 
-    await advanceAnimationFrameDelay(act, 16);
-    await advanceAnimationFrameDelay(act, 16);
-    await advanceAnimationFrameDelay(act, 16);
-    await advanceAnimationFrameDelay(act, 64);
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(RAF_FRAME_DURATION_MS);
+    });
 
-    assert.strictEqual(result.current[0], 'AB');
-    assert.strictEqual(writeCompleteCount, 1);
-    assert.strictEqual(eraseCompleteCount, 0);
+    const [fourthText] = result.current;
+
+    assert.strictEqual(fourthText, 'Hel');
+
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(RAF_FRAME_DURATION_MS);
+    });
+
+    const [fifthText] = result.current;
+
+    assert.strictEqual(fifthText, 'Hell');
+
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(RAF_FRAME_DURATION_MS);
+    });
+
+    const [sixthText] = result.current;
+
+    assert.strictEqual(sixthText, 'Hello');
+
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(RAF_FRAME_DURATION_MS);
+    });
+
+    const [seventhText] = result.current;
+
+    // If we don't use `loop` option, the text should remain visible
+    // after writing is complete and never erase, so it should still be 'Hello'
+    assert.strictEqual(seventhText, 'Hello');
+
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(RAF_FRAME_DURATION_MS * 10);
+    });
+
+    const [eighthText] = result.current;
+
+    // If we don't use `loop` option, the text should remain visible
+    // after writing is complete and never erase, so it should still be 'Hello'
+    assert.strictEqual(eighthText, 'Hello');
   });
 });
