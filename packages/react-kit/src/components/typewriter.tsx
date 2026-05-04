@@ -41,14 +41,13 @@ export interface TypewriterProps
  *
  * @example
  * ```tsx
- * import { Typewriter } from '@lumir/react-kit/components';
- * import type { TypewriterProps } from '@lumir/react-kit/components';
+ * import { Typewriter, type TypewriterProps } from '@lumir/react-kit/components';
  *
  * // Default Values
  * <Typewriter
- *   text="Hello, World!"
  *   cursor="|"
  *   cursorClassName="cursor"
+ *   text="Hello, World!"
  *   writeSpeed={50}
  *   eraseSpeed={50}
  *   writePreDelay={0}
@@ -63,19 +62,22 @@ export interface TypewriterProps
  * ```
  */
 export function Typewriter({
-  text,
+  // `Typewriter`
   cursor = '|',
   cursorClassName = 'cursor',
-  writeSpeed = 50,
-  eraseSpeed = 50,
-  writePreDelay = 0,
-  erasePreDelay = 0,
-  writePostDelay = 1_500,
-  erasePostDelay = 1_500,
-  loop = false,
-  pause = false,
-  onWriteComplete = undefined,
-  onEraseComplete = undefined,
+  // `useTypewriter`
+  text,
+  writeSpeed,
+  eraseSpeed,
+  writePreDelay,
+  erasePreDelay,
+  writePostDelay,
+  erasePostDelay,
+  loop,
+  pause,
+  onWriteComplete,
+  onEraseComplete,
+  // `HTMLAttributes<HTMLSpanElement>`
   ...props
 }: TypewriterProps) {
   const [currentText] = useTypewriter({

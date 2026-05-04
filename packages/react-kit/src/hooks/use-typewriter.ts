@@ -2,8 +2,6 @@
  * @fileoverview Typewriter hook.
  */
 
-/* eslint-disable import/prefer-default-export -- TODO */
-
 // --------------------------------------------------------------------------------
 // Import
 // --------------------------------------------------------------------------------
@@ -17,7 +15,7 @@ import { useEffect, useRef, useState } from 'react';
 /**
  * Options for the `useTypewriter` hook.
  */
-interface UseTypewriterOptions {
+export interface UseTypewriterOptions {
   /**
    * Text to type out.
    */
@@ -27,61 +25,61 @@ interface UseTypewriterOptions {
    * The delay between each character when writing (milliseconds).
    * @default 50
    */
-  writeSpeed?: number;
+  writeSpeed?: number | undefined;
 
   /**
    * The delay between each character when erasing (milliseconds).
    * @default 50
    */
-  eraseSpeed?: number;
+  eraseSpeed?: number | undefined;
 
   /**
    * Delay before starting to write (milliseconds).
    * @default 0
    */
-  writePreDelay?: number;
+  writePreDelay?: number | undefined;
 
   /**
    * Delay before starting to erase (milliseconds).
    * @default 0
    */
-  erasePreDelay?: number;
+  erasePreDelay?: number | undefined;
 
   /**
    * Delay after finishing to write (milliseconds).
    * @default 1500
    */
-  writePostDelay?: number;
+  writePostDelay?: number | undefined;
 
   /**
    * Delay after finishing to erase (milliseconds).
    * @default 1500
    */
-  erasePostDelay?: number;
+  erasePostDelay?: number | undefined;
 
   /**
    * Whether to keep looping or not.
    * @default false
    */
-  loop?: boolean;
+  loop?: boolean | undefined;
 
   /**
    * Temporarily pauses writing/erasing when set to `true`.
    * @default false
    */
-  pause?: boolean;
+  pause?: boolean | undefined;
 
   /**
    * Callback function that is called when writing is complete.
    * @default undefined
    */
-  onWriteComplete?: () => void;
+  onWriteComplete?: (() => void) | undefined;
 
   /**
    * Callback function that is called when erasing is complete.
    * @default undefined
    */
-  onEraseComplete?: () => void;
+  onEraseComplete?: (() => void) | undefined;
 }
 
 // --------------------------------------------------------------------------------
@@ -93,7 +91,7 @@ interface UseTypewriterOptions {
  *
  * @example
  * ```tsx
- * import { useTypewriter } from '@lumir/react-kit/hooks';
+ * import { useTypewriter, type UseTypewriterOptions } from '@lumir/react-kit/hooks';
  *
  * function Component() {
  *   const [currentText] = useTypewriter({
