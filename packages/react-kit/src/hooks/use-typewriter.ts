@@ -1,34 +1,24 @@
 /**
- * @fileoverview typewriter.
+ * @fileoverview Hook for managing typewriter text state.
  */
 
 // --------------------------------------------------------------------------------
 // Import
 // --------------------------------------------------------------------------------
 
-import { useEffect, useRef, useState, type HTMLAttributes } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 // --------------------------------------------------------------------------------
 // Typedef
 // --------------------------------------------------------------------------------
 
-export interface Props extends HTMLAttributes<HTMLSpanElement> {
+export type TypewriterMode = 'write' | 'erase';
+
+export interface UseTypewriterOptions {
   /**
    * Text to type out.
    */
   text: string;
-
-  /**
-   * The value to use as the cursor. Set to `null` to disable.
-   * @default '|'
-   */
-  cursor?: string | null;
-
-  /**
-   * The class name to apply to the cursor element.
-   * @default 'cursor'
-   */
-  cursorClassName?: string;
 
   /**
    * The delay between each character when writing (milliseconds).
@@ -91,42 +81,46 @@ export interface Props extends HTMLAttributes<HTMLSpanElement> {
   onEraseComplete?: () => void;
 }
 
+export interface UseTypewriterResult {
+  /**
+   * The currently visible text.
+   */
+  currentText: string;
+
+  /**
+   * Current typewriter mode.
+   */
+  mode: TypewriterMode;
+}
+
 // --------------------------------------------------------------------------------
 // Export
 // --------------------------------------------------------------------------------
 
 /**
- * Simple Typewriter Effect component.
+ * `useTypewriter` manages the state for a typewriter effect.
  *
- * TIP:
- * - Use `cursorClassName` to style the cursor (e.g., blinking effect).
- * - Use `style={{ whiteSpace: 'pre' }}` to support multiline text.
+ * It writes text one character at a time, optionally erases it, and can loop
+ * between both modes.
  *
+ * @param options Typewriter timing and callback options.
+ * @returns Current text and mode.
  * @example
- * import Typewriter from 'path/to/typewriter';
- * import type { Props as TypewriterProps } from 'path/to/typewriter';
+ * ```tsx
+ * import { useTypewriter } from '@lumir/react-kit/hooks';
  *
- * // Default Values
- * <Typewriter
- *   text="Hello, World!"
- *   cursor="|"
- *   cursorClassName="cursor"
- *   writeSpeed={50}
- *   eraseSpeed={50}
- *   writePreDelay={0}
- *   erasePreDelay={0}
- *   writePostDelay={1500}
- *   erasePostDelay={1500}
- *   loop={false}
- *   pause={false}
- *   onWriteComplete={undefined}
- *   onEraseComplete={undefined}
- * />
+ * function Component() {
+ *   const { currentText } = useTypewriter({
+ *     text: 'Hello, World!',
+ *     writeSpeed: 50,
+ *   });
+ *
+ *   return <span>{currentText}</span>;
+ * }
+ * ```
  */
-export default function Typewriter({
+export function useTypewriter({
   text,
-  cursor = '|',
-  cursorClassName = 'cursor',
   writeSpeed = 50,
   eraseSpeed = 50,
   writePreDelay = 0,
@@ -137,15 +131,24 @@ export default function Typewriter({
   pause = false,
   onWriteComplete = undefined,
   onEraseComplete = undefined,
-  ...props
-}: Props) {
+}: UseTypewriterOptions): UseTypewriterResult {
   const [currentText, setCurrentText] = useState<string>('');
-  const [mode, setMode] = useState<'write' | 'erase'>('write');
+  const [mode, setMode] = useState<TypewriterMode>('write');
 
   const rafRef = useRef<number | null>(null);
+  const onWriteCompleteRef = useRef(onWriteComplete);
+  const onEraseCompleteRef = useRef(onEraseComplete);
 
   useEffect(() => {
-    if (rafRef.current) {
+    onWriteCompleteRef.current = onWriteComplete;
+  }, [onWriteComplete]);
+
+  useEffect(() => {
+    onEraseCompleteRef.current = onEraseComplete;
+  }, [onEraseComplete]);
+
+  useEffect(() => {
+    if (rafRef.current !== null) {
       cancelAnimationFrame(rafRef.current);
       rafRef.current = null;
     }
@@ -154,7 +157,6 @@ export default function Typewriter({
       return undefined;
     }
 
-    /** Minimal helper to emulate `setTimeout` with rAF(requestAnimationFrame) */
     const setTimeoutRaf = (callback: () => void, delay: number) => {
       const base = performance.now();
 
@@ -178,12 +180,12 @@ export default function Typewriter({
             setMode('erase');
           }
 
-          onWriteComplete?.();
+          onWriteCompleteRef.current?.();
         }, writePostDelay);
       } else {
         setTimeoutRaf(
           () => {
-            setCurrentText(prev => prev + text[currentText.length]);
+            setCurrentText(previousText => previousText + text[currentText.length]);
           },
           currentText.length === 0 ? writePreDelay : writeSpeed,
         );
@@ -195,12 +197,14 @@ export default function Typewriter({
             setMode('write');
           }
 
-          onEraseComplete?.();
+          onEraseCompleteRef.current?.();
         }, erasePostDelay);
       } else {
         setTimeoutRaf(
           () => {
-            setCurrentText(prev => prev.slice(0, prev.length - 1));
+            setCurrentText(previousText =>
+              previousText.slice(0, previousText.length - 1),
+            );
           },
           currentText.length === text.length ? erasePreDelay : eraseSpeed,
         );
@@ -208,7 +212,7 @@ export default function Typewriter({
     }
 
     return () => {
-      if (rafRef.current) {
+      if (rafRef.current !== null) {
         cancelAnimationFrame(rafRef.current);
         rafRef.current = null;
       }
@@ -223,18 +227,12 @@ export default function Typewriter({
     erasePostDelay,
     loop,
     pause,
-    onWriteComplete,
-    onEraseComplete,
     currentText,
     mode,
   ]);
 
-  return (
-    <span {...props}>
-      {currentText}
-      <span className={cursorClassName} aria-hidden="true">
-        {cursor}
-      </span>
-    </span>
-  );
+  return {
+    currentText,
+    mode,
+  };
 }

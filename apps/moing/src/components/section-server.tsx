@@ -7,10 +7,10 @@
 // --------------------------------------------------------------------------------
 
 import { useEffect, useLayoutEffect, useMemo } from 'react';
+import { Typewriter } from '@lumir/react-kit/components';
 import { cn } from '@lumir/utils';
 
 import NeonDiv from '@/components/neon-div';
-import Typewriter from '@/components/typewriter';
 import useScenario from '@/hooks/use-scenario';
 import useConfig from '@/hooks/use-config';
 import useInterview from '@/hooks/use-interview';
