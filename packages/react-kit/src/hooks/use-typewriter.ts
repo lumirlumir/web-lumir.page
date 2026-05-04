@@ -1,5 +1,5 @@
 /**
- * @fileoverview Hook for managing typewriter text state.
+ * @fileoverview Typewriter hook.
  */
 
 // --------------------------------------------------------------------------------
