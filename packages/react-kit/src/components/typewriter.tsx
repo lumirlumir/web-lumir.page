@@ -42,10 +42,24 @@ export interface TypewriterProps
  * @example
  * ```tsx
  * import { Typewriter } from '@lumir/react-kit/components';
+ * import type { TypewriterProps } from '@lumir/react-kit/components';
  *
- * function Component() {
- *   return <Typewriter text="Hello, World!" />;
- * }
+ * // Default Values
+ * <Typewriter
+ *   text="Hello, World!"
+ *   cursor="|"
+ *   cursorClassName="cursor"
+ *   writeSpeed={50}
+ *   eraseSpeed={50}
+ *   writePreDelay={0}
+ *   erasePreDelay={0}
+ *   writePostDelay={1500}
+ *   erasePostDelay={1500}
+ *   loop={false}
+ *   pause={false}
+ *   onWriteComplete={undefined}
+ *   onEraseComplete={undefined}
+ * />
  * ```
  */
 export function Typewriter({
@@ -60,11 +74,11 @@ export function Typewriter({
   erasePostDelay = 1_500,
   loop = false,
   pause = false,
-  onWriteComplete,
-  onEraseComplete,
+  onWriteComplete = undefined,
+  onEraseComplete = undefined,
   ...props
 }: TypewriterProps) {
-  const typewriterOptions: UseTypewriterOptions = {
+  const [currentText] = useTypewriter({
     text,
     writeSpeed,
     eraseSpeed,
@@ -74,26 +88,16 @@ export function Typewriter({
     erasePostDelay,
     loop,
     pause,
-  };
-
-  if (onWriteComplete !== undefined) {
-    typewriterOptions.onWriteComplete = onWriteComplete;
-  }
-
-  if (onEraseComplete !== undefined) {
-    typewriterOptions.onEraseComplete = onEraseComplete;
-  }
-
-  const { currentText } = useTypewriter(typewriterOptions);
+    onWriteComplete,
+    onEraseComplete,
+  });
 
   return (
     <span {...props}>
       {currentText}
-      {cursor === null ? null : (
-        <span className={cursorClassName} aria-hidden="true">
-          {cursor}
-        </span>
-      )}
+      <span className={cursorClassName} aria-hidden="true">
+        {cursor}
+      </span>
     </span>
   );
 }

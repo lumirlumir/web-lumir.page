@@ -97,21 +97,24 @@ describe('typewriter', () => {
     assert.strictEqual(typewriter.textContent, 'A_');
   });
 
-  it('Null cursor should disable cursor rendering', async () => {
+  it('Null cursor should render no visible cursor text while keeping the cursor element', async () => {
     const act = await createAct();
     const screen = await render(
       <Typewriter cursor={null} data-testid="typewriter" text="A" writePreDelay={16} />,
     );
     const typewriter = screen.container.querySelector('[data-testid="typewriter"]');
+    const cursor = typewriter?.querySelector('span');
 
     assert.isNotNull(typewriter);
+    assert.isNotNull(cursor);
     assert.strictEqual(typewriter.textContent, '');
-    assert.isNull(typewriter.querySelector('[aria-hidden="true"]'));
+    assert.strictEqual(cursor.getAttribute('aria-hidden'), 'true');
+    assert.strictEqual(cursor.textContent, '');
 
     await advanceAnimationFrameDelay(act, 16);
 
     assert.strictEqual(typewriter.textContent, 'A');
-    assert.isNull(typewriter.querySelector('[aria-hidden="true"]'));
+    assert.strictEqual(cursor.textContent, '');
   });
 
   it('Timing options and callbacks should control writing and looping erase behavior', async () => {

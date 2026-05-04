@@ -1,5 +1,5 @@
 /**
- * @fileoverview Typewriter hook.
+ * @fileoverview typewriter hook.
  */
 
 // --------------------------------------------------------------------------------
@@ -12,7 +12,7 @@ import { useEffect, useRef, useState } from 'react';
 // Typedef
 // --------------------------------------------------------------------------------
 
-export type TypewriterMode = 'write' | 'erase';
+type Mode = 'write' | 'erase';
 
 export interface UseTypewriterOptions {
   /**
@@ -72,45 +72,30 @@ export interface UseTypewriterOptions {
    * Callback function that is called when writing is complete.
    * @default undefined
    */
-  onWriteComplete?: () => void;
+  onWriteComplete?: (() => void) | undefined;
 
   /**
    * Callback function that is called when erasing is complete.
    * @default undefined
    */
-  onEraseComplete?: () => void;
+  onEraseComplete?: (() => void) | undefined;
 }
 
-export interface UseTypewriterResult {
-  /**
-   * The currently visible text.
-   */
-  currentText: string;
-
-  /**
-   * Current typewriter mode.
-   */
-  mode: TypewriterMode;
-}
+export type UseTypewriterReturn = readonly [currentText: string];
 
 // --------------------------------------------------------------------------------
 // Export
 // --------------------------------------------------------------------------------
 
 /**
- * `useTypewriter` manages the state for a typewriter effect.
+ * Simple Typewriter Effect hook.
  *
- * It writes text one character at a time, optionally erases it, and can loop
- * between both modes.
- *
- * @param options Typewriter timing and callback options.
- * @returns Current text and mode.
  * @example
  * ```tsx
  * import { useTypewriter } from '@lumir/react-kit/hooks';
  *
  * function Component() {
- *   const { currentText } = useTypewriter({
+ *   const [currentText] = useTypewriter({
  *     text: 'Hello, World!',
  *     writeSpeed: 50,
  *   });
@@ -131,24 +116,14 @@ export function useTypewriter({
   pause = false,
   onWriteComplete = undefined,
   onEraseComplete = undefined,
-}: UseTypewriterOptions): UseTypewriterResult {
+}: UseTypewriterOptions): UseTypewriterReturn {
   const [currentText, setCurrentText] = useState<string>('');
-  const [mode, setMode] = useState<TypewriterMode>('write');
+  const [mode, setMode] = useState<Mode>('write');
 
   const rafRef = useRef<number | null>(null);
-  const onWriteCompleteRef = useRef(onWriteComplete);
-  const onEraseCompleteRef = useRef(onEraseComplete);
 
   useEffect(() => {
-    onWriteCompleteRef.current = onWriteComplete;
-  }, [onWriteComplete]);
-
-  useEffect(() => {
-    onEraseCompleteRef.current = onEraseComplete;
-  }, [onEraseComplete]);
-
-  useEffect(() => {
-    if (rafRef.current !== null) {
+    if (rafRef.current) {
       cancelAnimationFrame(rafRef.current);
       rafRef.current = null;
     }
@@ -157,6 +132,7 @@ export function useTypewriter({
       return undefined;
     }
 
+    /** Minimal helper to emulate `setTimeout` with rAF(requestAnimationFrame) */
     const setTimeoutRaf = (callback: () => void, delay: number) => {
       const base = performance.now();
 
@@ -180,12 +156,12 @@ export function useTypewriter({
             setMode('erase');
           }
 
-          onWriteCompleteRef.current?.();
+          onWriteComplete?.();
         }, writePostDelay);
       } else {
         setTimeoutRaf(
           () => {
-            setCurrentText(previousText => previousText + text[currentText.length]);
+            setCurrentText(prev => prev + text[currentText.length]);
           },
           currentText.length === 0 ? writePreDelay : writeSpeed,
         );
@@ -197,14 +173,12 @@ export function useTypewriter({
             setMode('write');
           }
 
-          onEraseCompleteRef.current?.();
+          onEraseComplete?.();
         }, erasePostDelay);
       } else {
         setTimeoutRaf(
           () => {
-            setCurrentText(previousText =>
-              previousText.slice(0, previousText.length - 1),
-            );
+            setCurrentText(prev => prev.slice(0, prev.length - 1));
           },
           currentText.length === text.length ? erasePreDelay : eraseSpeed,
         );
@@ -212,7 +186,7 @@ export function useTypewriter({
     }
 
     return () => {
-      if (rafRef.current !== null) {
+      if (rafRef.current) {
         cancelAnimationFrame(rafRef.current);
         rafRef.current = null;
       }
@@ -227,12 +201,11 @@ export function useTypewriter({
     erasePostDelay,
     loop,
     pause,
+    onWriteComplete,
+    onEraseComplete,
     currentText,
     mode,
   ]);
 
-  return {
-    currentText,
-    mode,
-  };
+  return [currentText] as const;
 }

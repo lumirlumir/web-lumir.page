@@ -8,13 +8,13 @@
 
 import { afterEach, assert, beforeEach, describe, it, vi } from 'vitest';
 import { renderHook, type RenderHookResult } from 'vitest-browser-react';
-import { useTypewriter, type UseTypewriterResult } from './use-typewriter.js';
+import { useTypewriter, type UseTypewriterReturn } from './use-typewriter.js';
 
 // --------------------------------------------------------------------------------
 // Helper
 // --------------------------------------------------------------------------------
 
-type TypewriterHookRender = RenderHookResult<UseTypewriterResult, unknown>;
+type TypewriterHookRender = RenderHookResult<UseTypewriterReturn, unknown>;
 
 beforeEach(() => {
   vi.useFakeTimers({
@@ -48,11 +48,10 @@ async function advanceAnimationFrameDelay(
 // --------------------------------------------------------------------------------
 
 describe('use-typewriter', () => {
-  it('Initial state should be empty text in write mode', async () => {
+  it('Initial return value should contain empty text as the first array item', async () => {
     const { result } = await renderHook(() => useTypewriter({ text: 'Hello' }));
 
-    assert.strictEqual(result.current.currentText, '');
-    assert.strictEqual(result.current.mode, 'write');
+    assert.strictEqual(result.current[0], '');
   });
 
   it('Writing should respect pre delay, character speed, post delay, and completion callback', async () => {
@@ -71,27 +70,26 @@ describe('use-typewriter', () => {
     );
 
     await advanceAnimationFrameDelay(act, 16);
-    assert.strictEqual(result.current.currentText, '');
+    assert.strictEqual(result.current[0], '');
     assert.strictEqual(writeCompleteCount, 0);
 
     await advanceAnimationFrameDelay(act, 16);
-    assert.strictEqual(result.current.currentText, 'A');
+    assert.strictEqual(result.current[0], 'A');
     assert.strictEqual(writeCompleteCount, 0);
 
     await advanceAnimationFrameDelay(act, 16);
-    assert.strictEqual(result.current.currentText, 'AB');
+    assert.strictEqual(result.current[0], 'AB');
     assert.strictEqual(writeCompleteCount, 0);
 
     await advanceAnimationFrameDelay(act, 16);
     assert.strictEqual(writeCompleteCount, 0);
 
     await advanceAnimationFrameDelay(act, 16);
-    assert.strictEqual(result.current.currentText, 'AB');
-    assert.strictEqual(result.current.mode, 'write');
+    assert.strictEqual(result.current[0], 'AB');
     assert.strictEqual(writeCompleteCount, 1);
   });
 
-  it('Looping should erase after write completion and return to write mode after erase completion', async () => {
+  it('Looping should erase after write completion and start writing again after erase completion', async () => {
     let writeCompleteCount = 0;
     let eraseCompleteCount = 0;
 
@@ -115,30 +113,27 @@ describe('use-typewriter', () => {
     );
 
     await advanceAnimationFrameDelay(act, 16);
-    assert.strictEqual(result.current.currentText, 'A');
-    assert.strictEqual(result.current.mode, 'write');
+    assert.strictEqual(result.current[0], 'A');
 
     await advanceAnimationFrameDelay(act, 16);
-    assert.strictEqual(result.current.currentText, 'AB');
-    assert.strictEqual(result.current.mode, 'write');
+    assert.strictEqual(result.current[0], 'AB');
 
     await advanceAnimationFrameDelay(act, 16);
-    assert.strictEqual(result.current.currentText, 'AB');
-    assert.strictEqual(result.current.mode, 'erase');
+    assert.strictEqual(result.current[0], 'AB');
     assert.strictEqual(writeCompleteCount, 1);
 
     await advanceAnimationFrameDelay(act, 16);
-    assert.strictEqual(result.current.currentText, 'A');
-    assert.strictEqual(result.current.mode, 'erase');
+    assert.strictEqual(result.current[0], 'A');
 
     await advanceAnimationFrameDelay(act, 16);
-    assert.strictEqual(result.current.currentText, '');
-    assert.strictEqual(result.current.mode, 'erase');
+    assert.strictEqual(result.current[0], '');
 
     await advanceAnimationFrameDelay(act, 16);
-    assert.strictEqual(result.current.currentText, '');
-    assert.strictEqual(result.current.mode, 'write');
+    assert.strictEqual(result.current[0], '');
     assert.strictEqual(eraseCompleteCount, 1);
+
+    await advanceAnimationFrameDelay(act, 16);
+    assert.strictEqual(result.current[0], 'A');
   });
 
   it('Pause should stop progress and resume without resetting current text', async () => {
@@ -158,19 +153,19 @@ describe('use-typewriter', () => {
     );
 
     await advanceAnimationFrameDelay(act, 16);
-    assert.strictEqual(result.current.currentText, 'A');
+    assert.strictEqual(result.current[0], 'A');
 
     await rerender({
       pause: true,
     });
     await advanceAnimationFrameDelay(act, 64);
-    assert.strictEqual(result.current.currentText, 'A');
+    assert.strictEqual(result.current[0], 'A');
 
     await rerender({
       pause: false,
     });
     await advanceAnimationFrameDelay(act, 16);
-    assert.strictEqual(result.current.currentText, 'AB');
+    assert.strictEqual(result.current[0], 'AB');
   });
 
   it('Non-looping typewriter should leave completed text visible and never erase', async () => {
@@ -201,8 +196,7 @@ describe('use-typewriter', () => {
     await advanceAnimationFrameDelay(act, 16);
     await advanceAnimationFrameDelay(act, 64);
 
-    assert.strictEqual(result.current.currentText, 'AB');
-    assert.strictEqual(result.current.mode, 'write');
+    assert.strictEqual(result.current[0], 'AB');
     assert.strictEqual(writeCompleteCount, 1);
     assert.strictEqual(eraseCompleteCount, 0);
   });
