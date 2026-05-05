@@ -147,7 +147,7 @@ export function useTypewriter({
       return text;
     }
   });
-  const [currentMode, setCurrentMode] = useState<Mode>('write');
+  const [currentMode, setCurrentMode] = useState<Mode>(mode);
 
   const rafRef = useRef<number | null>(null);
 
