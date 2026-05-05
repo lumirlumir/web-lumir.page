@@ -41,6 +41,7 @@ export default defineConfig([
     name: 'js/global',
     rules: {
       'import/no-cycle': 'off', // Too computationally expensive. TODO: Remove this in shared config.
+      'import/prefer-default-export': 'off', // Too restrictive. TODO: Remove this in shared config.
     },
   },
   {
