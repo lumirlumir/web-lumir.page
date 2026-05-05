@@ -153,11 +153,6 @@ export function useTypewriter({
   const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
-    if (rafRef.current) {
-      cancelAnimationFrame(rafRef.current);
-      rafRef.current = null;
-    }
-
     if (pause) {
       return undefined;
     }
@@ -216,7 +211,7 @@ export function useTypewriter({
     }
 
     return () => {
-      if (rafRef.current) {
+      if (rafRef.current !== null) {
         cancelAnimationFrame(rafRef.current);
         rafRef.current = null;
       }
