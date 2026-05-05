@@ -13,6 +13,11 @@ import { useEffect, useRef, useState } from 'react';
 // --------------------------------------------------------------------------------
 
 /**
+ * Type of the current mode, either `'write'` or `'erase'`.
+ */
+type Mode = 'write' | 'erase';
+
+/**
  * Options for the `useTypewriter` hook.
  */
 export interface UseTypewriterOptions {
@@ -20,6 +25,14 @@ export interface UseTypewriterOptions {
    * Text to type out.
    */
   text: string;
+
+  /**
+   * The mode of the typewriter effect.
+   * - If set to `'write'`, the hook will write the text.
+   * - If set to `'erase'`, the hook will erase the text.
+   * @default 'write'
+   */
+  mode?: Mode | undefined;
 
   /**
    * The delay between each character when writing (milliseconds).
@@ -115,6 +128,7 @@ export interface UseTypewriterOptions {
  */
 export function useTypewriter({
   text,
+  mode = 'write',
   writeSpeed = 50,
   eraseSpeed = 50,
   writePreDelay = 0,
@@ -126,8 +140,14 @@ export function useTypewriter({
   onWriteComplete = undefined,
   onEraseComplete = undefined,
 }: UseTypewriterOptions): readonly [currentText: string] {
-  const [currentText, setCurrentText] = useState<string>('');
-  const [mode, setMode] = useState<'write' | 'erase'>('write');
+  const [currentText, setCurrentText] = useState<string>(() => {
+    if (mode === 'write') {
+      return '';
+    } else {
+      return text;
+    }
+  });
+  const [currentMode, setCurrentMode] = useState<Mode>('write');
 
   const rafRef = useRef<number | null>(null);
 
@@ -158,11 +178,11 @@ export function useTypewriter({
       rafRef.current = requestAnimationFrame(step);
     };
 
-    if (mode === 'write') {
+    if (currentMode === 'write') {
       if (currentText.length === text.length) {
         setTimeoutRaf(() => {
           if (loop) {
-            setMode('erase');
+            setCurrentMode('erase');
           }
 
           onWriteComplete?.();
@@ -175,11 +195,11 @@ export function useTypewriter({
           currentText.length === 0 ? writePreDelay : writeSpeed,
         );
       }
-    } else if (mode === 'erase') {
+    } else if (currentMode === 'erase') {
       if (currentText.length === 0) {
         setTimeoutRaf(() => {
           if (loop) {
-            setMode('write');
+            setCurrentMode('write');
           }
 
           onEraseComplete?.();
@@ -213,7 +233,7 @@ export function useTypewriter({
     onWriteComplete,
     onEraseComplete,
     currentText,
-    mode,
+    currentMode,
   ]);
 
   return [currentText] as const;

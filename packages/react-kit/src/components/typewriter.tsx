@@ -70,6 +70,7 @@ export function Typewriter({
   cursorClassName = 'cursor',
   // `useTypewriter`
   text,
+  mode,
   writeSpeed,
   eraseSpeed,
   writePreDelay,
@@ -85,6 +86,7 @@ export function Typewriter({
 }: TypewriterProps) {
   const [currentText] = useTypewriter({
     text,
+    mode,
     writeSpeed,
     eraseSpeed,
     writePreDelay,
