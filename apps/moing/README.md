@@ -28,10 +28,10 @@
 
 ### 1-1. Links
 
-- [***GitHub Pages***](https://moing.lumir.page/): 웹 사이트
+- [***GitHub Pages***](https://moing.lumir.page): 웹 사이트
 - [***GitHub Repository***](https://github.com/lumirlumir/lumir.page/tree/main/apps/moing)
 - [***GitHub PR***](https://github.com/lumirlumir/lumir.page/pulls)
-- [***GitHub Issues***](https://github.com/lumirlumir/lumir.page/issues)
+- [***GitHub Issues***](https://github.com/lumirlumir/lumir.page/issues?q=is%3Aissue%20state%3Aclosed)
 - [***GitHub Projects***](https://github.com/users/lumirlumir/projects/2)
 - [***PPT Midterm***](https://www.miricanvas.com/v/134hi5w): 중간 발표 PPT
 - [***PPT Final***](https://www.miricanvas.com/v/13bnjrd): 최종 발표 PPT
@@ -76,14 +76,14 @@
 
 개략적인 일정은 아래와 같다.
 
-추진 내용([Milestone](https://github.com/lumirlumir/lumir.page/milestones)) | \~3.25 | \~4.15 | \~4.30 | \~5.15 | \~5.31 | \~6.17
+추진 내용 | \~3.25 | \~4.15 | \~4.30 | \~5.15 | \~5.31 | \~6.17
 --- | :---: | :---: | :---: | :---: | :---: | :---:
-[Common_Acquisition of development related knowledge](https://github.com/lumirlumir/lumir.page/milestone/3) | O | O | O | O
-[Front-End_Design](https://github.com/lumirlumir/lumir.page/milestone/2) | | O | O
-[Front-End_Implementation](https://github.com/lumirlumir/lumir.page/milestone/5) | | | | O | O
-[Back-End_ChatGPT](https://github.com/lumirlumir/lumir.page/milestone/4) | | | O | O
-[Common_Testing and debugging](https://github.com/lumirlumir/lumir.page/milestone/6) | | | | | O
-[Common_Feedback](https://github.com/lumirlumir/lumir.page/milestone/7) | | | | | | O
+Common_Acquisition of development related knowledge | O | O | O | O
+Front-End_Design | | O | O
+Front-End_Implementation | | | | O | O
+Back-End_ChatGPT | | | O | O
+Common_Testing and debugging | | | | | O
+Common_Feedback | | | | | | O
 
 ### 1-5. Meeting Info
 
