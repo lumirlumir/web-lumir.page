@@ -3,8 +3,6 @@
  * @see https://github.com/toss/react-simplikit/blob/main/packages/core/src/hooks/useToggle/useToggle.ts
  */
 
-/* eslint-disable import/prefer-default-export -- TODO: Refactor it later */
-
 // --------------------------------------------------------------------------------
 // Import
 // --------------------------------------------------------------------------------
