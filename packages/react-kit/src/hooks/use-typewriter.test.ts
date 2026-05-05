@@ -265,4 +265,328 @@ describe('use-typewriter', () => {
     // the first character should be erased
     assert.strictEqual(thirdText, 'Hell');
   });
+
+  it('`writePostDelay`: should respect `writePostDelay` option', async () => {
+    const { act, result } = await renderHook(() =>
+      useTypewriter({
+        text: 'A',
+        mode: 'write',
+        writePreDelay: RAF_FRAME_DURATION_MS,
+        erasePreDelay: RAF_FRAME_DURATION_MS,
+        writePostDelay: RAF_FRAME_DURATION_MS * 2, // 2 frames delay after writing completes
+        loop: true,
+      }),
+    );
+
+    const [firstText] = result.current;
+
+    assert.strictEqual(firstText, '');
+
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(RAF_FRAME_DURATION_MS);
+    });
+
+    const [secondText] = result.current;
+
+    assert.strictEqual(secondText, 'A');
+
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(RAF_FRAME_DURATION_MS);
+    });
+
+    const [thirdText] = result.current;
+
+    // The text should still be full because `writePostDelay` is 2 frames
+    assert.strictEqual(thirdText, 'A');
+
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(RAF_FRAME_DURATION_MS);
+    });
+
+    const [fourthText] = result.current;
+
+    // The text should still be full when the mode changes to `'erase'`
+    assert.strictEqual(fourthText, 'A');
+
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(RAF_FRAME_DURATION_MS);
+    });
+
+    const [fifthText] = result.current;
+
+    // After the post delay and erase pre-delay, the text should erase
+    assert.strictEqual(fifthText, '');
+  });
+
+  it('`erasePostDelay`: should respect `erasePostDelay` option', async () => {
+    const { act, result } = await renderHook(() =>
+      useTypewriter({
+        text: 'A',
+        mode: 'erase',
+        writePreDelay: RAF_FRAME_DURATION_MS,
+        erasePreDelay: RAF_FRAME_DURATION_MS,
+        erasePostDelay: RAF_FRAME_DURATION_MS * 2, // 2 frames delay after erasing completes
+        loop: true,
+      }),
+    );
+
+    const [firstText] = result.current;
+
+    assert.strictEqual(firstText, 'A');
+
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(RAF_FRAME_DURATION_MS);
+    });
+
+    const [secondText] = result.current;
+
+    assert.strictEqual(secondText, '');
+
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(RAF_FRAME_DURATION_MS);
+    });
+
+    const [thirdText] = result.current;
+
+    // The text should still be empty because `erasePostDelay` is 2 frames
+    assert.strictEqual(thirdText, '');
+
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(RAF_FRAME_DURATION_MS);
+    });
+
+    const [fourthText] = result.current;
+
+    // The text should still be empty when the mode changes to `'write'`
+    assert.strictEqual(fourthText, '');
+
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(RAF_FRAME_DURATION_MS);
+    });
+
+    const [fifthText] = result.current;
+
+    // After the post delay and write pre-delay, the text should write
+    assert.strictEqual(fifthText, 'A');
+  });
+
+  it('`loop`: should write, erase, and write again when `loop` is enabled', async () => {
+    const { act, result } = await renderHook(() =>
+      useTypewriter({
+        text: 'AB',
+        mode: 'write',
+        writeSpeed: RAF_FRAME_DURATION_MS,
+        eraseSpeed: RAF_FRAME_DURATION_MS,
+        writePreDelay: RAF_FRAME_DURATION_MS,
+        erasePreDelay: RAF_FRAME_DURATION_MS,
+        writePostDelay: RAF_FRAME_DURATION_MS,
+        erasePostDelay: RAF_FRAME_DURATION_MS,
+        loop: true,
+      }),
+    );
+
+    const [firstText] = result.current;
+
+    assert.strictEqual(firstText, '');
+
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(RAF_FRAME_DURATION_MS);
+    });
+
+    const [secondText] = result.current;
+
+    assert.strictEqual(secondText, 'A');
+
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(RAF_FRAME_DURATION_MS);
+    });
+
+    const [thirdText] = result.current;
+
+    assert.strictEqual(thirdText, 'AB');
+
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(RAF_FRAME_DURATION_MS);
+    });
+
+    const [fourthText] = result.current;
+
+    // The text should stay full while switching from write to erase
+    assert.strictEqual(fourthText, 'AB');
+
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(RAF_FRAME_DURATION_MS);
+    });
+
+    const [fifthText] = result.current;
+
+    assert.strictEqual(fifthText, 'A');
+
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(RAF_FRAME_DURATION_MS);
+    });
+
+    const [sixthText] = result.current;
+
+    assert.strictEqual(sixthText, '');
+
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(RAF_FRAME_DURATION_MS);
+    });
+
+    const [seventhText] = result.current;
+
+    // The text should stay empty while switching from erase to write
+    assert.strictEqual(seventhText, '');
+
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(RAF_FRAME_DURATION_MS);
+    });
+
+    const [eighthText] = result.current;
+
+    assert.strictEqual(eighthText, 'A');
+  });
+
+  it('`pause`: should pause and resume writing when `pause` changes', async () => {
+    const { act, rerender, result } = await renderHook(
+      (props?: { pause: boolean }) =>
+        useTypewriter({
+          text: 'AB',
+          mode: 'write',
+          writeSpeed: RAF_FRAME_DURATION_MS,
+          writePreDelay: RAF_FRAME_DURATION_MS,
+          pause: props?.pause ?? false,
+        }),
+      {
+        initialProps: { pause: false },
+      },
+    );
+
+    const [firstText] = result.current;
+
+    assert.strictEqual(firstText, '');
+
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(RAF_FRAME_DURATION_MS);
+    });
+
+    const [secondText] = result.current;
+
+    assert.strictEqual(secondText, 'A');
+
+    await rerender({ pause: true }); // Pause writing
+
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(RAF_FRAME_DURATION_MS * 8);
+    });
+
+    const [thirdText] = result.current;
+
+    assert.strictEqual(thirdText, 'A');
+
+    await rerender({ pause: false }); // Resume writing
+
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(RAF_FRAME_DURATION_MS);
+    });
+
+    const [fourthText] = result.current;
+
+    assert.strictEqual(fourthText, 'AB');
+  });
+
+  it('`onWriteComplete`: should call `onWriteComplete` after writing completes', async () => {
+    const onWriteComplete = vi.fn();
+
+    const { act, result } = await renderHook(() =>
+      useTypewriter({
+        text: 'AB',
+        mode: 'write',
+        writeSpeed: RAF_FRAME_DURATION_MS,
+        writePreDelay: RAF_FRAME_DURATION_MS,
+        writePostDelay: RAF_FRAME_DURATION_MS,
+        onWriteComplete,
+      }),
+    );
+
+    const [firstText] = result.current;
+
+    assert.strictEqual(firstText, '');
+    assert.strictEqual(onWriteComplete.mock.calls.length, 0);
+
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(RAF_FRAME_DURATION_MS);
+    });
+
+    const [secondText] = result.current;
+
+    assert.strictEqual(secondText, 'A');
+    assert.strictEqual(onWriteComplete.mock.calls.length, 0);
+
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(RAF_FRAME_DURATION_MS);
+    });
+
+    const [thirdText] = result.current;
+
+    assert.strictEqual(thirdText, 'AB');
+    assert.strictEqual(onWriteComplete.mock.calls.length, 0);
+
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(RAF_FRAME_DURATION_MS);
+    });
+
+    const [fourthText] = result.current;
+
+    assert.strictEqual(fourthText, 'AB');
+    assert.strictEqual(onWriteComplete.mock.calls.length, 1);
+  });
+
+  it('`onEraseComplete`: should call `onEraseComplete` after erasing completes', async () => {
+    const onEraseComplete = vi.fn();
+
+    const { act, result } = await renderHook(() =>
+      useTypewriter({
+        text: 'AB',
+        mode: 'erase',
+        eraseSpeed: RAF_FRAME_DURATION_MS,
+        erasePreDelay: RAF_FRAME_DURATION_MS,
+        erasePostDelay: RAF_FRAME_DURATION_MS,
+        onEraseComplete,
+      }),
+    );
+
+    const [firstText] = result.current;
+
+    assert.strictEqual(firstText, 'AB');
+    assert.strictEqual(onEraseComplete.mock.calls.length, 0);
+
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(RAF_FRAME_DURATION_MS);
+    });
+
+    const [secondText] = result.current;
+
+    assert.strictEqual(secondText, 'A');
+    assert.strictEqual(onEraseComplete.mock.calls.length, 0);
+
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(RAF_FRAME_DURATION_MS);
+    });
+
+    const [thirdText] = result.current;
+
+    assert.strictEqual(thirdText, '');
+    assert.strictEqual(onEraseComplete.mock.calls.length, 0);
+
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(RAF_FRAME_DURATION_MS);
+    });
+
+    const [fourthText] = result.current;
+
+    assert.strictEqual(fourthText, '');
+    assert.strictEqual(onEraseComplete.mock.calls.length, 1);
+  });
 });

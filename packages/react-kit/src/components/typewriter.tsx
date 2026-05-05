@@ -51,6 +51,7 @@ export interface TypewriterProps
  *   cursor="|"
  *   cursorClassName="cursor"
  *   text="Hello, World!"
+ *   mode="write"
  *   writeSpeed={50}
  *   eraseSpeed={50}
  *   writePreDelay={0}

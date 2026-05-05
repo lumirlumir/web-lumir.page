@@ -110,16 +110,17 @@ export interface UseTypewriterOptions {
  *   const [currentText] = useTypewriter({
  *     // Default Options
  *     text: 'Hello, World!',
- *     writeSpeed={50}
- *     eraseSpeed={50}
- *     writePreDelay={0}
- *     erasePreDelay={0}
- *     writePostDelay={1500}
- *     erasePostDelay={1500}
- *     loop={false}
- *     pause={false}
- *     onWriteComplete={undefined}
- *     onEraseComplete={undefined}
+ *     mode: 'write',
+ *     writeSpeed: 50,
+ *     eraseSpeed: 50,
+ *     writePreDelay: 0,
+ *     erasePreDelay: 0,
+ *     writePostDelay: 1500,
+ *     erasePostDelay: 1500,
+ *     loop: false,
+ *     pause: false,
+ *     onWriteComplete: undefined,
+ *     onEraseComplete: undefined,
  *   });
  *
  *   return <span>{currentText}</span>;
