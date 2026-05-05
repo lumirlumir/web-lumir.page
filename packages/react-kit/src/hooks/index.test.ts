@@ -7,7 +7,7 @@
 // --------------------------------------------------------------------------------
 
 import { assert, describe, it } from 'vitest';
-import { useToggle } from './index.js';
+import { useToggle, useTypewriter } from './index.js';
 
 // --------------------------------------------------------------------------------
 // Test
@@ -18,6 +18,11 @@ describe('index', () => {
     it('`useToggle` should be defined', () => {
       assert.isDefined(useToggle);
       assert.strictEqual(typeof useToggle, 'function');
+    });
+
+    it('`useTypewriter` should be defined', () => {
+      assert.isDefined(useTypewriter);
+      assert.strictEqual(typeof useTypewriter, 'function');
     });
   });
 });

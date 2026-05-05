@@ -7,7 +7,7 @@
 // --------------------------------------------------------------------------------
 
 import { assert, describe, it } from 'vitest';
-import { SVGWrapper } from './index.js';
+import { SVGWrapper, Typewriter } from './index.js';
 
 // --------------------------------------------------------------------------------
 // Test
@@ -18,6 +18,11 @@ describe('index', () => {
     it('`SVGWrapper` should be defined', () => {
       assert.isDefined(SVGWrapper);
       assert.strictEqual(typeof SVGWrapper, 'function');
+    });
+
+    it('`Typewriter` should be defined', () => {
+      assert.isDefined(Typewriter);
+      assert.strictEqual(typeof Typewriter, 'function');
     });
   });
 });
