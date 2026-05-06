@@ -8,7 +8,7 @@
 
 import { assert, afterEach, describe, it, vi } from 'vitest';
 import { render } from 'vitest-browser-react';
-import { BackToTopButton } from './back-to-top-button.js';
+import { BackToTopButton, type BackToTopButtonProps } from './back-to-top-button.js';
 
 // --------------------------------------------------------------------------------
 // Test
@@ -77,6 +77,32 @@ describe('back-to-top-button', () => {
       {
         top: 100,
         behavior: 'auto',
+      },
+    ]);
+  });
+
+  it('runtime button props should not override the built-in type and click behavior', async () => {
+    const scrollTo = vi.spyOn(window, 'scrollTo').mockImplementation(() => {});
+    const onClick = vi.fn();
+    const unsafeProps = {
+      type: 'submit',
+      onClick,
+    } as unknown as BackToTopButtonProps;
+
+    const screen = await render(<BackToTopButton {...unsafeProps} />);
+    const button = screen.container.querySelector('button');
+
+    assert.ok(button);
+    assert.strictEqual(button.type, 'button');
+
+    button.click();
+
+    assert.strictEqual(onClick.mock.calls.length, 0); // The custom `onClick` should not be called
+    assert.strictEqual(scrollTo.mock.calls.length, 1); // The built-in click behavior should still be called
+    assert.deepStrictEqual(scrollTo.mock.calls[0] as unknown[], [
+      {
+        top: 0,
+        behavior: 'smooth',
       },
     ]);
   });

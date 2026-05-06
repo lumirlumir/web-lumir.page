@@ -62,6 +62,7 @@ export function BackToTopButton({
 }: BackToTopButtonProps) {
   return (
     <button
+      {...props}
       type="button"
       onClick={() => {
         window.scrollTo({
@@ -69,7 +70,6 @@ export function BackToTopButton({
           top,
         });
       }}
-      {...props}
     >
       {children}
     </button>
