@@ -8,6 +8,7 @@
 
 import { useEffect, useLayoutEffect, useMemo } from 'react';
 import { Typewriter } from '@lumir/react-kit/components';
+import { useScroll } from '@lumir/react-kit/hooks';
 import { cn } from '@lumir/utils';
 
 import NeonDiv from '@/components/neon-div';
@@ -15,7 +16,6 @@ import useScenario from '@/hooks/use-scenario';
 import useConfig from '@/hooks/use-config';
 import useInterview from '@/hooks/use-interview';
 import useTimer from '@/hooks/use-timer';
-import useScroll from '@/hooks/use-scroll';
 import useHistoryState from '@/hooks/use-history-state';
 
 import './section-server.css';
@@ -42,7 +42,7 @@ export default function SectionServer({ scenario, config, interview, timer }: Pr
   const { getInterviewInfo, getQuestion, isInterviewDone, getInterviewHistory } =
     interview;
   const { resetTimer } = timer;
-  const { scrollRef, scroll } = useScroll<HTMLDivElement>();
+  const [scrollRef, scroll] = useScroll<HTMLDivElement>({ behavior: 'smooth' });
   const { historyState, addHistory } = useHistoryState<string>();
 
   const text = useMemo(() => {
@@ -89,7 +89,7 @@ export default function SectionServer({ scenario, config, interview, timer }: Pr
           onWriteComplete={() => {
             if (mode === 'auto' || mode === 'result') toNextSection();
             if (mode === 'test' && text !== '') resetTimer(configState.time);
-            scroll();
+            scroll.intoView({ block: 'end', inline: 'nearest' });
           }}
         />
       </div>
