@@ -42,7 +42,32 @@ describe('remark-heading-from-title', () => {
       assert.strictEqual(file.value, 'paragraph\n');
     });
 
-    it('should keep the original markdown content unchanged when the title is `undefined` - 1', async () => {
+    it('should keep the original markdown content unchanged when the option is `null`', async () => {
+      const file = await remark()
+        .use(
+          remarkHeadingFromTitle,
+          null as unknown as Parameters<typeof remarkHeadingFromTitle>[0],
+        )
+        .process('paragraph\n');
+
+      assert.strictEqual(file.value, 'paragraph\n');
+    });
+
+    it('should keep the original markdown content unchanged when the option is `undefined` - 1', async () => {
+      const file = await remark()
+        .use(remarkHeadingFromTitle, undefined)
+        .process('paragraph\n');
+
+      assert.strictEqual(file.value, 'paragraph\n');
+    });
+
+    it('should keep the original markdown content unchanged when the option is `undefined` - 2', async () => {
+      const file = await remark().use(remarkHeadingFromTitle).process('paragraph\n');
+
+      assert.strictEqual(file.value, 'paragraph\n');
+    });
+
+    it('should keep the original markdown content unchanged when the title is `undefined`', async () => {
       const file = await remark()
         .use(remarkHeadingFromTitle, { title: undefined })
         .process('paragraph\n');
@@ -50,18 +75,9 @@ describe('remark-heading-from-title', () => {
       assert.strictEqual(file.value, 'paragraph\n');
     });
 
-    it('should keep the original markdown content unchanged when the title is `undefined` - 2', async () => {
-      const file = await remark().use(remarkHeadingFromTitle).process('paragraph\n');
-
-      assert.strictEqual(file.value, 'paragraph\n');
-    });
-
     it('should keep the original markdown content unchanged when the title is not a string', async () => {
       const file = await remark()
-        .use(
-          remarkHeadingFromTitle,
-          123 as unknown as Parameters<typeof remarkHeadingFromTitle>[0],
-        )
+        .use(remarkHeadingFromTitle, { title: 123 as unknown as string })
         .process('paragraph\n');
 
       assert.strictEqual(file.value, 'paragraph\n');

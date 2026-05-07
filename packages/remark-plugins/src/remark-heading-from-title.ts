@@ -28,7 +28,9 @@ import type { Heading, Root } from 'mdast';
  * console.log(file.value); // Output: '# title\n\nparagraph'
  * ```
  */
-export function remarkHeadingFromTitle({ title }: { title?: string | undefined } = {}) {
+export function remarkHeadingFromTitle(options?: { title?: string | undefined }) {
+  const { title } = options ?? {};
+
   if (typeof title !== 'string' || title === '') {
     return () => {};
   }
