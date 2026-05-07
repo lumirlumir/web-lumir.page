@@ -16,7 +16,6 @@ import useScenario from '@/hooks/use-scenario';
 import useConfig from '@/hooks/use-config';
 import useInterview from '@/hooks/use-interview';
 import useTimer from '@/hooks/use-timer';
-
 import useHistoryState from '@/hooks/use-history-state';
 
 import './section-server.css';
