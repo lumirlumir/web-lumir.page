@@ -44,7 +44,7 @@ interface MarkdownToHtmlOptions {
   /**
    * Prepend an H1 heading generated from the provided title.
    */
-  title?: string | undefined;
+  title?: string;
 }
 
 // --------------------------------------------------------------------------------

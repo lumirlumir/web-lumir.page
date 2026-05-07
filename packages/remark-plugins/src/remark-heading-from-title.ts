@@ -13,10 +13,6 @@ import type { Heading, Root } from 'mdast';
 // Export
 // --------------------------------------------------------------------------------
 
-export interface RemarkHeadingFromTitleOptions {
-  title?: string | undefined;
-}
-
 /**
  * A remark plugin to prepend an H1 heading generated from the provided title.
  * @example
@@ -32,9 +28,7 @@ export interface RemarkHeadingFromTitleOptions {
  * console.log(file.value); // Output: '# title\n\nparagraph'
  * ```
  */
-export function remarkHeadingFromTitle(options?: RemarkHeadingFromTitleOptions) {
-  const { title } = options ?? {};
-
+export function remarkHeadingFromTitle({ title }: { title?: string | undefined } = {}) {
   if (typeof title !== 'string' || title === '') {
     return () => {};
   }
