@@ -77,7 +77,7 @@ export async function markdownToHtml(
     .use(remarkGfm)
     .use(remarkGitHub, { repository: GITHUB_REPO_FULL_NAME })
     .use(remarkMath)
-    .use(remarkHeadingFromTitle, options?.title)
+    .use(remarkHeadingFromTitle, { title: options?.title })
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeRaw)
     .use(rehypeGitHubAlert)
