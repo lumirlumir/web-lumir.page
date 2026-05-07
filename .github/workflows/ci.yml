@@ -57,7 +57,7 @@ jobs:
         run: npm ci --no-audit --no-fund
 
       - name: Install playwright browsers
-        run: npx playwright install --with-deps chromium
+        run: npx playwright install chromium --with-deps --only-shell
 
       - name: Build
         run: npm run build:pkg
