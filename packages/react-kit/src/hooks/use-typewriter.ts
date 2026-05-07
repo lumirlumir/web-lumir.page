@@ -1,5 +1,5 @@
 /**
- * @fileoverview Typewriter hook.
+ * @fileoverview `useTypewriter` hook.
  */
 
 // --------------------------------------------------------------------------------
