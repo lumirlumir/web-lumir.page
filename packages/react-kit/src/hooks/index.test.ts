@@ -7,7 +7,7 @@
 // --------------------------------------------------------------------------------
 
 import { assert, describe, it } from 'vitest';
-import { useToggle, useTypewriter } from './index.js';
+import { useBooleanState, useToggle, useTypewriter } from './index.js';
 
 // --------------------------------------------------------------------------------
 // Test
@@ -15,6 +15,11 @@ import { useToggle, useTypewriter } from './index.js';
 
 describe('index', () => {
   describe('exports', () => {
+    it('`useBooleanState` should be defined', () => {
+      assert.isDefined(useBooleanState);
+      assert.strictEqual(typeof useBooleanState, 'function');
+    });
+
     it('`useToggle` should be defined', () => {
       assert.isDefined(useToggle);
       assert.strictEqual(typeof useToggle, 'function');
