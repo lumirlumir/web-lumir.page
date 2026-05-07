@@ -6,7 +6,7 @@
 // Import
 // --------------------------------------------------------------------------------
 
-import { assert, afterEach, describe, it, vi } from 'vitest';
+import { afterEach, assert, describe, it, vi } from 'vitest';
 import { renderHook } from 'vitest-browser-react';
 import { useScroll } from './use-scroll.js';
 
