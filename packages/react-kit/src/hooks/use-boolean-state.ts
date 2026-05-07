@@ -6,7 +6,7 @@
 // Import
 // --------------------------------------------------------------------------------
 
-import { useState, useCallback } from 'react';
+import { useCallback, useState } from 'react';
 
 // --------------------------------------------------------------------------------
 // Export
@@ -14,39 +14,40 @@ import { useState, useCallback } from 'react';
 
 /**
  * `useBooleanState` hook to manage a boolean state with utility functions.
- * @param defaultValue Initial boolean value. Default is `false`.
+ *
+ * @param initialValue The initial boolean state value. Default is `false`.
  * @returns A tuple containing the current boolean value, a function to set it to `true`, a function to set it to `false`, and a function to toggle it.
  * @example
  * ```tsx
- * import { useBooleanState } from 'react-kit/hooks';
+ * import { useBooleanState } from '@lumir/react-kit/hooks';
  *
- * function MyComponent() {
- *   const [isVisible, show, hide, toggle] = useBooleanState(false);
+ * function Component() {
+ *   const [isVisible, showIsVisible, hideIsVisible, toggleIsVisible] = useBooleanState(false);
  *   // Your component logic here...
  * }
  * ```
  */
 export function useBooleanState(
-  defaultValue = false,
+  initialValue = false,
 ): readonly [
-  value: boolean,
+  state: boolean,
   setTrue: () => void,
   setFalse: () => void,
   toggle: () => void,
 ] {
-  const [bool, setBool] = useState(defaultValue);
+  const [state, setState] = useState<boolean>(initialValue);
 
   const setTrue = useCallback(() => {
-    setBool(true);
+    setState(true);
   }, []);
 
   const setFalse = useCallback(() => {
-    setBool(false);
+    setState(false);
   }, []);
 
   const toggle = useCallback(() => {
-    setBool(b => !b);
+    setState(prevState => !prevState);
   }, []);
 
-  return [bool, setTrue, setFalse, toggle] as const;
+  return [state, setTrue, setFalse, toggle] as const;
 }
