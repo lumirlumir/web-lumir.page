@@ -7,6 +7,7 @@
 // --------------------------------------------------------------------------------
 
 import { useEffect } from 'react';
+import { useScroll } from '@lumir/react-kit/hooks';
 import { cn } from '@lumir/utils';
 
 import Button from '@/components/button';
@@ -27,7 +28,6 @@ import useScenario from '@/hooks/use-scenario';
 import useConfig from '@/hooks/use-config';
 import useInterview from '@/hooks/use-interview';
 import useTimer from '@/hooks/use-timer';
-import useScroll from '@/hooks/use-scroll';
 
 import './app.css';
 
@@ -40,10 +40,13 @@ export default function App() {
   const config = useConfig();
   const interview = useInterview();
   const timer = useTimer(interview.submit);
-  const { scrollRef, scroll } = useScroll<HTMLDivElement>();
+  const [scrollRef, scroll] = useScroll<HTMLDivElement>({ behavior: 'smooth' });
 
   useEffect(() => {
-    const timeout = setTimeout(scroll, 2000);
+    const timeout = setTimeout(() => {
+      scroll.intoView({ block: 'end', inline: 'nearest' });
+    }, 2000);
+
     return () => clearTimeout(timeout);
   }, [scenario.getSectionObj, scroll]);
 
