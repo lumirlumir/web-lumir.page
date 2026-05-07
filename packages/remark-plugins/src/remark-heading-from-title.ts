@@ -21,12 +21,16 @@ import type { Heading, Root } from 'mdast';
  * import { remark } from 'remark';
  * import { remarkHeadingFromTitle } from '@lumir/remark-plugins';
  *
- * const file = await remark().use(remarkHeadingFromTitle, 'title').process('paragraph');
+ * const file = await remark()
+ *   .use(remarkHeadingFromTitle, { title: 'title' })
+ *   .process('paragraph');
  *
  * console.log(file.value); // Output: '# title\n\nparagraph'
  * ```
  */
-export function remarkHeadingFromTitle(title?: string) {
+export function remarkHeadingFromTitle(options?: { title?: string | undefined }) {
+  const { title } = options ?? {};
+
   if (typeof title !== 'string' || title === '') {
     return () => {};
   }
