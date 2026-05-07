@@ -14,7 +14,7 @@ import type { Heading, Root } from 'mdast';
 // --------------------------------------------------------------------------------
 
 export interface RemarkHeadingFromTitleOptions {
-  title?: string;
+  title?: string | undefined;
 }
 
 /**
